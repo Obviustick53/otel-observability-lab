@@ -1,0 +1,61 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260824230839
+Nombre de usuario: DESKTOP-IBT5PMQ\User
+Usuario RunAs: DESKTOP-IBT5PMQ\User
+Nombre de la configuración: 
+Máquina: DESKTOP-IBT5PMQ (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 15040
+PSVersion: 5.1.26100.8457
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8457
+BuildVersion: 10.0.26100.8457
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es evidence\benchmark\otel-k6-console.txt
+PS C:\Users\User\Desktop\otel-observability-lab> docker run --rm -i `
+  -v "${PWD}:/workspace" `
+  -w /workspace `
+  -e BASE_URL=http://host.docker.internal:8000 `
+  -e MODE=otel `
+  -e VUS=50 `
+  -e WARMUP=30s `
+  -e DURATION=5m `
+  grafana/k6 run /workspace/benchmark/k6_benchmark.js
+running (5m28.0s), 050/100 VUs, 13896 complete and 0 interrupted iterations
+warmup    ✓ [ 100% ] 00/50 VUs  30s
+sustained   [  99% ] 50 VUs     4m58.0s/5m0s
+
+running (5m29.0s), 050/100 VUs, 13944 complete and 0 interrupted iterations
+warmup    ✓ [ 100% ] 00/50 VUs  30s
+sustained   [ 100% ] 50 VUs     4m59.0s/5m0s
+
+running (5m30.0s), 050/100 VUs, 13979 complete and 0 interrupted iterations
+warmup    ✓ [ 100% ] 00/50 VUs  30s
+sustained   [ 100% ] 50 VUs     5m00.0s/5m0s
+{
+  "mode": "otel",
+  "timestamp": "2026-08-25T04:14:10.546Z",
+  "vus": 50,
+  "warmup": "30s",
+  "duration": "5m",
+  "metrics": {
+    "latency_avg_ms": 776.29252730158,
+    "latency_p95_ms": 1293.0835285,
+    "latency_p99_ms": 1585.6362096999999,
+    "throughput_rps": 42.430163900961226,
+    "error_rate_pct": 0
+  }
+}
+running (5m30.8s), 000/100 VUs, 14035 complete and 0 interrupted iterations
+warmup    ✓ [ 100% ] 00/50 VUs  30s
+sustained ✓ [ 100% ] 50 VUs     5m0s
+PS C:\Users\User\Desktop\otel-observability-lab> Stop-Transcript
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260824231628
+**********************

@@ -1,0 +1,20 @@
+﻿{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "service_name": "service-a"
+        },
+        "value": [1787628930.93, "0.07499999999999996"]
+      },
+      {
+        "metric": {
+          "service_name": "service-b"
+        },
+        "value": [1787628930.93, "0.02425"]
+      }
+    ]
+  }
+}

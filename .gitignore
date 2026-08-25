@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.json.key
+*.pem
+*credentials*.json
+
+# Docker and local state
+postgres-data/
+prometheus-data/
+grafana-data/
+jaeger-data/
+tempo-data/
+
+# Benchmark outputs
+benchmark/raw/*
+!benchmark/raw/.gitkeep
+!benchmark/raw/results_*.json
+!benchmark/raw/stats_*.txt
+
+# Generated evidence and reports are intentionally tracked for the academic deliverable.
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

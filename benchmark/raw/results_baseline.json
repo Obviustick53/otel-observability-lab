@@ -1,0 +1,14 @@
+{
+  "mode": "baseline",
+  "timestamp": "2026-08-25T03:59:13.491Z",
+  "vus": 50,
+  "warmup": "30s",
+  "duration": "5m",
+  "metrics": {
+    "latency_avg_ms": 538.6984777856673,
+    "latency_p95_ms": 938.0004953000001,
+    "latency_p99_ms": 1138.1410584800003,
+    "throughput_rps": 53.70301838089688,
+    "error_rate_pct": 0
+  }
+}

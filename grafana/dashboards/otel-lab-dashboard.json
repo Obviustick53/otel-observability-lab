@@ -1,0 +1,23 @@
+{
+  "annotations": {"list": []},
+  "editable": true,
+  "graphTooltip": 1,
+  "links": [],
+  "panels": [
+    {"id": 1, "title": "SLI - Latencia p99", "type": "timeseries", "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}, "targets": [{"expr": "histogram_quantile(0.99, sum by (le, service_name) (rate(app_request_duration_seconds_bucket[5m])))", "legendFormat": "{{service_name}}", "refId": "A"}], "fieldConfig": {"defaults": {"unit": "s"}, "overrides": []}},
+    {"id": 2, "title": "SLI - Tasa de error", "type": "timeseries", "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}, "targets": [{"expr": "(sum(rate(app_requests_total{http_status_code=~\"5..\"}[5m])) or (sum(rate(app_requests_total[5m])) * 0)) / clamp_min(sum(rate(app_requests_total[5m])), 1e-9)", "legendFormat": "error rate", "refId": "A"}], "fieldConfig": {"defaults": {"unit": "percentunit", "min": 0, "max": 1}, "overrides": []}},
+    {"id": 3, "title": "SLI - Throughput", "type": "timeseries", "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}, "targets": [{"expr": "sum by (service_name) (rate(app_requests_total[1m]))", "legendFormat": "{{service_name}}", "refId": "A"}], "fieldConfig": {"defaults": {"unit": "reqps"}, "overrides": []}},
+    {"id": 4, "title": "SLI - Disponibilidad", "type": "gauge", "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}, "targets": [{"expr": "1 - ((sum(rate(app_requests_total{http_status_code=~\"5..\"}[5m])) or (sum(rate(app_requests_total[5m])) * 0)) / clamp_min(sum(rate(app_requests_total[5m])), 1e-9))", "legendFormat": "availability", "refId": "A"}], "fieldConfig": {"defaults": {"unit": "percentunit", "min": 0, "max": 1, "thresholds": {"mode": "absolute", "steps": [{"color": "red", "value": null}, {"color": "yellow", "value": 0.99}, {"color": "green", "value": 0.995}]}}, "overrides": []}},
+    {"id": 5, "title": "CPU del OTel Collector", "type": "timeseries", "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}, "targets": [{"expr": "rate(otelcol_process_cpu_seconds[5m]) * 100", "legendFormat": "collector cpu %", "refId": "A"}], "fieldConfig": {"defaults": {"unit": "percent"}, "overrides": []}},
+    {"id": 6, "title": "Errores o datos descartados por Collector", "type": "timeseries", "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16}, "targets": [{"expr": "sum(rate(otelcol_processor_dropped_spans[5m])) or vector(0)", "legendFormat": "dropped spans", "refId": "A"}, {"expr": "sum(rate(otelcol_exporter_send_failed_spans[5m])) or vector(0)", "legendFormat": "failed span exports", "refId": "B"}], "fieldConfig": {"defaults": {"unit": "ops"}, "overrides": []}}
+  ],
+  "refresh": "10s",
+  "schemaVersion": 39,
+  "tags": ["opentelemetry", "observability", "lab"],
+  "templating": {"list": []},
+  "time": {"from": "now-30m", "to": "now"},
+  "timezone": "browser",
+  "title": "OTel Lab - SLI y salud del Collector",
+  "uid": "otel-lab-main",
+  "version": 2
+}

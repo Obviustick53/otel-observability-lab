@@ -1,0 +1,155 @@
+name: otel-observability-lab
+
+networks:
+  observability:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  jaeger-data:
+  prometheus-data:
+  loki-data:
+  grafana-data:
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app_password
+      POSTGRES_DB: observability
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    ports:
+      - "5432:5432"
+    networks: [observability]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app -d observability"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.58
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+      SPAN_STORAGE_TYPE: memory
+    ports:
+      - "16686:16686"
+    networks: [observability]
+
+  loki:
+    image: grafana/loki:3.0.0
+    command: ["-config.file=/etc/loki/config.yaml"]
+    volumes:
+      - ./loki/loki-config.yaml:/etc/loki/config.yaml:ro
+      - loki-data:/loki
+    ports:
+      - "3100:3100"
+    networks: [observability]
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.103.0
+    command: ["--config=/etc/otelcol-contrib/config.yaml"]
+    volumes:
+      - ./otel-collector/collector-config.yaml:/etc/otelcol-contrib/config.yaml:ro
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+      - "8888:8888"
+      - "8889:8889"
+      - "13133:13133"
+    environment:
+      ENVIRONMENT: local
+    depends_on:
+      jaeger:
+        condition: service_started
+      loki:
+        condition: service_started
+    networks: [observability]
+
+  prometheus:
+    image: prom/prometheus:v2.52.0
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.retention.time=2d"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    depends_on:
+      - otel-collector
+    networks: [observability]
+
+  grafana:
+    image: grafana/grafana:11.1.0
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+      - jaeger
+      - loki
+    networks: [observability]
+
+  service-b:
+    build:
+      context: ./service-b
+    environment:
+      OTEL_SERVICE_NAME: service-b
+      OTEL_SERVICE_VERSION: 1.0.0
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+      OTEL_EXPORTER_OTLP_INSECURE: "true"
+      OTEL_SDK_DISABLED: "false"
+      DATABASE_URL: postgresql://app:app_password@postgres:5432/observability
+      ENVIRONMENT: local
+    ports:
+      - "8001:8001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      otel-collector:
+        condition: service_started
+    networks: [observability]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  service-a:
+    build:
+      context: ./service-a
+    environment:
+      OTEL_SERVICE_NAME: service-a
+      OTEL_SERVICE_VERSION: 1.0.0
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+      OTEL_EXPORTER_OTLP_INSECURE: "true"
+      OTEL_SDK_DISABLED: "false"
+      DATABASE_URL: postgresql://app:app_password@postgres:5432/observability
+      SERVICE_B_URL: http://service-b:8001
+      ENVIRONMENT: local
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      service-b:
+        condition: service_healthy
+      otel-collector:
+        condition: service_started
+    networks: [observability]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10

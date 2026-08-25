@@ -1,0 +1,3 @@
+execution_role_arn = "arn:aws:iam::REEMPLAZAR:role/ecsTaskExecutionRole"
+private_subnet_ids = ["subnet-REEMPLAZAR-1", "subnet-REEMPLAZAR-2"]
+security_group_ids = ["sg-REEMPLAZAR"]

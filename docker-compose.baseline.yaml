@@ -1,0 +1,8 @@
+services:
+  service-a:
+    environment:
+      OTEL_SDK_DISABLED: "true"
+
+  service-b:
+    environment:
+      OTEL_SDK_DISABLED: "true"

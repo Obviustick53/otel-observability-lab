@@ -1,0 +1,451 @@
+[
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"a4427e712044eff393ec7a28b7f10216\",\"spanid\":\"e2d27d45a0ca526b\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-002\",\"product_id\":\"mouse\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787626540947842048",
+    "fields": {
+      "trace_id": "a4427e712044eff393ec7a28b7f10216",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"a4427e712044eff393ec7a28b7f10216\",\"spanid\":\"e2d27d45a0ca526b\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-002\",\"product_id\":\"mouse\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787626540947842048",
+    "fields": {
+      "trace_id": "a4427e712044eff393ec7a28b7f10216",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/mouse \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"a4427e712044eff393ec7a28b7f10216\",\"spanid\":\"8dd3b8b00fbbe044\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787626540946891776",
+    "fields": {
+      "trace_id": "a4427e712044eff393ec7a28b7f10216",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/mouse \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"a4427e712044eff393ec7a28b7f10216\",\"spanid\":\"8dd3b8b00fbbe044\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787626540946891776",
+    "fields": {
+      "trace_id": "a4427e712044eff393ec7a28b7f10216",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"a4427e712044eff393ec7a28b7f10216\",\"spanid\":\"022da3a866a228ee\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":88,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"mouse\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787626540944646400",
+    "fields": {
+      "trace_id": "a4427e712044eff393ec7a28b7f10216",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"a4427e712044eff393ec7a28b7f10216\",\"spanid\":\"022da3a866a228ee\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":88,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"mouse\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787626540944646400",
+    "fields": {
+      "trace_id": "a4427e712044eff393ec7a28b7f10216",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"db4a5df1b44cd29ea0826bb28bfaad63\",\"spanid\":\"5fe76a9f14d23681\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-001\",\"product_id\":\"keyboard\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922806210048",
+    "fields": {
+      "trace_id": "db4a5df1b44cd29ea0826bb28bfaad63",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/keyboard \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"db4a5df1b44cd29ea0826bb28bfaad63\",\"spanid\":\"18965db8bb782781\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922805683712",
+    "fields": {
+      "trace_id": "db4a5df1b44cd29ea0826bb28bfaad63",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"db4a5df1b44cd29ea0826bb28bfaad63\",\"spanid\":\"0e625d1a3105ecf8\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":42,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"keyboard\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922804273152",
+    "fields": {
+      "trace_id": "db4a5df1b44cd29ea0826bb28bfaad63",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"6ee2517fef0a2295d527aad5d02b3d27\",\"spanid\":\"b6895de0f4a793f9\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-001\",\"product_id\":\"keyboard\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922777299968",
+    "fields": {
+      "trace_id": "6ee2517fef0a2295d527aad5d02b3d27",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/keyboard \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"6ee2517fef0a2295d527aad5d02b3d27\",\"spanid\":\"3939c2d6b57af264\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922776784640",
+    "fields": {
+      "trace_id": "6ee2517fef0a2295d527aad5d02b3d27",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"6ee2517fef0a2295d527aad5d02b3d27\",\"spanid\":\"9c0fefe3cd06d68c\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":42,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"keyboard\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922775360512",
+    "fields": {
+      "trace_id": "6ee2517fef0a2295d527aad5d02b3d27",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"f5fa586ee52df316d0b9b18b8c5b4009\",\"spanid\":\"9e94f41ed456d83a\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-001\",\"product_id\":\"keyboard\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922745255424",
+    "fields": {
+      "trace_id": "f5fa586ee52df316d0b9b18b8c5b4009",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/keyboard \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"f5fa586ee52df316d0b9b18b8c5b4009\",\"spanid\":\"ea247d5b0ae5bdbd\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922744748032",
+    "fields": {
+      "trace_id": "f5fa586ee52df316d0b9b18b8c5b4009",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"f5fa586ee52df316d0b9b18b8c5b4009\",\"spanid\":\"05c13619527a4cc9\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":42,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"keyboard\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922743225856",
+    "fields": {
+      "trace_id": "f5fa586ee52df316d0b9b18b8c5b4009",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"c90ae24a66d94b6e433af94e56bcc0b4\",\"spanid\":\"a73a52ca7b2863af\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-001\",\"product_id\":\"keyboard\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922715369472",
+    "fields": {
+      "trace_id": "c90ae24a66d94b6e433af94e56bcc0b4",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/keyboard \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"c90ae24a66d94b6e433af94e56bcc0b4\",\"spanid\":\"d52dbccea49520e9\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922714532352",
+    "fields": {
+      "trace_id": "c90ae24a66d94b6e433af94e56bcc0b4",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"c90ae24a66d94b6e433af94e56bcc0b4\",\"spanid\":\"d5606c6d19f37be8\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":42,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"keyboard\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922712767232",
+    "fields": {
+      "trace_id": "c90ae24a66d94b6e433af94e56bcc0b4",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"11204c1b341311a8df76c95470b99c0f\",\"spanid\":\"e51d1e045a8b25c8\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-001\",\"product_id\":\"keyboard\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922684723712",
+    "fields": {
+      "trace_id": "11204c1b341311a8df76c95470b99c0f",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/keyboard \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"11204c1b341311a8df76c95470b99c0f\",\"spanid\":\"54331f490259e37a\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922684074240",
+    "fields": {
+      "trace_id": "11204c1b341311a8df76c95470b99c0f",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"11204c1b341311a8df76c95470b99c0f\",\"spanid\":\"e44b478027d764bf\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":42,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"keyboard\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922682237184",
+    "fields": {
+      "trace_id": "11204c1b341311a8df76c95470b99c0f",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"cef9b036a9349512985342d66b2f8fed\",\"spanid\":\"068a73c3598b0ba4\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-001\",\"product_id\":\"keyboard\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922655112448",
+    "fields": {
+      "trace_id": "cef9b036a9349512985342d66b2f8fed",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/keyboard \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"cef9b036a9349512985342d66b2f8fed\",\"spanid\":\"adccc5cf7ad8db68\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922654274560",
+    "fields": {
+      "trace_id": "cef9b036a9349512985342d66b2f8fed",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"cef9b036a9349512985342d66b2f8fed\",\"spanid\":\"ce5d4d76e224e48b\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":42,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"keyboard\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922652382208",
+    "fields": {
+      "trace_id": "cef9b036a9349512985342d66b2f8fed",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"11fb1ce6cbce48de85d39bf7429e32b7\",\"spanid\":\"292258eb5673d83b\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-001\",\"product_id\":\"keyboard\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922624935168",
+    "fields": {
+      "trace_id": "11fb1ce6cbce48de85d39bf7429e32b7",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/keyboard \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"11fb1ce6cbce48de85d39bf7429e32b7\",\"spanid\":\"f95da682fa7fa9b5\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922624416512",
+    "fields": {
+      "trace_id": "11fb1ce6cbce48de85d39bf7429e32b7",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"11fb1ce6cbce48de85d39bf7429e32b7\",\"spanid\":\"86e04f4421125acf\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":42,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"keyboard\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922623076864",
+    "fields": {
+      "trace_id": "11fb1ce6cbce48de85d39bf7429e32b7",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"c17927dbb3cf3cd51cd6e66f5406fa2c\",\"spanid\":\"da582049c7007f13\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-001\",\"product_id\":\"keyboard\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922596513024",
+    "fields": {
+      "trace_id": "c17927dbb3cf3cd51cd6e66f5406fa2c",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/keyboard \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"c17927dbb3cf3cd51cd6e66f5406fa2c\",\"spanid\":\"fab37673ee865023\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922595297792",
+    "fields": {
+      "trace_id": "c17927dbb3cf3cd51cd6e66f5406fa2c",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"c17927dbb3cf3cd51cd6e66f5406fa2c\",\"spanid\":\"2668082ea4db8bbe\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":42,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"keyboard\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922593518592",
+    "fields": {
+      "trace_id": "c17927dbb3cf3cd51cd6e66f5406fa2c",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"36bf82525556647c0486ee6679936527\",\"spanid\":\"e38cca69328faef8\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-001\",\"product_id\":\"keyboard\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922564299264",
+    "fields": {
+      "trace_id": "36bf82525556647c0486ee6679936527",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/keyboard \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"36bf82525556647c0486ee6679936527\",\"spanid\":\"ae8bd94742d9beb1\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922563726336",
+    "fields": {
+      "trace_id": "36bf82525556647c0486ee6679936527",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"36bf82525556647c0486ee6679936527\",\"spanid\":\"e81d68ff39e1c5ff\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":42,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"keyboard\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922561605888",
+    "fields": {
+      "trace_id": "36bf82525556647c0486ee6679936527",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"ec22a733c2cb3f11b2bca26a05683ade\",\"spanid\":\"352661233811ae43\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-001\",\"product_id\":\"keyboard\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922530488832",
+    "fields": {
+      "trace_id": "ec22a733c2cb3f11b2bca26a05683ade",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/keyboard \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"ec22a733c2cb3f11b2bca26a05683ade\",\"spanid\":\"3863640d087f7061\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922529454336",
+    "fields": {
+      "trace_id": "ec22a733c2cb3f11b2bca26a05683ade",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"ec22a733c2cb3f11b2bca26a05683ade\",\"spanid\":\"ff2105fc9e03caea\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":42,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"keyboard\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787625922526962944",
+    "fields": {
+      "trace_id": "ec22a733c2cb3f11b2bca26a05683ade",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"order processed\",\"traceid\":\"b647eb7275e036bb94ddb6f7ab7206cb\",\"spanid\":\"fe5ff7ed95058967\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_order\",\"code.lineno\":255,\"order_id\":\"ord-001\",\"product_id\":\"keyboard\",\"status\":\"confirmed\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787624887428057856",
+    "fields": {
+      "trace_id": "b647eb7275e036bb94ddb6f7ab7206cb",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"HTTP Request: GET http://service-b:8001/inventory/keyboard \\\"HTTP/1.1 200 OK\\\"\",\"traceid\":\"b647eb7275e036bb94ddb6f7ab7206cb\",\"spanid\":\"3e28fe528719d34f\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"code.filepath\":\"/usr/local/lib/python3.12/site-packages/httpx/_client.py\",\"code.function\":\"_send_single_request\",\"code.lineno\":1786},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787624887425923584",
+    "fields": {
+      "trace_id": "b647eb7275e036bb94ddb6f7ab7206cb",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"inventory returned\",\"traceid\":\"b647eb7275e036bb94ddb6f7ab7206cb\",\"spanid\":\"4a5f84f6978080d1\",\"severity\":\"INFO\",\"flags\":1,\"attributes\":{\"available\":42,\"code.filepath\":\"/app/main.py\",\"code.function\":\"read_inventory\",\"code.lineno\":223,\"product_id\":\"keyboard\"},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787624887421191680",
+    "fields": {
+      "trace_id": "b647eb7275e036bb94ddb6f7ab7206cb",
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  },
+  {
+    "line": "{\"body\":\"service started\",\"severity\":\"INFO\",\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"lifespan\",\"code.lineno\":197,\"otel_enabled\":true},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-a\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787624807968735488",
+    "fields": {
+      "exporter": "OTLP",
+      "job": "otel-lab/service-a",
+      "level": "INFO",
+      "service_name": "otel-lab/service-a"
+    }
+  },
+  {
+    "line": "{\"body\":\"service started\",\"severity\":\"INFO\",\"attributes\":{\"code.filepath\":\"/app/main.py\",\"code.function\":\"lifespan\",\"code.lineno\":146,\"otel_enabled\":true},\"resources\":{\"deployment.environment\":\"local\",\"service.name\":\"service-b\",\"service.namespace\":\"otel-lab\",\"service.version\":\"1.0.0\",\"telemetry.sdk.language\":\"python\",\"telemetry.sdk.name\":\"opentelemetry\",\"telemetry.sdk.version\":\"1.27.0\"},\"instrumentation_scope\":{\"name\":\"opentelemetry.sdk._logs._internal\"}}",
+    "timestamp": "1787624797392598016",
+    "fields": {
+      "exporter": "OTLP",
+      "job": "otel-lab/service-b",
+      "level": "INFO",
+      "service_name": "otel-lab/service-b"
+    }
+  }
+]

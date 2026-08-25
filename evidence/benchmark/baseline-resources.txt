@@ -1,0 +1,69 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260824224620
+Nombre de usuario: DESKTOP-IBT5PMQ\User
+Usuario RunAs: DESKTOP-IBT5PMQ\User
+Nombre de la configuración: 
+Máquina: DESKTOP-IBT5PMQ (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 7136
+PSVersion: 5.1.26100.8457
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8457
+BuildVersion: 10.0.26100.8457
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es evidence\benchmark\baseline-resources.txt
+PS C:\Users\User\Desktop\otel-observability-lab> 1..12 | ForEach-Object {
+    Write-Host "Muestra $($_) - $(Get-Date -Format 'HH:mm:ss')"
+    docker stats otel-observability-lab-service-a-1 otel-observability-lab-service-b-1 --no-stream
+    Start-Sleep -Seconds 30
+}
+Muestra 1 - 22:46:21
+CONTAINER ID   NAME                                 CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O   PIDS
+265cf9a0f4ae   otel-observability-lab-service-a-1   0.26%     52.82MiB / 7.445GiB   0.69%     872B / 126B   0B / 0B     5
+bea197dcfb95   otel-observability-lab-service-b-1   0.25%     50.38MiB / 7.445GiB   0.66%     998B / 126B   0B / 0B     5
+Muestra 2 - 22:46:53
+CONTAINER ID   NAME                                 CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O   PIDS
+265cf9a0f4ae   otel-observability-lab-service-a-1   0.25%     52.72MiB / 7.445GiB   0.69%     872B / 126B   0B / 0B     5
+bea197dcfb95   otel-observability-lab-service-b-1   0.24%     50.17MiB / 7.445GiB   0.66%     998B / 126B   0B / 0B     5
+Muestra 3 - 22:47:25
+CONTAINER ID   NAME                                 CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O   PIDS
+265cf9a0f4ae   otel-observability-lab-service-a-1   0.23%     52.53MiB / 7.445GiB   0.69%     872B / 126B   0B / 0B     5
+bea197dcfb95   otel-observability-lab-service-b-1   0.25%     49.97MiB / 7.445GiB   0.66%     998B / 126B   0B / 0B     5
+Muestra 4 - 22:47:58
+CONTAINER ID   NAME                                 CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O   PIDS
+265cf9a0f4ae   otel-observability-lab-service-a-1   0.21%     52.55MiB / 7.445GiB   0.69%     872B / 126B   0B / 0B     5
+bea197dcfb95   otel-observability-lab-service-b-1   0.24%     49.99MiB / 7.445GiB   0.66%     998B / 126B   0B / 0B     5
+Muestra 5 - 22:48:31
+CONTAINER ID   NAME                                 CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O   PIDS
+265cf9a0f4ae   otel-observability-lab-service-a-1   0.24%     52.25MiB / 7.445GiB   0.69%     872B / 126B   0B / 0B     5
+bea197dcfb95   otel-observability-lab-service-b-1   2.75%     50.31MiB / 7.445GiB   0.66%     998B / 126B   0B / 0B     5
+Muestra 6 - 22:49:03
+CONTAINER ID   NAME                                 CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O   PIDS
+265cf9a0f4ae   otel-observability-lab-service-a-1   0.24%     52.55MiB / 7.445GiB   0.69%     872B / 126B   0B / 0B     5
+bea197dcfb95   otel-observability-lab-service-b-1   0.23%     50.33MiB / 7.445GiB   0.66%     998B / 126B   0B / 0B     5
+Muestra 7 - 22:49:36
+CONTAINER ID   NAME                                 CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O   PIDS
+265cf9a0f4ae   otel-observability-lab-service-a-1   0.28%     52.74MiB / 7.445GiB   0.69%     872B / 126B   0B / 0B     5
+bea197dcfb95   otel-observability-lab-service-b-1   0.31%     50.3MiB / 7.445GiB    0.66%     998B / 126B   0B / 0B     5
+Muestra 8 - 22:50:08
+CONTAINER ID   NAME                                 CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O   PIDS
+265cf9a0f4ae   otel-observability-lab-service-a-1   0.24%     52.73MiB / 7.445GiB   0.69%     872B / 126B   0B / 0B     5
+bea197dcfb95   otel-observability-lab-service-b-1   0.26%     50.03MiB / 7.445GiB   0.66%     998B / 126B   0B / 0B     5
+Muestra 9 - 22:50:40
+
+Muestra 10 - 22:51:12
+
+Muestra 11 - 22:51:45
+
+Muestra 12 - 22:52:17
+
+PS C:\Users\User\Desktop\otel-observability-lab> Stop-Transcript
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260824225323
+**********************
