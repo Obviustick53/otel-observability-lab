@@ -1,6 +1,6 @@
-# Reporte técnico: pipeline de observabilidad end-to-end con OpenTelemetry
+# Plantilla de referencia del reporte técnico
 
-> Plantilla para convertir a PDF. Sustituir los campos entre corchetes después de ejecutar el benchmark oficial y tomar las capturas.
+> Este archivo conserva el esquema inicial utilizado para planificar el informe. El documento técnico final y principal de la entrega es [technical-report.pdf](technical-report.pdf), generado con los resultados y capturas reales del laboratorio local. Los campos entre corchetes que aparecen debajo pertenecen únicamente a esta plantilla histórica.
 
 ## Portada
 

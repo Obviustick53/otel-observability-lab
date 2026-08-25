@@ -5,6 +5,8 @@ from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import cm
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
     Image,
     PageBreak,
@@ -19,6 +21,26 @@ from reportlab.platypus import (
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "report" / "technical-report.pdf"
+
+FONT_REGULAR = "Times-Roman"
+FONT_BOLD = "Times-Bold"
+FONT_ITALIC = "Times-Italic"
+FONT_BOLD_ITALIC = "Times-BoldItalic"
+
+WINDOWS_FONTS = Path("C:/Windows/Fonts")
+FONT_FILES = {
+    "TimesNewRoman": WINDOWS_FONTS / "times.ttf",
+    "TimesNewRoman-Bold": WINDOWS_FONTS / "timesbd.ttf",
+    "TimesNewRoman-Italic": WINDOWS_FONTS / "timesi.ttf",
+    "TimesNewRoman-BoldItalic": WINDOWS_FONTS / "timesbi.ttf",
+}
+if all(path.exists() for path in FONT_FILES.values()):
+    for name, path in FONT_FILES.items():
+        pdfmetrics.registerFont(TTFont(name, str(path)))
+    FONT_REGULAR = "TimesNewRoman"
+    FONT_BOLD = "TimesNewRoman-Bold"
+    FONT_ITALIC = "TimesNewRoman-Italic"
+    FONT_BOLD_ITALIC = "TimesNewRoman-BoldItalic"
 
 
 def img(path: str, width=17.2 * cm, height=None):
@@ -38,11 +60,11 @@ def build():
         ParagraphStyle(
             name="CoverTitle",
             parent=styles["Title"],
-            fontName="Helvetica-Bold",
+            fontName=FONT_BOLD,
             fontSize=24,
             leading=29,
             alignment=TA_CENTER,
-            textColor=colors.HexColor("#17365D"),
+            textColor=colors.black,
             spaceAfter=18,
         )
     )
@@ -50,10 +72,11 @@ def build():
         ParagraphStyle(
             name="CoverSub",
             parent=styles["Normal"],
+            fontName=FONT_REGULAR,
             fontSize=13,
             leading=18,
             alignment=TA_CENTER,
-            textColor=colors.HexColor("#404040"),
+            textColor=colors.black,
             spaceAfter=12,
         )
     )
@@ -61,10 +84,10 @@ def build():
         ParagraphStyle(
             name="H1Blue",
             parent=styles["Heading1"],
-            fontName="Helvetica-Bold",
+            fontName=FONT_BOLD,
             fontSize=17,
             leading=21,
-            textColor=colors.HexColor("#17365D"),
+            textColor=colors.black,
             spaceBefore=4,
             spaceAfter=9,
         )
@@ -73,10 +96,10 @@ def build():
         ParagraphStyle(
             name="H2Blue",
             parent=styles["Heading2"],
-            fontName="Helvetica-Bold",
+            fontName=FONT_BOLD,
             fontSize=12,
             leading=15,
-            textColor=colors.HexColor("#1F4E79"),
+            textColor=colors.black,
             spaceBefore=7,
             spaceAfter=5,
         )
@@ -85,7 +108,7 @@ def build():
         ParagraphStyle(
             name="BodyEs",
             parent=styles["BodyText"],
-            fontName="Helvetica",
+            fontName=FONT_REGULAR,
             fontSize=9.5,
             leading=13.5,
             alignment=TA_LEFT,
@@ -96,9 +119,10 @@ def build():
         ParagraphStyle(
             name="Small",
             parent=styles["BodyText"],
+            fontName=FONT_REGULAR,
             fontSize=8,
             leading=10,
-            textColor=colors.HexColor("#505050"),
+            textColor=colors.black,
             spaceAfter=4,
         )
     )
@@ -106,12 +130,24 @@ def build():
         ParagraphStyle(
             name="Caption",
             parent=styles["BodyText"],
+            fontName=FONT_REGULAR,
             fontSize=8,
             leading=10,
             alignment=TA_CENTER,
-            textColor=colors.HexColor("#555555"),
+            textColor=colors.black,
             spaceBefore=3,
             spaceAfter=8,
+        )
+    )
+    styles.add(
+        ParagraphStyle(
+            name="TableHeader",
+            parent=styles["BodyText"],
+            fontName=FONT_BOLD,
+            fontSize=8,
+            leading=10,
+            textColor=colors.black,
+            spaceAfter=0,
         )
     )
     styles.add(
@@ -157,9 +193,9 @@ def build():
     ]
     cover_table = Table(cover_data, colWidths=[3.0 * cm, 13.5 * cm])
     cover_table.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (0, -1), colors.HexColor("#D9EAF7")),
-        ("BOX", (0, 0), (-1, -1), 0.7, colors.HexColor("#9FBAD0")),
-        ("INNERGRID", (0, 0), (-1, -1), 0.3, colors.HexColor("#C7D7E6")),
+        ("BACKGROUND", (0, 0), (0, -1), colors.HexColor("#F2F2F2")),
+        ("BOX", (0, 0), (-1, -1), 0.7, colors.HexColor("#A6A6A6")),
+        ("INNERGRID", (0, 0), (-1, -1), 0.3, colors.HexColor("#D9D9D9")),
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
         ("LEFTPADDING", (0, 0), (-1, -1), 7),
         ("RIGHTPADDING", (0, 0), (-1, -1), 7),
@@ -194,7 +230,7 @@ service-a:8000 -- W3C traceparent --> service-b:8001
                        Grafana""", styles["CodeSmall"]))
     story.append(p("Componentes principales", styles["H2Blue"]))
     components = [
-        [p("Componente", styles["Small"]), p("Responsabilidad", styles["Small"])],
+        [p("Componente", styles["TableHeader"]), p("Responsabilidad", styles["TableHeader"])],
         [p("service-a / service-b", styles["BodyEs"]), p("API FastAPI, lógica de negocio, cliente HTTP, PostgreSQL y SDK OTel.", styles["BodyEs"])],
         [p("OTel Collector", styles["BodyEs"]), p("Receiver OTLP gRPC/HTTP, processors memory_limiter/resource/batch y exporters de trazas, métricas y logs.", styles["BodyEs"])],
         [p("Jaeger", styles["BodyEs"]), p("Almacenamiento y visualización local de trazas distribuidas.", styles["BodyEs"])],
@@ -203,11 +239,11 @@ service-a:8000 -- W3C traceparent --> service-b:8001
     ]
     t = Table(components, colWidths=[5.0 * cm, 11.5 * cm], repeatRows=1)
     t.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#1F4E79")),
-        ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#F2F2F2")),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.black),
         ("GRID", (0, 0), (-1, -1), 0.35, colors.HexColor("#B7C9D6")),
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#F4F7FA")]),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#FAFAFA")]),
         ("LEFTPADDING", (0, 0), (-1, -1), 6),
         ("RIGHTPADDING", (0, 0), (-1, -1), 6),
         ("TOPPADDING", (0, 0), (-1, -1), 5),
@@ -246,16 +282,16 @@ health endpoint: :13133""", styles["CodeSmall"]))
     story.append(p("Prometheus consulta el endpoint de métricas del Collector y permite comprobar las series emitidas por cada servicio. La evidencia directa muestra 15 solicitudes para cada microservicio y valores de p95 numéricos para ambos.", styles["BodyEs"]))
     story.append(p("Resultados Prometheus", styles["H2Blue"]))
     metrics_table = Table([
-        [p("Métrica", styles["Small"]), p("service-a", styles["Small"]), p("service-b", styles["Small"])],
+        [p("Métrica", styles["TableHeader"]), p("service-a", styles["TableHeader"]), p("service-b", styles["TableHeader"])],
         [p("Solicitudes", styles["BodyEs"]), p("15", styles["BodyEs"]), p("15", styles["BodyEs"])],
         [p("p95", styles["BodyEs"]), p("75 ms", styles["BodyEs"]), p("24.25 ms", styles["BodyEs"])],
     ], colWidths=[6.0 * cm, 5.25 * cm, 5.25 * cm], repeatRows=1)
     metrics_table.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#1F4E79")),
-        ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#F2F2F2")),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.black),
         ("GRID", (0, 0), (-1, -1), 0.35, colors.HexColor("#B7C9D6")),
         ("ALIGN", (1, 1), (-1, -1), "CENTER"),
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#F4F7FA")]),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#FAFAFA")]),
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
         ("LEFTPADDING", (0, 0), (-1, -1), 6),
         ("RIGHTPADDING", (0, 0), (-1, -1), 6),
@@ -264,8 +300,19 @@ health endpoint: :13133""", styles["CodeSmall"]))
     ]))
     story.append(metrics_table)
     story.append(Spacer(1, 0.25 * cm))
-    story.append(img("screenshots/prometheus/prometheus-latency.png", width=17.2 * cm, height=8.2 * cm))
-    story.append(p("Figura 2. Consulta directa del p95 en Prometheus para ambos servicios.", styles["Caption"]))
+    metric_images = Table([[
+        img("screenshots/prometheus/prometheus-requests.png", width=8.1 * cm, height=5.6 * cm),
+        img("screenshots/prometheus/prometheus-latency.png", width=8.1 * cm, height=5.6 * cm),
+    ]], colWidths=[8.25 * cm, 8.25 * cm])
+    metric_images.setStyle(TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+        ("TOPPADDING", (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+    ]))
+    story.append(metric_images)
+    story.append(p("Figura 2. Consultas directas en Prometheus: solicitudes por servicio y latencia p95.", styles["Caption"]))
     story.append(PageBreak())
 
     story.append(p("Dashboard Grafana", styles["H2Blue"]))
@@ -294,7 +341,7 @@ health endpoint: :13133""", styles["CodeSmall"]))
     story.append(p("5. Benchmark y análisis de overhead", styles["H1Blue"]))
     story.append(p("Se ejecutaron dos pruebas comparables con 50 usuarios virtuales, 30 segundos de calentamiento y cinco minutos de carga sostenida. El baseline deshabilitó el SDK OTel; la segunda ejecución habilitó trazas, métricas y logs hacia el Collector.", styles["BodyEs"]))
     bench = Table([
-        [p("Métrica", styles["Small"]), p("Baseline", styles["Small"]), p("Con OTel", styles["Small"]), p("Delta", styles["Small"])],
+        [p("Métrica", styles["TableHeader"]), p("Baseline", styles["TableHeader"]), p("Con OTel", styles["TableHeader"]), p("Delta", styles["TableHeader"])],
         [p("Latencia promedio", styles["BodyEs"]), p("538.70 ms", styles["BodyEs"]), p("776.29 ms", styles["BodyEs"]), p("+44.11 %", styles["BodyEs"])],
         [p("p95", styles["BodyEs"]), p("938.00 ms", styles["BodyEs"]), p("1 293.08 ms", styles["BodyEs"]), p("+37.86 %", styles["BodyEs"])],
         [p("p99", styles["BodyEs"]), p("1 138.14 ms", styles["BodyEs"]), p("1 585.64 ms", styles["BodyEs"]), p("+39.32 %", styles["BodyEs"])],
@@ -304,10 +351,10 @@ health endpoint: :13133""", styles["CodeSmall"]))
         [p("Memoria promedio total", styles["BodyEs"]), p("102.79 MiB", styles["BodyEs"]), p("103.12 MiB", styles["BodyEs"]), p("+0.33 MiB", styles["BodyEs"])],
     ], colWidths=[5.1 * cm, 3.5 * cm, 3.5 * cm, 3.9 * cm], repeatRows=1)
     bench.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#1F4E79")),
-        ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#F2F2F2")),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.black),
         ("GRID", (0, 0), (-1, -1), 0.35, colors.HexColor("#B7C9D6")),
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#F4F7FA")]),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#FAFAFA")]),
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
         ("LEFTPADDING", (0, 0), (-1, -1), 5),
         ("RIGHTPADDING", (0, 0), (-1, -1), 5),
@@ -321,8 +368,47 @@ health endpoint: :13133""", styles["CodeSmall"]))
     story.append(p("Las mediciones fueron tomadas en contenedores Docker sobre Windows y sirven como evidencia del laboratorio, no como una proyección exacta de producción en GKE o ECS Fargate.", styles["BodyEs"]))
     story.append(PageBreak())
 
+    # Scope, rubric, evidence and references
+    story.append(p("6. Alcance, rúbrica y referencias", styles["H1Blue"]))
+    story.append(p("Esta entrega fue ejecutada y validada localmente con Docker Desktop. No se aplicaron recursos en GCP ni AWS porque no había cuentas disponibles y la indicación recibida en clase fue realizar las mediciones localmente. El resultado cloud queda documentado como IaC de referencia en infra/gcp e infra/aws, pero no se presenta como despliegue ejecutado.", styles["BodyEs"]))
+    story.append(p("La evidencia principal se organiza de acuerdo con los criterios de evaluación:", styles["BodyEs"]))
+    rubric = Table([
+        [p("Criterio", styles["TableHeader"]), p("Evidencia entregada", styles["TableHeader"])],
+        [p("Instrumentación OTel SDK", styles["BodyEs"]), p("SDK de Python, auto-instrumentación HTTP/DB, spans personalizados, métricas, logs JSON y trazas.", styles["BodyEs"])],
+        [p("OTel Collector", styles["BodyEs"]), p("Receiver OTLP gRPC/HTTP, memory_limiter, resource, batch y exporters Jaeger, Prometheus, Loki y debug.", styles["BodyEs"])],
+        [p("Correlación cross-signal", styles["BodyEs"]), p("Jaeger, logs JSON en Loki y capturas con el mismo trace_id entre service-a y service-b.", styles["BodyEs"])],
+        [p("Benchmark de overhead", styles["BodyEs"]), p("Baseline y OTel con 50 VUs, cinco minutos, resultados k6, CPU, memoria y tabla comparativa.", styles["BodyEs"])],
+        [p("IaC y calidad", styles["BodyEs"]), p("Terraform de referencia, Docker Compose reproducible, documentación, capturas, JSON, TXT y reporte PDF.", styles["BodyEs"])],
+    ], colWidths=[4.5 * cm, 12.0 * cm], repeatRows=1)
+    rubric.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#F2F2F2")),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.black),
+        ("GRID", (0, 0), (-1, -1), 0.35, colors.HexColor("#B7C9D6")),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#FAFAFA")]),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 5),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 5),
+        ("TOPPADDING", (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+    ]))
+    story.append(rubric)
+    story.append(Spacer(1, 0.25 * cm))
+    story.append(p("Inventario de evidencias", styles["H2Blue"]))
+    story.append(p("Capturas: Jaeger, propagación del trace ID, dashboard de seis paneles, logs JSON, correlación Loki y consultas Prometheus. Datos: evidence/prometheus/*.json y evidence/loki/*.json. Transcripciones: evidence/benchmark/*.txt. Documentación: evidence/collector-healthy.md, evidencia Prometheus y análisis de overhead. El README contiene los enlaces directos a cada artefacto.", styles["BodyEs"]))
+    story.append(p("Referencias técnicas", styles["H2Blue"]))
+    references = [
+        "OpenTelemetry Python SDK - https://opentelemetry-python.readthedocs.io/",
+        "Jaeger Architecture Documentation - https://www.jaegertracing.io/docs/architecture/",
+        "Grafana Trace Integration - https://grafana.com/docs/grafana/latest/explore/trace-integration/",
+        "Grafana k6 Documentation - https://k6.io/docs/",
+        "W3C Trace Context Specification - https://www.w3.org/TR/trace-context/",
+    ]
+    for reference in references:
+        story.append(p("- " + reference, styles["Small"]))
+    story.append(PageBreak())
+
     # Conclusions and reproducibility
-    story.append(p("6. Conclusiones, limitaciones y reproducción", styles["H1Blue"]))
+    story.append(p("7. Conclusiones, limitaciones y reproducción", styles["H1Blue"]))
     story.append(p("El objetivo se cumplió: la aplicación emite las tres señales, el Collector centraliza su procesamiento, Jaeger permite analizar la traza completa, Prometheus alimenta el dashboard y Loki conserva logs JSON correlacionables. El trace_id se mantiene entre service-a, service-b, PostgreSQL y los logs asociados.", styles["BodyEs"]))
     story.append(p("La evidencia local evita costos de GCP y AWS. El diseño cloud queda representado en infra/gcp y infra/aws para una eventual migración a GKE y ECS Fargate, pero no se aplicó infraestructura durante esta entrega.", styles["BodyEs"]))
     story.append(p("Limitaciones", styles["H2Blue"]))
@@ -352,9 +438,14 @@ py benchmark/analyze_overhead.py""", styles["CodeSmall"]))
 
     def footer(canvas, doc_obj):
         canvas.saveState()
-        canvas.setStrokeColor(colors.HexColor("#D9E1F2"))
+        canvas.setStrokeColor(colors.HexColor("#A6A6A6"))
+        canvas.line(1.7 * cm, A4[1] - 1.1 * cm, A4[0] - 1.7 * cm, A4[1] - 1.1 * cm)
+        canvas.setFont(FONT_REGULAR, 8)
+        canvas.setFillColor(colors.black)
+        canvas.drawString(1.7 * cm, A4[1] - 0.85 * cm, "Integrantes: Jose Luis Mora")
+        canvas.setStrokeColor(colors.HexColor("#A6A6A6"))
         canvas.line(1.7 * cm, 1.15 * cm, A4[0] - 1.7 * cm, 1.15 * cm)
-        canvas.setFont("Helvetica", 7.5)
+        canvas.setFont(FONT_REGULAR, 7.5)
         canvas.setFillColor(colors.HexColor("#666666"))
         canvas.drawString(1.7 * cm, 0.75 * cm, "otel-observability-lab - reporte técnico")
         canvas.drawRightString(A4[0] - 1.7 * cm, 0.75 * cm, f"Página {doc_obj.page}")

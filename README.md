@@ -2,6 +2,8 @@
 
 Proyecto académico propio para implementar y demostrar un pipeline de observabilidad basado en OpenTelemetry para una arquitectura de microservicios.
 
+**Integrante:** Jose Luis Mora
+
 La solución contiene dos microservicios, service-a y service-b, que se comunican por HTTP, consultan PostgreSQL y emiten las tres señales principales de observabilidad:
 
 - Trazas distribuidas: OpenTelemetry SDK → OTel Collector → Jaeger.
@@ -9,6 +11,8 @@ La solución contiene dos microservicios, service-a y service-b, que se comunica
 - Logs estructurados: aplicación → JSON/stdout y OTLP → OTel Collector → Loki → Grafana.
 
 El laboratorio fue ejecutado y validado localmente con Docker Desktop. No se realizaron despliegues en GCP ni AWS porque no se contaba con cuentas disponibles para la actividad. Además, de acuerdo con la indicación recibida en clase, las mediciones y evidencias se realizaron en local. Por lo tanto, este repositorio distingue explícitamente entre componentes ejecutados localmente, infraestructura cloud documentada mediante Terraform pero no aplicada y resultados del benchmark obtenidos en el equipo local.
+
+El documento técnico principal de la entrega es [report/technical-report.pdf](report/technical-report.pdf). Este README funciona como índice ampliado y guía de reproducción: explica el contexto, enlaza cada evidencia y permite repetir localmente los pasos descritos en el PDF.
 
 ## 1. Objetivos de la actividad
 
@@ -566,4 +570,3 @@ No se deben subir:
 - configuraciones de producción.
 
 La guía de publicación se encuentra en [docs/github-publish.md](docs/github-publish.md).
-
