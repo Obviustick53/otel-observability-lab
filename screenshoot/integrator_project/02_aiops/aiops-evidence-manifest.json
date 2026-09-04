@@ -1,0 +1,56 @@
+{
+  "artifacts": [
+    {
+      "environment": "local-synthetic",
+      "evidence_type": "synthetic_fixture_result",
+      "file": "synthetic-correlation-events.json",
+      "limitations": [
+        "Synthetic data is not a production or AWS observation."
+      ],
+      "observed": "4 deterministic windows evaluated; trace_id=unknown is explicit in synthetic events.",
+      "rubric_criterion": "AIOps event contract",
+      "sha256": "c29eb773e4812cd087c7f7770e03e2076e03207467c483cfc735154d39d32bb9",
+      "status": "VERIFICADO"
+    },
+    {
+      "environment": "local-synthetic",
+      "evidence_type": "synthetic_quantitative_comparison",
+      "file": "synthetic-rule-comparison.json",
+      "limitations": [
+        "Ground truth is fixture metadata, not an incident-management record."
+      ],
+      "observed": "Dynamic: 2/2 incidents, 0 false positives; static: 1/2 incidents, 1 false positive.",
+      "rubric_criterion": "Dynamic vs static thresholds and noise",
+      "sha256": "4af9a0a1534f45fa1e8cd48636765f0b3ece4030df0db554485e6baf56671e09",
+      "status": "VERIFICADO"
+    },
+    {
+      "environment": "local-historical",
+      "evidence_type": "historical_local_evidence_reprocessed",
+      "file": "real-local-correlation-event.json",
+      "limitations": [
+        "No live backend, AWS account, CloudWatch API, or DevOps Guru API was queried."
+      ],
+      "observed": "Historical local chaos/Jaeger/Loki artifacts produce a correlated event and a real trace_id.",
+      "rubric_criterion": "Trace correlation from diagnostic evidence",
+      "sha256": "7d3eaa14232aca899e7772e73b99765ae142dcf31c68b5e7512b6c9b2cae2bd5",
+      "status": "PARCIAL"
+    },
+    {
+      "environment": "local",
+      "evidence_type": "execution_manifest",
+      "file": "run-manifest.json",
+      "limitations": [
+        "The default run timestamp is dynamic unless --run-timestamp is supplied."
+      ],
+      "observed": "Fixed run timestamp and explicit source classification are recorded.",
+      "rubric_criterion": "Reproducibility and evidence separation",
+      "sha256": "f724d332fc89501b4d9a64c27b738df14b261b8685ae00e72828f20340842bf8",
+      "status": "VERIFICADO"
+    }
+  ],
+  "aws_execution": "NOT_EXECUTED",
+  "command": "python scripts/aiops/run_aiops.py --run-timestamp 2026-09-02T00:00:00Z",
+  "generated_at_utc": "2026-09-02T00:00:00Z",
+  "schema_version": "aiops.evidence-manifest.v1"
+}

@@ -1,0 +1,107 @@
+# DESIGN-ONLY CloudFormation reference. It is not deployed by this task.
+# Before use, bind parameters to an approved sandbox and validate with:
+#   aws cloudformation validate-template --template-body file://network-security/cloud/network-security-controls.design.yaml
+# The local simulator is intentionally separate from these AWS resources.
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >-
+  Design reference for AWS network/security observability. Requires an existing
+  VPC Flow Logs role and existing CloudTrail log group; no execution asserted.
+
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: Existing VPC to observe; no VPC is created by this reference.
+  FlowLogRoleArn:
+    Type: String
+    Description: Existing IAM role trusted by vpc-flow-logs.amazonaws.com.
+  VpcFlowLogGroupName:
+    Type: String
+    Default: /aws/vpc/flowlogs/otel-observability-lab
+  CloudTrailLogGroupName:
+    Type: String
+    Description: Existing CloudTrail log group for authentication-failure filter.
+  EnableSecurityHub:
+    Type: String
+    Default: 'false'
+    AllowedValues: ['true', 'false']
+
+Conditions:
+  SecurityHubRequested: !Equals [!Ref EnableSecurityHub, 'true']
+
+Resources:
+  VpcFlowLog:
+    Type: AWS::EC2::FlowLog
+    Properties:
+      DeliverLogsPermissionArn: !Ref FlowLogRoleArn
+      LogDestinationType: cloud-watch-logs
+      LogGroupName: !Ref VpcFlowLogGroupName
+      ResourceId: !Ref VpcId
+      ResourceType: VPC
+      TrafficType: ALL
+      Tags:
+        - Key: Project
+          Value: otel-observability-lab
+        - Key: EvidenceState
+          Value: designed-not-executed
+
+  VpcRejectMetricFilter:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName: !Ref VpcFlowLogGroupName
+      FilterPattern: '[version, account_id, interface_id, srcaddr, dstaddr, srcport, dstport, protocol, packets, bytes, start, end, action = REJECT, log_status]'
+      MetricTransformations:
+        - MetricName: VpcRejectedFlowCount
+          MetricNamespace: OTelLab/NetworkSecurity
+          MetricValue: '1'
+          DefaultValue: 0
+
+  VpcRejectAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: Designed alarm for rejected VPC flows; threshold is a starting point.
+      Namespace: OTelLab/NetworkSecurity
+      MetricName: VpcRejectedFlowCount
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 5
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+
+  CloudTrailAuthFailureMetricFilter:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName: !Ref CloudTrailLogGroupName
+      FilterPattern: '{ ($.eventName = ConsoleLogin) && ($.responseElements.ConsoleLogin = Failure) }'
+      MetricTransformations:
+        - MetricName: FailedAuthenticationCount
+          MetricNamespace: OTelLab/NetworkSecurity
+          MetricValue: '1'
+          DefaultValue: 0
+
+  FailedAuthenticationAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: Designed alarm for failed ConsoleLogin events from CloudTrail.
+      Namespace: OTelLab/NetworkSecurity
+      MetricName: FailedAuthenticationCount
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 3
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+
+  SecurityHub:
+    Condition: SecurityHubRequested
+    Type: AWS::SecurityHub::Hub
+    Properties:
+      EnableDefaultStandards: true
+      Tags:
+        Project: otel-observability-lab
+        EvidenceState: designed-not-executed
+
+Outputs:
+  FlowLogId:
+    Value: !Ref VpcFlowLog
+    Description: Design output only; no value exists until an approved deployment.

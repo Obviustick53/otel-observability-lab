@@ -1,0 +1,35 @@
+{
+  "asOfUtc": "2026-09-02",
+  "currency": "USD",
+  "regionBasis": "us-east-1",
+  "source": "Inputs for reproducible sandbox estimate; verify current regional prices before approval.",
+  "fargate": {
+    "appTaskCount": 3,
+    "appVcpu": 0.25,
+    "appMemoryGb": 0.5,
+    "collectorTaskCount": 1,
+    "collectorVcpu": 0.5,
+    "collectorMemoryGb": 1.0,
+    "vcpuHourUsd": 0.04048,
+    "memoryGbHourUsd": 0.004445
+  },
+  "rds": {
+    "instanceHourUsd": 0.0168,
+    "allocatedStorageGb": 20,
+    "storageGbMonthUsd": 0.115,
+    "monthHours": 730
+  },
+  "cloudwatch": {
+    "logsIngestGb": 0.25,
+    "logsIngestGbUsd": 0.50,
+    "customMetricsUsd": 0.00
+  },
+  "s3": {
+    "cloudTrailStorageGb": 0.10,
+    "storageGbMonthUsd": 0.023
+  },
+  "securityHub": {
+    "estimateUsd": 0.00,
+    "note": "Account and region dependent; confirm current Security Hub pricing before enabling."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "generated_at_utc": "2026-09-03T00:31:29Z",
+  "environment": "local-development",
+  "checks": [
+    {
+      "command": "py -3 -m unittest discover -s network-security\\simulator -p 'test_*.py'",
+      "status": "VERIFIED",
+      "observed": "Ran 4 tests in 0.076s; OK",
+      "limitations": "Uses the installed Python 3.9.7 launcher."
+    },
+    {
+      "command": "py -3 -m py_compile network-security\\simulator\\security_events.py",
+      "status": "VERIFIED",
+      "observed": "Exit code 0",
+      "limitations": "Syntax compilation only; no cloud or Docker execution."
+    },
+    {
+      "command": "ConvertFrom-Json network-security\\dashboard\\network-security-dashboard.json",
+      "status": "VERIFIED",
+      "observed": "Valid JSON; 6 panels",
+      "limitations": "Dashboard import and Prometheus scrape configuration remain manual."
+    },
+    {
+      "command": "Temporary local serve plus GET /health and GET /metrics",
+      "status": "VERIFIED",
+      "observed": "health status=ok, environment=local-simulated; metrics=47 lines",
+      "limitations": "Process was stopped after the smoke check; no Docker stack was changed."
+    },
+    {
+      "command": "cfn-lint network-security\\cloud\\network-security-controls.design.yaml",
+      "status": "BLOQUEADO",
+      "observed": "cfn-lint=NOT_INSTALLED",
+      "limitations": "The file remains design-only and was not applied or validated against an AWS account."
+    },
+    {
+      "command": "aws cloudformation validate-template ...",
+      "status": "NO EJECUTADO",
+      "observed": "Intentionally not run per user scope; no AWS command was executed.",
+      "limitations": "CloudFormation syntax/permissions need validation in an approved AWS workflow."
+    }
+  ],
+  "dataset_result": {
+    "event_count": 136,
+    "seed": 20260902,
+    "start": "2026-09-02T12:00:00Z",
+    "auth_failed": 12,
+    "denial_events": 16,
+    "denial_query_rows_including_auth_denies": 28,
+    "flows": 64,
+    "findings": 8,
+    "cves": 4
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "experiment_window": {
+    "started_utc": "2026-08-31T04:28:57.7439524+00:00",
+    "ended_utc": "2026-08-31T04:28:59.8284659+00:00",
+    "planned_duration_seconds": 2,
+    "actual_window_seconds": 2.0
+  },
+  "load": {
+    "vus": 1,
+    "interval_ms_per_worker": 250,
+    "endpoint": "http://localhost:8000/order/{ord-001..003}"
+  },
+  "metrics": {
+    "requests": 6,
+    "successful_2xx": 6,
+    "failed_or_non_2xx": 0,
+    "availability_pct": 100.0,
+    "error_rate_pct": 0.0,
+    "throughput_rps": 3.0,
+    "latency_p95_ms": 175.963,
+    "latency_p99_ms": 203.62,
+    "latency_avg_ms": 75.066
+  },
+  "requests": [
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:28:58.0763568+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 210.534,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:28:58.4009629+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.121,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:28:58.7152996+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.299,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:28:59.0125101+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.783,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:28:59.3434809+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.406,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:28:59.6726193+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 72.252,
+      "error": null
+    }
+  ]
+}

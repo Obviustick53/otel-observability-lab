@@ -26,6 +26,9 @@ datasources:
         spanEndTimeShift: 1m
         filterByTraceID: true
         filterBySpanID: false
+        tags:
+          - trace_id
+          - span_id
       nodeGraph:
         enabled: true
 
@@ -37,7 +40,7 @@ datasources:
     jsonData:
       derivedFields:
         - name: trace_id
-          matcherRegex: "\\\"trace(?:_id|id)\\\":\\\"([a-f0-9]{32})\\\""
+          matcherRegex: "\\\"trace(?:_id|id)\\\"\\s*:\\s*\\\"([a-f0-9]{32})\\\""
           url: "$${__value.raw}"
           datasourceUid: jaeger
           urlDisplayLabel: Open trace in Jaeger

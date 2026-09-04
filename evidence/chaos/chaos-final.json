@@ -1,0 +1,476 @@
+{
+  "experiment_window": {
+    "started_utc": "2026-08-31T04:30:17.1803402+00:00",
+    "ended_utc": "2026-08-31T04:30:47.7530393+00:00",
+    "planned_duration_seconds": 30,
+    "actual_window_seconds": 30.0
+  },
+  "load": {
+    "vus": 5,
+    "interval_ms_per_worker": 250,
+    "endpoint": "http://localhost:8000/order/{ord-001..003}"
+  },
+  "metrics": {
+    "requests": 45,
+    "successful_2xx": 0,
+    "failed_or_non_2xx": 45,
+    "availability_pct": 0.0,
+    "error_rate_pct": 100.0,
+    "throughput_rps": 1.5,
+    "latency_p95_ms": 3503.73,
+    "latency_p99_ms": 3560.791,
+    "latency_avg_ms": 3111.86
+  },
+  "requests": [
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:30:20.9876399+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3569.166,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:30:24.4024249+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3143.34,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:30:27.7344999+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3073.789,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:30:31.0877608+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3080.48,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:30:34.4166418+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3070.578,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:30:37.7237231+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3051.809,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:30:41.0269521+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3048.582,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:30:44.3700615+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3086.506,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:30:47.6664370+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3039.35,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:30:20.9875874+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3550.132,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:30:24.4024059+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3142.949,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:30:27.7491523+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3088.503,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:30:31.0883266+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3065.36,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:30:34.4164982+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3070.389,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:30:37.7240108+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3051.961,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:30:41.0201446+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3041.762,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:30:44.3792610+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3080.174,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:30:47.6920081+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3033.462,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:30:20.9872163+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3514.64,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:30:24.3759115+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3116.652,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:30:27.6829036+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3053.483,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:30:31.0135149+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3052.724,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:30:34.2986500+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3030.675,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:30:37.5911399+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3029.351,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:30:40.8986183+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3028.098,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:30:44.2399014+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3063.929,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:30:47.5389721+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3039.682,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:30:20.9876260+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3460.092,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:30:24.4027786+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3143.639,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:30:27.7494460+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3088.732,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:30:31.0879416+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3065.548,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:30:34.3991599+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3053.117,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:30:37.6850644+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3029.368,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:30:41.0056605+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3042.295,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:30:44.3607042+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3077.166,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:30:47.6601834+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3048.341,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:30:20.9876555+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3405.141,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:30:24.3759160+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3116.616,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:30:27.6829296+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3053.571,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:30:31.0061554+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3045.342,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:30:34.3148450+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3031.738,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:30:37.6227877+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3029.527,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:30:40.9336905+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3032.375,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:30:44.2506167+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3060.903,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:30:47.5625623+00:00",
+      "status": 502,
+      "http_status_code": 502,
+      "outcome": "http_error",
+      "error_type": "http_status",
+      "latency_ms": 3032.676,
+      "error": "Response status code does not indicate success: 502 (Bad Gateway)."
+    }
+  ]
+}

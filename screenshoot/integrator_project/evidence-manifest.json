@@ -1,0 +1,310 @@
+{
+  "schema_version": "integrator.evidence-manifest.v1",
+  "generated_at_utc": "2026-09-04T01:20:57.839666+00:00",
+  "source_prompt": "docs/PROMPT_MAESTRO_AGENTES_OBSERVABILIDAD.md",
+  "evidence_root": "screenshoot/integrator_project/",
+  "new_evidence_only": true,
+  "execution_summary": {
+    "local_stack": "VERIFICADO",
+    "aiops": "VERIFICADO_SINTETICO_Y_PARCIAL_LOCAL",
+    "network_security": "VERIFICADO_AWS_CON_LIMITACIONES",
+    "chaos_experiments": 2,
+    "aws_deployment": "VERIFICADO_CON_COST_GUARD",
+    "aws_mutation_executed": true
+  },
+  "criteria": [
+    {
+      "id": "C1",
+      "name": "Tres microservicios y tres pilares OTel",
+      "status": "VERIFICADO",
+      "evidence": [
+        "01_architecture_otel/local-smoke-20260903T004420Z.json",
+        "01_architecture_otel/trace-prometheus-verification-20260903T005000Z.json"
+      ]
+    },
+    {
+      "id": "C2",
+      "name": "Correlación AIOps AND y trace_id",
+      "status": "VERIFICADO_SINTETICO_Y_PARCIAL_LOCAL",
+      "evidence": [
+        "02_aiops/synthetic-rule-comparison.json",
+        "02_aiops/real-local-correlation-event.json"
+      ]
+    },
+    {
+      "id": "C3",
+      "name": "Red y seguridad",
+      "status": "VERIFICADO_AWS_FLOW_LOGS_CON_LIMITACION_SECURITY_HUB",
+      "evidence": [
+        "03_network_security/validation-results.json",
+        "05_aws_deployment/smoke-evidence-v7.json"
+      ]
+    },
+    {
+      "id": "C4",
+      "name": "Chaos, SLO, error budget, rollback",
+      "status": "VERIFICADO_LOCAL",
+      "evidence": [
+        "04_chaos/service-b-latency-20260903T005926Z/report.json",
+        "04_chaos/data-service-errors-20260903T005830Z/report.json"
+      ]
+    },
+    {
+      "id": "C5",
+      "name": "AWS, costos y reproducibilidad",
+      "status": "VERIFICADO_AWS_DESPLEGADO_CON_COST_GUARD",
+      "evidence": [
+        "05_aws_deployment/cost-estimate.json",
+        "05_aws_deployment/template-validation-v7.json",
+        "05_aws_deployment/migration-evidence-v5.json",
+        "05_aws_deployment/smoke-evidence-v7.json",
+        "05_aws_deployment/budget-mcp-verification.json"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "screenshoot/integrator_project/01_architecture_otel/local-smoke-20260903T004420Z.json",
+      "status": "VERIFICADO",
+      "environment": "local-executed",
+      "exists": true,
+      "sha256": "73b56b1a5baeb5ef12b58202c25e00633ec23b4d9fb9f73fa525b9487f30aac4",
+      "limitation": "Smoke real del flujo de tres servicios; incluye trace_id."
+    },
+    {
+      "path": "screenshoot/integrator_project/01_architecture_otel/trace-prometheus-verification-20260903T005000Z.json",
+      "status": "VERIFICADO",
+      "environment": "local-executed",
+      "exists": true,
+      "sha256": "c852314b5d87e4330ae045b8ff0a03ae5ecd88607de6d8398b20bf536ec4e32e",
+      "limitation": "Consulta local de Jaeger y Prometheus."
+    },
+    {
+      "path": "screenshoot/integrator_project/02_aiops/synthetic-rule-comparison.json",
+      "status": "VERIFICADO",
+      "environment": "local-synthetic",
+      "exists": true,
+      "sha256": "4af9a0a1534f45fa1e8cd48636765f0b3ece4030df0db554485e6baf56671e09",
+      "limitation": "Ground truth pertenece al fixture; no es telemetría productiva."
+    },
+    {
+      "path": "screenshoot/integrator_project/02_aiops/real-local-correlation-event.json",
+      "status": "PARCIAL",
+      "environment": "local-reprocessed",
+      "exists": true,
+      "sha256": "7d3eaa14232aca899e7772e73b99765ae142dcf31c68b5e7512b6c9b2cae2bd5",
+      "limitation": "Reproceso offline de evidencia local histórica; no backend vivo."
+    },
+    {
+      "path": "screenshoot/integrator_project/03_network_security/validation-results.json",
+      "status": "PARCIAL",
+      "environment": "local-simulated",
+      "exists": true,
+      "sha256": "a7288f60bb06f11953373cd7b0a467b5cc08bf2378ee075fd7564c86b51ab9c8",
+      "limitation": "Las señales de seguridad locales son simuladas; Flow Logs/Security Hub AWS no fueron ejecutados."
+    },
+    {
+      "path": "screenshoot/integrator_project/04_chaos/service-b-latency-20260903T005926Z/report.json",
+      "status": "VERIFICADO",
+      "environment": "local-executed",
+      "exists": true,
+      "sha256": "d4b5a28dea537a71249580ed65d92ef3496e612db55d59f0e6c0e425cc71f18e",
+      "limitation": "Escenario exacto: +200 ms en service-b; rollback saludable."
+    },
+    {
+      "path": "screenshoot/integrator_project/04_chaos/data-service-errors-20260903T005830Z/report.json",
+      "status": "VERIFICADO",
+      "environment": "local-executed",
+      "exists": true,
+      "sha256": "9ec2ea8d77f1bd4737ee57a166c71cb3545ec00dfc38d13b7e75ec14c4ae6654",
+      "limitation": "Escenario exacto: 10% de errores en data-service; MTTD medido en muestras locales."
+    },
+    {
+      "path": "screenshoot/integrator_project/05_aws_deployment/preflight.json",
+      "status": "VERIFICADO",
+      "environment": "aws-read-only",
+      "exists": true,
+      "sha256": "19f0744f79a201986a35cd9349c6877fb90ff91ee8368f7f2c7a50a6e0ea2cfe",
+      "limitation": "Preflight AWS actual; las respuestas de paginación se almacenan únicamente como [REDACTED]."
+    },
+    {
+      "path": "screenshoot/integrator_project/05_aws_deployment/cost-estimate.json",
+      "status": "VERIFICADO",
+      "environment": "aws-design",
+      "exists": true,
+      "sha256": "420acca8bf961d9b039e78c10a07135684a7ba38c930a373b098c92e9e1ea246",
+      "limitation": "USD 0.7806/8h estimado por inputs; el presupuesto operativo y el cost-guard son USD 10."
+    },
+    {
+      "path": "screenshoot/integrator_project/05_aws_deployment/template-validation-v7.json",
+      "status": "PARCIAL",
+      "environment": "aws-design",
+      "exists": true,
+      "sha256": "0ae404792886c7445aa835266936cbefc688fe081cab9e3a03edcd121a9b88c8",
+      "limitation": "Validación AWS ejecutada; cfn-lint no está instalado en el entorno local."
+    },
+    {
+      "path": "screenshoot/integrator_project/05_aws_deployment/budget-mcp-verification.json",
+      "status": "VERIFICADO",
+      "environment": "aws-control-plane",
+      "exists": true,
+      "sha256": "96342ddf5d35d59c60887801a00e394d259d349b5c922cfabd745dd2df29fbd8",
+      "limitation": "Presupuesto mensual de USD 10, email y SNS configurados; Lambda cost-guard desplegado."
+    },
+    {
+      "path": "screenshoot/integrator_project/05_aws_deployment/migration-evidence-v5.json",
+      "status": "VERIFICADO",
+      "environment": "aws-executed",
+      "exists": true,
+      "sha256": "32df8b89e01aa2c09bd2b58211dbfbf7f212a37f4fbab611fbf4f2addbf573c4",
+      "limitation": "Migración idempotente ejecutada como tarea ECS puntual contra RDS privado; exit code 0."
+    },
+    {
+      "path": "screenshoot/integrator_project/05_aws_deployment/smoke-evidence-v7.json",
+      "status": "VERIFICADO_CON_LIMITACIONES",
+      "environment": "aws-executed",
+      "exists": true,
+      "sha256": "644fddebec9119ae24139ae5f1e62fe050be9eac097df6a9f647b23d7ed86ef8",
+      "limitation": "ECS v5, HTTP, Flow Logs, CloudWatch, X-Ray y CloudTrail consultados; Security Hub requiere suscripción regional."
+    },
+    {
+      "path": "screenshoot/integrator_project/05_aws_deployment/collector-logs-evidence-final.json",
+      "status": "VERIFICADO",
+      "environment": "aws-executed",
+      "exists": true,
+      "sha256": "8b05b71948b94514bef526f531d7c29a69c1243d110dfa4b096f7c1186d8e223",
+      "limitation": "El collector recibió LogsExporter y no registró UNIMPLEMENTED durante la ventana de verificación."
+    },
+    {
+      "path": "screenshoot/integrator_project/05_aws_deployment/cloudformation-plan-live.json",
+      "status": "VERIFICADO",
+      "environment": "aws-control-plane",
+      "exists": true,
+      "sha256": "f5e31d450e9bdb233ef6023d08b41e9f0193a65ed91aa7247cbdf0afbdcd2a58",
+      "limitation": "Plan y estado de CloudFormation del despliegue del laboratorio."
+    },
+    {
+      "path": "screenshoot/integrator_project/05_aws_deployment/cost-estimate-24h.json",
+      "status": "VERIFICADO",
+      "environment": "aws-design",
+      "exists": true,
+      "sha256": "53fd5aefbcfb3f3346e97f2100c97a62319830d2ec01741ac5f7c0872178d8b1",
+      "limitation": "Estimación reproducible para 24 horas; no es costo observado."
+    },
+    {
+      "path": "screenshoot/integrator_project/05_aws_deployment/cost-estimate-30d.json",
+      "status": "VERIFICADO",
+      "environment": "aws-design",
+      "exists": true,
+      "sha256": "beb3417181885521f4c2d9a0eec26a8bd19fb8d9572e5910402a7701d73b74cd",
+      "limitation": "Estimación reproducible para 30 días; no es costo observado."
+    }
+  ],
+  "visual_evidence": [
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/01-tests-local.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "local-rendered",
+      "exists": true,
+      "sha256": "696857000d86553629d03faee01e9e22054fd931f3587f51eaf232823f145e0b",
+      "limitation": "Captura legible generada a partir de la evidencia canónica."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/02-manifest.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "local-rendered",
+      "exists": true,
+      "sha256": "292aa947a82e12fa0982bd38fab8a9382d7391d5384eeab964c53a5c8da88da9",
+      "limitation": "Captura legible generada a partir de la evidencia canónica."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/03-aiops-json.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "local-rendered",
+      "exists": true,
+      "sha256": "6ce3810c48b2cb5418210bf035523610ff12368230fa4c5905e9443624db621d",
+      "limitation": "Captura legible generada a partir de la evidencia canónica."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/04-security-json.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "local-rendered",
+      "exists": true,
+      "sha256": "9a43dab12c460b0dc9c2dcb8c0352b118f37d78659111f8c203bcbc2b29526ea",
+      "limitation": "Captura legible generada a partir de la evidencia canónica."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/05-chaos-json.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "local-rendered",
+      "exists": true,
+      "sha256": "ce1f7454db5d4dce05d559472bfdc6cfc82af0a2e13962072321031dfe19ddeb",
+      "limitation": "Captura legible generada a partir de la evidencia canónica."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/06-aws-smoke-json.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "local-rendered",
+      "exists": true,
+      "sha256": "9d137998cf96d5ec2fdbb33c8f2c0c48fa77eba43dabc27888122b80441665d1",
+      "limitation": "Captura legible generada a partir de la evidencia canónica."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/07-aws-console-home.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "aws-console-read-only",
+      "exists": true,
+      "sha256": "b9a31f7e15863b3c70fe651365837fc9ec9f4d1adaa64f804add6fc8ca0f76f2",
+      "limitation": "Captura de la consola AWS autenticada; no contiene credenciales ni secretos."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/08-aws-console-ecs.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "aws-console-read-only",
+      "exists": true,
+      "sha256": "cdf37ff1b381fd52601508ca2ae9d5e00a8491aebfb1eede8576e32a2c07c31e",
+      "limitation": "Captura de la consola AWS autenticada; no contiene credenciales ni secretos."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/09-aws-console-cloudformation.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "aws-console-read-only",
+      "exists": true,
+      "sha256": "8e0e8ce2b0716b6e2efe5fbb7dd877d446e8c30cb5f5977e8611443ded1fc7dc",
+      "limitation": "Captura de la consola AWS autenticada; no contiene credenciales ni secretos."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/10-aws-console-rds.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "aws-console-read-only",
+      "exists": true,
+      "sha256": "87ad6510be686001b7c0c79402c4c9ce125087ca04f287a4fb7ebfce455c3b6f",
+      "limitation": "Captura de la consola AWS autenticada; no contiene credenciales ni secretos."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/11-aws-console-cloudwatch.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "aws-console-read-only",
+      "exists": true,
+      "sha256": "23cae94adb4f30fda978acea077f4a5cbb3f404f7994c3fbd7b31776bd2340a6",
+      "limitation": "Captura de la consola AWS autenticada; no contiene credenciales ni secretos."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/12-aws-console-budgets.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "aws-console-read-only",
+      "exists": true,
+      "sha256": "e6c115e40a9e0d3f0e429ba4032dfc097c8c647b3fdcfe4e30b34854b28cb3a6",
+      "limitation": "Captura de la consola AWS autenticada; no contiene credenciales ni secretos."
+    },
+    {
+      "path": "screenshoot/integrator_project/visual_evidence/13-aws-console-gallery.png",
+      "status": "VERIFICADO_VISUAL",
+      "environment": "aws-console-read-only",
+      "exists": true,
+      "sha256": "b9e916ba4e8c7ffc814d5d406a34118e1f6754471dfaa8d09673f983e352331b",
+      "limitation": "Captura de la consola AWS autenticada; no contiene credenciales ni secretos."
+    }
+  ],
+  "historical_artifacts_note": "evidence/ y screenshots/ contienen material previo; no se usan como evidencia nueva primaria."
+}

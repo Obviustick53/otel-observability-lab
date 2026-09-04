@@ -1,0 +1,14 @@
+Captura posterior al rollback: docker stats --no-stream
+
+NAME                                      CPU %     MEM USAGE / LIMIT     MEM %
+otel-observability-lab-service-a-1        0.39%     54.31MiB / 7.445GiB   0.71%
+otel-observability-lab-service-b-1        0.30%     49.07MiB / 7.445GiB   0.64%
+otel-observability-lab-jaeger-1           0.07%     296.3MiB / 7.445GiB   3.89%
+otel-observability-lab-grafana-1          0.12%     52.65MiB / 7.445GiB   0.69%
+otel-observability-lab-prometheus-1       0.00%     25.02MiB / 7.445GiB   0.33%
+otel-observability-lab-otel-collector-1   0.11%     47.96MiB / 7.445GiB   0.63%
+otel-observability-lab-postgres-1         0.00%     34.61MiB / 7.445GiB   0.45%
+otel-observability-lab-loki-1             0.74%     52.52MiB / 7.445GiB   0.69%
+
+Estado posterior: service-a y service-b healthy; PostgreSQL healthy; todos los
+contenedores Up; service-b paused=false y status=running.

@@ -1,0 +1,110 @@
+groups:
+  - name: otel-lab-recording
+    interval: 15s
+    rules:
+      # The collector converts resource attributes into Prometheus labels:
+      # service_name, deployment_environment and telemetry_scope. trace_id is
+      # deliberately absent to keep metric cardinality bounded.
+      - record: otel:request_rate_5m
+        expr: |
+          sum by (service_name, deployment_environment, telemetry_scope) (
+            rate(app_requests_total[5m])
+          )
+
+      - record: otel:error_rate_5m
+        expr: |
+          (
+            sum by (service_name, deployment_environment, telemetry_scope) (
+              rate(app_requests_total{http_status_code=~"5.."}[5m])
+              or
+              rate(app_requests_total{http_response_status_code=~"5.."}[5m])
+            )
+            or
+            (
+              sum by (service_name, deployment_environment, telemetry_scope) (
+                rate(app_requests_total[5m])
+              ) * 0
+            )
+          )
+          /
+          clamp_min(otel:request_rate_5m, 1e-9)
+
+      - record: otel:availability_5m
+        expr: 1 - otel:error_rate_5m
+
+      - record: otel:p95_seconds_5m
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum by (le, service_name, deployment_environment, telemetry_scope) (
+              rate(app_request_duration_seconds_bucket[5m])
+            )
+          )
+
+      - record: otel:p99_seconds_5m
+        expr: |
+          histogram_quantile(
+            0.99,
+            sum by (le, service_name, deployment_environment, telemetry_scope) (
+              rate(app_request_duration_seconds_bucket[5m])
+            )
+          )
+
+      # Reproducible dynamic baseline: a 30-minute window that ends five
+      # minutes before evaluation. The offset prevents the active chaos window
+      # from teaching the baseline.
+      - record: otel:error_rate_baseline_mean_30m
+        expr: avg_over_time(otel:error_rate_5m[30m] offset 5m)
+
+      - record: otel:error_rate_baseline_sigma_30m
+        expr: stddev_over_time(otel:error_rate_5m[30m] offset 5m)
+
+      - record: otel:p99_baseline_mean_30m
+        expr: avg_over_time(otel:p99_seconds_5m[30m] offset 5m)
+
+      - record: otel:p99_baseline_sigma_30m
+        expr: stddev_over_time(otel:p99_seconds_5m[30m] offset 5m)
+
+      # Lab SLO contract: 99.5% availability and p99 <= 500 ms.
+      - record: otel:slo_availability_target
+        expr: vector(0.995)
+
+      - record: otel:slo_error_budget_ratio
+        expr: vector(0.005)
+
+      - record: otel:slo_latency_p99_seconds
+        expr: vector(0.5)
+
+      - record: otel:error_rate_30d
+        expr: |
+          (
+            sum by (service_name, deployment_environment, telemetry_scope) (
+              increase(app_requests_total{http_status_code=~"5.."}[30d])
+              or
+              increase(app_requests_total{http_response_status_code=~"5.."}[30d])
+            )
+            or
+            (
+              sum by (service_name, deployment_environment, telemetry_scope) (
+                increase(app_requests_total[30d])
+              ) * 0
+            )
+          )
+          /
+          clamp_min(
+            sum by (service_name, deployment_environment, telemetry_scope) (
+              increase(app_requests_total[30d])
+            ),
+            1
+          )
+
+      - record: otel:error_budget_remaining_ratio
+        expr: |
+          clamp_min(
+            (0.005 - otel:error_rate_30d)
+            / 0.005,
+            0
+          )
+
+      - record: otel:static_error_rate_excess_5m
+        expr: otel:error_rate_5m > 0.05

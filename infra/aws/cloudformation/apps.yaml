@@ -1,0 +1,322 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ECS Fargate application services for the OTel lab using private Service Connect names.
+
+Parameters:
+  ClusterArn:
+    Type: String
+  ServiceConnectNamespace:
+    Type: String
+  EcsSubnetA:
+    Type: AWS::EC2::Subnet::Id
+  EcsSubnetB:
+    Type: AWS::EC2::Subnet::Id
+  EcsSecurityGroupId:
+    Type: AWS::EC2::SecurityGroup::Id
+  ExecutionRoleArn:
+    Type: String
+  TaskRoleArn:
+    Type: String
+  DatabaseEndpoint:
+    Type: String
+  DatabaseSecretArn:
+    Type: String
+  AppLogGroupName:
+    Type: String
+  CollectorLogGroupName:
+    Type: String
+  ServiceAImage:
+    Type: String
+  ServiceBImage:
+    Type: String
+  DataServiceImage:
+    Type: String
+  CollectorImage:
+    Type: String
+  DesiredCount:
+    Type: Number
+    Default: 1
+    MinValue: 1
+    MaxValue: 1
+
+Resources:
+  DataServiceTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Cpu: '512'
+      Memory: '1024'
+      NetworkMode: awsvpc
+      RequiresCompatibilities: [FARGATE]
+      ExecutionRoleArn: !Ref ExecutionRoleArn
+      TaskRoleArn: !Ref TaskRoleArn
+      ContainerDefinitions:
+        - Name: data-service
+          Image: !Ref DataServiceImage
+          Essential: true
+          PortMappings:
+            - Name: http
+              ContainerPort: 8002
+              Protocol: tcp
+          Environment:
+            - Name: OTEL_SERVICE_NAME
+              Value: data-service
+            - Name: OTEL_SERVICE_VERSION
+              Value: 1.0.0
+            - Name: ENVIRONMENT
+              Value: aws-sandbox
+            - Name: OTEL_EXPORTER_OTLP_ENDPOINT
+              Value: http://otel-collector:4317
+            - Name: DB_HOST
+              Value: !Ref DatabaseEndpoint
+            - Name: DB_USER
+              Value: app
+            - Name: DB_NAME
+              Value: observability
+            - Name: LAB_DATA_ERROR_RATE
+              Value: '0'
+          Secrets:
+            - Name: DB_PASSWORD
+              ValueFrom: !Sub '${DatabaseSecretArn}:password::'
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref AppLogGroupName
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: data-service
+              mode: blocking
+
+  ServiceBTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Cpu: '512'
+      Memory: '1024'
+      NetworkMode: awsvpc
+      RequiresCompatibilities: [FARGATE]
+      ExecutionRoleArn: !Ref ExecutionRoleArn
+      TaskRoleArn: !Ref TaskRoleArn
+      ContainerDefinitions:
+        - Name: service-b
+          Image: !Ref ServiceBImage
+          Essential: true
+          PortMappings:
+            - Name: http
+              ContainerPort: 8001
+              Protocol: tcp
+          Environment:
+            - Name: OTEL_SERVICE_NAME
+              Value: service-b
+            - Name: OTEL_SERVICE_VERSION
+              Value: 1.0.0
+            - Name: ENVIRONMENT
+              Value: aws-sandbox
+            - Name: OTEL_EXPORTER_OTLP_ENDPOINT
+              Value: http://otel-collector:4317
+            - Name: DATA_SERVICE_URL
+              Value: http://data-service:8002
+            - Name: LAB_SERVICE_B_LATENCY_MS
+              Value: '0'
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref AppLogGroupName
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: service-b
+              mode: blocking
+
+  ServiceATaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Cpu: '512'
+      Memory: '1024'
+      NetworkMode: awsvpc
+      RequiresCompatibilities: [FARGATE]
+      ExecutionRoleArn: !Ref ExecutionRoleArn
+      TaskRoleArn: !Ref TaskRoleArn
+      ContainerDefinitions:
+        - Name: service-a
+          Image: !Ref ServiceAImage
+          Essential: true
+          PortMappings:
+            - Name: http
+              ContainerPort: 8000
+              Protocol: tcp
+          Environment:
+            - Name: OTEL_SERVICE_NAME
+              Value: service-a
+            - Name: OTEL_SERVICE_VERSION
+              Value: 1.0.0
+            - Name: ENVIRONMENT
+              Value: aws-sandbox
+            - Name: OTEL_EXPORTER_OTLP_ENDPOINT
+              Value: http://otel-collector:4317
+            - Name: SERVICE_B_URL
+              Value: http://service-b:8001
+            - Name: DB_HOST
+              Value: !Ref DatabaseEndpoint
+            - Name: DB_USER
+              Value: app
+            - Name: DB_NAME
+              Value: observability
+          Secrets:
+            - Name: DB_PASSWORD
+              ValueFrom: !Sub '${DatabaseSecretArn}:password::'
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref AppLogGroupName
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: service-a
+              mode: blocking
+
+  CollectorTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Cpu: '512'
+      Memory: '1024'
+      NetworkMode: awsvpc
+      RequiresCompatibilities: [FARGATE]
+      ExecutionRoleArn: !Ref ExecutionRoleArn
+      TaskRoleArn: !Ref TaskRoleArn
+      ContainerDefinitions:
+        - Name: otel-collector
+          Image: !Ref CollectorImage
+          Essential: true
+          PortMappings:
+            - Name: otlp-grpc
+              ContainerPort: 4317
+              Protocol: tcp
+            - Name: otlp-http
+              ContainerPort: 4318
+              Protocol: tcp
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref CollectorLogGroupName
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: collector
+              mode: blocking
+
+  DataService:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !Ref ClusterArn
+      TaskDefinition: !Ref DataServiceTaskDefinition
+      DesiredCount: !Ref DesiredCount
+      LaunchType: FARGATE
+      PlatformVersion: LATEST
+      EnableECSManagedTags: true
+      EnableExecuteCommand: false
+      DeploymentConfiguration:
+        DeploymentCircuitBreaker: {Enable: true, Rollback: true}
+        MaximumPercent: 200
+        MinimumHealthyPercent: 0
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          Subnets: [!Ref EcsSubnetA, !Ref EcsSubnetB]
+          SecurityGroups: [!Ref EcsSecurityGroupId]
+      ServiceConnectConfiguration:
+        Enabled: true
+        Namespace: !Ref ServiceConnectNamespace
+        Services:
+          - PortName: http
+            DiscoveryName: data-service
+            ClientAliases: [{Port: 8002, DnsName: data-service}]
+      Tags: [{Key: Project, Value: otel-observability-lab}, {Key: Environment, Value: sandbox}]
+
+  ServiceB:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !Ref ClusterArn
+      TaskDefinition: !Ref ServiceBTaskDefinition
+      DesiredCount: !Ref DesiredCount
+      LaunchType: FARGATE
+      PlatformVersion: LATEST
+      EnableECSManagedTags: true
+      EnableExecuteCommand: false
+      DeploymentConfiguration:
+        DeploymentCircuitBreaker: {Enable: true, Rollback: true}
+        MaximumPercent: 200
+        MinimumHealthyPercent: 0
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          Subnets: [!Ref EcsSubnetA, !Ref EcsSubnetB]
+          SecurityGroups: [!Ref EcsSecurityGroupId]
+      ServiceConnectConfiguration:
+        Enabled: true
+        Namespace: !Ref ServiceConnectNamespace
+        Services:
+          - PortName: http
+            DiscoveryName: service-b
+            ClientAliases: [{Port: 8001, DnsName: service-b}]
+      Tags: [{Key: Project, Value: otel-observability-lab}, {Key: Environment, Value: sandbox}]
+
+  ServiceA:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !Ref ClusterArn
+      TaskDefinition: !Ref ServiceATaskDefinition
+      DesiredCount: !Ref DesiredCount
+      LaunchType: FARGATE
+      PlatformVersion: LATEST
+      EnableECSManagedTags: true
+      EnableExecuteCommand: false
+      DeploymentConfiguration:
+        DeploymentCircuitBreaker: {Enable: true, Rollback: true}
+        MaximumPercent: 200
+        MinimumHealthyPercent: 0
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          Subnets: [!Ref EcsSubnetA, !Ref EcsSubnetB]
+          SecurityGroups: [!Ref EcsSecurityGroupId]
+      ServiceConnectConfiguration:
+        Enabled: true
+        Namespace: !Ref ServiceConnectNamespace
+        Services:
+          - PortName: http
+            DiscoveryName: service-a
+            ClientAliases: [{Port: 8000, DnsName: service-a}]
+      Tags: [{Key: Project, Value: otel-observability-lab}, {Key: Environment, Value: sandbox}]
+
+  Collector:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !Ref ClusterArn
+      TaskDefinition: !Ref CollectorTaskDefinition
+      DesiredCount: !Ref DesiredCount
+      LaunchType: FARGATE
+      PlatformVersion: LATEST
+      EnableECSManagedTags: true
+      EnableExecuteCommand: false
+      DeploymentConfiguration:
+        DeploymentCircuitBreaker: {Enable: true, Rollback: true}
+        MaximumPercent: 200
+        MinimumHealthyPercent: 0
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          Subnets: [!Ref EcsSubnetA, !Ref EcsSubnetB]
+          SecurityGroups: [!Ref EcsSecurityGroupId]
+      ServiceConnectConfiguration:
+        Enabled: true
+        Namespace: !Ref ServiceConnectNamespace
+        Services:
+          - PortName: otlp-grpc
+            DiscoveryName: otel-collector
+            ClientAliases: [{Port: 4317, DnsName: otel-collector}]
+      Tags: [{Key: Project, Value: otel-observability-lab}, {Key: Environment, Value: sandbox}]
+
+Outputs:
+  ServiceAName:
+    Description: ECS service A name
+    Value: !Ref ServiceA
+  ServiceBName:
+    Description: ECS service B name
+    Value: !Ref ServiceB
+  DataServiceName:
+    Description: ECS data service name
+    Value: !Ref DataService
+  CollectorServiceName:
+    Description: ECS Collector service name
+    Value: !Ref Collector

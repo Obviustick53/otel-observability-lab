@@ -1,0 +1,49 @@
+{
+  "evidence": "Agente C — validación local de arquitectura OTel",
+  "timestamp_utc": "2026-09-03T01:26:12.2528164Z",
+  "environment": "local",
+  "command": "scripts/local/validate-stack.ps1 -Start",
+  "result": "PASS",
+  "checks": [
+    {
+      "name": "JSON golden-signals.json",
+      "status": "PASS",
+      "detail": "ConvertFrom-Json"
+    },
+    {
+      "name": "JSON otel-lab-dashboard.json",
+      "status": "PASS",
+      "detail": "ConvertFrom-Json"
+    },
+    {
+      "name": "JSON security-network.json",
+      "status": "PASS",
+      "detail": "ConvertFrom-Json"
+    },
+    {
+      "name": "Baseline dinámico",
+      "status": "PASS",
+      "detail": "30m con offset 5m y media/sigma; sin trace_id como label"
+    },
+    {
+      "name": "docker compose config",
+      "status": "PASS",
+      "detail": "Configuración base válida"
+    },
+    {
+      "name": "docker compose --profile data-service config",
+      "status": "PASS",
+      "detail": "Configuración compatible; data-service se construye desde ./data-service"
+    },
+    {
+      "name": "Stack local",
+      "status": "PASS",
+      "detail": "Se ejecutó up -d sin down ni eliminación de volúmenes.\r\nNAME                                                IMAGE                                          COMMAND                  SERVICE                    CREATED          STATUS                    PORTS\r\notel-observability-lab-data-service-1               otel-observability-lab-data-service            \"uvicorn main:app --…\"   data-service               36 minutes ago   Up 27 minutes (healthy)   0.0.0.0:8002->8002/tcp, [::]:8002->8002/tcp\r\notel-observability-lab-grafana-1                    grafana/grafana:11.1.0                         \"/run.sh\"                grafana                    9 days ago       Up 2 days                 0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp\r\notel-observability-lab-jaeger-1                     jaegertracing/all-in-one:1.58                  \"/go/bin/all-in-one-…\"   jaeger                     9 days ago       Up 2 days                 0.0.0.0:16686->16686/tcp, [::]:16686->16686/tcp\r\notel-observability-lab-local-security-simulator-1   python:3.12-alpine                             \"python /opt/local/s…\"   local-security-simulator   42 minutes ago   Up 42 minutes (healthy)   0.0.0.0:9464->9464/tcp, [::]:9464->9464/tcp\r\notel-observability-lab-loki-1                       grafana/loki:3.0.0                             \"/usr/bin/loki -conf…\"   loki                       9 days ago       Up 2 days                 0.0.0.0:3100->3100/tcp, [::]:3100->3100/tcp\r\notel-observability-lab-otel-collector-1             otel/opentelemetry-collector-contrib:0.103.0   \"/otelcol-contrib --…\"   otel-collector             9 days ago       Up 2 days                 0.0.0.0:4317-4318->4317-4318/tcp, [::]:4317-4318->4317-4318/tcp, 0.0.0.0:8888-8889->8888-8889/tcp, [::]:8888-8889->8888-8889/tcp, 0.0.0.0:13133->13133/tcp, [::]:13133->13133/tcp\r\notel-observability-lab-postgres-1                   postgres:16-alpine                             \"docker-entrypoint.s…\"   postgres                   9 days ago       Up 2 days (healthy)       0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp\r\notel-observability-lab-prometheus-1                 prom/prometheus:v2.52.0                        \"/bin/prometheus --c…\"   prometheus                 45 minutes ago   Up 45 minutes             0.0.0.0:9090->9090/tcp, [::]:9090->9090/tcp\r\notel-observability-lab-service-a-1                  otel-observability-lab-service-a               \"uvicorn main:app --…\"   service-a                  45 minutes ago   Up 42 minutes (healthy)   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp\r\notel-observability-lab-service-b-1                  otel-observability-lab-service-b               \"uvicorn main:app --…\"   service-b                  37 minutes ago   Up 26 minutes (healthy)   0.0.0.0:8001->8001/tcp, [::]:8001->8001/tcp\r\n"
+    }
+  ],
+  "limitations": [
+    "Las métricas de seguridad son locales/simuladas y no representan VPC Flow Logs, CloudTrail ni Security Hub.",
+    "data-service se ejecuta desde su Dockerfile local y expone el contrato HTTP de inventario.",
+    "No se ejecutó AWS."
+  ]
+}

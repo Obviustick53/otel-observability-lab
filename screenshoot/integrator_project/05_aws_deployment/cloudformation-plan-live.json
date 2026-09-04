@@ -1,0 +1,39 @@
+{
+  "generatedAtUtc": "2026-09-03T16:58:59.7050746Z",
+  "mode": "preview-only",
+  "region": "us-east-1",
+  "expectedAccountId": "741368364261",
+  "stacks": [
+    {
+      "layer": "network",
+      "stackName": "otel-lab-sandbox-00-network",
+      "command": "aws cloudformation deploy --template-file C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\00-network.yaml --stack-name otel-lab-sandbox-00-network --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset --parameter-overrides ProjectName=otel-lab Environment=sandbox Owner=observability-lab ExpirationUtc=2026-09-30 AllowedIngressCidr=186.84.20.15/32 AllowLegacyDirectDbAccess=false --tags Project=otel-lab Environment=sandbox Owner=observability-lab ExpiresOn=2026-09-30"
+    },
+    {
+      "layer": "platform",
+      "stackName": "otel-lab-sandbox-01-platform",
+      "command": "aws cloudformation deploy --template-file C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\01-platform.yaml --stack-name otel-lab-sandbox-01-platform --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset --parameter-overrides ProjectName=otel-lab Environment=sandbox Owner=observability-lab ExpirationUtc=2026-09-30 LogRetentionDays=3 --tags Project=otel-lab Environment=sandbox Owner=observability-lab ExpiresOn=2026-09-30"
+    },
+    {
+      "layer": "data",
+      "stackName": "otel-lab-sandbox-02-data",
+      "command": "aws cloudformation deploy --template-file C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\02-data.yaml --stack-name otel-lab-sandbox-02-data --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset --parameter-overrides ProjectName=otel-lab Environment=sandbox Owner=observability-lab ExpirationUtc=2026-09-30 DbInstanceClass=db.t4g.micro AllocatedStorage=20 BackupRetentionDays=1 --tags Project=otel-lab Environment=sandbox Owner=observability-lab ExpiresOn=2026-09-30"
+    },
+    {
+      "layer": "cost-guard",
+      "stackName": "otel-lab-sandbox-05-cost-guard",
+      "command": "aws cloudformation deploy --template-file C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\05-cost-guard.yaml --stack-name otel-lab-sandbox-05-cost-guard --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset --parameter-overrides ProjectName=otel-lab Environment=sandbox Owner=observability-lab ExpirationUtc=2026-09-30 LogRetentionDays=3 --tags Project=otel-lab Environment=sandbox Owner=observability-lab ExpiresOn=2026-09-30"
+    },
+    {
+      "layer": "services",
+      "stackName": "otel-lab-sandbox-03-services",
+      "command": "aws cloudformation deploy --template-file C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\03-services.yaml --stack-name otel-lab-sandbox-03-services --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset --parameter-overrides ProjectName=otel-lab Environment=sandbox Owner=observability-lab ExpirationUtc=2026-09-30 ImageTag=v3 AssignPublicIp=ENABLED AppTaskSize=256-512 CollectorTaskSize=512-1024 DesiredCount=1 ServiceBLatencyMs=0 DataServiceErrorRate=0 --tags Project=otel-lab Environment=sandbox Owner=observability-lab ExpiresOn=2026-09-30"
+    },
+    {
+      "layer": "security",
+      "stackName": "otel-lab-sandbox-04-security",
+      "command": "aws cloudformation deploy --template-file C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\04-security-observability.yaml --stack-name otel-lab-sandbox-04-security --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset --parameter-overrides ProjectName=otel-lab Environment=sandbox Owner=observability-lab ExpirationUtc=2026-09-30 LogRetentionDays=3 EnableCloudTrail=false EnableSecurityHub=false --tags Project=otel-lab Environment=sandbox Owner=observability-lab ExpiresOn=2026-09-30"
+    }
+  ],
+  "note": "Preview-only no cambia AWS. Un change set es una mutación de control-plane y requiere autorización explícita."
+}

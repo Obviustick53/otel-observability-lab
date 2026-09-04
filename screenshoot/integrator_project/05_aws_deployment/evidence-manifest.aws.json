@@ -1,0 +1,54 @@
+{
+  "generatedAtUtc": "2026-09-03T00:47:54.1462675Z",
+  "scope": "05_aws_deployment",
+  "classification": "HISTORICO_PLANIFICACION",
+  "active_evidence": false,
+  "note": "Registro de planificación previo al despliegue. La evidencia AWS ejecutada y vigente está en evidence-manifest.json y en los artefactos *-live/final de esta carpeta; este archivo no se usa para afirmar el estado actual.",
+  "artifacts": [
+    {
+      "rubricCriterion": "AWS preflight, IaC, seguridad y veracidad",
+      "evidenceType": "artifact",
+      "environment": "AWS sandbox (no ejecutado)",
+      "commandOrScript": "scripts/aws/collect-evidence.ps1",
+      "generatedAtUtc": "2026-09-03T00:44:52.8447480Z",
+      "observedResult": "Artefacto de preparación; no prueba despliegue cloud.",
+      "sha256": "2E3A7910727AE82BADD02DD062967984037AEE35CFE3F44F9DB936018371E188",
+      "file": "cloudformation-plan.json",
+      "status": "NO EJECUTADO",
+      "limitations": [
+        "No se desplegaron recursos AWS.",
+        "No se consultaron secretos plaintext."
+      ]
+    },
+    {
+      "rubricCriterion": "AWS preflight, IaC, seguridad y veracidad",
+      "evidenceType": "artifact",
+      "environment": "AWS sandbox (no ejecutado)",
+      "commandOrScript": "scripts/aws/collect-evidence.ps1",
+      "generatedAtUtc": "2026-09-03T00:47:52.8706985Z",
+      "observedResult": "Artefacto de preparación; no prueba despliegue cloud.",
+      "sha256": "B1893F0656A891468CA239D89E9FD4A26CBD8481F66A72EBCBE8DE57A5ABEE96",
+      "file": "cost-estimate.json",
+      "status": "NO EJECUTADO",
+      "limitations": [
+        "No se desplegaron recursos AWS.",
+        "No se consultaron secretos plaintext."
+      ]
+    },
+    {
+      "rubricCriterion": "AWS preflight, IaC, seguridad y veracidad",
+      "evidenceType": "artifact",
+      "environment": "AWS sandbox (no ejecutado)",
+      "commandOrScript": "scripts/aws/collect-evidence.ps1",
+      "generatedAtUtc": "2026-09-03T00:47:35.4625409Z",
+      "observedResult": "Artefacto de preparación; no prueba despliegue cloud.",
+      "sha256": "77942EACA55159C64AD8EF84ABCC2BA8EE3C19F5C2AAB3549731315BC122B482",
+      "file": "template-validation.json",
+      "status": "NO EJECUTADO",
+      "limitations": [
+        "No se desplegaron recursos AWS.",
+        "No se consultaron secretos plaintext."
+      ]
+    }
+  ]
+}

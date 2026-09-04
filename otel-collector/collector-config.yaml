@@ -23,6 +23,26 @@ processors:
       - key: service.namespace
         value: otel-lab
         action: upsert
+      - key: telemetry.scope
+        value: local
+        action: upsert
+      - key: cloud.provider
+        value: local
+        action: upsert
+      - key: cloud.region
+        value: local
+        action: upsert
+      - key: observability.source
+        value: otel-collector
+        action: upsert
+  transform/metric_metadata:
+    metric_statements:
+      - context: metric
+        statements:
+          - set(description, "Total de solicitudes procesadas por las aplicaciones") where name == "app_requests"
+          - set(description, "Latencia de solicitudes de las aplicaciones") where name == "app_request_duration_seconds"
+          - set(description, "Solicitudes activas en las aplicaciones") where name == "app_active_requests"
+          - set(description, "Latencia de consultas PostgreSQL en las aplicaciones") where name == "app_db_duration_seconds"
   batch:
     timeout: 5s
     send_batch_size: 512
@@ -51,7 +71,7 @@ service:
       exporters: [otlp/jaeger, debug]
     metrics:
       receivers: [otlp]
-      processors: [memory_limiter, resource, batch]
+      processors: [memory_limiter, resource, transform/metric_metadata, batch]
       exporters: [prometheus, debug]
     logs:
       receivers: [otlp]
@@ -62,4 +82,3 @@ service:
       level: info
     metrics:
       address: 0.0.0.0:8888
-

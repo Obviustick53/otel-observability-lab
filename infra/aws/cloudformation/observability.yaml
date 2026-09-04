@@ -1,0 +1,176 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ECR, ECS shared roles, RDS PostgreSQL and CloudWatch logs for the ephemeral OTel lab.
+
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+  DbSubnetA:
+    Type: AWS::EC2::Subnet::Id
+  DbSubnetB:
+    Type: AWS::EC2::Subnet::Id
+  DatabaseSecurityGroupId:
+    Type: AWS::EC2::SecurityGroup::Id
+
+Resources:
+  DataServiceRepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      LifecyclePolicy:
+        LifecyclePolicyText: '{"rules":[{"rulePriority":1,"description":"Retain only the latest five sandbox images","selection":{"tagStatus":"any","countType":"imageCountMoreThan","countNumber":5},"action":{"type":"expire"}}]}'
+      Tags:
+        - Key: Project
+          Value: otel-observability-lab
+
+  ServiceARepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      ImageScanningConfiguration: {ScanOnPush: true}
+
+  ServiceBRepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      ImageScanningConfiguration: {ScanOnPush: true}
+
+  CollectorRepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      ImageScanningConfiguration: {ScanOnPush: true}
+
+  DbSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Description: Generated PostgreSQL credentials for the ephemeral OTel lab.
+      GenerateSecretString:
+        SecretStringTemplate: '{"username":"app"}'
+        GenerateStringKey: password
+        PasswordLength: 32
+        ExcludePunctuation: true
+      Tags:
+        - Key: Project
+          Value: otel-observability-lab
+
+  DbSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Isolated PostgreSQL subnets for the OTel lab
+      SubnetIds: [!Ref DbSubnetA, !Ref DbSubnetB]
+
+  Database:
+    Type: AWS::RDS::DBInstance
+    DeletionPolicy: Snapshot
+    UpdateReplacePolicy: Snapshot
+    Properties:
+      Engine: postgres
+      EngineVersion: '16.4'
+      DBInstanceClass: db.t4g.micro
+      AllocatedStorage: '20'
+      StorageType: gp3
+      StorageEncrypted: true
+      DBName: observability
+      MasterUsername: !Sub '{{resolve:secretsmanager:${DbSecret}:SecretString:username}}'
+      MasterUserPassword: !Sub '{{resolve:secretsmanager:${DbSecret}:SecretString:password}}'
+      DBSubnetGroupName: !Ref DbSubnetGroup
+      VPCSecurityGroups: [!Ref DatabaseSecurityGroupId]
+      PubliclyAccessible: false
+      BackupRetentionPeriod: 1
+      DeletionProtection: false
+      Tags:
+        - Key: Project
+          Value: otel-observability-lab
+
+  Cluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterSettings:
+        - Name: containerInsights
+          Value: enabled
+      Tags:
+        - Key: Project
+          Value: otel-observability-lab
+
+  ServiceConnectNamespace:
+    Type: AWS::ServiceDiscovery::PrivateDnsNamespace
+    Properties:
+      Name: otel.local
+      Vpc: !Ref VpcId
+      Description: Private ECS Service Connect namespace for the OTel lab
+
+  AppLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      RetentionInDays: 1
+
+  CollectorLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      RetentionInDays: 1
+
+  ExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: ecs-tasks.amazonaws.com}
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+      Policies:
+        - PolicyName: inject-lab-db-secret
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [secretsmanager:GetSecretValue]
+                Resource: !Ref DbSecret
+
+  TaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: ecs-tasks.amazonaws.com}
+            Action: sts:AssumeRole
+
+Outputs:
+  ClusterArn:
+    Description: ECS cluster ARN
+    Value: !GetAtt Cluster.Arn
+  ServiceConnectNamespaceId:
+    Description: Private Service Connect namespace identifier
+    Value: !Ref ServiceConnectNamespace
+  DatabaseEndpoint:
+    Description: RDS endpoint hostname
+    Value: !GetAtt Database.Endpoint.Address
+  DatabaseSecretArn:
+    Description: Secret ARN; value is never emitted
+    Value: !Ref DbSecret
+  ExecutionRoleArn:
+    Description: ECS execution role ARN
+    Value: !GetAtt ExecutionRole.Arn
+  TaskRoleArn:
+    Description: ECS task role ARN
+    Value: !GetAtt TaskRole.Arn
+  AppLogGroupName:
+    Description: CloudWatch application log group
+    Value: !Ref AppLogGroup
+  CollectorLogGroupName:
+    Description: CloudWatch Collector log group
+    Value: !Ref CollectorLogGroup
+  DataServiceRepositoryUri:
+    Description: Data service ECR URI
+    Value: !GetAtt DataServiceRepository.RepositoryUri
+  ServiceARepositoryUri:
+    Description: Service A ECR URI
+    Value: !GetAtt ServiceARepository.RepositoryUri
+  ServiceBRepositoryUri:
+    Description: Service B ECR URI
+    Value: !GetAtt ServiceBRepository.RepositoryUri
+  CollectorRepositoryUri:
+    Description: Collector ECR URI
+    Value: !GetAtt CollectorRepository.RepositoryUri

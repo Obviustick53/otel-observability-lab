@@ -1,5 +1,6 @@
-"""Service B: consulta inventario en PostgreSQL."""
+"""Service B: enriches orders through data-service."""
 
+import asyncio
 import logging
 import os
 import sys
@@ -7,8 +8,9 @@ import time
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 
-import psycopg2
-from fastapi import FastAPI, HTTPException
+import httpx
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse
 from pythonjsonlogger import jsonlogger
 
 from opentelemetry import metrics, trace
@@ -16,7 +18,8 @@ from opentelemetry.exporter.otlp.proto.grpc._log_exporter import OTLPLogExporter
 from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
-from opentelemetry.instrumentation.psycopg2 import Psycopg2Instrumentor
+from opentelemetry.instrumentation.httpx import HTTPXClientInstrumentor
+from opentelemetry.propagate import inject
 from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
 from opentelemetry.sdk._logs.export import BatchLogRecordProcessor
 from opentelemetry.sdk.metrics import MeterProvider
@@ -32,7 +35,8 @@ from opentelemetry._logs import set_logger_provider
 SERVICE_NAME_VALUE = os.getenv("OTEL_SERVICE_NAME", "service-b")
 SERVICE_VERSION_VALUE = os.getenv("OTEL_SERVICE_VERSION", "1.0.0")
 OTLP_ENDPOINT = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "http://otel-collector:4317")
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://app:app_password@localhost:5432/observability")
+DATA_SERVICE_URL = os.getenv("DATA_SERVICE_URL", "http://data-service:8002")
+LAB_SERVICE_B_LATENCY_MS = max(0, int(os.getenv("LAB_SERVICE_B_LATENCY_MS", "0")))
 ENVIRONMENT = os.getenv("ENVIRONMENT", "local")
 SDK_DISABLED = os.getenv("OTEL_SDK_DISABLED", "false").lower() in {"1", "true", "yes"}
 
@@ -99,13 +103,6 @@ active_requests = meter.create_up_down_counter(
     unit="1",
     description="Solicitudes activas en las aplicaciones",
 )
-db_duration = meter.create_histogram(
-    "app_db_duration_seconds",
-    unit="s",
-    description="Latencia de consultas PostgreSQL en las aplicaciones",
-)
-
-
 class TraceJsonFormatter(jsonlogger.JsonFormatter):
     def add_fields(self, log_record, record, message_dict):
         super().add_fields(log_record, record, message_dict)
@@ -132,8 +129,7 @@ configure_logging()
 logger = logging.getLogger(SERVICE_NAME_VALUE)
 
 if not SDK_DISABLED:
-    FastAPIInstrumentor().instrument(tracer_provider=tracer_provider)
-    Psycopg2Instrumentor().instrument(tracer_provider=tracer_provider)
+    HTTPXClientInstrumentor().instrument(tracer_provider=tracer_provider)
 
 
 def current_trace_id() -> str | None:
@@ -141,10 +137,20 @@ def current_trace_id() -> str | None:
     return format(context.trace_id, "032x") if context.is_valid else None
 
 
+def outbound_headers() -> dict[str, str]:
+    """Inject the active W3C context into each data-service request."""
+
+    headers: dict[str, str] = {}
+    inject(headers)
+    return headers
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    app.state.http_client = httpx.AsyncClient(timeout=3.0)
     logger.info("service started", extra={"otel_enabled": not SDK_DISABLED})
     yield
+    await app.state.http_client.aclose()
     if tracer_provider is not None:
         tracer_provider.shutdown()
     if meter_provider is not None:
@@ -160,7 +166,61 @@ if not SDK_DISABLED:
 
 @app.get("/health")
 async def health():
-    return {"status": "ok", "service": SERVICE_NAME_VALUE}
+    return {"status": "ok", "service": SERVICE_NAME_VALUE, "trace_id": current_trace_id()}
+
+
+@app.middleware("http")
+async def add_trace_id_header(request: Request, call_next):
+    response = await call_next(request)
+    trace_id = current_trace_id()
+    if trace_id:
+        response.headers["X-Trace-ID"] = trace_id
+    return response
+
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.detail, "trace_id": current_trace_id()},
+        headers=exc.headers,
+    )
+
+
+async def get_data_service(path: str, span_name: str, attributes: dict[str, str]):
+    """Call data-service with W3C propagation and bounded error semantics."""
+
+    with tracer.start_as_current_span(span_name, kind=SpanKind.CLIENT, attributes=attributes) as span:
+        try:
+            response = await app.state.http_client.get(
+                f"{DATA_SERVICE_URL}{path}", headers=outbound_headers()
+            )
+            span.set_attribute("http.response.status_code", response.status_code)
+            if response.status_code == 404:
+                span.set_status(Status(StatusCode.ERROR, "record not found"))
+                raise HTTPException(status_code=404, detail="Data record not found")
+            if response.status_code >= 400:
+                span.set_status(Status(StatusCode.ERROR, "data service request failed"))
+                raise HTTPException(status_code=502, detail="Data service unavailable")
+            span.set_status(Status(StatusCode.OK))
+            return response.json()
+        except HTTPException:
+            raise
+        except Exception as exc:
+            span.record_exception(exc)
+            span.set_status(Status(StatusCode.ERROR, "data service request failed"))
+            raise HTTPException(status_code=502, detail="Data service unavailable") from exc
+
+
+@app.get("/ready")
+async def ready():
+    """Readiness checks data-service; liveness does not require dependencies."""
+
+    try:
+        await get_data_service("/ready", "health.data_service.check", {"peer.service": "data-service"})
+        return {"status": "ready", "service": SERVICE_NAME_VALUE, "trace_id": current_trace_id()}
+    except HTTPException as exc:
+        raise HTTPException(status_code=503, detail="data-service is not ready") from exc
 
 
 @app.get("/inventory/{product_id}")
@@ -173,62 +233,81 @@ async def read_inventory(product_id: str):
             "inventory.business.validate",
             attributes={"product.id": product_id},
         ) as span:
+            if LAB_SERVICE_B_LATENCY_MS:
+                await asyncio.sleep(LAB_SERVICE_B_LATENCY_MS / 1000)
+                span.set_attribute("chaos.latency_injection_ms", LAB_SERVICE_B_LATENCY_MS)
             if product_id == "missing":
                 span.set_status(Status(StatusCode.ERROR, "product not found"))
                 status_code = "404"
                 raise HTTPException(status_code=404, detail="Product not found")
 
-        with tracer.start_as_current_span(
-            "inventory.db.fetch",
-            kind=SpanKind.CLIENT,
-            attributes={
-                "db.system": "postgresql",
-                "db.operation.name": "SELECT",
-                "product.id": product_id,
-            },
-        ) as span:
-            db_started = time.perf_counter()
-            try:
-                with psycopg2.connect(DATABASE_URL) as connection:
-                    with connection.cursor() as cursor:
-                        cursor.execute(
-                            "SELECT product_id, available, warehouse, updated_at "
-                            "FROM inventory WHERE product_id = %s",
-                            (product_id,),
-                        )
-                        row = cursor.fetchone()
-                db_duration.record(time.perf_counter() - db_started, {"operation": "select_inventory"})
-                if row is None:
-                    span.set_status(Status(StatusCode.ERROR, "product not found"))
-                    status_code = "404"
-                    raise HTTPException(status_code=404, detail="Product not found")
-                result = {
-                    "product_id": row[0],
-                    "available": row[1],
-                    "warehouse": row[2],
-                    "updated_at": row[3].isoformat(),
-                }
-                span.set_attribute("inventory.available", result["available"])
-                span.set_attribute("inventory.warehouse", result["warehouse"])
-                span.set_status(Status(StatusCode.OK))
-            except HTTPException:
-                raise
-            except Exception as exc:
-                span.record_exception(exc)
-                span.set_status(Status(StatusCode.ERROR, str(exc)))
-                status_code = "500"
-                logger.exception("inventory database failure", extra={"product_id": product_id})
-                raise HTTPException(status_code=500, detail="Inventory database error") from exc
+        payload = await get_data_service(
+            f"/inventory/{product_id}",
+            "inventory.data_service.call",
+            {"peer.service": "data-service", "product.id": product_id},
+        )
+        result = payload.get("inventory", payload)
 
         logger.info(
             "inventory returned",
             extra={"product_id": product_id, "available": result["available"]},
         )
         return {**result, "trace_id": current_trace_id()}
-    except HTTPException:
+    except HTTPException as exc:
+        status_code = str(exc.status_code)
         raise
     finally:
         labels = {"http.method": "GET", "http.route": "/inventory/{product_id}", "http.status_code": status_code}
+        requests_total.add(1, labels)
+        request_duration.record(time.perf_counter() - started, labels)
+        active_requests.add(-1)
+
+
+@app.get("/order/{order_id}")
+async def read_order(order_id: str):
+    """Enrich one order while keeping data access behind data-service."""
+
+    started = time.perf_counter()
+    active_requests.add(1)
+    status_code = "200"
+    try:
+        with tracer.start_as_current_span(
+            "order.business.validate", attributes={"order.id": order_id}
+        ) as span:
+            if not order_id.startswith("ord-"):
+                status_code = "400"
+                span.set_status(Status(StatusCode.ERROR, "invalid order id"))
+                raise HTTPException(status_code=400, detail="order_id must start with ord-")
+            span.set_status(Status(StatusCode.OK))
+
+        order_payload = await get_data_service(
+            f"/order/{order_id}",
+            "order.data_service.order.call",
+            {"peer.service": "data-service", "order.id": order_id, "data.record.type": "order"},
+        )
+        order = order_payload.get("order", order_payload)
+        product_id = order.get("product_id")
+        if not product_id:
+            status_code = "502"
+            raise HTTPException(status_code=502, detail="Order has no product")
+
+        inventory_payload = await get_data_service(
+            f"/inventory/{product_id}",
+            "order.data_service.inventory.call",
+            {"peer.service": "data-service", "product.id": product_id, "data.record.type": "inventory"},
+        )
+        inventory = inventory_payload.get("inventory", inventory_payload)
+        logger.info("order enriched", extra={"order_id": order_id, "product_id": product_id})
+        return {"order": order, "inventory": inventory, "trace_id": current_trace_id()}
+    except HTTPException as exc:
+        status_code = str(exc.status_code)
+        raise
+    except Exception as exc:
+        status_code = "500"
+        logger.exception("order enrichment failed", extra={"order_id": order_id})
+        raise HTTPException(status_code=500, detail="internal error") from exc
+    finally:
+        labels = {"http.method": "GET", "http.route": "/order/{order_id}", "http.status_code": status_code}
         requests_total.add(1, labels)
         request_duration.record(time.perf_counter() - started, labels)
         active_requests.add(-1)

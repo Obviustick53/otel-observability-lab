@@ -1,0 +1,356 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: VPC Flow Logs, CloudTrail and optional Security Hub for the OTEL Lab sandbox.
+
+Metadata:
+  SecurityHubSubscriptionGate:
+    Status: BLOCKED_UNTIL_SUBSCRIPTION_PREFLIGHT
+    Rule: >-
+      Keep EnableSecurityHub=false unless a read-only account preflight confirms
+      that Security Hub subscription is permitted. Never enable it to create
+      synthetic findings. AccessDeniedException or InvalidAccessException is a
+      blocked result, not evidence of a successful subscription.
+  EvidenceState: DEPLOYED_STATE_REPORTED_BY_CANONICAL_EVIDENCE
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: otel-lab
+    AllowedPattern: '^[a-z0-9][a-z0-9-]{2,19}$'
+  Environment:
+    Type: String
+    Default: sandbox
+    AllowedValues: [sandbox, dev, test]
+  Owner:
+    Type: String
+    Default: observability-lab
+    AllowedPattern: '^[A-Za-z0-9][A-Za-z0-9._-]{1,31}$'
+  ExpirationUtc:
+    Type: String
+    Default: '2026-09-30'
+    AllowedPattern: '^20[0-9]{2}-[0-9]{2}-[0-9]{2}$'
+  LogRetentionDays:
+    Type: Number
+    Default: 3
+    AllowedValues: [1, 3, 5, 7, 14, 30]
+  EnableCloudTrail:
+    Type: String
+    Default: 'false'
+    AllowedValues: ['true', 'false']
+  EnableSecurityHub:
+    Type: String
+    Default: 'false'
+    AllowedValues: ['true', 'false']
+
+Conditions:
+  CloudTrailEnabled: !Equals [!Ref EnableCloudTrail, 'true']
+  SecurityHubEnabled: !Equals [!Ref EnableSecurityHub, 'true']
+
+Resources:
+  FlowLogsLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/vpc/flowlogs/${ProjectName}/${Environment}'
+      RetentionInDays: !Ref LogRetentionDays
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  FlowLogRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${ProjectName}-${Environment}-flow-logs'
+      Description: Delivery role for VPC Flow Logs to CloudWatch Logs.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: vpc-flow-logs.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+      Policies:
+        - PolicyName: !Sub '${ProjectName}-${Environment}-flow-logs'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:DescribeLogStreams
+                  - logs:PutLogEvents
+                Resource: !Sub '${FlowLogsLogGroup.Arn}:*'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  VpcFlowLog:
+    Type: AWS::EC2::FlowLog
+    DependsOn: FlowLogRole
+    Properties:
+      ResourceId:
+        Fn::ImportValue:
+          Fn::Sub: '${ProjectName}-${Environment}-VpcId'
+      ResourceType: VPC
+      TrafficType: ALL
+      LogDestinationType: cloud-watch-logs
+      LogGroupName: !Ref FlowLogsLogGroup
+      DeliverLogsPermissionArn: !GetAtt FlowLogRole.Arn
+      MaxAggregationInterval: 60
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  VpcRejectMetricFilter:
+    DependsOn: VpcFlowLog
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName: !Ref FlowLogsLogGroup
+      FilterPattern: '[version, account_id, interface_id, srcaddr, dstaddr, srcport, dstport, protocol, packets, bytes, start, end, action = REJECT, log_status]'
+      MetricTransformations:
+        - MetricName: VpcRejectedFlowCount
+          MetricNamespace: OTelLab/NetworkSecurity
+          MetricValue: '1'
+          DefaultValue: 0
+
+  VpcRejectAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: >-
+        Designed alarm for rejected VPC flows. Tune the threshold with observed
+        traffic; missing data is healthy for this event-count metric.
+      Namespace: OTelLab/NetworkSecurity
+      MetricName: VpcRejectedFlowCount
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 3
+      DatapointsToAlarm: 2
+      Threshold: 5
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+
+  VpcRejectAnomalyAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: >-
+        Designed anomaly alarm for rejected VPC flows. CloudWatch needs real
+        history to train; this template does not assert that a model is trained.
+      EvaluationPeriods: 3
+      DatapointsToAlarm: 2
+      ComparisonOperator: GreaterThanUpperThreshold
+      TreatMissingData: notBreaching
+      ThresholdMetricId: reject_band
+      Metrics:
+        - Id: reject_band
+          Expression: ANOMALY_DETECTION_BAND(rejects, 2)
+          Label: VPC rejected-flow anomaly band
+          ReturnData: true
+        - Id: rejects
+          MetricStat:
+            Metric:
+              Namespace: OTelLab/NetworkSecurity
+              MetricName: VpcRejectedFlowCount
+            Period: 300
+            Stat: Sum
+          ReturnData: true
+
+  TrailBucket:
+    Condition: CloudTrailEnabled
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  TrailBucketPolicy:
+    Condition: CloudTrailEnabled
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref TrailBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: CloudTrailAclCheck
+            Effect: Allow
+            Principal:
+              Service: cloudtrail.amazonaws.com
+            Action: s3:GetBucketAcl
+            Resource: !GetAtt TrailBucket.Arn
+            Condition:
+              StringEquals:
+                aws:SourceArn: !Sub 'arn:${AWS::Partition}:cloudtrail:${AWS::Region}:${AWS::AccountId}:trail/${ProjectName}-${Environment}-trail'
+          - Sid: CloudTrailWrite
+            Effect: Allow
+            Principal:
+              Service: cloudtrail.amazonaws.com
+            Action: s3:PutObject
+            Resource: !Sub '${TrailBucket.Arn}/${ProjectName}/${Environment}/AWSLogs/${AWS::AccountId}/*'
+            Condition:
+              StringEquals:
+                s3:x-amz-acl: bucket-owner-full-control
+                aws:SourceArn: !Sub 'arn:${AWS::Partition}:cloudtrail:${AWS::Region}:${AWS::AccountId}:trail/${ProjectName}-${Environment}-trail'
+
+  CloudTrailLogGroup:
+    Condition: CloudTrailEnabled
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/cloudtrail/${ProjectName}/${Environment}'
+      RetentionInDays: !Ref LogRetentionDays
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  CloudTrailLogsRole:
+    Condition: CloudTrailEnabled
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${ProjectName}-${Environment}-cloudtrail-logs'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: cloudtrail.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+      Policies:
+        - PolicyName: !Sub '${ProjectName}-${Environment}-cloudtrail-logs'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub '${CloudTrailLogGroup.Arn}:*'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  Trail:
+    Condition: CloudTrailEnabled
+    DependsOn:
+      - TrailBucketPolicy
+      - CloudTrailLogsRole
+    Type: AWS::CloudTrail::Trail
+    Properties:
+      TrailName: !Sub '${ProjectName}-${Environment}-trail'
+      S3BucketName: !Ref TrailBucket
+      S3KeyPrefix: !Sub '${ProjectName}/${Environment}'
+      IncludeGlobalServiceEvents: true
+      IsMultiRegionTrail: false
+      EnableLogFileValidation: true
+      CloudWatchLogsLogGroupArn: !GetAtt CloudTrailLogGroup.Arn
+      CloudWatchLogsRoleArn: !GetAtt CloudTrailLogsRole.Arn
+      IsLogging: true
+
+  CloudTrailAuthFailureMetricFilter:
+    Condition: CloudTrailEnabled
+    DependsOn: Trail
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName: !Ref CloudTrailLogGroup
+      FilterPattern: '{ ($.eventName = ConsoleLogin) && ($.responseElements.ConsoleLogin = Failure) }'
+      MetricTransformations:
+        - MetricName: FailedAuthenticationCount
+          MetricNamespace: OTelLab/NetworkSecurity
+          MetricValue: '1'
+          DefaultValue: 0
+
+  FailedAuthenticationAlarm:
+    Condition: CloudTrailEnabled
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: >-
+        Designed alarm for failed CloudTrail ConsoleLogin events. It is not
+        created when CloudTrail is disabled and has no notification action here.
+      Namespace: OTelLab/NetworkSecurity
+      MetricName: FailedAuthenticationCount
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 3
+      DatapointsToAlarm: 2
+      Threshold: 3
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+
+  SecurityHub:
+    Condition: SecurityHubEnabled
+    Type: AWS::SecurityHub::Hub
+    Properties:
+      AutoEnableControls: false
+      ControlFindingGenerator: SECURITY_CONTROL
+      EnableDefaultStandards: false
+      Tags:
+        Project: !Ref ProjectName
+        Environment: !Ref Environment
+        Owner: !Ref Owner
+        ExpiresOn: !Ref ExpirationUtc
+
+Outputs:
+  FlowLogsLogGroupName:
+    Description: CloudWatch log group receiving VPC Flow Logs
+    Value: !Ref FlowLogsLogGroup
+  CloudTrailName:
+    Description: CloudTrail name or DISABLED
+    Value: !If [CloudTrailEnabled, !Ref Trail, DISABLED]
+  SecurityHubStatus:
+    Description: Security Hub opt-in status
+    Value: !If [SecurityHubEnabled, REQUESTED_AFTER_EXTERNAL_PREFLIGHT, BLOCKED_UNTIL_SUBSCRIPTION_PREFLIGHT]
+  EvidenceState:
+    Description: Runtime state is reported by the canonical evidence artifacts; this output reflects the deployed conditional controls.
+    Value: !If [CloudTrailEnabled, DEPLOYED_WITH_FLOW_LOGS_AND_CLOUDTRAIL, DEPLOYED_WITH_FLOW_LOGS]

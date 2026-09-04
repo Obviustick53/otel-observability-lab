@@ -1,0 +1,265 @@
+{
+  "columns": [
+    "timestamp",
+    "direction",
+    "service",
+    "src_ip",
+    "dst_port",
+    "severity",
+    "message"
+  ],
+  "rows": [
+    [
+      "2026-09-02T20:40:00Z",
+      "north_south",
+      "service-b",
+      "198.51.100.17",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:41:00Z",
+      "north_south",
+      "data-service",
+      "198.51.100.18",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:42:00Z",
+      "north_south",
+      "data-service",
+      "198.51.100.19",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:43:00Z",
+      "north_south",
+      "data-service",
+      "198.51.100.20",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:44:00Z",
+      "north_south",
+      "data-service",
+      "198.51.100.1",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:45:00Z",
+      "north_south",
+      "service-a",
+      "198.51.100.2",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:46:00Z",
+      "north_south",
+      "service-b",
+      "198.51.100.3",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:47:00Z",
+      "north_south",
+      "service-b",
+      "198.51.100.4",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:48:00Z",
+      "north_south",
+      "service-b",
+      "198.51.100.5",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:49:00Z",
+      "north_south",
+      "service-a",
+      "198.51.100.6",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:50:00Z",
+      "north_south",
+      "service-b",
+      "198.51.100.7",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:51:00Z",
+      "north_south",
+      "service-b",
+      "198.51.100.8",
+      443,
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:36:00Z",
+      "east_west",
+      "service-b",
+      "203.0.113.1",
+      5432,
+      "medium",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:37:00Z",
+      "north_south",
+      "edge-gateway",
+      "203.0.113.2",
+      22,
+      "medium",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:38:00Z",
+      "north_south",
+      "edge-gateway",
+      "203.0.113.3",
+      5432,
+      "medium",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:39:00Z",
+      "east_west",
+      "service-b",
+      "203.0.113.4",
+      22,
+      "high",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:40:00Z",
+      "north_south",
+      "edge-gateway",
+      "203.0.113.5",
+      5432,
+      "high",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:41:00Z",
+      "north_south",
+      "edge-gateway",
+      "203.0.113.6",
+      22,
+      "high",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:42:00Z",
+      "east_west",
+      "service-b",
+      "203.0.113.7",
+      5432,
+      "high",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:43:00Z",
+      "north_south",
+      "edge-gateway",
+      "203.0.113.8",
+      22,
+      "medium",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:44:00Z",
+      "north_south",
+      "edge-gateway",
+      "203.0.113.9",
+      5432,
+      "medium",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:45:00Z",
+      "east_west",
+      "service-b",
+      "203.0.113.10",
+      22,
+      "medium",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:46:00Z",
+      "north_south",
+      "edge-gateway",
+      "203.0.113.11",
+      5432,
+      "medium",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:47:00Z",
+      "north_south",
+      "edge-gateway",
+      "203.0.113.12",
+      22,
+      "medium",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:48:00Z",
+      "east_west",
+      "service-b",
+      "203.0.113.1",
+      5432,
+      "medium",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:49:00Z",
+      "north_south",
+      "edge-gateway",
+      "203.0.113.2",
+      22,
+      "medium",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:50:00Z",
+      "north_south",
+      "edge-gateway",
+      "203.0.113.3",
+      5432,
+      "medium",
+      "synthetic policy denial"
+    ],
+    [
+      "2026-09-02T20:51:00Z",
+      "east_west",
+      "service-b",
+      "203.0.113.4",
+      22,
+      "medium",
+      "synthetic policy denial"
+    ]
+  ]
+}

@@ -1,0 +1,112 @@
+groups:
+  - name: otel-lab-slo-alerts
+    interval: 15s
+    rules:
+      - alert: OTelAvailabilityBelowSLO
+        expr: otel:availability_5m{telemetry_scope="local"} < 0.995
+        for: 2m
+        labels:
+          severity: warning
+          alert_type: slo
+          telemetry_scope: local
+        annotations:
+          summary: "Disponibilidad por debajo del SLO"
+          description: "{{ $labels.service_name }} está en {{ $value | humanizePercentage }}; objetivo 99.5%."
+          runbook: "Consultar logs correlacionados y exemplars; trace_id no es label de métrica."
+
+      - alert: OTelErrorBudgetNearlyExhausted
+        expr: otel:error_budget_remaining_ratio{telemetry_scope="local"} < 0.2
+        for: 5m
+        labels:
+          severity: warning
+          alert_type: error-budget
+          telemetry_scope: local
+        annotations:
+          summary: "Error budget casi agotado"
+          description: "{{ $labels.service_name }} conserva {{ $value | humanizePercentage }} del presupuesto de error."
+
+      - alert: OTelDynamicBaselineAndP99SLO
+        expr: |
+          (
+            otel:error_rate_5m{telemetry_scope="local"}
+              > on (service_name, deployment_environment, telemetry_scope)
+                (
+                  otel:error_rate_baseline_mean_30m{telemetry_scope="local"}
+                  + (2 * otel:error_rate_baseline_sigma_30m{telemetry_scope="local"})
+                )
+          )
+          and on (service_name, deployment_environment, telemetry_scope)
+            (otel:p99_seconds_5m{telemetry_scope="local"} > 0.5)
+        for: 2m
+        labels:
+          severity: critical
+          alert_type: aiops-dynamic
+          detection_mode: baseline-plus-2sigma-and-p99-slo
+          telemetry_scope: local
+        annotations:
+          summary: "Error rate anómalo y p99 sobre SLO"
+          description: "{{ $labels.service_name }} supera baseline + 2 sigma y p99 > 500 ms. Resolver trace_id desde logs/exemplars."
+          baseline_window: "30m offset 5m; congelada frente a la ventana de caos"
+
+      - alert: OTelStaticThresholdAndP99SLO
+        expr: |
+          (otel:error_rate_5m{telemetry_scope="local"} > 0.05)
+          and on (service_name, deployment_environment, telemetry_scope)
+            (otel:p99_seconds_5m{telemetry_scope="local"} > 0.5)
+        for: 2m
+        labels:
+          severity: warning
+          alert_type: static-comparison
+          detection_mode: static-5-percent-and-p99-slo
+          telemetry_scope: local
+        annotations:
+          summary: "Comparativa: umbral estático y p99 sobre SLO"
+          description: "{{ $labels.service_name }} supera el umbral estático de error rate del 5% y p99 > 500 ms."
+
+  - name: otel-lab-collector-alerts
+    interval: 15s
+    rules:
+      - alert: OTelCollectorDown
+        expr: up{job="otel-collector-internal"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          alert_type: collector-health
+          telemetry_scope: local
+        annotations:
+          summary: "Collector OTel no responde"
+          description: "El endpoint interno de métricas del Collector está caído."
+
+      - alert: OTelCollectorDroppedData
+        expr: |
+          (
+            sum(rate(otelcol_processor_dropped_spans[5m]))
+            or sum(rate(otelcol_processor_dropped_metric_points[5m]))
+            or sum(rate(otelcol_processor_dropped_log_records[5m]))
+            or vector(0)
+          ) > 0
+        for: 2m
+        labels:
+          severity: warning
+          alert_type: collector-drops
+          telemetry_scope: local
+        annotations:
+          summary: "El Collector está descartando telemetría"
+          description: "Se detectaron drops de spans, métricas o logs en los últimos 5 minutos."
+
+      - alert: OTelCollectorExportFailures
+        expr: |
+          (
+            sum(rate(otelcol_exporter_send_failed_spans[5m]))
+            or sum(rate(otelcol_exporter_send_failed_metric_points[5m]))
+            or sum(rate(otelcol_exporter_send_failed_log_records[5m]))
+            or vector(0)
+          ) > 0
+        for: 2m
+        labels:
+          severity: critical
+          alert_type: collector-export
+          telemetry_scope: local
+        annotations:
+          summary: "Fallos de exportación del Collector"
+          description: "Se detectaron fallos de exportación en los últimos 5 minutos."

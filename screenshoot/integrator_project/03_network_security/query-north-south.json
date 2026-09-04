@@ -1,0 +1,53 @@
+{
+  "columns": [
+    "direction",
+    "action",
+    "service",
+    "events",
+    "bytes"
+  ],
+  "rows": [
+    [
+      "north_south",
+      "allow",
+      "service-b",
+      16,
+      726376
+    ],
+    [
+      "north_south",
+      "allow",
+      "external-api",
+      16,
+      726215
+    ],
+    [
+      "north_south",
+      "deny",
+      "data-service",
+      6,
+      0
+    ],
+    [
+      "north_south",
+      "deny",
+      "edge-gateway",
+      10,
+      0
+    ],
+    [
+      "north_south",
+      "deny",
+      "service-a",
+      3,
+      0
+    ],
+    [
+      "north_south",
+      "deny",
+      "service-b",
+      3,
+      0
+    ]
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "trace_id": "92e1653aff0013f0b1fe25bcc8e5103a",
+  "backend": "Loki",
+  "streams": [
+    {
+      "service_name": "otel-lab/service-a",
+      "level": "ERROR",
+      "message": "service-b call failed",
+      "exception_type": "ReadTimeout"
+    },
+    {
+      "service_name": "otel-lab/service-b",
+      "level": "INFO",
+      "message": "inventory returned",
+      "observation": "same trace context observed after dependency resumed; not used as proof that service-b processed while paused"
+    }
+  ],
+  "correlation_method": "trace_id present in structured JSON log lines"
+}

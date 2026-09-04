@@ -1,0 +1,54 @@
+{
+  "columns": [
+    "event_type",
+    "severity",
+    "events"
+  ],
+  "rows": [
+    [
+      "auth_failed",
+      "high",
+      12
+    ],
+    [
+      "auth_success",
+      "info",
+      36
+    ],
+    [
+      "denial",
+      "high",
+      4
+    ],
+    [
+      "denial",
+      "medium",
+      12
+    ],
+    [
+      "finding",
+      "critical",
+      1
+    ],
+    [
+      "finding",
+      "high",
+      2
+    ],
+    [
+      "finding",
+      "low",
+      2
+    ],
+    [
+      "finding",
+      "medium",
+      3
+    ],
+    [
+      "flow",
+      "info",
+      64
+    ]
+  ]
+}

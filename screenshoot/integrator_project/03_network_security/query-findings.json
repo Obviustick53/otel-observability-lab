@@ -1,0 +1,44 @@
+{
+  "columns": [
+    "severity",
+    "finding_type",
+    "findings"
+  ],
+  "rows": [
+    [
+      "critical",
+      "Software and Configuration Checks",
+      1
+    ],
+    [
+      "high",
+      "Policy:IAM/RootCredentialUsage",
+      1
+    ],
+    [
+      "high",
+      "UnauthorizedAccess:EC2/SSHBruteForce",
+      1
+    ],
+    [
+      "medium",
+      "Behavior:EC2/NetworkPortUnusual",
+      1
+    ],
+    [
+      "medium",
+      "Recon:EC2/PortProbeUnprotectedPort",
+      1
+    ],
+    [
+      "medium",
+      "Software and Configuration Checks",
+      1
+    ],
+    [
+      "low",
+      "Software and Configuration Checks",
+      2
+    ]
+  ]
+}

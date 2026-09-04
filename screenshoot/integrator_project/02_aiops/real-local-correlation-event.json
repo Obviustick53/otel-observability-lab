@@ -1,0 +1,64 @@
+{
+  "event": {
+    "baseline": {
+      "error_rate": 0.0,
+      "error_rate_pct": 0.0
+    },
+    "conditions": {
+      "correlated_incident": true,
+      "error_rate_above_dynamic": true,
+      "latency_p99_above_slo": true,
+      "static_error_rate_breach": true,
+      "static_latency_breach": true
+    },
+    "diagnostic_query": "{service_name=~\"otel-lab/service-a|otel-lab/service-b\"} |= \"92e1653aff0013f0b1fe25bcc8e5103a\"",
+    "environment": "local-historical",
+    "event_id": "aiops-555a9ff2580780f3",
+    "observed": {
+      "error_rate": 1.0,
+      "error_rate_pct": 100.0,
+      "latency_p99_ms": 3560.791
+    },
+    "rule": {
+      "baseline_training_window_excluded": true,
+      "expression": "error_rate > baseline_error_rate + 2*sigma_error_rate AND latency_p99_ms > slo_latency_p99_ms",
+      "sigma_multiplier": 2.0
+    },
+    "schema_version": "aiops.incident.v1",
+    "service": "service-a",
+    "severity": "critical",
+    "sigma": {
+      "error_rate": 0.0,
+      "error_rate_pct": 0.0
+    },
+    "slo": {
+      "latency_p99_ms": 500.0
+    },
+    "thresholds": {
+      "dynamic_error_rate": 0.0,
+      "dynamic_error_rate_pct": 0.0,
+      "static": {
+        "error_rate": 0.05,
+        "error_rate_pct": 5.0,
+        "latency_p99_ms": 400.0
+      }
+    },
+    "timestamp": "2026-08-31T04:30:47.753039Z",
+    "trace_id": "92e1653aff0013f0b1fe25bcc8e5103a",
+    "trace_id_limitation": "Trace ID resolved from historical local Jaeger/Loki evidence; this run did not query a live backend or AWS.",
+    "trace_id_resolution": "historical_local_diagnostic_artifact",
+    "window": {
+      "duration_seconds": 30.572699,
+      "end_utc": "2026-08-31T04:30:47.753039Z",
+      "start_utc": "2026-08-31T04:30:17.180340Z"
+    }
+  },
+  "evidence_class": "historical_local_evidence",
+  "execution_status": "historical_source_reprocessed_locally; no live backend queried",
+  "source_artifacts": [
+    "evidence\\chaos\\chaos-final.json",
+    "evidence\\chaos\\baseline-final.json",
+    "evidence\\chaos\\jaeger-error-trace-summary.json",
+    "evidence\\chaos\\loki-trace-92e1653aff0013f0b1fe25bcc8e5103a.json"
+  ]
+}

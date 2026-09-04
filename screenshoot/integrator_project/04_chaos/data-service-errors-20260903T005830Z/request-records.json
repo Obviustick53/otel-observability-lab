@@ -1,0 +1,368 @@
+[
+  {
+    "timestamp_utc": "2026-09-03T00:58:39.249901Z",
+    "status_code": 200,
+    "duration_seconds": 0.1763144,
+    "trace_id": "0d51a37202ea29855934f9c1abd38776"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:39.639244Z",
+    "status_code": 200,
+    "duration_seconds": 0.0924601,
+    "trace_id": "2a91e2967aee3008419a48e4312d4e3c"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:39.981471Z",
+    "status_code": 200,
+    "duration_seconds": 0.0780372,
+    "trace_id": "fc0878b47f5ed5f43c6bea3b065f93a7"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:40.368498Z",
+    "status_code": 200,
+    "duration_seconds": 0.1250249,
+    "trace_id": "a5044e2bcfe7c5b49c9695ac77252c93"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:40.729455Z",
+    "status_code": 200,
+    "duration_seconds": 0.0983462,
+    "trace_id": "09916833f049931dd4b6329278f6bd80"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:41.155587Z",
+    "status_code": 200,
+    "duration_seconds": 0.1669914,
+    "trace_id": "233dcba99056f6ef8b149241ee48423b"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:41.539293Z",
+    "status_code": 200,
+    "duration_seconds": 0.1302333,
+    "trace_id": "62f69d8e99de1e97fe2b76a3a2914ed9"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:41.871287Z",
+    "status_code": 200,
+    "duration_seconds": 0.0717577,
+    "trace_id": "dc6758ca414e31a2a7dabc5e83a63132"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:42.213594Z",
+    "status_code": 200,
+    "duration_seconds": 0.0792313,
+    "trace_id": "d801c222e757b3d8124543aee5f8be4d"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:42.567261Z",
+    "status_code": 200,
+    "duration_seconds": 0.0821305,
+    "trace_id": "c77b39d6766029786fb7e8573aa5db45"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:42.935733Z",
+    "status_code": 502,
+    "duration_seconds": 0.1135207,
+    "trace_id": "unknown"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:43.310806Z",
+    "status_code": 200,
+    "duration_seconds": 0.1139259,
+    "trace_id": "72529b9dc5ed566ce7d6e9a1f6ae93c0"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:43.654772Z",
+    "status_code": 200,
+    "duration_seconds": 0.0795415,
+    "trace_id": "6bca0633538585a585ee171f8c333404"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:43.970090Z",
+    "status_code": 502,
+    "duration_seconds": 0.0544595,
+    "trace_id": "unknown"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:44.288949Z",
+    "status_code": 200,
+    "duration_seconds": 0.0658187,
+    "trace_id": "1d21819cfb32fc9918c3dc39b7ccc5da"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:44.590017Z",
+    "status_code": 502,
+    "duration_seconds": 0.0461872,
+    "trace_id": "unknown"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:44.925469Z",
+    "status_code": 200,
+    "duration_seconds": 0.0756699,
+    "trace_id": "add024a813bc7dd0b7e2eb34cb311916"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:45.252173Z",
+    "status_code": 200,
+    "duration_seconds": 0.0608261,
+    "trace_id": "8691b6be82ac46cfabde89734d7d19da"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:45.588721Z",
+    "status_code": 200,
+    "duration_seconds": 0.0773768,
+    "trace_id": "d57e9463b3a77addded7273b0cd78130"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:45.909976Z",
+    "status_code": 200,
+    "duration_seconds": 0.0680637,
+    "trace_id": "58280c28015fb3e1a63a57b4690106d0"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:46.230425Z",
+    "status_code": 200,
+    "duration_seconds": 0.0608194,
+    "trace_id": "809132f9fea220898fe24be0bb1d40b3"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:46.559671Z",
+    "status_code": 200,
+    "duration_seconds": 0.0765281,
+    "trace_id": "7b2bfbed01211e500bf4a0ebe86614d3"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:46.868137Z",
+    "status_code": 200,
+    "duration_seconds": 0.0575219,
+    "trace_id": "74fc1c1cc42388e3be0c3855ca723cee"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:47.217082Z",
+    "status_code": 200,
+    "duration_seconds": 0.0891986,
+    "trace_id": "f5932e6b9cb51681a6ad986d30a8b29c"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:47.557091Z",
+    "status_code": 200,
+    "duration_seconds": 0.0830983,
+    "trace_id": "549910b8741b982c4c7de3e583436190"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:47.888133Z",
+    "status_code": 200,
+    "duration_seconds": 0.0655957,
+    "trace_id": "23681e7cda83b2cac0273d5dbf8727bd"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:48.220895Z",
+    "status_code": 200,
+    "duration_seconds": 0.068433,
+    "trace_id": "28e8e697c4c1eb8490e3de03314c0e93"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:48.536791Z",
+    "status_code": 200,
+    "duration_seconds": 0.0589608,
+    "trace_id": "ff415eb9970e20c43271f405f9cf692e"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:48.856745Z",
+    "status_code": 200,
+    "duration_seconds": 0.0683044,
+    "trace_id": "c735c567f7a595c4dbf9bf725ee95e4c"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:49.178147Z",
+    "status_code": 200,
+    "duration_seconds": 0.0697234,
+    "trace_id": "1549299b760f21abf51b6064fd63dc03"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:49.484026Z",
+    "status_code": 200,
+    "duration_seconds": 0.0548378,
+    "trace_id": "95e3a60eb266fa3637d3a520128bfbd1"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:49.799625Z",
+    "status_code": 200,
+    "duration_seconds": 0.058278,
+    "trace_id": "59afe84945285d5df90bea130a18abb0"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:50.101474Z",
+    "status_code": 502,
+    "duration_seconds": 0.0492375,
+    "trace_id": "unknown"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:50.428643Z",
+    "status_code": 200,
+    "duration_seconds": 0.0631416,
+    "trace_id": "a0ac11140ef16a148691a22d0c341348"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:50.752949Z",
+    "status_code": 200,
+    "duration_seconds": 0.0605,
+    "trace_id": "ec425a7762188a8d6df8ca7eeb263be9"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:51.071859Z",
+    "status_code": 200,
+    "duration_seconds": 0.0607611,
+    "trace_id": "f8b36fda473ffea155d47de11e151368"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:51.380116Z",
+    "status_code": 200,
+    "duration_seconds": 0.0554617,
+    "trace_id": "b79f00f49a68c77b7835713d1e14bc63"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:51.702480Z",
+    "status_code": 200,
+    "duration_seconds": 0.0578812,
+    "trace_id": "2cda31e2eab6161888c4bacc7510143d"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:52.023546Z",
+    "status_code": 200,
+    "duration_seconds": 0.0615889,
+    "trace_id": "f640f411ef01b957fe7d0f685be5fd0e"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:52.342198Z",
+    "status_code": 200,
+    "duration_seconds": 0.0648895,
+    "trace_id": "c9fbb16da323290bdc51c2c755651b82"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:52.649086Z",
+    "status_code": 200,
+    "duration_seconds": 0.0523897,
+    "trace_id": "a1c392dbf9869322b717df78539976ea"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:52.965917Z",
+    "status_code": 200,
+    "duration_seconds": 0.0594407,
+    "trace_id": "fb59c23b8cf7c32a8d277673079e2ac7"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:53.296491Z",
+    "status_code": 200,
+    "duration_seconds": 0.0665855,
+    "trace_id": "b3d9704062d07a9a223b242f22027c26"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:53.604642Z",
+    "status_code": 200,
+    "duration_seconds": 0.0541082,
+    "trace_id": "dad4b771f06431269a67f7cfd1d42de6"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:53.921816Z",
+    "status_code": 200,
+    "duration_seconds": 0.0527179,
+    "trace_id": "6ef1ca1222060bc7b69c4afec6a5268f"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:54.224638Z",
+    "status_code": 502,
+    "duration_seconds": 0.0437145,
+    "trace_id": "unknown"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:54.548790Z",
+    "status_code": 200,
+    "duration_seconds": 0.0706482,
+    "trace_id": "110a616f56b76600d4ba4b2e91350bd7"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:54.874285Z",
+    "status_code": 200,
+    "duration_seconds": 0.0618819,
+    "trace_id": "31042d182f9ad994cc2c0ef7592486dd"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:55.190572Z",
+    "status_code": 200,
+    "duration_seconds": 0.0597186,
+    "trace_id": "b01e89f2c2a08928dbf80d66e275ba11"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:55.513366Z",
+    "status_code": 200,
+    "duration_seconds": 0.0730508,
+    "trace_id": "1d9790fcb0f3f56ad7f1047015b1faad"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:55.874522Z",
+    "status_code": 200,
+    "duration_seconds": 0.0984938,
+    "trace_id": "86f2c19b0789546e1326f0438a7cc1b4"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:56.191086Z",
+    "status_code": 200,
+    "duration_seconds": 0.0548825,
+    "trace_id": "3c3d24e531c869412c1eb64b91144ecd"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:56.509953Z",
+    "status_code": 200,
+    "duration_seconds": 0.0563178,
+    "trace_id": "d1b7a1898ac11e5bf5c3f50ee3188e72"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:56.836239Z",
+    "status_code": 200,
+    "duration_seconds": 0.0633871,
+    "trace_id": "19adfc285d27b45d9069766442f3e1e9"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:57.161452Z",
+    "status_code": 200,
+    "duration_seconds": 0.060935,
+    "trace_id": "018483d20d1b7901c62ec46dba0d67d0"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:57.480303Z",
+    "status_code": 200,
+    "duration_seconds": 0.0643567,
+    "trace_id": "e80e9a0f71b889a5f0c47319d840ca59"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:57.799746Z",
+    "status_code": 200,
+    "duration_seconds": 0.0603744,
+    "trace_id": "ce318911e7f02d0eb5e1e5e8eafd0b5a"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:58.112967Z",
+    "status_code": 502,
+    "duration_seconds": 0.0557916,
+    "trace_id": "unknown"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:58.432240Z",
+    "status_code": 200,
+    "duration_seconds": 0.0571896,
+    "trace_id": "565aae532318172672bd9a200ee478dc"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:58.746037Z",
+    "status_code": 200,
+    "duration_seconds": 0.0617766,
+    "trace_id": "d85c9c484a2c2341bd69b577173b7c13"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:58:59.067249Z",
+    "status_code": 200,
+    "duration_seconds": 0.067464,
+    "trace_id": "853f14fe72102ccba38dbe6206698e54"
+  }
+]

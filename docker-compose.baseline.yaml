@@ -6,3 +6,7 @@ services:
   service-b:
     environment:
       OTEL_SDK_DISABLED: "true"
+
+  data-service:
+    environment:
+      OTEL_SDK_DISABLED: "true"

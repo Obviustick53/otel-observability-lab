@@ -1,0 +1,79 @@
+# Declarative AIOps contract for the local Prometheus recording rules.
+# This file is intentionally separate from prometheus/rules/ and is not a
+# global Prometheus configuration change. trace_id is resolved from logs or
+# exemplars; it must not become a metric label.
+groups:
+  - name: aiops-correlation
+    rules:
+      - alert: AIOpsErrorRateAnomalous
+        expr: |
+          otel:error_rate_5m{telemetry_scope="local"}
+            > on (service_name, deployment_environment, telemetry_scope)
+              (
+                otel:error_rate_baseline_mean_30m{telemetry_scope="local"}
+                + (2 * otel:error_rate_baseline_sigma_30m{telemetry_scope="local"})
+              )
+        for: 1m
+        labels:
+          severity: warning
+          source: local-aiops
+          telemetry_scope: local
+        annotations:
+          summary: "Error rate above frozen baseline + 2 sigma"
+          description: "{{ $labels.service_name }} exceeds the 30m baseline (offset 5m); wait for the p99 SLO condition before paging."
+
+      - alert: AIOpsLatencySLOBreached
+        expr: |
+          otel:p99_seconds_5m{telemetry_scope="local"} > 0.5
+        for: 1m
+        labels:
+          severity: warning
+          source: local-aiops
+          telemetry_scope: local
+        annotations:
+          summary: "Latency p99 is above the SLO"
+          description: "{{ $labels.service_name }} latency p99 is above the configured SLO."
+
+      - alert: AIOpsCorrelatedIncident
+        expr: |
+          (
+            otel:error_rate_5m{telemetry_scope="local"}
+              > on (service_name, deployment_environment, telemetry_scope)
+                (
+                  otel:error_rate_baseline_mean_30m{telemetry_scope="local"}
+                  + (2 * otel:error_rate_baseline_sigma_30m{telemetry_scope="local"})
+                )
+          )
+          and on (service_name, deployment_environment, telemetry_scope)
+            (
+              otel:p99_seconds_5m{telemetry_scope="local"} > 0.5
+            )
+        for: 1m
+        labels:
+          severity: high
+          source: local-aiops
+          detection_mode: baseline-plus-2sigma-and-p99-slo
+          telemetry_scope: local
+        annotations:
+          summary: "Correlated service degradation"
+          description: "Both dynamic conditions are true. Resolve trace_id from logs or exemplars; it is not a metric label."
+          runbook: "aiops/cloud-mapping.md"
+
+      - alert: AIOpsStaticComparison
+        expr: |
+          (
+            otel:error_rate_5m{telemetry_scope="local"} > 0.05
+          )
+          and on (service_name, deployment_environment, telemetry_scope)
+            (
+              otel:p99_seconds_5m{telemetry_scope="local"} > 0.5
+            )
+        for: 1m
+        labels:
+          severity: warning
+          source: local-aiops
+          detection_mode: static-5-percent-and-p99-slo
+          telemetry_scope: local
+        annotations:
+          summary: "Static comparison rule fired"
+          description: "{{ $labels.service_name }} exceeds the static 5% error threshold and the p99 SLO."

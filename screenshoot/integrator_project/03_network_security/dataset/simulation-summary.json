@@ -1,0 +1,24 @@
+{
+  "dataset": "network-security-local-simulation",
+  "environment": "local-simulated",
+  "source": "network-security-simulator",
+  "separation_note": "Synthetic data; no AWS VPC Flow Logs, Security Hub findings, or real credentials were read.",
+  "seed": 20260902,
+  "start": "2026-09-02T12:00:00Z",
+  "event_count": 136,
+  "by_event_type": {
+    "auth_failed": 12,
+    "auth_success": 36,
+    "denial": 16,
+    "finding": 8,
+    "flow": 64
+  },
+  "by_severity": {
+    "critical": 1,
+    "high": 18,
+    "info": 100,
+    "low": 2,
+    "medium": 15
+  },
+  "trace_id_policy": "unknown; simulator does not invent application trace IDs"
+}

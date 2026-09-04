@@ -1,0 +1,27 @@
+{
+  "trace_id": "92e1653aff0013f0b1fe25bcc8e5103a",
+  "query": "{service_name=~\"otel-lab/service-a|otel-lab/service-b\"} |= \"92e1653aff0013f0b1fe25bcc8e5103a\"",
+  "query_window_utc": {
+    "start": "2026-08-31T04:38:10Z",
+    "end": "2026-08-31T04:38:35Z"
+  },
+  "streams": [
+    {
+      "service_name": "otel-lab/service-a",
+      "level": "ERROR",
+      "timestamp_ns": "1788151096601240576",
+      "body": "service-b call failed",
+      "span_id": "c9bf15e36f1a4e14",
+      "exception_type": "ReadTimeout"
+    },
+    {
+      "service_name": "otel-lab/service-b",
+      "level": "INFO",
+      "timestamp_ns": "1788151096758083584",
+      "body": "inventory returned",
+      "span_id": "4f3f24879ee9d515",
+      "observation": "the dependency log was observed after service-b resumed; it is not claimed as processing while paused"
+    }
+  ],
+  "correlation_result": "Both log streams contain the same trace_id as the Jaeger diagnostic trace."
+}

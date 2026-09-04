@@ -1,0 +1,135 @@
+{
+  "generatedAtUtc": "2026-09-03T21:51:56.3538696Z",
+  "region": "us-east-1",
+  "context": {
+    "AccountId": "741368364261",
+    "Arn": "arn:aws:iam::741368364261:user/admin-josemorse",
+    "Region": "us-east-1",
+    "Profile": "admin-josemorse"
+  },
+  "staticOnly": false,
+  "templates": [
+    {
+      "template": "C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\00-network.yaml",
+      "checks": [
+        {
+          "tool": "PowerShell-file-read",
+          "status": "VERIFIED",
+          "output": "00-network.yaml non-empty (12622 bytes)"
+        },
+        {
+          "tool": "cfn-lint",
+          "status": "BLOCKED",
+          "output": "cfn-lint no esta instalado; no se instala automaticamente."
+        },
+        {
+          "tool": "aws cloudformation validate-template",
+          "status": "VERIFIED",
+          "output": "{\r\n    \"Parameters\": [\r\n        {\r\n            \"ParameterKey\": \"Owner\",\r\n            \"DefaultValue\": \"observability-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"PublicSubnet2Cidr\",\r\n            \"DefaultValue\": \"10.42.2.0/24\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"VpcCidr\",\r\n            \"DefaultValue\": \"10.42.0.0/16\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ProjectName\",\r\n            \"DefaultValue\": \"otel-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"AllowLegacyDirectDbAccess\",\r\n            \"DefaultValue\": \"false\",\r\n            \"NoEcho\": false,\r\n            \"Description\": \"Solo para compatibilidad temporal con imagenes actuales que acceden a RDS directamente desde service-a/service-b. Por defecto false para cumplir el aislamiento data-service -> RDS.\"\r\n        },\r\n        {\r\n            \"ParameterKey\": \"Environment\",\r\n            \"DefaultValue\": \"sandbox\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"AllowedIngressCidr\",\r\n            \"DefaultValue\": \"203.0.113.0/32\",\r\n            \"NoEcho\": false,\r\n            \"Description\": \"CIDR autorizado para el endpoint publico de service-a; reemplazar por una IP /32 controlada.\"\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ExpirationUtc\",\r\n            \"DefaultValue\": \"2026-09-30\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"PublicSubnet1Cidr\",\r\n            \"DefaultValue\": \"10.42.1.0/24\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"PrivateDbSubnet1Cidr\",\r\n            \"DefaultValue\": \"10.42.11.0/24\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"PrivateDbSubnet2Cidr\",\r\n            \"DefaultValue\": \"10.42.12.0/24\",\r\n            \"NoEcho\": false\r\n        }\r\n    ],\r\n    \"Description\": \"Red de sandbox AWS para OTEL Lab. Fargate usa subredes publicas sin NAT para mantener bajo el costo; RDS queda aislado en subredes privadas.\"\r\n}"
+        }
+      ]
+    },
+    {
+      "template": "C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\01-platform.yaml",
+      "checks": [
+        {
+          "tool": "PowerShell-file-read",
+          "status": "VERIFIED",
+          "output": "01-platform.yaml non-empty (16057 bytes)"
+        },
+        {
+          "tool": "cfn-lint",
+          "status": "BLOCKED",
+          "output": "cfn-lint no esta instalado; no se instala automaticamente."
+        },
+        {
+          "tool": "aws cloudformation validate-template",
+          "status": "VERIFIED",
+          "output": "{\r\n    \"Parameters\": [\r\n        {\r\n            \"ParameterKey\": \"Owner\",\r\n            \"DefaultValue\": \"observability-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ProjectName\",\r\n            \"DefaultValue\": \"otel-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"Environment\",\r\n            \"DefaultValue\": \"sandbox\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ExpirationUtc\",\r\n            \"DefaultValue\": \"2026-09-30\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"LogRetentionDays\",\r\n            \"DefaultValue\": \"3\",\r\n            \"NoEcho\": false\r\n        }\r\n    ],\r\n    \"Description\": \"ECR, ECS, Cloud Map, CloudWatch Logs, Secrets Manager and IAM for OTEL Lab.\",\r\n    \"Capabilities\": [\r\n        \"CAPABILITY_NAMED_IAM\"\r\n    ],\r\n    \"CapabilitiesReason\": \"The following resource(s) require capabilities: [AWS::IAM::Role]\"\r\n}"
+        }
+      ]
+    },
+    {
+      "template": "C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\02-data.yaml",
+      "checks": [
+        {
+          "tool": "PowerShell-file-read",
+          "status": "VERIFIED",
+          "output": "02-data.yaml non-empty (3959 bytes)"
+        },
+        {
+          "tool": "cfn-lint",
+          "status": "BLOCKED",
+          "output": "cfn-lint no esta instalado; no se instala automaticamente."
+        },
+        {
+          "tool": "aws cloudformation validate-template",
+          "status": "VERIFIED",
+          "output": "{\r\n    \"Parameters\": [\r\n        {\r\n            \"ParameterKey\": \"Owner\",\r\n            \"DefaultValue\": \"observability-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ProjectName\",\r\n            \"DefaultValue\": \"otel-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"BackupRetentionDays\",\r\n            \"DefaultValue\": \"1\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"Environment\",\r\n            \"DefaultValue\": \"sandbox\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ExpirationUtc\",\r\n            \"DefaultValue\": \"2026-09-30\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"DbInstanceClass\",\r\n            \"DefaultValue\": \"db.t4g.micro\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"AllocatedStorage\",\r\n            \"DefaultValue\": \"20\",\r\n            \"NoEcho\": false\r\n        }\r\n    ],\r\n    \"Description\": \"Private, encrypted, Single-AZ PostgreSQL for the OTEL Lab sandbox.\"\r\n}"
+        }
+      ]
+    },
+    {
+      "template": "C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\03-services.yaml",
+      "checks": [
+        {
+          "tool": "PowerShell-file-read",
+          "status": "VERIFIED",
+          "output": "03-services.yaml non-empty (24049 bytes)"
+        },
+        {
+          "tool": "cfn-lint",
+          "status": "BLOCKED",
+          "output": "cfn-lint no esta instalado; no se instala automaticamente."
+        },
+        {
+          "tool": "aws cloudformation validate-template",
+          "status": "VERIFIED",
+          "output": "{\r\n    \"Parameters\": [\r\n        {\r\n            \"ParameterKey\": \"ServiceBLatencyMs\",\r\n            \"DefaultValue\": \"0\",\r\n            \"NoEcho\": false,\r\n            \"Description\": \"Chaos contract consumed by a compatible service-b image; 0 means disabled.\"\r\n        },\r\n        {\r\n            \"ParameterKey\": \"Owner\",\r\n            \"DefaultValue\": \"observability-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ImageTag\",\r\n            \"DefaultValue\": \"v1\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ProjectName\",\r\n            \"DefaultValue\": \"otel-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"CollectorTaskSize\",\r\n            \"DefaultValue\": \"512-1024\",\r\n            \"NoEcho\": false,\r\n            \"Description\": \"Valid Fargate CPU-memory pair for the Collector task.\"\r\n        },\r\n        {\r\n            \"ParameterKey\": \"DataServiceErrorRate\",\r\n            \"DefaultValue\": \"0\",\r\n            \"NoEcho\": false,\r\n            \"Description\": \"Chaos contract consumed by a compatible data-service image; 0 means disabled.\"\r\n        },\r\n        {\r\n            \"ParameterKey\": \"Environment\",\r\n            \"DefaultValue\": \"sandbox\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ExpirationUtc\",\r\n            \"DefaultValue\": \"2026-09-30\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"DesiredCount\",\r\n            \"DefaultValue\": \"1\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"AppTaskSize\",\r\n            \"DefaultValue\": \"256-512\",\r\n            \"NoEcho\": false,\r\n            \"Description\": \"Valid Fargate CPU-memory pair for each application task.\"\r\n        },\r\n        {\r\n            \"ParameterKey\": \"AssignPublicIp\",\r\n            \"DefaultValue\": \"ENABLED\",\r\n            \"NoEcho\": false\r\n        }\r\n    ],\r\n    \"Description\": \"ECS Fargate task definitions and Service Connect services for the OTEL Lab.\"\r\n}"
+        }
+      ]
+    },
+    {
+      "template": "C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\04-security-observability.yaml",
+      "checks": [
+        {
+          "tool": "PowerShell-file-read",
+          "status": "VERIFIED",
+          "output": "04-security-observability.yaml non-empty (11605 bytes)"
+        },
+        {
+          "tool": "cfn-lint",
+          "status": "BLOCKED",
+          "output": "cfn-lint no esta instalado; no se instala automaticamente."
+        },
+        {
+          "tool": "aws cloudformation validate-template",
+          "status": "VERIFIED",
+          "output": "{\r\n    \"Parameters\": [\r\n        {\r\n            \"ParameterKey\": \"Owner\",\r\n            \"DefaultValue\": \"observability-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ProjectName\",\r\n            \"DefaultValue\": \"otel-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"EnableCloudTrail\",\r\n            \"DefaultValue\": \"false\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"Environment\",\r\n            \"DefaultValue\": \"sandbox\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"EnableSecurityHub\",\r\n            \"DefaultValue\": \"false\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ExpirationUtc\",\r\n            \"DefaultValue\": \"2026-09-30\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"LogRetentionDays\",\r\n            \"DefaultValue\": \"3\",\r\n            \"NoEcho\": false\r\n        }\r\n    ],\r\n    \"Description\": \"VPC Flow Logs, CloudTrail and optional Security Hub for the OTEL Lab sandbox.\",\r\n    \"Capabilities\": [\r\n        \"CAPABILITY_NAMED_IAM\"\r\n    ],\r\n    \"CapabilitiesReason\": \"The following resource(s) require capabilities: [AWS::IAM::Role]\"\r\n}"
+        }
+      ]
+    },
+    {
+      "template": "C:\\Users\\User\\Desktop\\otel-observability-lab\\infra\\aws\\cloudformation\\05-cost-guard.yaml",
+      "checks": [
+        {
+          "tool": "PowerShell-file-read",
+          "status": "VERIFIED",
+          "output": "05-cost-guard.yaml non-empty (7210 bytes)"
+        },
+        {
+          "tool": "cfn-lint",
+          "status": "BLOCKED",
+          "output": "cfn-lint no esta instalado; no se instala automaticamente."
+        },
+        {
+          "tool": "aws cloudformation validate-template",
+          "status": "VERIFIED",
+          "output": "{\r\n    \"Parameters\": [\r\n        {\r\n            \"ParameterKey\": \"Owner\",\r\n            \"DefaultValue\": \"observability-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ProjectName\",\r\n            \"DefaultValue\": \"otel-lab\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"Environment\",\r\n            \"DefaultValue\": \"sandbox\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"ExpirationUtc\",\r\n            \"DefaultValue\": \"2026-09-30\",\r\n            \"NoEcho\": false\r\n        },\r\n        {\r\n            \"ParameterKey\": \"LogRetentionDays\",\r\n            \"DefaultValue\": \"3\",\r\n            \"NoEcho\": false\r\n        }\r\n    ],\r\n    \"Description\": \"Budget SNS target that idempotently stops the OTEL Lab ECS services and RDS instance.\",\r\n    \"Capabilities\": [\r\n        \"CAPABILITY_NAMED_IAM\"\r\n    ],\r\n    \"CapabilitiesReason\": \"The following resource(s) require capabilities: [AWS::IAM::Role]\"\r\n}"
+        }
+      ]
+    }
+  ],
+  "cfnGuard": "BLOCKED_NOT_INSTALLED",
+  "note": "cfn-guard requiere un archivo de reglas explícito; no se inventan reglas ni resultados."
+}

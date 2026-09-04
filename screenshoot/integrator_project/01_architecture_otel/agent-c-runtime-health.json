@@ -1,0 +1,84 @@
+{
+  "evidence": "Agente C — salud y validación runtime local",
+  "timestamp_utc": "2026-09-03T01:37:27.4107389Z",
+  "environment": "local",
+  "command": "scripts/local/collect-health.ps1",
+  "result": "PASS",
+  "checks": [
+    {
+      "name": "Collector health endpoint",
+      "status": "PASS",
+      "detail": "200 http://localhost:13133/"
+    },
+    {
+      "name": "Prometheus API",
+      "status": "PASS",
+      "detail": "200 http://localhost:9090/api/v1/status/config"
+    },
+    {
+      "name": "Grafana API",
+      "status": "PASS",
+      "detail": "200 http://localhost:3000/api/health"
+    },
+    {
+      "name": "Jaeger UI",
+      "status": "PASS",
+      "detail": "200 http://localhost:16686/"
+    },
+    {
+      "name": "Loki readiness",
+      "status": "PASS",
+      "detail": "200 http://localhost:3100/ready"
+    },
+    {
+      "name": "Security simulator",
+      "status": "PASS",
+      "detail": "200 http://localhost:9464/healthz"
+    },
+    {
+      "name": "service-a health",
+      "status": "PASS",
+      "detail": "200 http://localhost:8000/health"
+    },
+    {
+      "name": "service-b health",
+      "status": "PASS",
+      "detail": "200 http://localhost:8001/health"
+    },
+    {
+      "name": "data-service health",
+      "status": "PASS",
+      "detail": "200 http://localhost:8002/health"
+    },
+    {
+      "name": "Prometheus scrape targets",
+      "status": "PASS",
+      "detail": "active=3; down=0"
+    },
+    {
+      "name": "Prometheus recording/alert rules",
+      "status": "PASS",
+      "detail": "groups=3; rules=22"
+    },
+    {
+      "name": "promtool check config",
+      "status": "PASS",
+      "detail": "Checking /etc/prometheus/prometheus.yml\r\n  SUCCESS: 2 rule files found\r\n SUCCESS: /etc/prometheus/prometheus.yml is valid prometheus config file syntax\r\n\r\nChecking /etc/prometheus/rules/alerts.rules.yml\r\n  SUCCESS: 7 rules found\r\n\r\nChecking /etc/prometheus/rules/observability.rules.yml\r\n  SUCCESS: 15 rules found"
+    },
+    {
+      "name": "promtool check rules",
+      "status": "PASS",
+      "detail": "Checking /etc/prometheus/rules/observability.rules.yml\r\n  SUCCESS: 15 rules found\r\n\r\nChecking /etc/prometheus/rules/alerts.rules.yml\r\n  SUCCESS: 7 rules found"
+    },
+    {
+      "name": "Collector config validate",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "limitations": [
+    "La comprobación es local; no demuestra despliegue AWS.",
+    "Las señales de seguridad/red son simuladas y están etiquetadas telemetry_scope=simulated.",
+    "No se ejecutaron cambios destructivos ni se eliminaron volúmenes."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "experiment": "service-b-latency",
+  "environment": "local",
+  "telemetry_scope": "local-executed",
+  "injection_started_utc": "2026-09-03T00:59:26.627552Z",
+  "recovery_started_utc": "2026-09-03T00:59:56.176444Z",
+  "requests": 38,
+  "errors": 0,
+  "error_rate": 0.0,
+  "latency_p99_seconds": 0.5510407,
+  "throughput_requests_per_second": 1.9,
+  "slo_latency_p99_seconds": 0.1,
+  "baseline": {
+    "error_rate": 0.0,
+    "sigma": 0.005,
+    "error_rate_plus_2_sigma": 0.01
+  },
+  "correlation_rule": "error_rate > baseline + 2*sigma AND latency_p99 > SLO",
+  "alert_actionable": false,
+  "mttd_seconds": null,
+  "trace_id": "a0fb424c31c9720ef9f57a29767c943c",
+  "trace_limitations": "Response trace_id is used when present; otherwise unknown and logs must be queried.",
+  "error_budget_consumed_ratio": 0.0,
+  "rollback_verified": true,
+  "measured_at_utc": "2026-09-03T01:00:11.408408+00:00",
+  "limitations": [
+    "p99 is calculated from captured HTTP samples; it is not a Prometheus server-side alert result.",
+    "The local baseline is supplied by the preflight window and is not learned during injection."
+  ]
+}

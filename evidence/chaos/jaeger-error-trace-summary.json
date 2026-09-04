@@ -1,0 +1,20 @@
+{
+  "trace_id": "92e1653aff0013f0b1fe25bcc8e5103a",
+  "backend": "Jaeger",
+  "services": ["service-a", "service-b"],
+  "total_spans": 14,
+  "root_operation": "service-a: GET /order/{order_id}",
+  "observed_error": "HTTP 502 / ReadTimeout while calling service-b",
+  "operations_observed": [
+    "order.business.validate",
+    "order.db.fetch",
+    "order.service_b.call",
+    "GET /inventory/{product_id}",
+    "inventory.business.validate",
+    "inventory.db.fetch",
+    "SELECT"
+  ],
+  "start_utc": "2026-08-31T04:38:13.542Z",
+  "root_http_status": 502,
+  "visual_evidence": "../../screenshots/chaos/05-chaos-jaeger-final-trace.png"
+}

@@ -1,0 +1,47 @@
+{
+  "fixture_type": "synthetic",
+  "windows": [
+    {
+      "service": "service-b",
+      "environment": "local-simulated",
+      "window_start": "2026-09-02T12:00:00Z",
+      "window_end": "2026-09-02T12:05:00Z",
+      "observed_error_rate": 0.01,
+      "baseline_mean": 0.01,
+      "baseline_sigma": 0.004,
+      "latency_p99_seconds": 0.12,
+      "slo_latency_p99_seconds": 0.5,
+      "trace_id": "unknown",
+      "ground_truth_incident": false,
+      "trace_resolution": "No request failure in this normal window"
+    },
+    {
+      "service": "service-b",
+      "environment": "local-simulated",
+      "window_start": "2026-09-02T12:10:00Z",
+      "window_end": "2026-09-02T12:15:00Z",
+      "observed_error_rate": 0.06,
+      "baseline_mean": 0.01,
+      "baseline_sigma": 0.03,
+      "latency_p99_seconds": 0.65,
+      "slo_latency_p99_seconds": 0.5,
+      "trace_id": "unknown",
+      "ground_truth_incident": false,
+      "trace_resolution": "Static threshold only; diagnostic query would be required"
+    },
+    {
+      "service": "data-service",
+      "environment": "local-simulated",
+      "window_start": "2026-09-02T12:20:00Z",
+      "window_end": "2026-09-02T12:25:00Z",
+      "observed_error_rate": 0.10,
+      "baseline_mean": 0.01,
+      "baseline_sigma": 0.01,
+      "latency_p99_seconds": 0.72,
+      "slo_latency_p99_seconds": 0.5,
+      "trace_id": "unknown",
+      "ground_truth_incident": true,
+      "trace_resolution": "Query Loki by service=data-service and status_code=503"
+    }
+  ]
+}

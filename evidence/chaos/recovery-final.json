@@ -1,0 +1,6966 @@
+{
+  "experiment_window": {
+    "started_utc": "2026-08-31T04:32:10.5531769+00:00",
+    "ended_utc": "2026-08-31T04:32:55.6495829+00:00",
+    "planned_duration_seconds": 45,
+    "actual_window_seconds": 45.0
+  },
+  "load": {
+    "vus": 5,
+    "interval_ms_per_worker": 250,
+    "endpoint": "http://localhost:8000/order/{ord-001..003}"
+  },
+  "metrics": {
+    "requests": 694,
+    "successful_2xx": 694,
+    "failed_or_non_2xx": 0,
+    "availability_pct": 100.0,
+    "error_rate_pct": 0.0,
+    "throughput_rps": 15.422,
+    "latency_p95_ms": 111.165,
+    "latency_p99_ms": 188.904,
+    "latency_avg_ms": 58.004
+  },
+  "requests": [
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:11.2543674+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 472.888,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:11.6549008+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 127.374,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:12.1391899+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 184.876,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:12.5261894+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 119.545,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:12.9320793+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 127.719,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:13.3378219+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 123.016,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:13.6379563+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 46.506,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:13.9450710+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 48.503,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:14.2403471+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.454,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:14.5361832+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.789,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:14.8520295+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.136,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:15.1759792+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 70.872,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:15.5089746+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 60.655,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:15.8713655+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 82.254,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:16.2252297+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 89.569,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:16.5515118+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 72.917,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:16.9063497+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 99.955,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:17.2560331+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 78.155,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:17.5755715+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.271,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:17.8718479+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.249,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:18.1692112+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.245,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:18.4668587+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.666,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:18.7591503+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.963,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:19.0554320+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.468,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:19.3511934+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.524,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:19.6509579+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.816,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:20.0027511+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 96.097,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:20.3248811+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.896,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:20.6451132+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 60.0,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:20.9553543+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.568,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:21.2686465+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.962,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:21.5862549+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.583,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:21.8836178+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.665,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:22.2183619+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 77.747,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:22.5390835+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.026,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:22.8302234+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.472,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:23.1461424+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.252,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:23.4411249+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.269,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:23.7710992+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.635,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:24.0863948+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 62.31,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:24.4479722+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 109.477,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:24.8366345+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 109.021,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:25.1325208+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.592,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:25.4215573+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.149,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:25.7354638+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.057,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:26.0456840+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.838,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:26.3362451+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.859,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:26.6448051+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.572,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:26.9346479+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.429,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:27.2432112+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.908,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:27.5563714+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.575,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:27.8520544+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.874,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:28.1463514+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.494,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:28.4433221+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.004,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:28.7647498+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 65.385,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:29.0842253+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.06,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:29.3778660+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.488,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:29.6687038+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.703,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:29.9932073+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 67.66,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:30.3090328+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.177,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:30.6012464+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.986,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:30.9127361+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.762,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:31.2306211+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.7,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:31.5265973+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.171,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:31.8210229+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.395,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:32.1231055+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.216,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:32.4549225+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.815,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:32.7792857+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 71.385,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:33.0902636+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.599,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:33.4049597+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.692,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:33.7109596+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 50.867,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:34.0306872+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.579,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:34.3643582+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 82.101,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:34.6801235+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.034,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:34.9715605+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.101,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:35.2819669+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.8,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:35.5950067+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.323,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:35.9212982+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 49.216,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:36.2221863+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.004,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:36.5190977+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.331,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:36.8178716+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.285,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:37.1227761+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 53.833,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:37.4196209+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.793,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:37.7249063+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 52.258,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:38.0389255+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.445,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:38.3506387+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.567,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:38.6517969+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.686,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:39.0284844+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 96.737,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:39.3455394+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.248,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:39.6423432+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.97,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:39.9354636+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.587,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:40.2637618+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 50.522,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:40.5942492+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.833,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:40.8884748+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.609,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:41.2045436+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 62.19,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:41.5538604+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 69.132,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:41.8872937+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 53.803,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:42.2067391+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.092,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:42.5007895+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.957,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:42.8225241+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 47.056,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:43.1539909+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 53.97,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:43.4823993+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 72.921,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:43.8313450+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 72.663,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:44.1396415+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.15,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:44.5001280+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 80.704,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:44.8511517+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 74.416,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:45.1706579+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.045,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:45.4969357+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 69.75,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:45.7926883+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.109,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:46.0896477+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.87,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:46.3847536+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.227,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:46.6993049+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.499,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:47.0042387+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.615,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:47.3421042+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 77.799,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:47.6814907+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 79.895,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:48.0021505+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.117,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:48.3018302+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.825,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:48.6222496+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 46.257,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:48.9466208+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 73.399,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:49.2657714+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 65.57,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:49.5527524+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.572,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:49.8715518+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.155,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:50.2311384+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 84.427,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:50.5486722+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.22,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:50.8415805+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.629,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:51.1469387+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 50.852,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:51.4716151+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.188,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:51.7839225+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 52.998,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:52.1169387+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.622,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:52.4152852+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.241,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:52.7564389+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 82.47,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:53.1267964+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 94.31,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:53.4162631+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.099,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:53.7307133+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.055,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:54.0449033+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.674,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:54.3645282+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 62.588,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:54.6837925+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.28,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:54.9725866+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.93,
+      "error": null
+    },
+    {
+      "worker": 1,
+      "timestamp": "2026-08-31T04:32:55.2804241+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.812,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:11.2543670+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 448.309,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:11.7112713+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 183.851,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:12.1430207+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 175.254,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:12.5537132+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 121.896,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:12.9578130+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 118.104,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:13.3869262+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 172.743,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:13.7547717+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 91.355,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:14.0456501+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.263,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:14.3751701+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 52.953,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:14.6832479+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 44.707,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:14.9753609+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.562,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:15.2983747+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 63.294,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:15.6109696+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.258,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:15.9244070+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.824,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:16.2426441+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.828,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:16.5882081+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 93.34,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:16.9678814+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 99.095,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:17.3511666+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 126.709,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:17.6893288+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 60.592,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:18.0048217+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 64.797,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:18.3421207+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.51,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:18.6410454+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 46.341,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:18.9794479+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.066,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:19.2763252+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.809,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:19.5699990+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.328,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:19.8795522+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.837,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:20.1891689+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.574,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:20.4847179+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.662,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:20.7879738+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 46.039,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:21.0765678+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.351,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:21.3782552+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.006,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:21.6965297+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.82,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:21.9924579+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.624,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:22.2926131+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.15,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:22.6066540+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 60.292,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:22.9370449+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 78.538,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:23.2608851+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 44.017,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:23.5716222+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 57.397,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:23.8868301+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 61.939,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:24.2072966+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 69.291,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:24.5533306+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 90.493,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:24.8873682+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 81.138,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:25.2160039+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 77.016,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:25.5256443+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.092,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:25.8217023+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.633,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:26.1263501+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 46.614,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:26.4348859+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 57.637,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:26.7513825+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 61.588,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:27.0785553+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 70.951,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:27.4219511+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 61.701,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:27.7370109+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.052,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:28.0593750+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 44.513,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:28.3870364+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 77.25,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:28.6798004+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.225,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:28.9902435+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 57.815,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:29.2857069+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.698,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:29.5973293+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.637,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:29.8881318+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.779,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:30.1870034+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.979,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:30.4838889+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.803,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:30.7793400+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.9,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:31.0759563+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.77,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:31.4009194+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 70.784,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:31.7350939+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 77.484,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:32.0775283+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 62.941,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:32.4120751+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.313,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:32.7478688+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.025,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:33.0579795+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.977,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:33.3449127+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.38,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:33.6308789+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.533,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:33.9463821+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.112,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:34.2611255+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.969,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:34.5490554+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.745,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:34.8698595+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.209,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:35.1585107+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.119,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:35.4813983+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.668,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:35.7995114+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.577,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:36.1105630+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.994,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:36.4374350+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 69.496,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:36.7314800+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.803,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:37.0410330+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.222,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:37.3503198+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.08,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:37.6615342+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.798,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:37.9686847+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.582,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:38.2844171+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.498,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:38.5937885+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.898,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:38.9852081+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 117.775,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:39.2758330+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.983,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:39.5867368+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.103,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:39.9027423+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.876,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:40.2464854+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 66.736,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:40.5651699+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.899,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:40.8700200+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 52.742,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:41.1867384+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.35,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:41.4845109+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.706,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:41.8166793+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 77.423,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:42.1146487+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.597,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:42.4051097+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.79,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:42.7172213+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.808,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:43.0391002+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 47.905,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:43.3512851+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.994,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:43.6383923+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.282,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:43.9515905+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.533,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:44.2704461+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 52.893,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:44.5747743+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 47.41,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:44.9100652+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.722,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:45.2263512+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 64.424,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:45.5706124+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 65.47,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:45.9076111+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 61.824,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:46.2535680+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 67.829,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:46.5876390+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 74.409,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:46.8839780+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.52,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:47.1954462+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.89,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:47.5082545+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 47.713,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:47.7946606+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.527,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:48.1067651+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.466,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:48.4188519+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.664,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:48.7202710+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.976,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:49.0550202+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.288,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:49.3472920+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.697,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:49.6624082+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.596,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:49.9650547+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.124,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:50.3427494+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 102.413,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:50.6492549+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 51.466,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:50.9590300+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 48.964,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:51.2859484+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 46.854,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:51.5823951+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.638,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:51.8860292+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 44.847,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:52.2074948+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.85,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:52.5133939+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.696,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:52.8142151+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 46.964,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:53.1512173+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 50.509,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:53.4793083+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 52.737,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:53.7993346+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.865,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:54.1124500+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.723,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:54.4681616+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 103.673,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:54.7651957+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.616,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:55.0853721+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.952,
+      "error": null
+    },
+    {
+      "worker": 2,
+      "timestamp": "2026-08-31T04:32:55.3788049+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.02,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:11.2550438+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 402.959,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:11.7160355+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 188.472,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:12.2145795+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 246.53,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:12.5762899+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 96.665,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:12.9765556+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 117.382,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:13.4141735+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 182.643,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:13.7845298+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 90.066,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:14.1189848+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 74.888,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:14.4574758+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.285,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:14.7745106+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.731,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:15.0758896+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 48.917,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:15.4003755+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.196,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:15.7277723+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 46.868,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:16.0377734+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.082,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:16.3378399+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.768,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:16.6548371+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.78,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:16.9894497+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 57.179,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:17.3511570+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 111.142,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:17.7049926+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 76.615,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:18.0222710+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 66.419,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:18.3592585+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.674,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:18.6602187+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 49.696,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:18.9941186+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.034,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:19.2991948+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 50.507,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:19.6151533+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.801,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:19.9854689+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 94.836,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:20.2742065+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.294,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:20.6082464+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 52.716,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:20.9022771+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.78,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:21.2339939+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.24,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:21.5229423+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.216,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:21.8301191+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 31.508,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:22.1939975+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 83.552,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:22.4873022+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.867,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:22.7981528+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.543,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:23.1121739+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.478,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:23.4236835+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.957,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:23.7455258+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.053,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:24.1061076+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 82.003,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:24.4740732+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 87.154,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:24.7930981+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 65.483,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:25.0794091+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.445,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:25.3895528+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.963,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:25.7019335+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.217,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:26.0156121+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.896,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:26.3040286+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.521,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:26.6137577+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.591,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:26.9013641+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.544,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:27.2129253+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.404,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:27.5076497+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.292,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:27.8029188+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.666,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:28.1014412+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.558,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:28.4050791+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 48.674,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:28.7464814+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 62.283,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:29.0661608+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.726,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:29.3592480+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.168,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:29.6532863+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.603,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:29.9784360+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 52.662,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:30.2800085+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.94,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:30.5667399+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.243,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:30.8502062+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.166,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:31.1622540+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.135,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:31.4837425+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.727,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:31.7787504+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.306,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:32.1037183+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 73.747,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:32.4362157+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 78.529,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:32.7625676+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 69.734,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:33.0757590+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.822,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:33.3898759+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.71,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:33.6967968+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 52.014,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:34.0132872+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.087,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:34.3410901+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 74.49,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:34.6332451+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.832,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:34.9283617+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.347,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:35.2213380+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.022,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:35.5337374+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.735,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:35.8474952+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.617,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:36.1463547+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.794,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:36.4633977+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 64.605,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:36.7987406+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.538,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:37.1084066+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.646,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:37.4022241+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.688,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:37.7117103+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.159,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:38.0254589+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.874,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:38.3350608+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.658,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:38.6333816+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.731,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:39.0129510+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 115.606,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:39.3284050+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.354,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:39.6250140+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.423,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:39.9196177+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.891,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:40.2388953+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.122,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:40.5275320+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.085,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:40.8401916+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.584,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:41.1319697+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.125,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:41.4456421+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.973,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:41.7471251+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.31,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:42.0544170+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.09,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:42.3415175+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.242,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:42.6524226+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 31.892,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:42.9679815+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.834,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:43.2592275+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.624,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:43.5792387+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.902,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:43.8835328+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 47.704,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:44.2209562+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 49.762,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:44.5541943+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.931,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:44.8869807+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 78.608,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:45.2421778+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 80.275,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:45.5884202+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 67.999,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:45.9249304+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 63.822,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:46.2697205+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 68.482,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:46.6365048+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 107.614,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:46.9358229+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.223,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:47.2522304+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 50.226,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:47.5670817+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.561,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:47.8616915+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.431,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:48.1561939+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.684,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:48.4555540+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 44.125,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:48.7745549+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.334,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:49.0734807+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 48.658,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:49.3639289+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.382,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:49.6797781+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.457,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:49.9814614+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.956,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:50.4220709+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 181.61,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:50.7542581+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 67.046,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:51.1231575+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 89.567,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:51.4191265+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.681,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:51.7632539+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 63.293,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:52.1015013+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.805,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:52.3964120+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.498,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:52.7544528+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 80.429,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:53.0978241+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 65.316,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:53.3862738+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.168,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:53.6827328+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.987,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:53.9866758+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.504,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:54.2845342+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 44.279,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:54.6018021+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.547,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:54.8951052+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.012,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:55.2022246+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.31,
+      "error": null
+    },
+    {
+      "worker": 3,
+      "timestamp": "2026-08-31T04:32:55.5104154+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.273,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:11.2552851+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 376.27,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:11.7169251+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 187.908,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:12.2151253+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 194.643,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:12.6046837+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 106.12,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:12.9953747+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 126.933,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:13.4160758+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 167.752,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:13.8125635+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 116.786,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:14.1377427+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 62.938,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:14.4728266+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.123,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:14.7992455+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 50.668,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:15.1415164+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 67.651,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:15.4793336+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 60.824,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:15.8316628+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 73.626,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:16.1846520+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 80.375,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:16.5493827+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 85.479,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:16.9334304+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 126.236,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:17.3172908+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 108.479,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:17.6703679+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 73.122,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:17.9861052+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 61.786,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:18.2798048+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.138,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:18.5686743+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.966,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:18.8839550+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.517,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:19.1799175+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.006,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:19.4940568+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.932,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:19.7841489+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.893,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:20.0962752+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.804,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:20.3915576+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.918,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:20.7031467+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.863,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:21.0060997+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.734,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:21.3278809+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.24,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:21.6225974+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.452,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:21.9192874+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.035,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:22.2546764+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 83.241,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:22.5922382+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 61.135,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:22.9229356+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 79.73,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:23.2410850+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.369,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:23.5542881+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.272,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:23.8696880+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.779,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:24.1873052+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 65.189,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:24.5368808+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 74.006,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:24.8861866+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 95.889,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:25.1979162+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.895,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:25.5082876+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 57.437,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:25.8044105+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.902,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:26.1119975+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.175,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:26.4516105+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.104,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:26.7666502+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 61.4,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:27.0927328+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 69.682,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:27.4083682+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 64.213,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:27.7230004+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.374,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:28.0409738+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.927,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:28.3539438+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.517,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:28.6607500+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.15,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:28.9747443+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 57.636,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:29.2683720+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.91,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:29.5815067+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.041,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:29.8705827+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.044,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:30.1673434+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.491,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:30.4672698+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.711,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:30.7630335+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.5,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:31.0585706+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.024,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:31.3819746+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 66.921,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:31.7181852+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 60.602,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:32.0579230+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.209,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:32.3474226+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.501,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:32.6362853+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.587,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:32.9474388+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.737,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:33.2601788+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.253,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:33.5694010+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.628,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:33.8810282+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.321,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:34.1964205+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.135,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:34.4875522+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.277,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:34.8023064+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.628,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:35.0988379+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.05,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:35.4276400+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.331,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:35.7211679+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.132,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:36.0307531+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.65,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:36.3450715+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.952,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:36.6368843+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.681,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:36.9503745+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.615,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:37.2432650+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.53,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:37.5547153+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.224,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:37.8604933+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.543,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:38.1790247+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.536,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:38.4755099+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.164,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:38.7940615+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.418,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:39.0935100+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.973,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:39.4171635+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 67.718,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:39.7351395+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.478,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:40.0372940+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 46.185,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:40.3369060+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 46.445,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:40.6538482+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.271,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:40.9634566+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.867,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:41.2623996+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.16,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:41.5875248+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 72.069,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:41.9219630+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 57.33,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:42.2448107+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.757,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:42.5364479+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.343,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:42.8518911+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.92,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:43.1864799+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.602,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:43.5177276+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 76.375,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:43.8639035+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 89.514,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:44.1593504+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.192,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:44.5284322+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 93.25,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:44.8940188+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 85.341,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:45.2075401+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 61.683,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:45.5504179+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 92.398,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:45.8902888+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 60.633,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:46.2369681+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 66.137,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:46.6178770+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 104.651,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:46.9191808+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.452,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:47.2691464+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 67.077,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:47.6056145+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 81.269,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:47.9384907+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.54,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:48.2519104+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 57.662,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:48.6000903+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 67.018,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:48.9466677+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 89.733,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:49.2514498+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 51.221,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:49.5691883+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.812,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:49.8854206+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.111,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:50.2976606+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 135.773,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:50.6280358+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 62.399,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:50.9372401+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.671,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:51.2311948+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.927,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:51.5320893+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.217,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:51.8683732+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.321,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:52.1661101+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.709,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:52.4656536+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.086,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:52.7957783+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 74.973,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:53.1346057+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 86.542,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:53.4641292+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 53.27,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:53.7803100+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.13,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:54.0950471+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.4,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:54.4328313+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 84.246,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:54.7461550+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 57.792,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:55.0394990+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.862,
+      "error": null
+    },
+    {
+      "worker": 4,
+      "timestamp": "2026-08-31T04:32:55.3285089+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.12,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:11.2543670+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 295.62,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:11.6404894+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 113.124,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:12.0352306+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 135.561,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:12.4268117+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 102.815,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:12.7394640+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.602,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:13.0444730+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 50.019,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:13.4348749+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 101.021,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:13.8300920+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 120.284,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:14.1517423+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 61.447,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:14.4873658+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 57.033,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:14.8352326+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 70.892,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:15.1583830+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 69.218,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:15.4930701+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 60.298,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:15.8513406+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 77.735,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:16.2182903+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 112.839,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:16.5708532+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 75.981,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:16.9324848+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 110.749,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:17.2991685+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 90.272,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:17.5945871+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.656,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:17.9177318+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 69.28,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:18.2180064+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.17,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:18.5091496+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.292,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:18.8063640+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.76,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:19.1044423+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.974,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:19.3985954+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.289,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:19.6954494+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.478,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:20.0178582+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 64.84,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:20.3461142+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 47.486,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:20.6619645+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 60.354,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:20.9872869+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 74.919,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:21.2881964+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 48.359,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:21.6046542+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.776,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:21.9026120+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.795,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:22.2366634+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 81.1,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:22.5747726+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.729,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:22.8857683+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.101,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:23.1798790+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.524,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:23.4926917+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 57.288,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:23.7902897+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.239,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:24.1225730+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 78.27,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:24.5124900+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 111.207,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:24.8554270+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 65.333,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:25.1794362+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 71.106,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:25.4947512+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.098,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:25.7867474+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.499,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:26.1058128+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 63.418,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:26.4170347+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.228,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:26.7334779+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 59.388,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:27.0639023+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.052,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:27.3937837+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 49.279,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:27.7062071+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.986,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:28.0224062+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.368,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:28.3341485+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 55.322,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:28.6319092+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.8,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:28.9244525+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.841,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:29.2143584+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.361,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:29.5284535+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.813,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:29.8205517+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.452,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:30.1289891+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.038,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:30.4139313+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.366,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:30.7263989+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.045,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:31.0411799+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.068,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:31.3606821+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 61.532,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:31.6986007+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.358,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:31.9904455+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.913,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:32.2835113+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.25,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:32.5740366+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.275,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:32.8682067+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.904,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:33.1509993+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.638,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:33.4625960+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.718,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:33.7742971+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.127,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:34.0876492+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.238,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:34.4075138+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 47.209,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:34.7242993+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.32,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:35.0206148+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.252,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:35.3286380+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.082,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:35.6464113+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.3,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:35.9375673+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.017,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:36.2418123+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.966,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:36.5626510+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.085,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:36.8554426+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.061,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:37.1673837+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.062,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:37.4768831+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.783,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:37.7855611+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.868,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:38.0985712+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.771,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:38.4139653+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.247,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:38.7076051+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.886,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:39.0478451+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 88.777,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:39.3975140+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 94.661,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:39.7178597+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.282,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:40.0176471+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.998,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:40.3173474+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.095,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:40.6123557+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.975,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:40.9025678+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.584,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:41.2206162+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 62.85,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:41.5712512+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 71.188,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:41.9054896+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.82,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:42.2253288+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.624,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:42.5180533+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.511,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:42.8363581+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 60.851,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:43.1718455+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.655,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:43.5011664+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 76.11,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:43.8148262+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.286,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:44.1086047+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.356,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:44.4781598+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 105.388,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:44.7707612+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.766,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:45.0940989+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.952,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:45.3848496+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.341,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:45.7041463+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 43.87,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:46.0257631+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.864,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:46.3203386+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.555,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:46.6784762+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 101.519,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:46.9836657+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 54.26,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:47.3256204+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 61.18,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:47.6640437+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 62.343,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:47.9574455+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 42.736,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:48.2828739+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 73.411,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:48.6025148+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 69.434,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:48.9130455+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 56.084,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:49.2023139+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.085,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:49.4854773+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 32.895,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:49.7978273+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 33.368,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:50.0904618+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 37.337,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:50.4477647+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 103.235,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:50.7752650+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 50.972,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:51.0931688+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 58.675,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:51.4004698+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 52.865,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:51.7339009+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 80.867,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:52.0494396+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.208,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:52.3428920+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.308,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:52.6311534+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 35.324,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:52.9526956+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 45.304,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:53.2443209+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.874,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:53.5545608+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 34.771,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:53.8721814+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 36.566,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:54.1860121+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 38.429,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:54.4861512+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 44.987,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:54.8070539+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 40.311,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:55.1019166+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 41.45,
+      "error": null
+    },
+    {
+      "worker": 5,
+      "timestamp": "2026-08-31T04:32:55.3934270+00:00",
+      "status": 200,
+      "http_status_code": 200,
+      "outcome": "success",
+      "error_type": null,
+      "latency_ms": 39.263,
+      "error": null
+    }
+  ]
+}

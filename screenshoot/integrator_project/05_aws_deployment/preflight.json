@@ -1,0 +1,492 @@
+{
+  "generatedAtUtc": "2026-09-03T21:40:08.7211646Z",
+  "mode": "read-only-preflight",
+  "context": {
+    "AccountId": "741368364261",
+    "Arn": "arn:aws:iam::741368364261:user/admin-josemorse",
+    "Region": "us-east-1",
+    "Profile": "admin-josemorse"
+  },
+  "results": [
+    {
+      "Check": "aws-version",
+      "Status": "VERIFIED",
+      "Detail": "aws-cli/2.36.19 Python/3.14.6 Windows/11 exe/AMD64"
+    },
+    {
+      "Check": "identity-region",
+      "Status": "VERIFIED",
+      "Detail": {
+        "AccountId": "741368364261",
+        "Arn": "arn:aws:iam::741368364261:user/admin-josemorse",
+        "Region": "us-east-1",
+        "Profile": "admin-josemorse"
+      }
+    },
+    {
+      "Check": "aws-configure-list",
+      "Status": "VERIFIED",
+      "Detail": "NAME       : VALUE                    : TYPE             : LOCATION\r\nprofile    : admin-josemorse          : manual           : --profile\r\naccess_key : [REDACTED]\nsecret_key : [REDACTED]\nregion     : us-east-1                : config-file      : ~/.aws/config"
+    },
+    {
+      "Check": "ecr-read",
+      "Status": "VERIFIED",
+      "Detail": {
+        "repositories": [
+          {
+            "repositoryArn": "arn:aws:ecr:us-east-1:741368364261:repository/otel-lab-sandbox-data-service",
+            "registryId": "741368364261",
+            "repositoryName": "otel-lab-sandbox-data-service",
+            "repositoryUri": "741368364261.dkr.ecr.us-east-1.amazonaws.com/otel-lab-sandbox-data-service",
+            "createdAt": "2026-09-02T20:54:29.507-05:00",
+            "imageTagMutability": "IMMUTABLE",
+            "imageScanningConfiguration": {
+              "scanOnPush": true
+            },
+            "encryptionConfiguration": {
+              "encryptionType": "AES256"
+            }
+          }
+        ],
+        "NextToken": "[REDACTED]"
+      }
+    },
+    {
+      "Check": "ecs-read",
+      "Status": "VERIFIED",
+      "Detail": {
+        "clusterArns": [
+          "arn:aws:ecs:us-east-1:741368364261:cluster/otel-lab-sandbox"
+        ]
+      }
+    },
+    {
+      "Check": "rds-read",
+      "Status": "VERIFIED",
+      "Detail": {
+        "DBInstances": [
+          {
+            "DBInstanceIdentifier": "otel-lab-sandbox-postgres",
+            "DBInstanceClass": "db.t4g.micro",
+            "Engine": "postgres",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "app",
+            "DBName": "observability",
+            "Endpoint": {
+              "Address": "otel-lab-sandbox-postgres.cgnqkuqyiqd1.us-east-1.rds.amazonaws.com",
+              "Port": 5432,
+              "HostedZoneId": "Z2R2ITUGPM61AM"
+            },
+            "AllocatedStorage": 20,
+            "InstanceCreateTime": "2026-09-02T20:59:35.065-05:00",
+            "PreferredBackupWindow": "05:06-05:36",
+            "BackupRetentionPeriod": 1,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+              {
+                "VpcSecurityGroupId": "sg-0e42584916ffc9ba7",
+                "Status": "active"
+              }
+            ],
+            "DBParameterGroups": [
+              {
+                "DBParameterGroupName": "default.postgres18",
+                "ParameterApplyStatus": "in-sync"
+              }
+            ],
+            "AvailabilityZone": "us-east-1a",
+            "DBSubnetGroup": {
+              "DBSubnetGroupName": "otel-lab-sandbox-02-data-dbsubnetgroup-dfxizjxg6596",
+              "DBSubnetGroupDescription": "Private subnets for the OTEL Lab PostgreSQL instance.",
+              "VpcId": "vpc-0316b825144c9ced3",
+              "SubnetGroupStatus": "Complete",
+              "Subnets": [
+                {
+                  "SubnetIdentifier": "subnet-0f9f5572e25b2a583",
+                  "SubnetAvailabilityZone": {
+                    "Name": "us-east-1a"
+                  },
+                  "SubnetOutpost": {},
+                  "SubnetStatus": "Active"
+                },
+                {
+                  "SubnetIdentifier": "subnet-0e784c32ed1b8c3bc",
+                  "SubnetAvailabilityZone": {
+                    "Name": "us-east-1b"
+                  },
+                  "SubnetOutpost": {},
+                  "SubnetStatus": "Active"
+                }
+              ]
+            },
+            "PreferredMaintenanceWindow": "thu:10:15-thu:10:45",
+            "UpgradeRolloutOrder": "second",
+            "PendingModifiedValues": {},
+            "LatestRestorableTime": "2026-09-03T16:32:45-05:00",
+            "MultiAZ": false,
+            "EngineVersion": "18.3",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "Iops": 3000,
+            "StorageThroughput": 125,
+            "OptionGroupMemberships": [
+              {
+                "OptionGroupName": "default:postgres-18",
+                "Status": "in-sync"
+              }
+            ],
+            "PubliclyAccessible": false,
+            "StorageType": "gp3",
+            "DbInstancePort": 0,
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-1:741368364261:key/164ed0c1-b321-4eed-9ceb-d03231429885",
+            "DbiResourceId": "db-XLOCFHVRI7B4PJYF6IBAQMIVLY",
+            "CACertificateIdentifier": "rds-ca-rsa2048-g1",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": true,
+            "MonitoringInterval": 0,
+            "DBInstanceArn": "arn:aws:rds:us-east-1:741368364261:db:otel-lab-sandbox-postgres",
+            "IAMDatabaseAuthenticationEnabled": false,
+            "DatabaseInsightsMode": "standard",
+            "PerformanceInsightsEnabled": false,
+            "EnabledCloudwatchLogsExports": [
+              "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "TagList": [
+              {
+                "Key": "Project",
+                "Value": "otel-lab"
+              },
+              {
+                "Key": "aws:cloudformation:stack-name",
+                "Value": "otel-lab-sandbox-02-data"
+              },
+              {
+                "Key": "Owner",
+                "Value": "observability-lab"
+              },
+              {
+                "Key": "aws:cloudformation:stack-id",
+                "Value": "arn:aws:cloudformation:us-east-1:741368364261:stack/otel-lab-sandbox-02-data/94ab6bc0-a73a-11f1-8b9f-0affd726c209"
+              },
+              {
+                "Key": "ExpiresOn",
+                "Value": "2026-09-30"
+              },
+              {
+                "Key": "Environment",
+                "Value": "sandbox"
+              },
+              {
+                "Key": "aws:cloudformation:logical-id",
+                "Value": "Database"
+              }
+            ],
+            "CustomerOwnedIpEnabled": false,
+            "NetworkType": "IPV4",
+            "ActivityStreamStatus": "stopped",
+            "BackupTarget": "region",
+            "CertificateDetails": {
+              "CAIdentifier": "rds-ca-rsa2048-g1",
+              "ValidTill": "2027-09-02T20:58:16-05:00"
+            },
+            "DedicatedLogVolume": false,
+            "IsStorageConfigUpgradeAvailable": false,
+            "EngineLifecycleSupport": "open-source-rds-extended-support"
+          }
+        ]
+      }
+    },
+    {
+      "Check": "cloudwatch-read",
+      "Status": "VERIFIED",
+      "Detail": {
+        "Metrics": [
+          {
+            "Namespace": "OTELLab/Application",
+            "MetricName": "app_request_duration_seconds",
+            "Dimensions": [
+              {
+                "Name": "http.status_code",
+                "Value": "502"
+              },
+              {
+                "Name": "http.route",
+                "Value": "/order/{order_id}"
+              },
+              {
+                "Name": "http.method",
+                "Value": "GET"
+              },
+              {
+                "Name": "OTelLib",
+                "Value": "service-a"
+              }
+            ]
+          }
+        ],
+        "NextToken": "[REDACTED]"
+      }
+    },
+    {
+      "Check": "service-quotas-ecs-read",
+      "Status": "VERIFIED",
+      "Detail": {
+        "Quotas": [
+          {
+            "ServiceCode": "ecs",
+            "ServiceName": "Amazon Elastic Container Service (Amazon ECS)",
+            "QuotaArn": "arn:aws:servicequotas:us-east-1:741368364261:ecs/L-35D944A8",
+            "QuotaCode": "L-35D944A8",
+            "QuotaName": "Burst rate of cluster read actions (or bucket maximum capacity)",
+            "Value": 50.0,
+            "Unit": "None",
+            "Adjustable": true,
+            "GlobalQuota": false,
+            "QuotaAppliedAtLevel": "ACCOUNT",
+            "Description": "The maximum burst number of requests per second for cluster read actions."
+          },
+          {
+            "ServiceCode": "ecs",
+            "ServiceName": "Amazon Elastic Container Service (Amazon ECS)",
+            "QuotaArn": "arn:aws:servicequotas:us-east-1:741368364261:ecs/L-A2DBEAC1",
+            "QuotaCode": "L-A2DBEAC1",
+            "QuotaName": "Sustained rate of service deployment read actions (or bucket refill rate)",
+            "Value": 20.0,
+            "Unit": "None",
+            "Adjustable": true,
+            "GlobalQuota": false,
+            "QuotaAppliedAtLevel": "ACCOUNT",
+            "Description": "The maximum sustained number of requests per second for service deployment and revision read actions."
+          },
+          {
+            "ServiceCode": "ecs",
+            "ServiceName": "Amazon Elastic Container Service (Amazon ECS)",
+            "QuotaArn": "arn:aws:servicequotas:us-east-1:741368364261:ecs/L-D5AA0F33",
+            "QuotaCode": "L-D5AA0F33",
+            "QuotaName": "Sustained rate of cluster modify actions (or bucket refill rate)",
+            "Value": 1.0,
+            "Unit": "None",
+            "Adjustable": true,
+            "GlobalQuota": false,
+            "QuotaAppliedAtLevel": "ACCOUNT",
+            "Description": "The maximum sustained number of requests per second for cluster modify actions."
+          },
+          {
+            "ServiceCode": "ecs",
+            "ServiceName": "Amazon Elastic Container Service (Amazon ECS)",
+            "QuotaArn": "arn:aws:servicequotas:us-east-1:741368364261:ecs/L-62DC78F9",
+            "QuotaCode": "L-62DC78F9",
+            "QuotaName": "Burst rate of cluster modify actions (or bucket maximum capacity)",
+            "Value": 20.0,
+            "Unit": "None",
+            "Adjustable": true,
+            "GlobalQuota": false,
+            "QuotaAppliedAtLevel": "ACCOUNT",
+            "Description": "The maximum burst number of requests per second for cluster modify actions."
+          },
+          {
+            "ServiceCode": "ecs",
+            "ServiceName": "Amazon Elastic Container Service (Amazon ECS)",
+            "QuotaArn": "arn:aws:servicequotas:us-east-1:741368364261:ecs/L-A2AA9478",
+            "QuotaCode": "L-A2AA9478",
+            "QuotaName": "Burst rate of service deployment read actions (or bucket maximum capacity)",
+            "Value": 50.0,
+            "Unit": "None",
+            "Adjustable": true,
+            "GlobalQuota": false,
+            "QuotaAppliedAtLevel": "ACCOUNT",
+            "Description": "The maximum burst number of requests per second for service deployment and revision read actions."
+          }
+        ],
+        "NextToken": "[REDACTED]"
+      }
+    },
+    {
+      "Check": "service-quotas-rds-read",
+      "Status": "VERIFIED",
+      "Detail": {
+        "Quotas": [
+          {
+            "ServiceCode": "rds",
+            "ServiceName": "Amazon Relational Database Service (Amazon RDS)",
+            "QuotaArn": "arn:aws:servicequotas:us-east-1:741368364261:rds/L-9372BAB3",
+            "QuotaCode": "L-9372BAB3",
+            "QuotaName": "Custom endpoints per DB cluster",
+            "Value": 5.0,
+            "Unit": "None",
+            "Adjustable": true,
+            "GlobalQuota": false,
+            "UsageMetric": {
+              "MetricNamespace": "AWS/Usage",
+              "MetricName": "ResourceCount",
+              "MetricDimensions": {
+                "Class": "None",
+                "Resource": "CustomEndpointsPerDBCluster",
+                "Service": "RDS",
+                "Type": "Resource"
+              },
+              "MetricStatisticRecommendation": "Maximum"
+            },
+            "Period": {
+              "PeriodValue": 1,
+              "PeriodUnit": "HOUR"
+            },
+            "QuotaAppliedAtLevel": "ACCOUNT",
+            "Description": "The maximum number of custom endpoints that you can create per Aurora DB cluster in this account in the current Region. This value reflects the highest number of custom endpoints in a DB cluster in the account. Other DB clusters in the account might have a lower number of custom endpoints."
+          },
+          {
+            "ServiceCode": "rds",
+            "ServiceName": "Amazon Relational Database Service (Amazon RDS)",
+            "QuotaArn": "arn:aws:servicequotas:us-east-1:741368364261:rds/L-E79969BF",
+            "QuotaCode": "L-E79969BF",
+            "QuotaName": "Data API maximum concurrent requests",
+            "Value": 500.0,
+            "Unit": "None",
+            "Adjustable": false,
+            "GlobalQuota": false,
+            "QuotaAppliedAtLevel": "ACCOUNT",
+            "Description": "The maximum number of Data API requests to an Aurora Serverless v1 DB cluster that use the same secret and can be processed at the same time. Additional requests are queued and processed as in-process requests complete."
+          },
+          {
+            "ServiceCode": "rds",
+            "ServiceName": "Amazon Relational Database Service (Amazon RDS)",
+            "QuotaArn": "arn:aws:servicequotas:us-east-1:741368364261:rds/L-D87A28C7",
+            "QuotaCode": "L-D87A28C7",
+            "QuotaName": "Data API HTTP request body size",
+            "Value": 4.0,
+            "Unit": "Megabytes",
+            "Adjustable": false,
+            "GlobalQuota": false,
+            "QuotaAppliedAtLevel": "ACCOUNT",
+            "Description": "The maximum size allowed for the HTTP request body."
+          },
+          {
+            "ServiceCode": "rds",
+            "ServiceName": "Amazon Relational Database Service (Amazon RDS)",
+            "QuotaArn": "arn:aws:servicequotas:us-east-1:741368364261:rds/L-7ADDB58A",
+            "QuotaCode": "L-7ADDB58A",
+            "QuotaName": "Total storage for all DB instances",
+            "Value": 100000.0,
+            "Unit": "None",
+            "Adjustable": true,
+            "GlobalQuota": false,
+            "UsageMetric": {
+              "MetricNamespace": "AWS/Usage",
+              "MetricName": "ResourceCount",
+              "MetricDimensions": {
+                "Class": "None",
+                "Resource": "AllocatedStorage",
+                "Service": "RDS",
+                "Type": "Resource"
+              },
+              "MetricStatisticRecommendation": "Maximum"
+            },
+            "Period": {
+              "PeriodValue": 1,
+              "PeriodUnit": "HOUR"
+            },
+            "QuotaAppliedAtLevel": "ACCOUNT",
+            "Description": "The maximum total storage (in GB) on EBS volumes for all Amazon RDS DB instances added together. This quota does not apply to Amazon Aurora, which has a maximum cluster volume of 128 TiB for each DB cluster."
+          },
+          {
+            "ServiceCode": "rds",
+            "ServiceName": "Amazon Relational Database Service (Amazon RDS)",
+            "QuotaArn": "arn:aws:servicequotas:us-east-1:741368364261:rds/L-9B510759",
+            "QuotaCode": "L-9B510759",
+            "QuotaName": "Manual DB cluster snapshots",
+            "Value": 100.0,
+            "Unit": "None",
+            "Adjustable": true,
+            "GlobalQuota": false,
+            "UsageMetric": {
+              "MetricNamespace": "AWS/Usage",
+              "MetricName": "ResourceCount",
+              "MetricDimensions": {
+                "Class": "None",
+                "Resource": "ManualClusterSnapshots",
+                "Service": "RDS",
+                "Type": "Resource"
+              },
+              "MetricStatisticRecommendation": "Maximum"
+            },
+            "Period": {
+              "PeriodValue": 1,
+              "PeriodUnit": "HOUR"
+            },
+            "QuotaAppliedAtLevel": "ACCOUNT",
+            "Description": "The maximum number of manual DB cluster snapshots"
+          }
+        ],
+        "NextToken": "[REDACTED]"
+      }
+    },
+    {
+      "Check": "budget-read",
+      "Status": "VERIFIED",
+      "Detail": {
+        "Budgets": [
+          {
+            "BudgetName": "otel-lab-sandbox-monthly-10-usd",
+            "BudgetLimit": {
+              "Amount": "10.0",
+              "Unit": "USD"
+            },
+            "CostTypes": {
+              "IncludeTax": true,
+              "IncludeSubscription": true,
+              "UseBlended": false,
+              "IncludeRefund": false,
+              "IncludeCredit": false,
+              "IncludeUpfront": true,
+              "IncludeRecurring": true,
+              "IncludeOtherSubscription": true,
+              "IncludeSupport": true,
+              "IncludeDiscount": true,
+              "UseAmortized": false
+            },
+            "TimeUnit": "MONTHLY",
+            "TimePeriod": {
+              "Start": "2026-08-31T19:00:00-05:00",
+              "End": "2087-06-14T19:00:00-05:00"
+            },
+            "CalculatedSpend": {
+              "ActualSpend": {
+                "Amount": "0.0",
+                "Unit": "USD"
+              }
+            },
+            "BudgetType": "COST",
+            "LastUpdatedTime": "2026-09-02T20:40:16.047-05:00",
+            "HealthStatus": {
+              "Status": "HEALTHY",
+              "LastUpdatedTime": "2026-09-02T20:39:47.628-05:00"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Check": "region-opt-in-status",
+      "Status": "VERIFIED",
+      "Detail": {
+        "Regions": [
+          {
+            "OptInStatus": "opt-in-not-required",
+            "Geography": [
+              {
+                "Name": "United States of America"
+              }
+            ],
+            "RegionName": "us-east-1",
+            "Endpoint": "ec2.us-east-1.amazonaws.com"
+          }
+        ]
+      }
+    }
+  ],
+  "safety": "No se consulta ningun secreto y no se ejecutan operaciones mutantes."
+}

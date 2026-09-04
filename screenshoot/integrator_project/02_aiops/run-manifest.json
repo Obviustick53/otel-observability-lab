@@ -1,0 +1,23 @@
+{
+  "aws_execution": "not_executed",
+  "command": "python scripts/aiops/run_aiops.py --run-timestamp <fixed-utc>",
+  "evidence_class": "local-aiops-run",
+  "generated_at_utc": "2026-09-02T00:00:00Z",
+  "historical_source_artifacts": [
+    "evidence\\chaos\\chaos-final.json",
+    "evidence\\chaos\\baseline-final.json",
+    "evidence\\chaos\\jaeger-error-trace-summary.json"
+  ],
+  "limitations": [
+    "Synthetic events intentionally use trace_id=unknown.",
+    "The real-local event reprocesses historical local artifacts and is not a live AWS result.",
+    "No CloudWatch Anomaly Detection or DevOps Guru API was called."
+  ],
+  "outputs": [
+    "synthetic-correlation-events.json",
+    "synthetic-rule-comparison.json",
+    "real-local-correlation-event.json",
+    "aiops-evidence-manifest.json"
+  ],
+  "synthetic_fixture": "tests\\aiops\\fixtures\\synthetic_cases.json"
+}

@@ -1,0 +1,39 @@
+{
+  "columns": [
+    "direction",
+    "action",
+    "service",
+    "events",
+    "bytes"
+  ],
+  "rows": [
+    [
+      "east_west",
+      "allow",
+      "service-a",
+      24,
+      833794
+    ],
+    [
+      "east_west",
+      "allow",
+      "service-b",
+      32,
+      689668
+    ],
+    [
+      "east_west",
+      "allow",
+      "data-service",
+      12,
+      0
+    ],
+    [
+      "east_west",
+      "deny",
+      "service-b",
+      6,
+      0
+    ]
+  ]
+}

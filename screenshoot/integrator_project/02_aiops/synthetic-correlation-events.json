@@ -1,0 +1,222 @@
+{
+  "events": [
+    {
+      "baseline": {
+        "error_rate": 0.01,
+        "error_rate_pct": 1.0
+      },
+      "conditions": {
+        "correlated_incident": false,
+        "error_rate_above_dynamic": false,
+        "latency_p99_above_slo": false,
+        "static_error_rate_breach": false,
+        "static_latency_breach": false
+      },
+      "diagnostic_query": null,
+      "environment": "local-synthetic",
+      "event_id": "aiops-47706aae80b32a40",
+      "observed": {
+        "error_rate": 0.01,
+        "error_rate_pct": 1.0,
+        "latency_p99_ms": 180.0
+      },
+      "rule": {
+        "baseline_training_window_excluded": true,
+        "expression": "error_rate > baseline_error_rate + 2*sigma_error_rate AND latency_p99_ms > slo_latency_p99_ms",
+        "sigma_multiplier": 2.0
+      },
+      "schema_version": "aiops.incident.v1",
+      "service": "service-b",
+      "severity": "info",
+      "sigma": {
+        "error_rate": 0.01,
+        "error_rate_pct": 1.0
+      },
+      "slo": {
+        "latency_p99_ms": 500.0
+      },
+      "thresholds": {
+        "dynamic_error_rate": 0.03,
+        "dynamic_error_rate_pct": 3.0,
+        "static": {
+          "error_rate": 0.05,
+          "error_rate_pct": 5.0,
+          "latency_p99_ms": 400.0
+        }
+      },
+      "timestamp": "2026-09-01T00:00:59Z",
+      "trace_id": "unknown",
+      "trace_id_limitation": "Synthetic fixture has no real request trace.",
+      "trace_id_resolution": "unknown",
+      "window": {
+        "duration_seconds": 60.0,
+        "end_utc": "2026-09-01T00:01:00Z",
+        "start_utc": "2026-09-01T00:00:00Z"
+      }
+    },
+    {
+      "baseline": {
+        "error_rate": 0.01,
+        "error_rate_pct": 1.0
+      },
+      "conditions": {
+        "correlated_incident": false,
+        "error_rate_above_dynamic": false,
+        "latency_p99_above_slo": false,
+        "static_error_rate_breach": true,
+        "static_latency_breach": true
+      },
+      "diagnostic_query": null,
+      "environment": "local-synthetic",
+      "event_id": "aiops-b53f419cdec4d755",
+      "observed": {
+        "error_rate": 0.06,
+        "error_rate_pct": 6.0,
+        "latency_p99_ms": 450.0
+      },
+      "rule": {
+        "baseline_training_window_excluded": true,
+        "expression": "error_rate > baseline_error_rate + 2*sigma_error_rate AND latency_p99_ms > slo_latency_p99_ms",
+        "sigma_multiplier": 2.0
+      },
+      "schema_version": "aiops.incident.v1",
+      "service": "service-b",
+      "severity": "info",
+      "sigma": {
+        "error_rate": 0.04,
+        "error_rate_pct": 4.0
+      },
+      "slo": {
+        "latency_p99_ms": 500.0
+      },
+      "thresholds": {
+        "dynamic_error_rate": 0.09,
+        "dynamic_error_rate_pct": 9.0,
+        "static": {
+          "error_rate": 0.05,
+          "error_rate_pct": 5.0,
+          "latency_p99_ms": 400.0
+        }
+      },
+      "timestamp": "2026-09-01T00:01:59Z",
+      "trace_id": "unknown",
+      "trace_id_limitation": "Synthetic fixture has no real request trace.",
+      "trace_id_resolution": "unknown",
+      "window": {
+        "duration_seconds": 60.0,
+        "end_utc": "2026-09-01T00:02:00Z",
+        "start_utc": "2026-09-01T00:01:00Z"
+      }
+    },
+    {
+      "baseline": {
+        "error_rate": 0.01,
+        "error_rate_pct": 1.0
+      },
+      "conditions": {
+        "correlated_incident": true,
+        "error_rate_above_dynamic": true,
+        "latency_p99_above_slo": true,
+        "static_error_rate_breach": true,
+        "static_latency_breach": true
+      },
+      "diagnostic_query": null,
+      "environment": "local-synthetic",
+      "event_id": "aiops-1dfb4f26f3b21bc8",
+      "observed": {
+        "error_rate": 0.25,
+        "error_rate_pct": 25.0,
+        "latency_p99_ms": 900.0
+      },
+      "rule": {
+        "baseline_training_window_excluded": true,
+        "expression": "error_rate > baseline_error_rate + 2*sigma_error_rate AND latency_p99_ms > slo_latency_p99_ms",
+        "sigma_multiplier": 2.0
+      },
+      "schema_version": "aiops.incident.v1",
+      "service": "service-b",
+      "severity": "high",
+      "sigma": {
+        "error_rate": 0.02,
+        "error_rate_pct": 2.0
+      },
+      "slo": {
+        "latency_p99_ms": 500.0
+      },
+      "thresholds": {
+        "dynamic_error_rate": 0.05,
+        "dynamic_error_rate_pct": 5.0,
+        "static": {
+          "error_rate": 0.05,
+          "error_rate_pct": 5.0,
+          "latency_p99_ms": 400.0
+        }
+      },
+      "timestamp": "2026-09-01T00:02:59Z",
+      "trace_id": "unknown",
+      "trace_id_limitation": "Synthetic fixture has no real request trace.",
+      "trace_id_resolution": "unknown",
+      "window": {
+        "duration_seconds": 60.0,
+        "end_utc": "2026-09-01T00:03:00Z",
+        "start_utc": "2026-09-01T00:02:00Z"
+      }
+    },
+    {
+      "baseline": {
+        "error_rate": 0.005,
+        "error_rate_pct": 0.5
+      },
+      "conditions": {
+        "correlated_incident": true,
+        "error_rate_above_dynamic": true,
+        "latency_p99_above_slo": true,
+        "static_error_rate_breach": false,
+        "static_latency_breach": true
+      },
+      "diagnostic_query": null,
+      "environment": "local-synthetic",
+      "event_id": "aiops-ef494f5630c023ad",
+      "observed": {
+        "error_rate": 0.04,
+        "error_rate_pct": 4.0,
+        "latency_p99_ms": 700.0
+      },
+      "rule": {
+        "baseline_training_window_excluded": true,
+        "expression": "error_rate > baseline_error_rate + 2*sigma_error_rate AND latency_p99_ms > slo_latency_p99_ms",
+        "sigma_multiplier": 2.0
+      },
+      "schema_version": "aiops.incident.v1",
+      "service": "service-b",
+      "severity": "high",
+      "sigma": {
+        "error_rate": 0.01,
+        "error_rate_pct": 1.0
+      },
+      "slo": {
+        "latency_p99_ms": 500.0
+      },
+      "thresholds": {
+        "dynamic_error_rate": 0.025,
+        "dynamic_error_rate_pct": 2.5,
+        "static": {
+          "error_rate": 0.05,
+          "error_rate_pct": 5.0,
+          "latency_p99_ms": 400.0
+        }
+      },
+      "timestamp": "2026-09-01T00:03:59Z",
+      "trace_id": "unknown",
+      "trace_id_limitation": "Synthetic fixture has no real request trace.",
+      "trace_id_resolution": "unknown",
+      "window": {
+        "duration_seconds": 60.0,
+        "end_utc": "2026-09-01T00:04:00Z",
+        "start_utc": "2026-09-01T00:03:00Z"
+      }
+    }
+  ],
+  "evidence_class": "synthetic_fixture",
+  "fixture_path": "tests\\aiops\\fixtures\\synthetic_cases.json"
+}

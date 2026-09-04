@@ -1,0 +1,112 @@
+{
+  "evidence": "Agente C — smoke de señales correlacionadas",
+  "timestamp_utc": "2026-09-03T01:33:11.9997019Z",
+  "environment": "local",
+  "command": "scripts/local/smoke-observability.ps1",
+  "result": "PASS",
+  "checks": [
+    {
+      "name": "service-a request",
+      "status": "PASS",
+      "observed": {
+        "status_code": 200,
+        "trace_id_present": true,
+        "trace_id": "c75ee7f8114a5e0cee69d9ea4cefd0be"
+      }
+    },
+    {
+      "name": "service-b request",
+      "status": "PASS",
+      "observed": {
+        "status_code": 200,
+        "trace_id_present": true,
+        "trace_id": "0827e3fb1651c9fbe7ef63eace06e6c5"
+      }
+    },
+    {
+      "name": "data-service request",
+      "status": "PASS",
+      "observed": {
+        "status_code": 200,
+        "trace_id_present": true,
+        "trace_id": "b0f0dda38d7fd539c8437f9d54d35849"
+      }
+    },
+    {
+      "name": "RED service labels",
+      "status": "PASS",
+      "observed": {
+        "query": "count by (service_name) (otel:request_rate_5m)",
+        "result_type": "vector",
+        "series_count": 3
+      }
+    },
+    {
+      "name": "Recording p99",
+      "status": "PASS",
+      "observed": {
+        "query": "otel:p99_seconds_5m",
+        "result_type": "vector",
+        "series_count": 6
+      }
+    },
+    {
+      "name": "Dynamic baseline",
+      "status": "PASS",
+      "observed": {
+        "query": "otel:error_rate_baseline_mean_30m",
+        "result_type": "vector",
+        "series_count": 3
+      }
+    },
+    {
+      "name": "Security simulated metrics",
+      "status": "PASS",
+      "observed": {
+        "query": "count(local_security_auth_failures_total{telemetry_scope=\"simulated\"})",
+        "result_type": "vector",
+        "series_count": 1
+      }
+    },
+    {
+      "name": "Jaeger service index",
+      "status": "PASS",
+      "observed": {
+        "services": [
+          "service-b",
+          "service-a",
+          "jaeger-all-in-one",
+          "data-service"
+        ]
+      }
+    },
+    {
+      "name": "Loki label index",
+      "status": "PASS",
+      "observed": {
+        "labels": [
+          "exporter",
+          "job",
+          "level",
+          "service_name"
+        ]
+      }
+    },
+    {
+      "name": "Grafana dashboard definitions",
+      "status": "PASS",
+      "observed": {
+        "files": [
+          "golden-signals.json",
+          "otel-lab-dashboard.json",
+          "security-network.json"
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Los trace_id observados pertenecen a la respuesta/log y no se convierten en labels permanentes de métricas.",
+    "Las métricas de seguridad/red son locales/simuladas.",
+    "No se ejecutaron AWS ni experimentos de caos desde este script."
+  ]
+}

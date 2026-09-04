@@ -1,0 +1,5 @@
+NAME       : VALUE                    : TYPE             : LOCATION
+profile    : <not set>                : None             : None
+access_key=[REDACTED] set>                : None             : None
+secret_key=[REDACTED] set>                : None             : None
+region     : <not set>                : None             : None

@@ -1,0 +1,21 @@
+{
+  "ProjectName": "otel-lab",
+  "Environment": "sandbox",
+  "Owner": "observability-lab",
+  "ExpirationUtc": "2026-09-30",
+  "AllowedIngressCidr": "186.84.20.15/32",
+  "AllowLegacyDirectDbAccess": "false",
+  "LogRetentionDays": "3",
+  "DbInstanceClass": "db.t4g.micro",
+  "AllocatedStorage": "20",
+  "BackupRetentionDays": "1",
+  "ImageTag": "v5",
+  "AssignPublicIp": "ENABLED",
+  "AppTaskSize": "256-512",
+  "CollectorTaskSize": "512-1024",
+  "DesiredCount": "1",
+  "ServiceBLatencyMs": "0",
+  "DataServiceErrorRate": "0",
+  "EnableCloudTrail": "true",
+  "EnableSecurityHub": "false"
+}

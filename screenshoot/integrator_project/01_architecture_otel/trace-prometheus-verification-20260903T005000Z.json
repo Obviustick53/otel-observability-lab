@@ -1,0 +1,1424 @@
+{
+  "trace": {
+    "data": [
+      {
+        "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+        "spans": [
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "9965a47e77d2d4bd",
+            "operationName": "GET /inventory/{product_id} http send",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "001627ba3d9907b1"
+              }
+            ],
+            "startTime": 1788396261485293,
+            "duration": 502,
+            "tags": [
+              {
+                "key": "asgi.event.type",
+                "type": "string",
+                "value": "http.response.start"
+              },
+              {
+                "key": "http.status_code",
+                "type": "int64",
+                "value": 200
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "internal"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p1",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "001627ba3d9907b1",
+            "operationName": "GET /inventory/{product_id}",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "c8830a07fda1f5fb"
+              }
+            ],
+            "startTime": 1788396261432918,
+            "duration": 53075,
+            "tags": [
+              {
+                "key": "http.scheme",
+                "type": "string",
+                "value": "http"
+              },
+              {
+                "key": "http.host",
+                "type": "string",
+                "value": "172.18.0.9:8002"
+              },
+              {
+                "key": "net.host.port",
+                "type": "int64",
+                "value": 8002
+              },
+              {
+                "key": "http.flavor",
+                "type": "string",
+                "value": "1.1"
+              },
+              {
+                "key": "http.target",
+                "type": "string",
+                "value": "/inventory/keyboard"
+              },
+              {
+                "key": "http.url",
+                "type": "string",
+                "value": "http://172.18.0.9:8002/inventory/keyboard"
+              },
+              {
+                "key": "http.method",
+                "type": "string",
+                "value": "GET"
+              },
+              {
+                "key": "http.server_name",
+                "type": "string",
+                "value": "data-service:8002"
+              },
+              {
+                "key": "http.user_agent",
+                "type": "string",
+                "value": "python-httpx/0.27.2"
+              },
+              {
+                "key": "net.peer.ip",
+                "type": "string",
+                "value": "172.18.0.10"
+              },
+              {
+                "key": "net.peer.port",
+                "type": "int64",
+                "value": 59106
+              },
+              {
+                "key": "http.route",
+                "type": "string",
+                "value": "/inventory/{product_id}"
+              },
+              {
+                "key": "http.status_code",
+                "type": "int64",
+                "value": 200
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "server"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p1",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "2772503b8a67b718",
+            "operationName": "GET /inventory/{product_id} http send",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "001627ba3d9907b1"
+              }
+            ],
+            "startTime": 1788396261485914,
+            "duration": 69,
+            "tags": [
+              {
+                "key": "asgi.event.type",
+                "type": "string",
+                "value": "http.response.body"
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "internal"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p1",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "7dc10e6dfa5e81bc",
+            "operationName": "data.db.fetch",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "b05ee57eb9d21451"
+              }
+            ],
+            "startTime": 1788396261462576,
+            "duration": 20716,
+            "tags": [
+              {
+                "key": "db.system.name",
+                "type": "string",
+                "value": "postgresql"
+              },
+              {
+                "key": "db.namespace",
+                "type": "string",
+                "value": "observability"
+              },
+              {
+                "key": "server.address",
+                "type": "string",
+                "value": "postgres"
+              },
+              {
+                "key": "server.port",
+                "type": "int64",
+                "value": 5432
+              },
+              {
+                "key": "db.operation.name",
+                "type": "string",
+                "value": "SELECT"
+              },
+              {
+                "key": "db.collection.name",
+                "type": "string",
+                "value": "inventory"
+              },
+              {
+                "key": "data.record.type",
+                "type": "string",
+                "value": "inventory"
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "client"
+              },
+              {
+                "key": "otel.status_code",
+                "type": "string",
+                "value": "OK"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p2",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "b05ee57eb9d21451",
+            "operationName": "data.business.read",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "001627ba3d9907b1"
+              }
+            ],
+            "startTime": 1788396261433818,
+            "duration": 50124,
+            "tags": [
+              {
+                "key": "data.record.type",
+                "type": "string",
+                "value": "inventory"
+              },
+              {
+                "key": "data.lookup.mode",
+                "type": "string",
+                "value": "parameterized_id"
+              },
+              {
+                "key": "data.result",
+                "type": "string",
+                "value": "found"
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "internal"
+              },
+              {
+                "key": "otel.status_code",
+                "type": "string",
+                "value": "OK"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p2",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "4a8008d2801ceb2a",
+            "operationName": "GET /inventory/{product_id} http send",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "f231210a9a85e9f2"
+              }
+            ],
+            "startTime": 1788396261495663,
+            "duration": 64,
+            "tags": [
+              {
+                "key": "asgi.event.type",
+                "type": "string",
+                "value": "http.response.body"
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "internal"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p3",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "f231210a9a85e9f2",
+            "operationName": "GET /inventory/{product_id}",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "0e37ab21283e51ce"
+              }
+            ],
+            "startTime": 1788396261382534,
+            "duration": 113204,
+            "tags": [
+              {
+                "key": "http.scheme",
+                "type": "string",
+                "value": "http"
+              },
+              {
+                "key": "http.host",
+                "type": "string",
+                "value": "172.18.0.10:8001"
+              },
+              {
+                "key": "net.host.port",
+                "type": "int64",
+                "value": 8001
+              },
+              {
+                "key": "http.flavor",
+                "type": "string",
+                "value": "1.1"
+              },
+              {
+                "key": "http.target",
+                "type": "string",
+                "value": "/inventory/keyboard"
+              },
+              {
+                "key": "http.url",
+                "type": "string",
+                "value": "http://172.18.0.10:8001/inventory/keyboard"
+              },
+              {
+                "key": "http.method",
+                "type": "string",
+                "value": "GET"
+              },
+              {
+                "key": "http.server_name",
+                "type": "string",
+                "value": "service-b:8001"
+              },
+              {
+                "key": "http.user_agent",
+                "type": "string",
+                "value": "python-httpx/0.27.2"
+              },
+              {
+                "key": "net.peer.ip",
+                "type": "string",
+                "value": "172.18.0.11"
+              },
+              {
+                "key": "net.peer.port",
+                "type": "int64",
+                "value": 43878
+              },
+              {
+                "key": "http.route",
+                "type": "string",
+                "value": "/inventory/{product_id}"
+              },
+              {
+                "key": "http.status_code",
+                "type": "int64",
+                "value": 200
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "server"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p3",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "aae16be7ec75f0b8",
+            "operationName": "inventory.business.validate",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "f231210a9a85e9f2"
+              }
+            ],
+            "startTime": 1788396261384198,
+            "duration": 22,
+            "tags": [
+              {
+                "key": "product.id",
+                "type": "string",
+                "value": "keyboard"
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "internal"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p4",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "783aa4a363689f22",
+            "operationName": "GET /inventory/{product_id} http send",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "f231210a9a85e9f2"
+              }
+            ],
+            "startTime": 1788396261494810,
+            "duration": 727,
+            "tags": [
+              {
+                "key": "asgi.event.type",
+                "type": "string",
+                "value": "http.response.start"
+              },
+              {
+                "key": "http.status_code",
+                "type": "int64",
+                "value": 200
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "internal"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p3",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "f96ae633106011ef",
+            "operationName": "inventory.data_service.call",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "f231210a9a85e9f2"
+              }
+            ],
+            "startTime": 1788396261384297,
+            "duration": 109534,
+            "tags": [
+              {
+                "key": "peer.service",
+                "type": "string",
+                "value": "data-service"
+              },
+              {
+                "key": "product.id",
+                "type": "string",
+                "value": "keyboard"
+              },
+              {
+                "key": "http.response.status_code",
+                "type": "int64",
+                "value": 200
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "client"
+              },
+              {
+                "key": "otel.status_code",
+                "type": "string",
+                "value": "OK"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p4",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "184791073450df48",
+            "operationName": "GET /order/{order_id} http send",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "535119a4bb9bcd1a"
+              }
+            ],
+            "startTime": 1788396261503452,
+            "duration": 479,
+            "tags": [
+              {
+                "key": "asgi.event.type",
+                "type": "string",
+                "value": "http.response.start"
+              },
+              {
+                "key": "http.status_code",
+                "type": "int64",
+                "value": 200
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "internal"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p5",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "c8830a07fda1f5fb",
+            "operationName": "GET",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "f96ae633106011ef"
+              }
+            ],
+            "startTime": 1788396261386109,
+            "duration": 101220,
+            "tags": [
+              {
+                "key": "http.method",
+                "type": "string",
+                "value": "GET"
+              },
+              {
+                "key": "http.url",
+                "type": "string",
+                "value": "http://data-service:8002/inventory/keyboard"
+              },
+              {
+                "key": "http.status_code",
+                "type": "int64",
+                "value": 200
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "client"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p6",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "fdf4040736e7cc24",
+            "operationName": "order.business.validate",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "535119a4bb9bcd1a"
+              }
+            ],
+            "startTime": 1788396261216075,
+            "duration": 33,
+            "tags": [
+              {
+                "key": "order.id",
+                "type": "string",
+                "value": "ord-001"
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "internal"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p7",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "68763f9d4b414ded",
+            "operationName": "GET /order/{order_id} http send",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "535119a4bb9bcd1a"
+              }
+            ],
+            "startTime": 1788396261504133,
+            "duration": 74,
+            "tags": [
+              {
+                "key": "asgi.event.type",
+                "type": "string",
+                "value": "http.response.body"
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "internal"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p5",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "535119a4bb9bcd1a",
+            "operationName": "GET /order/{order_id}",
+            "references": [],
+            "startTime": 1788396261215124,
+            "duration": 289099,
+            "tags": [
+              {
+                "key": "http.scheme",
+                "type": "string",
+                "value": "http"
+              },
+              {
+                "key": "http.host",
+                "type": "string",
+                "value": "172.18.0.11:8000"
+              },
+              {
+                "key": "net.host.port",
+                "type": "int64",
+                "value": 8000
+              },
+              {
+                "key": "http.flavor",
+                "type": "string",
+                "value": "1.1"
+              },
+              {
+                "key": "http.target",
+                "type": "string",
+                "value": "/order/ord-001"
+              },
+              {
+                "key": "http.url",
+                "type": "string",
+                "value": "http://172.18.0.11:8000/order/ord-001"
+              },
+              {
+                "key": "http.method",
+                "type": "string",
+                "value": "GET"
+              },
+              {
+                "key": "http.server_name",
+                "type": "string",
+                "value": "localhost:8000"
+              },
+              {
+                "key": "http.user_agent",
+                "type": "string",
+                "value": "Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.26200; es-CO) PowerShell/7.6.4"
+              },
+              {
+                "key": "net.peer.ip",
+                "type": "string",
+                "value": "172.18.0.1"
+              },
+              {
+                "key": "net.peer.port",
+                "type": "int64",
+                "value": 52006
+              },
+              {
+                "key": "http.route",
+                "type": "string",
+                "value": "/order/{order_id}"
+              },
+              {
+                "key": "http.status_code",
+                "type": "int64",
+                "value": 200
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "server"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p5",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "fd7c3cc94861802b",
+            "operationName": "SELECT",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "5d3213d5b1b1ac32"
+              }
+            ],
+            "startTime": 1788396261243717,
+            "duration": 80233,
+            "tags": [
+              {
+                "key": "db.system",
+                "type": "string",
+                "value": "postgresql"
+              },
+              {
+                "key": "db.name",
+                "type": "string",
+                "value": "observability"
+              },
+              {
+                "key": "db.statement",
+                "type": "string",
+                "value": "SELECT order_id, customer_id, product_id, quantity, status FROM orders WHERE order_id = %s"
+              },
+              {
+                "key": "db.user",
+                "type": "string",
+                "value": "app"
+              },
+              {
+                "key": "net.peer.name",
+                "type": "string",
+                "value": "postgres"
+              },
+              {
+                "key": "net.peer.port",
+                "type": "int64",
+                "value": 5432
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "client"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p8",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "5d3213d5b1b1ac32",
+            "operationName": "order.db.fetch",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "535119a4bb9bcd1a"
+              }
+            ],
+            "startTime": 1788396261216264,
+            "duration": 109105,
+            "tags": [
+              {
+                "key": "db.system",
+                "type": "string",
+                "value": "postgresql"
+              },
+              {
+                "key": "db.operation.name",
+                "type": "string",
+                "value": "SELECT"
+              },
+              {
+                "key": "order.id",
+                "type": "string",
+                "value": "ord-001"
+              },
+              {
+                "key": "order.status",
+                "type": "string",
+                "value": "confirmed"
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "client"
+              },
+              {
+                "key": "otel.status_code",
+                "type": "string",
+                "value": "OK"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p7",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "9fc81e9a8f9ea935",
+            "operationName": "order.service_b.call",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "535119a4bb9bcd1a"
+              }
+            ],
+            "startTime": 1788396261325962,
+            "duration": 175722,
+            "tags": [
+              {
+                "key": "peer.service",
+                "type": "string",
+                "value": "service-b"
+              },
+              {
+                "key": "product.id",
+                "type": "string",
+                "value": "keyboard"
+              },
+              {
+                "key": "http.response.status_code",
+                "type": "int64",
+                "value": 200
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "client"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p7",
+            "warnings": null
+          },
+          {
+            "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+            "spanID": "0e37ab21283e51ce",
+            "operationName": "GET",
+            "references": [
+              {
+                "refType": "CHILD_OF",
+                "traceID": "27efb3fa45fb58a1b7e905bcc36f6f33",
+                "spanID": "9fc81e9a8f9ea935"
+              }
+            ],
+            "startTime": 1788396261330690,
+            "duration": 166723,
+            "tags": [
+              {
+                "key": "http.method",
+                "type": "string",
+                "value": "GET"
+              },
+              {
+                "key": "http.url",
+                "type": "string",
+                "value": "http://service-b:8001/inventory/keyboard"
+              },
+              {
+                "key": "http.status_code",
+                "type": "int64",
+                "value": 200
+              },
+              {
+                "key": "span.kind",
+                "type": "string",
+                "value": "client"
+              },
+              {
+                "key": "internal.span.format",
+                "type": "string",
+                "value": "otlp"
+              }
+            ],
+            "logs": [],
+            "processID": "p9",
+            "warnings": null
+          }
+        ],
+        "processes": {
+          "p1": {
+            "serviceName": "data-service",
+            "tags": [
+              {
+                "key": "deployment.environment",
+                "type": "string",
+                "value": "local"
+              },
+              {
+                "key": "otel.library.name",
+                "type": "string",
+                "value": "opentelemetry.instrumentation.fastapi"
+              },
+              {
+                "key": "otel.library.version",
+                "type": "string",
+                "value": "0.48b0"
+              },
+              {
+                "key": "service.namespace",
+                "type": "string",
+                "value": "otel-lab"
+              },
+              {
+                "key": "service.version",
+                "type": "string",
+                "value": "1.0.0"
+              },
+              {
+                "key": "telemetry.sdk.language",
+                "type": "string",
+                "value": "python"
+              },
+              {
+                "key": "telemetry.sdk.name",
+                "type": "string",
+                "value": "opentelemetry"
+              },
+              {
+                "key": "telemetry.sdk.version",
+                "type": "string",
+                "value": "1.27.0"
+              }
+            ]
+          },
+          "p2": {
+            "serviceName": "data-service",
+            "tags": [
+              {
+                "key": "deployment.environment",
+                "type": "string",
+                "value": "local"
+              },
+              {
+                "key": "otel.library.name",
+                "type": "string",
+                "value": "data-service"
+              },
+              {
+                "key": "service.namespace",
+                "type": "string",
+                "value": "otel-lab"
+              },
+              {
+                "key": "service.version",
+                "type": "string",
+                "value": "1.0.0"
+              },
+              {
+                "key": "telemetry.sdk.language",
+                "type": "string",
+                "value": "python"
+              },
+              {
+                "key": "telemetry.sdk.name",
+                "type": "string",
+                "value": "opentelemetry"
+              },
+              {
+                "key": "telemetry.sdk.version",
+                "type": "string",
+                "value": "1.27.0"
+              }
+            ]
+          },
+          "p3": {
+            "serviceName": "service-b",
+            "tags": [
+              {
+                "key": "deployment.environment",
+                "type": "string",
+                "value": "local"
+              },
+              {
+                "key": "otel.library.name",
+                "type": "string",
+                "value": "opentelemetry.instrumentation.fastapi"
+              },
+              {
+                "key": "otel.library.version",
+                "type": "string",
+                "value": "0.48b0"
+              },
+              {
+                "key": "service.namespace",
+                "type": "string",
+                "value": "otel-lab"
+              },
+              {
+                "key": "service.version",
+                "type": "string",
+                "value": "1.0.0"
+              },
+              {
+                "key": "telemetry.sdk.language",
+                "type": "string",
+                "value": "python"
+              },
+              {
+                "key": "telemetry.sdk.name",
+                "type": "string",
+                "value": "opentelemetry"
+              },
+              {
+                "key": "telemetry.sdk.version",
+                "type": "string",
+                "value": "1.27.0"
+              }
+            ]
+          },
+          "p4": {
+            "serviceName": "service-b",
+            "tags": [
+              {
+                "key": "deployment.environment",
+                "type": "string",
+                "value": "local"
+              },
+              {
+                "key": "otel.library.name",
+                "type": "string",
+                "value": "service-b"
+              },
+              {
+                "key": "service.namespace",
+                "type": "string",
+                "value": "otel-lab"
+              },
+              {
+                "key": "service.version",
+                "type": "string",
+                "value": "1.0.0"
+              },
+              {
+                "key": "telemetry.sdk.language",
+                "type": "string",
+                "value": "python"
+              },
+              {
+                "key": "telemetry.sdk.name",
+                "type": "string",
+                "value": "opentelemetry"
+              },
+              {
+                "key": "telemetry.sdk.version",
+                "type": "string",
+                "value": "1.27.0"
+              }
+            ]
+          },
+          "p5": {
+            "serviceName": "service-a",
+            "tags": [
+              {
+                "key": "deployment.environment",
+                "type": "string",
+                "value": "local"
+              },
+              {
+                "key": "otel.library.name",
+                "type": "string",
+                "value": "opentelemetry.instrumentation.fastapi"
+              },
+              {
+                "key": "otel.library.version",
+                "type": "string",
+                "value": "0.48b0"
+              },
+              {
+                "key": "service.namespace",
+                "type": "string",
+                "value": "otel-lab"
+              },
+              {
+                "key": "service.version",
+                "type": "string",
+                "value": "1.0.0"
+              },
+              {
+                "key": "telemetry.sdk.language",
+                "type": "string",
+                "value": "python"
+              },
+              {
+                "key": "telemetry.sdk.name",
+                "type": "string",
+                "value": "opentelemetry"
+              },
+              {
+                "key": "telemetry.sdk.version",
+                "type": "string",
+                "value": "1.27.0"
+              }
+            ]
+          },
+          "p6": {
+            "serviceName": "service-b",
+            "tags": [
+              {
+                "key": "deployment.environment",
+                "type": "string",
+                "value": "local"
+              },
+              {
+                "key": "otel.library.name",
+                "type": "string",
+                "value": "opentelemetry.instrumentation.httpx"
+              },
+              {
+                "key": "otel.library.version",
+                "type": "string",
+                "value": "0.48b0"
+              },
+              {
+                "key": "service.namespace",
+                "type": "string",
+                "value": "otel-lab"
+              },
+              {
+                "key": "service.version",
+                "type": "string",
+                "value": "1.0.0"
+              },
+              {
+                "key": "telemetry.sdk.language",
+                "type": "string",
+                "value": "python"
+              },
+              {
+                "key": "telemetry.sdk.name",
+                "type": "string",
+                "value": "opentelemetry"
+              },
+              {
+                "key": "telemetry.sdk.version",
+                "type": "string",
+                "value": "1.27.0"
+              }
+            ]
+          },
+          "p7": {
+            "serviceName": "service-a",
+            "tags": [
+              {
+                "key": "deployment.environment",
+                "type": "string",
+                "value": "local"
+              },
+              {
+                "key": "otel.library.name",
+                "type": "string",
+                "value": "service-a"
+              },
+              {
+                "key": "service.namespace",
+                "type": "string",
+                "value": "otel-lab"
+              },
+              {
+                "key": "service.version",
+                "type": "string",
+                "value": "1.0.0"
+              },
+              {
+                "key": "telemetry.sdk.language",
+                "type": "string",
+                "value": "python"
+              },
+              {
+                "key": "telemetry.sdk.name",
+                "type": "string",
+                "value": "opentelemetry"
+              },
+              {
+                "key": "telemetry.sdk.version",
+                "type": "string",
+                "value": "1.27.0"
+              }
+            ]
+          },
+          "p8": {
+            "serviceName": "service-a",
+            "tags": [
+              {
+                "key": "deployment.environment",
+                "type": "string",
+                "value": "local"
+              },
+              {
+                "key": "otel.library.name",
+                "type": "string",
+                "value": "opentelemetry.instrumentation.psycopg2"
+              },
+              {
+                "key": "otel.library.version",
+                "type": "string",
+                "value": "0.48b0"
+              },
+              {
+                "key": "service.namespace",
+                "type": "string",
+                "value": "otel-lab"
+              },
+              {
+                "key": "service.version",
+                "type": "string",
+                "value": "1.0.0"
+              },
+              {
+                "key": "telemetry.sdk.language",
+                "type": "string",
+                "value": "python"
+              },
+              {
+                "key": "telemetry.sdk.name",
+                "type": "string",
+                "value": "opentelemetry"
+              },
+              {
+                "key": "telemetry.sdk.version",
+                "type": "string",
+                "value": "1.27.0"
+              }
+            ]
+          },
+          "p9": {
+            "serviceName": "service-a",
+            "tags": [
+              {
+                "key": "deployment.environment",
+                "type": "string",
+                "value": "local"
+              },
+              {
+                "key": "otel.library.name",
+                "type": "string",
+                "value": "opentelemetry.instrumentation.httpx"
+              },
+              {
+                "key": "otel.library.version",
+                "type": "string",
+                "value": "0.48b0"
+              },
+              {
+                "key": "service.namespace",
+                "type": "string",
+                "value": "otel-lab"
+              },
+              {
+                "key": "service.version",
+                "type": "string",
+                "value": "1.0.0"
+              },
+              {
+                "key": "telemetry.sdk.language",
+                "type": "string",
+                "value": "python"
+              },
+              {
+                "key": "telemetry.sdk.name",
+                "type": "string",
+                "value": "opentelemetry"
+              },
+              {
+                "key": "telemetry.sdk.version",
+                "type": "string",
+                "value": "1.27.0"
+              }
+            ]
+          }
+        },
+        "warnings": null
+      }
+    ],
+    "total": 0,
+    "limit": 0,
+    "offset": 0,
+    "errors": null
+  },
+  "request_rate": {
+    "status": "success",
+    "data": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {
+            "__name__": "otel:request_rate_5m",
+            "deployment_environment": "local",
+            "service_name": "service-b"
+          },
+          "value": [
+            1788396397.161,
+            "0.003600764345451978"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "otel:request_rate_5m",
+            "deployment_environment": "local",
+            "service_name": "service-a"
+          },
+          "value": [
+            1788396397.161,
+            "0.003600764345451978"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "otel:request_rate_5m",
+            "deployment_environment": "local",
+            "service_name": "data-service"
+          },
+          "value": [
+            1788396397.161,
+            "0"
+          ]
+        }
+      ]
+    }
+  }
+}

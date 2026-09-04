@@ -1,0 +1,15 @@
+{
+  "generatedAtUtc": "2026-09-03T22:11:22.2118746Z",
+  "context": {
+    "AccountId": "741368364261",
+    "Arn": "arn:aws:iam::741368364261:user/admin-josemorse",
+    "Region": "us-east-1",
+    "Profile": "admin-josemorse"
+  },
+  "taskDefinition": "arn:aws:ecs:us-east-1:741368364261:task-definition/otel-lab-sandbox-data-service:6",
+  "taskArn": "arn:aws:ecs:us-east-1:741368364261:task/otel-lab-sandbox/f9f5f2cc8d67472c989bddf2260e4a16",
+  "status": "VERIFIED",
+  "exitCode": 0,
+  "stoppedReason": "Essential container in task exited",
+  "migrationCommand": "python migrate.py"
+}

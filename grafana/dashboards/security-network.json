@@ -1,0 +1,87 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "graphTooltip": 1,
+  "links": [],
+  "panels": [
+    {
+      "id": 1,
+      "title": "LOCAL / SIMULADA — autenticaciones fallidas (últimos 5m del dataset)",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "sum(network_security_auth_failures_5m{environment=\"local-simulated\"})", "legendFormat": "auth failures · simulated", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "short", "color": { "mode": "thresholds" }, "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }, { "color": "orange", "value": 1 }, { "color": "red", "value": 3 }] } }, "overrides": [] }
+    },
+    {
+      "id": 2,
+      "title": "LOCAL / SIMULADA — flujos denegados (últimos 5m del dataset)",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 6, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "sum(network_security_denials_5m{environment=\"local-simulated\"})", "legendFormat": "denied flows · simulated", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "short", "color": { "mode": "thresholds" }, "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }, { "color": "orange", "value": 1 }, { "color": "red", "value": 5 }] } }, "overrides": [] }
+    },
+    {
+      "id": 3,
+      "title": "LOCAL / SIMULADA — bytes de tráfico por dirección",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "sum by (direction) (network_security_flow_bytes_total{environment=\"local-simulated\"})", "legendFormat": "{{direction}} · simulated", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "bytes" }, "overrides": [] },
+      "description": "Agregado del dataset local; no es un contador de bytes de VPC Flow Logs real."
+    },
+    {
+      "id": 4,
+      "title": "LOCAL / SIMULADA — detección de tráfico anómalo",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 6 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "network_security_traffic_anomaly{environment=\"local-simulated\"}", "legendFormat": "{{signal}} / {{direction}} — 1=anomaly", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "short", "min": 0, "max": 1, "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }, { "color": "red", "value": 1 }] } }, "overrides": [] },
+      "description": "Regla: observed_5m > baseline_mean_30m + 2*sigma y observed_5m > 0. El baseline termina 30m antes de la ventana observada."
+    },
+    {
+      "id": 5,
+      "title": "LOCAL / SIMULADA — observado vs umbral del baseline",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        { "expr": "network_security_traffic_observed_5m{environment=\"local-simulated\"}", "legendFormat": "{{signal}} / {{direction}} observado", "refId": "A" },
+        { "expr": "network_security_traffic_threshold_30m{environment=\"local-simulated\"}", "legendFormat": "{{signal}} / {{direction}} baseline + 2σ", "refId": "B" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "description": "Métricas de baja cardinalidad: no incluyen IP origen ni trace_id."
+    },
+    {
+      "id": 6,
+      "title": "LOCAL / SIMULADA — eventos por tipo",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 14 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "sum by (event_type) (network_security_events_total{environment=\"local-simulated\"})", "legendFormat": "{{event_type}} · simulated", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "description": "Incluye eventos sintéticos de red/autenticación. El simulador no genera findings ni CVEs."
+    },
+    {
+      "id": 7,
+      "title": "Fuente, estado y límites",
+      "type": "text",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 14 },
+      "options": {
+        "mode": "markdown",
+        "content": "## LOCAL / SIMULADA\n\nFuente: `network-security-simulator`, `environment=local-simulated`. Estos paneles no son VPC Flow Logs, CloudTrail ni Security Hub reales.\n\n### Security Hub\n**BLOQUEADO / NO EJECUTADO:** mantener la suscripción deshabilitada hasta completar el preflight de la cuenta. No se simulan findings o CVEs.\n\n### AWS\nLa ruta AWS está diseñada en `infra/aws/cloudformation/04-security-observability.yaml`; su banda anómala necesita historia AWS real y no se presenta como entrenada."
+      }
+    }
+  ],
+  "refresh": "15s",
+  "schemaVersion": 39,
+  "tags": ["security", "network", "simulated", "local", "no-securityhub-findings"],
+  "time": { "from": "now-8h", "to": "now" },
+  "timezone": "browser",
+  "title": "OTel Lab — Seguridad y red (local/simulada)",
+  "uid": "otel-lab-security-network",
+  "version": 2
+}

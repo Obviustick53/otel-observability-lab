@@ -1,0 +1,188 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Budget SNS target that idempotently stops the OTEL Lab ECS services and RDS instance.
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: otel-lab
+    AllowedPattern: '^[a-z0-9][a-z0-9-]{2,19}$'
+  Environment:
+    Type: String
+    Default: sandbox
+    AllowedValues: [sandbox, dev, test]
+  Owner:
+    Type: String
+    Default: observability-lab
+    AllowedPattern: '^[A-Za-z0-9][A-Za-z0-9._-]{1,31}$'
+  ExpirationUtc:
+    Type: String
+    Default: '2026-09-30'
+    AllowedPattern: '^20[0-9]{2}-[0-9]{2}-[0-9]{2}$'
+  LogRetentionDays:
+    Type: Number
+    Default: 3
+    AllowedValues: [1, 3, 5, 7, 14, 30]
+
+Resources:
+  CostGuardTopic:
+    Type: AWS::SNS::Topic
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      TopicName: !Sub '${ProjectName}-${Environment}-cost-guard'
+      DisplayName: !Sub '${ProjectName}-${Environment} cost guard'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  CostGuardLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${ProjectName}-${Environment}-cost-guard'
+      RetentionInDays: !Ref LogRetentionDays
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  CostGuardRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${ProjectName}-${Environment}-cost-guard'
+      Description: Least-privilege role for the budget emergency stop function.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+      Policies:
+        - PolicyName: !Sub '${ProjectName}-${Environment}-cost-guard'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: StopLabEcsServices
+                Effect: Allow
+                Action:
+                  - ecs:DescribeServices
+                  - ecs:UpdateService
+                Resource:
+                  - !Sub 'arn:${AWS::Partition}:ecs:${AWS::Region}:${AWS::AccountId}:service/${ProjectName}-${Environment}/service-a'
+                  - !Sub 'arn:${AWS::Partition}:ecs:${AWS::Region}:${AWS::AccountId}:service/${ProjectName}-${Environment}/service-b'
+                  - !Sub 'arn:${AWS::Partition}:ecs:${AWS::Region}:${AWS::AccountId}:service/${ProjectName}-${Environment}/data-service'
+                  - !Sub 'arn:${AWS::Partition}:ecs:${AWS::Region}:${AWS::AccountId}:service/${ProjectName}-${Environment}/otel-collector'
+              - Sid: StopLabRdsInstance
+                Effect: Allow
+                Action:
+                  - rds:DescribeDBInstances
+                  - rds:StopDBInstance
+                Resource: !Sub 'arn:${AWS::Partition}:rds:${AWS::Region}:${AWS::AccountId}:db:${ProjectName}-${Environment}-postgres'
+              - Sid: WriteCostGuardLogs
+                Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub 'arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/${ProjectName}-${Environment}-cost-guard:*'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  CostGuardFunction:
+    Type: AWS::Lambda::Function
+    DependsOn: CostGuardLogGroup
+    Properties:
+      FunctionName: !Sub '${ProjectName}-${Environment}-cost-guard'
+      Description: Stops lab compute and database resources when the AWS Budget notification fires.
+      Runtime: python3.12
+      Handler: index.handler
+      MemorySize: 128
+      Timeout: 60
+      Role: !GetAtt CostGuardRole.Arn
+      Environment:
+        Variables:
+          CLUSTER_NAME: !Sub '${ProjectName}-${Environment}'
+          DB_INSTANCE_ID: !Sub '${ProjectName}-${Environment}-postgres'
+          ECS_SERVICES: service-a,service-b,data-service,otel-collector
+      Code:
+        ZipFile: |
+          import os
+          import boto3
+          from botocore.exceptions import ClientError
+
+          ecs = boto3.client("ecs")
+          rds = boto3.client("rds")
+
+          def _error_code(exc):
+              return exc.response.get("Error", {}).get("Code", "Unknown")
+
+          def handler(event, context):
+              cluster = os.environ["CLUSTER_NAME"]
+              services = [name for name in os.environ["ECS_SERVICES"].split(",") if name]
+              result = {"ecs": [], "rds": {}}
+              for service in services:
+                  try:
+                      response = ecs.update_service(cluster=cluster, service=service, desiredCount=0)
+                      result["ecs"].append({"service": service, "desiredCount": response["service"]["desiredCount"], "status": "stopped"})
+                  except ClientError as exc:
+                      result["ecs"].append({"service": service, "status": "error", "code": _error_code(exc)})
+              try:
+                  response = rds.stop_db_instance(DBInstanceIdentifier=os.environ["DB_INSTANCE_ID"])
+                  result["rds"] = {"identifier": response["DBInstance"]["DBInstanceIdentifier"], "status": "stop-requested"}
+              except ClientError as exc:
+                  code = _error_code(exc)
+                  status = "already-stopped" if code == "InvalidDBInstanceState" else "error"
+                  result["rds"] = {"identifier": os.environ["DB_INSTANCE_ID"], "status": status, "code": code}
+              print({"event": "cost-guard", "result": result})
+              return result
+
+  CostGuardInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref CostGuardFunction
+      Principal: sns.amazonaws.com
+      SourceArn: !Ref CostGuardTopic
+
+  CostGuardSubscription:
+    Type: AWS::SNS::Subscription
+    DependsOn: CostGuardInvokePermission
+    Properties:
+      TopicArn: !Ref CostGuardTopic
+      Protocol: lambda
+      Endpoint: !GetAtt CostGuardFunction.Arn
+
+Outputs:
+  CostGuardTopicArn:
+    Description: SNS topic to attach to the AWS Budget emergency notifications.
+    Value: !Ref CostGuardTopic
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-CostGuardTopicArn'
+  CostGuardFunctionArn:
+    Description: Lambda that stops ECS services and RDS when invoked by the budget topic.
+    Value: !GetAtt CostGuardFunction.Arn
+  DbInstanceIdentifier:
+    Description: Exact RDS identifier targeted by the cost guard.
+    Value: !Sub '${ProjectName}-${Environment}-postgres'

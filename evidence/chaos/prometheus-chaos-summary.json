@@ -1,0 +1,24 @@
+{
+  "backend": "Prometheus",
+  "query": "increase(app_requests_total{service_name=\"service-a\",http_status_code=\"502\"}[15m])",
+  "observed_series": [
+    {
+      "service_name": "service-a",
+      "http_status_code": "200",
+      "observed_value": 3562
+    },
+    {
+      "service_name": "service-a",
+      "http_status_code": "502",
+      "observed_value": 46.782409813909965
+    },
+    {
+      "service_name": "service-b",
+      "http_status_code": "200",
+      "observed_value": 3608
+    }
+  ],
+  "query_window_note": "La consulta es una ventana reciente de 15 minutos y no equivale al conteo exacto del load test; el conteo exacto de E2 está en chaos-final.json.",
+  "interpretation": "Prometheus conserva la métrica de respuestas 502 y permite consultar su incremento en una ventana temporal.",
+  "visual_evidence": "../../screenshots/chaos/04-chaos-prometheus-final-rate.png"
+}

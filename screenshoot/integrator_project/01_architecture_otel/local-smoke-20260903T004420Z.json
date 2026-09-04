@@ -1,0 +1,96 @@
+{
+  "timestamp_utc": "2026-09-03T00:44:21.6002062Z",
+  "health": [
+    {
+      "status": "ok",
+      "service": "service-a"
+    },
+    {
+      "status": "ok",
+      "service": "service-b"
+    },
+    {
+      "status": "ok",
+      "service": "data-service"
+    }
+  ],
+  "order": {
+    "order": {
+      "order_id": "ord-001",
+      "customer_id": "cust-001",
+      "product_id": "keyboard",
+      "quantity": 1,
+      "status": "confirmed"
+    },
+    "inventory": {
+      "product_id": "keyboard",
+      "available": 42,
+      "warehouse": "bogota-01",
+      "updated_at": "2026-08-24T17:34:08.565878-05:00",
+      "trace_id": "27efb3fa45fb58a1b7e905bcc36f6f33"
+    },
+    "trace_id": "27efb3fa45fb58a1b7e905bcc36f6f33"
+  },
+  "direct_data": {
+    "inventory": {
+      "product_id": "keyboard",
+      "available": 42,
+      "warehouse": "bogota-01",
+      "updated_at": "2026-08-24T17:34:08.565878-05:00"
+    },
+    "record_type": "inventory",
+    "trace_id": "836453bbfda55a5600df2a46f54f0d7a"
+  },
+  "prometheus_targets": [
+    {
+      "job": null,
+      "health": "up",
+      "lastError": ""
+    },
+    {
+      "job": null,
+      "health": "up",
+      "lastError": ""
+    },
+    {
+      "job": null,
+      "health": "up",
+      "lastError": ""
+    }
+  ],
+  "prometheus_up": [
+    {
+      "metric": {
+        "__name__": "up",
+        "instance": "otel-collector:8888",
+        "job": "otel-collector-internal"
+      },
+      "value": [
+        1788396261.596,
+        "1"
+      ]
+    },
+    {
+      "metric": {
+        "__name__": "up",
+        "instance": "otel-collector:8889",
+        "job": "otel-collector"
+      },
+      "value": [
+        1788396261.596,
+        "1"
+      ]
+    },
+    {
+      "metric": {
+        "__name__": "up",
+        "instance": "local-security-simulator:9464",
+        "job": "local-security-simulator"
+      },
+      "value": [
+        1788396261.596,
+        "1"
+      ]
+    }
+  ]
+}

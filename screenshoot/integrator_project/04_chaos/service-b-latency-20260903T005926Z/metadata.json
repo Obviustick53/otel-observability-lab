@@ -1,0 +1,14 @@
+{
+  "experiment": "service-b-latency",
+  "environment": "local",
+  "telemetry_scope": "local-executed",
+  "injection_started_utc": "2026-09-03T00:59:26.627552Z",
+  "load_duration_seconds": 20,
+  "slo_latency_p99_seconds": 0.1,
+  "slo_error_rate_budget": 0.005,
+  "baseline_error_rate": 0.0,
+  "baseline_error_sigma": 0.005,
+  "rollback_verified": true,
+  "chaos_parameter": "LAB_SERVICE_B_LATENCY_MS=200",
+  "recovery_started_utc": "2026-09-03T00:59:56.176444Z"
+}

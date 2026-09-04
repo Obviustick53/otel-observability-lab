@@ -1,0 +1,2010 @@
+{
+  "generatedAtUtc": "2026-09-03T22:05:39.3955992Z",
+  "context": {
+    "AccountId": "741368364261",
+    "Arn": "arn:aws:iam::741368364261:user/admin-josemorse",
+    "Region": "us-east-1",
+    "Profile": "admin-josemorse"
+  },
+  "services": [
+    {
+      "service": "service-a",
+      "status": "VERIFIED",
+      "detail": {
+        "serviceArn": "arn:aws:ecs:us-east-1:741368364261:service/otel-lab-sandbox/service-a",
+        "serviceName": "service-a",
+        "clusterArn": "arn:aws:ecs:us-east-1:741368364261:cluster/otel-lab-sandbox",
+        "loadBalancers": [],
+        "serviceRegistries": [],
+        "status": "ACTIVE",
+        "desiredCount": 1,
+        "runningCount": 1,
+        "pendingCount": 0,
+        "launchType": "FARGATE",
+        "platformVersion": "LATEST",
+        "platformFamily": "Linux",
+        "taskDefinition": "arn:aws:ecs:us-east-1:741368364261:task-definition/otel-lab-sandbox-service-a:5",
+        "deploymentConfiguration": {
+          "deploymentCircuitBreaker": {
+            "enable": true,
+            "rollback": true,
+            "resetOnHealthyTask": true,
+            "thresholdConfiguration": {
+              "type": "BOUNDED_PERCENT",
+              "value": 50
+            }
+          },
+          "maximumPercent": 200,
+          "minimumHealthyPercent": 100,
+          "strategy": "ROLLING",
+          "bakeTimeInMinutes": 0
+        },
+        "deployments": [
+          {
+            "id": "ecs-svc/7967386555440962290",
+            "status": "PRIMARY",
+            "taskDefinition": "arn:aws:ecs:us-east-1:741368364261:task-definition/otel-lab-sandbox-service-a:5",
+            "desiredCount": 1,
+            "pendingCount": 0,
+            "runningCount": 1,
+            "failedTasks": 0,
+            "createdAt": "2026-09-03T16:52:47.8-05:00",
+            "updatedAt": "2026-09-03T16:56:17.895-05:00",
+            "launchType": "FARGATE",
+            "platformVersion": "1.4.0",
+            "platformFamily": "Linux",
+            "networkConfiguration": {
+              "awsvpcConfiguration": {
+                "subnets": [
+                  "subnet-031ac68b088be6a3d",
+                  "subnet-0cd7c716c8d54ea45"
+                ],
+                "securityGroups": [
+                  "sg-0b5394de8dd60cd5c"
+                ],
+                "assignPublicIp": "ENABLED"
+              }
+            },
+            "rolloutState": "COMPLETED",
+            "rolloutStateReason": "ECS deployment ecs-svc/7967386555440962290 completed.",
+            "serviceConnectConfiguration": {
+              "enabled": true,
+              "namespace": "arn:aws:servicediscovery:us-east-1:741368364261:namespace/ns-uw3dxrda7jtz5js3",
+              "services": []
+            },
+            "serviceConnectResources": [
+              {
+                "discoveryName": "aws-ecs-sc.client.68f3742b-b0be-3a25-bb04-a65ed4db9d79.service-a",
+                "discoveryArn": "arn:aws:servicediscovery:us-east-1:741368364261:service/srv-n6vh7xb7e3e3jxcz"
+              }
+            ]
+          }
+        ],
+        "roleArn": "arn:aws:iam::741368364261:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS",
+        "events": [
+          {
+            "id": "f2f11ebf-74a7-41f9-affc-e27c9d7836db",
+            "createdAt": "2026-09-03T16:56:17.903-05:00",
+            "message": "(service service-a) has reached a steady state."
+          },
+          {
+            "id": "d2870a83-6162-4a57-9161-c260a577c324",
+            "createdAt": "2026-09-03T16:56:17.902-05:00",
+            "message": "(service service-a) (deployment ecs-svc/7967386555440962290) deployment completed."
+          },
+          {
+            "id": "0ffb3e1e-85d7-4f44-90f4-14584b4e1ed0",
+            "createdAt": "2026-09-03T16:54:04.624-05:00",
+            "message": "(service service-a) has stopped 1 running tasks: (task 857f6329afbd46f8956966ec59646faa)."
+          },
+          {
+            "id": "94c5350f-422d-4126-9bfe-e613ebe32d1d",
+            "createdAt": "2026-09-03T16:53:03.201-05:00",
+            "message": "(service service-a) has started 1 tasks: (task 1dd680f85d3941ce82985a43006ad152)."
+          },
+          {
+            "id": "c854924d-e656-4ba3-baff-33e67e1aeae2",
+            "createdAt": "2026-09-03T12:25:55.163-05:00",
+            "message": "(service service-a) has reached a steady state."
+          },
+          {
+            "id": "eabf2bb2-ae2e-437e-a882-cec1cd5653df",
+            "createdAt": "2026-09-03T12:25:55.162-05:00",
+            "message": "(service service-a) (deployment ecs-svc/1687662881258909109) deployment completed."
+          },
+          {
+            "id": "e5d68ead-4f1c-48d0-baa2-1b19569ffbff",
+            "createdAt": "2026-09-03T12:23:34.129-05:00",
+            "message": "(service service-a) has stopped 1 running tasks: (task 703f1970985e4d3fbd4ef60518d4ad5d)."
+          },
+          {
+            "id": "8f39fc6c-78d0-4059-bc54-dcb64e966542",
+            "createdAt": "2026-09-03T12:21:40.882-05:00",
+            "message": "(service service-a) has started 1 tasks: (task 857f6329afbd46f8956966ec59646faa)."
+          },
+          {
+            "id": "ec389d9f-6cd9-4c9e-b529-75e866b36d72",
+            "createdAt": "2026-09-03T12:04:21.579-05:00",
+            "message": "(service service-a) has reached a steady state."
+          },
+          {
+            "id": "12de8aa7-9f2c-4e7c-8a14-c4e0e386f942",
+            "createdAt": "2026-09-03T12:04:21.578-05:00",
+            "message": "(service service-a) (deployment ecs-svc/8545127041246918752) deployment completed."
+          },
+          {
+            "id": "b088eb8f-4ac2-4781-ab8d-c8e4fb16baf9",
+            "createdAt": "2026-09-03T12:01:23.913-05:00",
+            "message": "(service service-a) has stopped 1 running tasks: (task eef0044ab9034f28a04feecc134cca83)."
+          },
+          {
+            "id": "7054eccc-692b-4f39-9459-3eb0343232f6",
+            "createdAt": "2026-09-03T11:59:52.729-05:00",
+            "message": "(service service-a) has started 1 tasks: (task 703f1970985e4d3fbd4ef60518d4ad5d)."
+          },
+          {
+            "id": "5eae9010-576d-4bcf-a5ba-668221fd9b46",
+            "createdAt": "2026-09-03T11:57:34.722-05:00",
+            "message": "(service service-a) has reached a steady state."
+          },
+          {
+            "id": "a44a73b7-56dd-481f-af8c-9bf744bff497",
+            "createdAt": "2026-09-03T11:57:25.382-05:00",
+            "message": "(service service-a) has stopped 1 running tasks: (task a4d2dff615044d348caa0733e623c933)."
+          },
+          {
+            "id": "04b0c429-4880-4a68-a221-4af2db963aa2",
+            "createdAt": "2026-09-03T11:56:02.235-05:00",
+            "message": "(service service-a) has started 1 tasks: (task a4d2dff615044d348caa0733e623c933). Amazon ECS replaced 1 tasks due to an unhealthy status."
+          },
+          {
+            "id": "48117fea-4098-4f5d-8f15-0e8b025fb02f",
+            "createdAt": "2026-09-03T11:43:15.473-05:00",
+            "message": "(service service-a) has reached a steady state."
+          },
+          {
+            "id": "09963a70-33da-45fe-bd39-8b9b428b6a05",
+            "createdAt": "2026-09-03T11:41:51.733-05:00",
+            "message": "(service service-a) has started 1 tasks: (task eef0044ab9034f28a04feecc134cca83)."
+          },
+          {
+            "id": "21ded174-a732-4a6f-978a-b57a055e85f3",
+            "createdAt": "2026-09-03T09:50:58.798-05:00",
+            "message": "(service service-a) has reached a steady state."
+          },
+          {
+            "id": "7bad2793-6ff9-4e0b-be1b-b09bbc55c045",
+            "createdAt": "2026-09-03T03:50:39.024-05:00",
+            "message": "(service service-a) has reached a steady state."
+          },
+          {
+            "id": "7f911b5f-78b6-4ab7-b233-534c53070ed9",
+            "createdAt": "2026-09-02T21:50:39.008-05:00",
+            "message": "(service service-a) has reached a steady state."
+          },
+          {
+            "id": "ebf23120-725e-4b77-ab54-bbac456b9252",
+            "createdAt": "2026-09-02T21:50:30.28-05:00",
+            "message": "(service service-a) has stopped 1 running tasks: (task 3f9deb5d1d1941cfa742ebf47f70f2ce)."
+          },
+          {
+            "id": "4a4339f2-8f05-492d-96f9-4a454b526303",
+            "createdAt": "2026-09-02T21:42:32.27-05:00",
+            "message": "(service service-a) has reached a steady state."
+          },
+          {
+            "id": "047c2156-066a-44f5-a8f7-ea8388d59b21",
+            "createdAt": "2026-09-02T21:42:32.269-05:00",
+            "message": "(service service-a) (deployment ecs-svc/0854462119766584082) deployment completed."
+          },
+          {
+            "id": "096c6137-bde7-4e82-b96b-22190d1944c3",
+            "createdAt": "2026-09-02T21:41:10.315-05:00",
+            "message": "(service service-a) has started 1 tasks: (task 3f9deb5d1d1941cfa742ebf47f70f2ce)."
+          }
+        ],
+        "createdAt": "2026-09-02T21:40:56.106-05:00",
+        "currentServiceRevisions": [
+          {
+            "arn": "arn:aws:ecs:us-east-1:741368364261:service-revision/otel-lab-sandbox/service-a/7967386555440962290",
+            "requestedTaskCount": 1,
+            "runningTaskCount": 1,
+            "pendingTaskCount": 0
+          }
+        ],
+        "placementConstraints": [],
+        "placementStrategy": [],
+        "networkConfiguration": {
+          "awsvpcConfiguration": {
+            "subnets": [
+              "subnet-031ac68b088be6a3d",
+              "subnet-0cd7c716c8d54ea45"
+            ],
+            "securityGroups": [
+              "sg-0b5394de8dd60cd5c"
+            ],
+            "assignPublicIp": "ENABLED"
+          }
+        },
+        "healthCheckGracePeriodSeconds": 0,
+        "schedulingStrategy": "REPLICA",
+        "deploymentController": {
+          "type": "ECS"
+        },
+        "createdBy": "arn:aws:iam::741368364261:user/admin-josemorse",
+        "enableECSManagedTags": true,
+        "propagateTags": "SERVICE",
+        "enableExecuteCommand": false,
+        "availabilityZoneRebalancing": "ENABLED",
+        "resourceManagementType": "CUSTOMER"
+      }
+    },
+    {
+      "service": "service-b",
+      "status": "VERIFIED",
+      "detail": {
+        "serviceArn": "arn:aws:ecs:us-east-1:741368364261:service/otel-lab-sandbox/service-b",
+        "serviceName": "service-b",
+        "clusterArn": "arn:aws:ecs:us-east-1:741368364261:cluster/otel-lab-sandbox",
+        "loadBalancers": [],
+        "serviceRegistries": [],
+        "status": "ACTIVE",
+        "desiredCount": 1,
+        "runningCount": 1,
+        "pendingCount": 0,
+        "launchType": "FARGATE",
+        "platformVersion": "LATEST",
+        "platformFamily": "Linux",
+        "taskDefinition": "arn:aws:ecs:us-east-1:741368364261:task-definition/otel-lab-sandbox-service-b:5",
+        "deploymentConfiguration": {
+          "deploymentCircuitBreaker": {
+            "enable": true,
+            "rollback": true,
+            "resetOnHealthyTask": true,
+            "thresholdConfiguration": {
+              "type": "BOUNDED_PERCENT",
+              "value": 50
+            }
+          },
+          "maximumPercent": 200,
+          "minimumHealthyPercent": 100,
+          "strategy": "ROLLING",
+          "bakeTimeInMinutes": 0
+        },
+        "deployments": [
+          {
+            "id": "ecs-svc/7625527141547230154",
+            "status": "PRIMARY",
+            "taskDefinition": "arn:aws:ecs:us-east-1:741368364261:task-definition/otel-lab-sandbox-service-b:5",
+            "desiredCount": 1,
+            "pendingCount": 0,
+            "runningCount": 1,
+            "failedTasks": 0,
+            "createdAt": "2026-09-03T16:52:47.564-05:00",
+            "updatedAt": "2026-09-03T16:57:42.957-05:00",
+            "launchType": "FARGATE",
+            "platformVersion": "1.4.0",
+            "platformFamily": "Linux",
+            "networkConfiguration": {
+              "awsvpcConfiguration": {
+                "subnets": [
+                  "subnet-031ac68b088be6a3d",
+                  "subnet-0cd7c716c8d54ea45"
+                ],
+                "securityGroups": [
+                  "sg-0b5394de8dd60cd5c"
+                ],
+                "assignPublicIp": "ENABLED"
+              }
+            },
+            "rolloutState": "COMPLETED",
+            "rolloutStateReason": "ECS deployment ecs-svc/7625527141547230154 completed.",
+            "serviceConnectConfiguration": {
+              "enabled": true,
+              "namespace": "arn:aws:servicediscovery:us-east-1:741368364261:namespace/ns-uw3dxrda7jtz5js3",
+              "services": [
+                {
+                  "portName": "service-b",
+                  "discoveryName": "service-b",
+                  "clientAliases": [
+                    {
+                      "port": 8001,
+                      "dnsName": "service-b"
+                    }
+                  ]
+                }
+              ]
+            },
+            "serviceConnectResources": [
+              {
+                "discoveryName": "service-b",
+                "discoveryArn": "arn:aws:servicediscovery:us-east-1:741368364261:service/srv-g3pfbte2nj4b6qjr"
+              }
+            ]
+          }
+        ],
+        "roleArn": "arn:aws:iam::741368364261:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS",
+        "events": [
+          {
+            "id": "71bc8a62-f43f-4d5b-ac81-df2f28f2dab5",
+            "createdAt": "2026-09-03T16:57:42.966-05:00",
+            "message": "(service service-b) has reached a steady state."
+          },
+          {
+            "id": "b7d08f19-1bdd-420a-81eb-9bf428bbe4c3",
+            "createdAt": "2026-09-03T16:57:42.965-05:00",
+            "message": "(service service-b) (deployment ecs-svc/7625527141547230154) deployment completed."
+          },
+          {
+            "id": "4ee280d8-a4bd-4cf6-9ed0-a12475da8a5b",
+            "createdAt": "2026-09-03T16:55:20.497-05:00",
+            "message": "(service service-b) has stopped 1 running tasks: (task 1d376f7d2cb34ff7bff33ca7ff48e2ba)."
+          },
+          {
+            "id": "5ff02f0b-c65c-47fe-9ef0-f20580c06e5e",
+            "createdAt": "2026-09-03T16:53:38.336-05:00",
+            "message": "(service service-b) has started 1 tasks: (task 2e4d28c01f7c437d971b22a3e1479b80)."
+          },
+          {
+            "id": "1fa45604-5d1e-4b97-a642-c8a83645ac82",
+            "createdAt": "2026-09-03T12:26:06.973-05:00",
+            "message": "(service service-b) has reached a steady state."
+          },
+          {
+            "id": "6f1b196b-16bc-4a46-84a5-d5426874b8d7",
+            "createdAt": "2026-09-03T12:26:06.972-05:00",
+            "message": "(service service-b) (deployment ecs-svc/9834894206755914505) deployment completed."
+          },
+          {
+            "id": "f109a036-b48e-45b6-9af2-4cc68498e0e8",
+            "createdAt": "2026-09-03T12:23:45.98-05:00",
+            "message": "(service service-b) has stopped 1 running tasks: (task 8133150c16914848aa1c8dc466588ceb)."
+          },
+          {
+            "id": "c2a7f761-1cc8-4932-88d3-4e6a13445b2b",
+            "createdAt": "2026-09-03T12:22:13.672-05:00",
+            "message": "(service service-b) has started 1 tasks: (task 1d376f7d2cb34ff7bff33ca7ff48e2ba)."
+          },
+          {
+            "id": "ce72bfbe-bb66-41cd-934a-72dd58f3930a",
+            "createdAt": "2026-09-03T12:04:43.343-05:00",
+            "message": "(service service-b) has reached a steady state."
+          },
+          {
+            "id": "de70f706-4a86-4237-9e35-61431210f58a",
+            "createdAt": "2026-09-03T12:04:43.342-05:00",
+            "message": "(service service-b) (deployment ecs-svc/8640003132000563015) deployment completed."
+          },
+          {
+            "id": "73350669-1de0-430f-b74f-a0f75a455cac",
+            "createdAt": "2026-09-03T12:01:50.992-05:00",
+            "message": "(service service-b) has stopped 1 running tasks: (task 45a81527fc164849af16f34de1bba681)."
+          },
+          {
+            "id": "6b3142f5-de0e-4d96-ab3c-61823338131b",
+            "createdAt": "2026-09-03T12:00:08.682-05:00",
+            "message": "(service service-b) has started 1 tasks: (task 8133150c16914848aa1c8dc466588ceb)."
+          },
+          {
+            "id": "862e69dd-28ca-4742-b0ee-e4d6487c2a2f",
+            "createdAt": "2026-09-03T11:43:14.972-05:00",
+            "message": "(service service-b) has reached a steady state."
+          },
+          {
+            "id": "6c643120-b45f-4923-893e-4807bb204cfb",
+            "createdAt": "2026-09-03T11:41:51.696-05:00",
+            "message": "(service service-b) has started 1 tasks: (task 45a81527fc164849af16f34de1bba681)."
+          },
+          {
+            "id": "4e823118-02c7-464f-be4d-9e66ffdf9a47",
+            "createdAt": "2026-09-03T09:51:41.395-05:00",
+            "message": "(service service-b) has reached a steady state."
+          },
+          {
+            "id": "bdbab987-64e3-440a-98d8-7cbfc20ef746",
+            "createdAt": "2026-09-03T03:51:12.463-05:00",
+            "message": "(service service-b) has reached a steady state."
+          },
+          {
+            "id": "55712bbe-be00-4763-a9ab-8760a4d2d0b3",
+            "createdAt": "2026-09-02T21:50:44.886-05:00",
+            "message": "(service service-b) has reached a steady state."
+          },
+          {
+            "id": "6c5f0bd5-204a-42c4-9dc5-f788d9350df3",
+            "createdAt": "2026-09-02T21:50:34.843-05:00",
+            "message": "(service service-b) has stopped 1 running tasks: (task cec9164d88184681997c0d68f912629a)."
+          },
+          {
+            "id": "9edd3665-2963-4b9c-aab5-05f85113ec50",
+            "createdAt": "2026-09-02T21:42:58.684-05:00",
+            "message": "(service service-b) has reached a steady state."
+          },
+          {
+            "id": "ff95a30a-2d03-4e19-8493-c56975d821c4",
+            "createdAt": "2026-09-02T21:42:58.683-05:00",
+            "message": "(service service-b) (deployment ecs-svc/6082258269816814342) deployment completed."
+          },
+          {
+            "id": "006c6d43-ff5b-4fd5-829c-3c822ccb5b89",
+            "createdAt": "2026-09-02T21:41:47.14-05:00",
+            "message": "(service service-b) has started 1 tasks: (task cec9164d88184681997c0d68f912629a)."
+          }
+        ],
+        "createdAt": "2026-09-02T21:40:56.102-05:00",
+        "currentServiceRevisions": [
+          {
+            "arn": "arn:aws:ecs:us-east-1:741368364261:service-revision/otel-lab-sandbox/service-b/7625527141547230154",
+            "requestedTaskCount": 1,
+            "runningTaskCount": 1,
+            "pendingTaskCount": 0
+          }
+        ],
+        "placementConstraints": [],
+        "placementStrategy": [],
+        "networkConfiguration": {
+          "awsvpcConfiguration": {
+            "subnets": [
+              "subnet-031ac68b088be6a3d",
+              "subnet-0cd7c716c8d54ea45"
+            ],
+            "securityGroups": [
+              "sg-0b5394de8dd60cd5c"
+            ],
+            "assignPublicIp": "ENABLED"
+          }
+        },
+        "healthCheckGracePeriodSeconds": 0,
+        "schedulingStrategy": "REPLICA",
+        "deploymentController": {
+          "type": "ECS"
+        },
+        "createdBy": "arn:aws:iam::741368364261:user/admin-josemorse",
+        "enableECSManagedTags": true,
+        "propagateTags": "SERVICE",
+        "enableExecuteCommand": false,
+        "availabilityZoneRebalancing": "ENABLED",
+        "resourceManagementType": "CUSTOMER"
+      }
+    },
+    {
+      "service": "data-service",
+      "status": "VERIFIED",
+      "detail": {
+        "serviceArn": "arn:aws:ecs:us-east-1:741368364261:service/otel-lab-sandbox/data-service",
+        "serviceName": "data-service",
+        "clusterArn": "arn:aws:ecs:us-east-1:741368364261:cluster/otel-lab-sandbox",
+        "loadBalancers": [],
+        "serviceRegistries": [],
+        "status": "ACTIVE",
+        "desiredCount": 1,
+        "runningCount": 1,
+        "pendingCount": 0,
+        "launchType": "FARGATE",
+        "platformVersion": "LATEST",
+        "platformFamily": "Linux",
+        "taskDefinition": "arn:aws:ecs:us-east-1:741368364261:task-definition/otel-lab-sandbox-data-service:6",
+        "deploymentConfiguration": {
+          "deploymentCircuitBreaker": {
+            "enable": true,
+            "rollback": true,
+            "resetOnHealthyTask": true,
+            "thresholdConfiguration": {
+              "type": "BOUNDED_PERCENT",
+              "value": 50
+            }
+          },
+          "maximumPercent": 200,
+          "minimumHealthyPercent": 100,
+          "strategy": "ROLLING",
+          "bakeTimeInMinutes": 0
+        },
+        "deployments": [
+          {
+            "id": "ecs-svc/5074320583035610723",
+            "status": "PRIMARY",
+            "taskDefinition": "arn:aws:ecs:us-east-1:741368364261:task-definition/otel-lab-sandbox-data-service:6",
+            "desiredCount": 1,
+            "pendingCount": 0,
+            "runningCount": 1,
+            "failedTasks": 0,
+            "createdAt": "2026-09-03T16:52:47.77-05:00",
+            "updatedAt": "2026-09-03T16:57:36.55-05:00",
+            "launchType": "FARGATE",
+            "platformVersion": "1.4.0",
+            "platformFamily": "Linux",
+            "networkConfiguration": {
+              "awsvpcConfiguration": {
+                "subnets": [
+                  "subnet-031ac68b088be6a3d",
+                  "subnet-0cd7c716c8d54ea45"
+                ],
+                "securityGroups": [
+                  "sg-0e04859376c4b4b00"
+                ],
+                "assignPublicIp": "ENABLED"
+              }
+            },
+            "rolloutState": "COMPLETED",
+            "rolloutStateReason": "ECS deployment ecs-svc/5074320583035610723 completed.",
+            "serviceConnectConfiguration": {
+              "enabled": true,
+              "namespace": "arn:aws:servicediscovery:us-east-1:741368364261:namespace/ns-uw3dxrda7jtz5js3",
+              "services": [
+                {
+                  "portName": "data-service",
+                  "discoveryName": "data-service",
+                  "clientAliases": [
+                    {
+                      "port": 8002,
+                      "dnsName": "data-service"
+                    }
+                  ]
+                }
+              ]
+            },
+            "serviceConnectResources": [
+              {
+                "discoveryName": "data-service",
+                "discoveryArn": "arn:aws:servicediscovery:us-east-1:741368364261:service/srv-qyauytbeikub3y3t"
+              }
+            ]
+          }
+        ],
+        "roleArn": "arn:aws:iam::741368364261:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS",
+        "events": [
+          {
+            "id": "14163081-d8ce-4c65-8a55-6723c214501e",
+            "createdAt": "2026-09-03T16:57:36.562-05:00",
+            "message": "(service data-service) has reached a steady state."
+          },
+          {
+            "id": "2f2e7e48-2a1d-4b4a-b3c8-a74afe94e88e",
+            "createdAt": "2026-09-03T16:57:36.561-05:00",
+            "message": "(service data-service) (deployment ecs-svc/5074320583035610723) deployment completed."
+          },
+          {
+            "id": "5be26277-5023-41e2-ae6f-99773ad92ca0",
+            "createdAt": "2026-09-03T16:55:11.207-05:00",
+            "message": "(service data-service) has stopped 1 running tasks: (task fb7e451d324449e888a43dee39801e52)."
+          },
+          {
+            "id": "cf80273e-0845-43ee-a780-62479d78bcdb",
+            "createdAt": "2026-09-03T16:53:38.399-05:00",
+            "message": "(service data-service) has started 1 tasks: (task c301882297874d45a3153db23ffd19fb)."
+          },
+          {
+            "id": "33291207-5477-47d6-8c26-1eb824269a65",
+            "createdAt": "2026-09-03T12:25:36.281-05:00",
+            "message": "(service data-service) has reached a steady state."
+          },
+          {
+            "id": "701695a0-d8bf-4894-8563-91036795f4f8",
+            "createdAt": "2026-09-03T12:25:36.28-05:00",
+            "message": "(service data-service) (deployment ecs-svc/9876075255168276750) deployment completed."
+          },
+          {
+            "id": "ab959433-43eb-4ba7-b6ef-7e91810ff919",
+            "createdAt": "2026-09-03T12:23:39.534-05:00",
+            "message": "(service data-service) has stopped 1 running tasks: (task 3a26aa821ab141a7bdcc44de7063f0e2)."
+          },
+          {
+            "id": "1124b5aa-f443-41b5-9476-bbe9f2401ee4",
+            "createdAt": "2026-09-03T12:22:16.889-05:00",
+            "message": "(service data-service) has started 1 tasks: (task fb7e451d324449e888a43dee39801e52)."
+          },
+          {
+            "id": "112e3a62-e92a-4c0d-9354-cde212d8b02b",
+            "createdAt": "2026-09-03T12:04:02.209-05:00",
+            "message": "(service data-service) has reached a steady state."
+          },
+          {
+            "id": "3baee472-be9d-4967-b326-ac0e70ab9df5",
+            "createdAt": "2026-09-03T12:04:02.208-05:00",
+            "message": "(service data-service) (deployment ecs-svc/2930370690128866932) deployment completed."
+          },
+          {
+            "id": "a69f14e3-6d53-4706-9a48-f70a81f1ae75",
+            "createdAt": "2026-09-03T12:01:43.1-05:00",
+            "message": "(service data-service) has stopped 1 running tasks: (task 3561d11809fd40a0b1524d2cb5729cd4)."
+          },
+          {
+            "id": "1380ba29-7096-4e17-8bba-5469f8b8e4fa",
+            "createdAt": "2026-09-03T12:00:10.116-05:00",
+            "message": "(service data-service) has started 1 tasks: (task 3a26aa821ab141a7bdcc44de7063f0e2)."
+          },
+          {
+            "id": "373e34ab-00e2-42a6-816e-03fce281420f",
+            "createdAt": "2026-09-03T11:06:34.001-05:00",
+            "message": "(service data-service) has reached a steady state."
+          },
+          {
+            "id": "ad7f4c90-0b1c-4f94-9ee1-f3fb2a5bed08",
+            "createdAt": "2026-09-03T11:06:34-05:00",
+            "message": "(service data-service) (deployment ecs-svc/9833401054730543520) deployment completed."
+          },
+          {
+            "id": "0f0d346c-5836-474f-8775-51ea34db6672",
+            "createdAt": "2026-09-03T11:03:20.832-05:00",
+            "message": "(service data-service) has stopped 1 running tasks: (task 665f3c12604243c5b36cea98a8cdb72e)."
+          },
+          {
+            "id": "455224a2-c2be-4ef1-9859-0e4f46f77454",
+            "createdAt": "2026-09-03T11:03:20.822-05:00",
+            "message": "(service data-service) (task 665f3c12604243c5b36cea98a8cdb72e) failed container health checks."
+          },
+          {
+            "id": "ec1e3a79-b930-4604-8708-6eb265fc8f7f",
+            "createdAt": "2026-09-03T11:02:09.356-05:00",
+            "message": "(service data-service) has started 1 tasks: (task 3561d11809fd40a0b1524d2cb5729cd4)."
+          },
+          {
+            "id": "610e253e-c3b6-4471-a60c-7e434409cd74",
+            "createdAt": "2026-09-03T11:01:24.728-05:00",
+            "message": "(service data-service) has started 1 tasks: (task 665f3c12604243c5b36cea98a8cdb72e)."
+          },
+          {
+            "id": "a9c5207b-b47e-4a5c-bc7a-da9a4c853a7d",
+            "createdAt": "2026-09-03T09:49:36.308-05:00",
+            "message": "(service data-service) has reached a steady state."
+          },
+          {
+            "id": "f598eb94-89ef-49a1-83e0-410b78165b3f",
+            "createdAt": "2026-09-03T03:49:32.758-05:00",
+            "message": "(service data-service) has reached a steady state."
+          },
+          {
+            "id": "228f4bc7-6960-45f6-be18-0b4f935e33c3",
+            "createdAt": "2026-09-02T21:49:31.011-05:00",
+            "message": "(service data-service) has reached a steady state."
+          },
+          {
+            "id": "ce109c6c-2454-4c20-a51a-ae3c5ef7f1c0",
+            "createdAt": "2026-09-02T21:49:31.01-05:00",
+            "message": "(service data-service) (deployment ecs-svc/4308836073879169422) deployment completed."
+          },
+          {
+            "id": "9e8f6bf5-5a1d-4b0f-9e12-839b31c06b71",
+            "createdAt": "2026-09-02T21:49:21.096-05:00",
+            "message": "(service data-service) has stopped 1 running tasks: (task 053555cca667486c983a79fb0d20255b)."
+          },
+          {
+            "id": "c09eba0f-e73e-4790-8e86-0ac78ed019a0",
+            "createdAt": "2026-09-02T21:49:21.095-05:00",
+            "message": "(service data-service) (task 053555cca667486c983a79fb0d20255b) failed container health checks."
+          },
+          {
+            "id": "5df7ac62-2dc3-4b13-b36c-887407da3a85",
+            "createdAt": "2026-09-02T21:48:40.089-05:00",
+            "message": "(service data-service) has stopped 1 running tasks: (task a143b7d7cecc4a3c8b371058c0649793)."
+          },
+          {
+            "id": "16da1f59-75cd-4f6f-8c8e-a5b730ca0c48",
+            "createdAt": "2026-09-02T21:48:40.088-05:00",
+            "message": "(service data-service) (task a143b7d7cecc4a3c8b371058c0649793) failed container health checks."
+          },
+          {
+            "id": "4cb9dc6d-0ea8-4f36-a4b9-be61bed29582",
+            "createdAt": "2026-09-02T21:46:57.212-05:00",
+            "message": "(service data-service) has started 1 tasks: (task a143b7d7cecc4a3c8b371058c0649793). Amazon ECS replaced 1 tasks due to an unhealthy status."
+          },
+          {
+            "id": "b7845269-6c62-4c53-9f70-bc582347f70d",
+            "createdAt": "2026-09-02T21:45:31.997-05:00",
+            "message": "(service data-service) has stopped 1 running tasks: (task 793ef24a6c15425d8b79218ca013e3b0)."
+          },
+          {
+            "id": "d04ca80b-dc11-45b2-b073-046cbf8d7628",
+            "createdAt": "2026-09-02T21:45:31.996-05:00",
+            "message": "(service data-service) (task 793ef24a6c15425d8b79218ca013e3b0) failed container health checks."
+          },
+          {
+            "id": "e41df7b9-1e97-4e25-ba60-5723e9b614e1",
+            "createdAt": "2026-09-02T21:43:28.027-05:00",
+            "message": "(service data-service) has started 1 tasks: (task 053555cca667486c983a79fb0d20255b). Amazon ECS replaced 1 tasks due to an unhealthy status."
+          },
+          {
+            "id": "d5252b0d-5324-4f6e-8201-08a952300265",
+            "createdAt": "2026-09-02T21:41:45.587-05:00",
+            "message": "(service data-service) has started 1 tasks: (task 793ef24a6c15425d8b79218ca013e3b0)."
+          }
+        ],
+        "createdAt": "2026-09-02T21:40:56.398-05:00",
+        "currentServiceRevisions": [
+          {
+            "arn": "arn:aws:ecs:us-east-1:741368364261:service-revision/otel-lab-sandbox/data-service/5074320583035610723",
+            "requestedTaskCount": 1,
+            "runningTaskCount": 1,
+            "pendingTaskCount": 0
+          }
+        ],
+        "placementConstraints": [],
+        "placementStrategy": [],
+        "networkConfiguration": {
+          "awsvpcConfiguration": {
+            "subnets": [
+              "subnet-031ac68b088be6a3d",
+              "subnet-0cd7c716c8d54ea45"
+            ],
+            "securityGroups": [
+              "sg-0e04859376c4b4b00"
+            ],
+            "assignPublicIp": "ENABLED"
+          }
+        },
+        "healthCheckGracePeriodSeconds": 0,
+        "schedulingStrategy": "REPLICA",
+        "deploymentController": {
+          "type": "ECS"
+        },
+        "createdBy": "arn:aws:iam::741368364261:user/admin-josemorse",
+        "enableECSManagedTags": true,
+        "propagateTags": "SERVICE",
+        "enableExecuteCommand": false,
+        "availabilityZoneRebalancing": "ENABLED",
+        "resourceManagementType": "CUSTOMER"
+      }
+    },
+    {
+      "service": "otel-collector",
+      "status": "VERIFIED",
+      "detail": {
+        "serviceArn": "arn:aws:ecs:us-east-1:741368364261:service/otel-lab-sandbox/otel-collector",
+        "serviceName": "otel-collector",
+        "clusterArn": "arn:aws:ecs:us-east-1:741368364261:cluster/otel-lab-sandbox",
+        "loadBalancers": [],
+        "serviceRegistries": [],
+        "status": "ACTIVE",
+        "desiredCount": 1,
+        "runningCount": 1,
+        "pendingCount": 0,
+        "launchType": "FARGATE",
+        "platformVersion": "LATEST",
+        "platformFamily": "Linux",
+        "taskDefinition": "arn:aws:ecs:us-east-1:741368364261:task-definition/otel-lab-sandbox-otel-collector:5",
+        "deploymentConfiguration": {
+          "deploymentCircuitBreaker": {
+            "enable": true,
+            "rollback": true,
+            "resetOnHealthyTask": true,
+            "thresholdConfiguration": {
+              "type": "BOUNDED_PERCENT",
+              "value": 50
+            }
+          },
+          "maximumPercent": 200,
+          "minimumHealthyPercent": 100,
+          "strategy": "ROLLING",
+          "bakeTimeInMinutes": 0
+        },
+        "deployments": [
+          {
+            "id": "ecs-svc/1979565637189245915",
+            "status": "PRIMARY",
+            "taskDefinition": "arn:aws:ecs:us-east-1:741368364261:task-definition/otel-lab-sandbox-otel-collector:5",
+            "desiredCount": 1,
+            "pendingCount": 0,
+            "runningCount": 1,
+            "failedTasks": 0,
+            "createdAt": "2026-09-03T16:52:47.507-05:00",
+            "updatedAt": "2026-09-03T16:57:06.1-05:00",
+            "launchType": "FARGATE",
+            "platformVersion": "1.4.0",
+            "platformFamily": "Linux",
+            "networkConfiguration": {
+              "awsvpcConfiguration": {
+                "subnets": [
+                  "subnet-031ac68b088be6a3d",
+                  "subnet-0cd7c716c8d54ea45"
+                ],
+                "securityGroups": [
+                  "sg-0515b067c4d8bb293"
+                ],
+                "assignPublicIp": "ENABLED"
+              }
+            },
+            "rolloutState": "COMPLETED",
+            "rolloutStateReason": "ECS deployment ecs-svc/1979565637189245915 completed.",
+            "serviceConnectConfiguration": {
+              "enabled": true,
+              "namespace": "arn:aws:servicediscovery:us-east-1:741368364261:namespace/ns-uw3dxrda7jtz5js3",
+              "services": [
+                {
+                  "portName": "otlp-grpc",
+                  "discoveryName": "otel-collector",
+                  "clientAliases": [
+                    {
+                      "port": 4317,
+                      "dnsName": "otel-collector"
+                    }
+                  ]
+                }
+              ]
+            },
+            "serviceConnectResources": [
+              {
+                "discoveryName": "otel-collector",
+                "discoveryArn": "arn:aws:servicediscovery:us-east-1:741368364261:service/srv-k3wnxk5cl7ek5wsl"
+              }
+            ]
+          }
+        ],
+        "roleArn": "arn:aws:iam::741368364261:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS",
+        "events": [
+          {
+            "id": "370d3ee7-9784-43c3-941f-da11cf40c219",
+            "createdAt": "2026-09-03T16:57:06.109-05:00",
+            "message": "(service otel-collector) has reached a steady state."
+          },
+          {
+            "id": "02fbc682-0fad-4765-9c25-7ad04a63927b",
+            "createdAt": "2026-09-03T16:57:06.108-05:00",
+            "message": "(service otel-collector) (deployment ecs-svc/1979565637189245915) deployment completed."
+          },
+          {
+            "id": "bd8b06af-3a23-4136-9932-7869268f2a78",
+            "createdAt": "2026-09-03T16:54:40.271-05:00",
+            "message": "(service otel-collector) has stopped 1 running tasks: (task 759efea6a4d24ff6ae40dd696b8238bb)."
+          },
+          {
+            "id": "6b90d725-f511-4a40-b3ef-67baefda0f3d",
+            "createdAt": "2026-09-03T16:53:39.142-05:00",
+            "message": "(service otel-collector) has started 1 tasks: (task dbeac0d2bc834b6182ff50cd3e7d3774)."
+          },
+          {
+            "id": "5615b385-b672-43c3-b1dd-ebf69a4fe10a",
+            "createdAt": "2026-09-03T12:25:06.094-05:00",
+            "message": "(service otel-collector) has reached a steady state."
+          },
+          {
+            "id": "7b178850-44a6-4a94-b8a4-9ed9ef1fd895",
+            "createdAt": "2026-09-03T12:25:06.093-05:00",
+            "message": "(service otel-collector) (deployment ecs-svc/4308125291639860301) deployment completed."
+          },
+          {
+            "id": "8f789e5e-acb0-4ea3-8c43-82658391af71",
+            "createdAt": "2026-09-03T12:23:12.46-05:00",
+            "message": "(service otel-collector) has stopped 1 running tasks: (task 21dec66daf0041f59520a019575c2a67)."
+          },
+          {
+            "id": "9607b592-070f-4bb6-a030-fdb7234b764a",
+            "createdAt": "2026-09-03T12:22:11.009-05:00",
+            "message": "(service otel-collector) has started 1 tasks: (task 759efea6a4d24ff6ae40dd696b8238bb)."
+          },
+          {
+            "id": "32968290-d9f2-4e98-b30a-171002da9dd7",
+            "createdAt": "2026-09-03T12:03:17.168-05:00",
+            "message": "(service otel-collector) has reached a steady state."
+          },
+          {
+            "id": "3d9c4335-886f-42c9-a0ea-cdd3de319ced",
+            "createdAt": "2026-09-03T12:03:17.167-05:00",
+            "message": "(service otel-collector) (deployment ecs-svc/2239974913685356968) deployment completed."
+          },
+          {
+            "id": "cbff9765-106a-4285-870c-be7c324f42ae",
+            "createdAt": "2026-09-03T12:01:04.209-05:00",
+            "message": "(service otel-collector) has stopped 1 running tasks: (task 5a20d09e957d47728d9fcc28705d0422)."
+          },
+          {
+            "id": "1f790572-7439-48a1-9a54-fa532323e033",
+            "createdAt": "2026-09-03T12:00:12.771-05:00",
+            "message": "(service otel-collector) has started 1 tasks: (task 21dec66daf0041f59520a019575c2a67)."
+          },
+          {
+            "id": "05fe8e2a-6c26-4a92-80de-b11e221bbb5f",
+            "createdAt": "2026-09-03T11:42:29.238-05:00",
+            "message": "(service otel-collector) has reached a steady state."
+          },
+          {
+            "id": "09b24ee3-eeaa-4c84-9e3d-c2ece10dacb1",
+            "createdAt": "2026-09-03T11:41:43.365-05:00",
+            "message": "(service otel-collector) has started 1 tasks: (task 5a20d09e957d47728d9fcc28705d0422)."
+          },
+          {
+            "id": "a89ced74-e6ff-47a9-a097-e54fa3f10e77",
+            "createdAt": "2026-09-03T09:51:18.758-05:00",
+            "message": "(service otel-collector) has reached a steady state."
+          },
+          {
+            "id": "133f2299-f009-484a-aeaf-9c460ca7c993",
+            "createdAt": "2026-09-03T03:51:16.032-05:00",
+            "message": "(service otel-collector) has reached a steady state."
+          },
+          {
+            "id": "e0e3ddeb-2515-410e-9531-1977128beddc",
+            "createdAt": "2026-09-02T21:50:50.648-05:00",
+            "message": "(service otel-collector) has reached a steady state."
+          },
+          {
+            "id": "90eb812c-9138-444d-93dc-a80f30e4625d",
+            "createdAt": "2026-09-02T21:50:40.701-05:00",
+            "message": "(service otel-collector) has stopped 1 running tasks: (task 2ee762f3f7734d519572ea7d2fc2b3e8)."
+          },
+          {
+            "id": "433b6bcb-b481-4ab1-b0a1-dea561d1bb45",
+            "createdAt": "2026-09-02T21:42:42.694-05:00",
+            "message": "(service otel-collector) has reached a steady state."
+          },
+          {
+            "id": "79952fcd-e7d9-459d-858e-bb291d263749",
+            "createdAt": "2026-09-02T21:42:42.693-05:00",
+            "message": "(service otel-collector) (deployment ecs-svc/8216338533768475831) deployment completed."
+          },
+          {
+            "id": "2d0ab05d-bc86-4ce8-a003-fad7a7d4ec1e",
+            "createdAt": "2026-09-02T21:41:52.069-05:00",
+            "message": "(service otel-collector) has started 1 tasks: (task 2ee762f3f7734d519572ea7d2fc2b3e8)."
+          }
+        ],
+        "createdAt": "2026-09-02T21:40:56.269-05:00",
+        "currentServiceRevisions": [
+          {
+            "arn": "arn:aws:ecs:us-east-1:741368364261:service-revision/otel-lab-sandbox/otel-collector/1979565637189245915",
+            "requestedTaskCount": 1,
+            "runningTaskCount": 1,
+            "pendingTaskCount": 0
+          }
+        ],
+        "placementConstraints": [],
+        "placementStrategy": [],
+        "networkConfiguration": {
+          "awsvpcConfiguration": {
+            "subnets": [
+              "subnet-031ac68b088be6a3d",
+              "subnet-0cd7c716c8d54ea45"
+            ],
+            "securityGroups": [
+              "sg-0515b067c4d8bb293"
+            ],
+            "assignPublicIp": "ENABLED"
+          }
+        },
+        "healthCheckGracePeriodSeconds": 0,
+        "schedulingStrategy": "REPLICA",
+        "deploymentController": {
+          "type": "ECS"
+        },
+        "createdBy": "arn:aws:iam::741368364261:user/admin-josemorse",
+        "enableECSManagedTags": true,
+        "propagateTags": "SERVICE",
+        "enableExecuteCommand": false,
+        "availabilityZoneRebalancing": "ENABLED",
+        "resourceManagementType": "CUSTOMER"
+      }
+    }
+  ],
+  "readouts": [
+    {
+      "check": "cloudwatch-alarms",
+      "status": "VERIFIED",
+      "detail": {
+        "MetricAlarms": [
+          {
+            "AlarmName": "otel-lab-sandbox-04-security-FailedAuthenticationAlarm-kpTppWNB5RV1",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:741368364261:alarm:otel-lab-sandbox-04-security-FailedAuthenticationAlarm-kpTppWNB5RV1",
+            "AlarmDescription": "Designed alarm for failed CloudTrail ConsoleLogin events. It is not created when CloudTrail is disabled and has no notification action here.",
+            "AlarmConfigurationUpdatedTimestamp": "2026-09-03T17:02:26.117-05:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: no datapoints were received for 3 periods and 3 missing datapoints were treated as [NonBreaching].",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-09-03T22:03:25.450+0000\",\"statistic\":\"Sum\",\"period\":300,\"recentDatapoints\":[],\"threshold\":3.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-09-03T21:58:00.000+0000\"},{\"timestamp\":\"2026-09-03T21:53:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-09-03T17:03:25.452-05:00",
+            "MetricName": "FailedAuthenticationCount",
+            "Namespace": "OTelLab/NetworkSecurity",
+            "Statistic": "Sum",
+            "Dimensions": [],
+            "Period": 300,
+            "EvaluationPeriods": 3,
+            "DatapointsToAlarm": 2,
+            "Threshold": 3.0,
+            "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+            "TreatMissingData": "notBreaching",
+            "StateTransitionedTimestamp": "2026-09-03T17:03:25.452-05:00"
+          },
+          {
+            "AlarmName": "otel-lab-sandbox-04-security-VpcRejectAlarm-xoSUTvzy2iGp",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:741368364261:alarm:otel-lab-sandbox-04-security-VpcRejectAlarm-xoSUTvzy2iGp",
+            "AlarmDescription": "Designed alarm for rejected VPC flows. Tune the threshold with observed traffic; missing data is healthy for this event-count metric.",
+            "AlarmConfigurationUpdatedTimestamp": "2026-09-03T17:02:25.934-05:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "ALARM",
+            "StateReason": "Threshold Crossed: 2 out of the last 3 datapoints [135.0 (03/09/26 22:00:00), 9.0 (03/09/26 21:55:00)] were greater than or equal to the threshold (5.0) and 1 missing datapoint was treated as [NonBreaching] (minimum 2 datapoints for OK -> ALARM transition).",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-09-03T22:05:02.421+0000\",\"startDate\":\"2026-09-03T21:55:00.000+0000\",\"statistic\":\"Sum\",\"period\":300,\"recentDatapoints\":[9.0,135.0],\"threshold\":5.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-09-03T22:00:00.000+0000\",\"sampleCount\":278.0,\"value\":135.0},{\"timestamp\":\"2026-09-03T21:55:00.000+0000\",\"sampleCount\":15.0,\"value\":9.0}]}",
+            "StateUpdatedTimestamp": "2026-09-03T17:05:02.422-05:00",
+            "MetricName": "VpcRejectedFlowCount",
+            "Namespace": "OTelLab/NetworkSecurity",
+            "Statistic": "Sum",
+            "Dimensions": [],
+            "Period": 300,
+            "EvaluationPeriods": 3,
+            "DatapointsToAlarm": 2,
+            "Threshold": 5.0,
+            "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+            "TreatMissingData": "notBreaching",
+            "StateTransitionedTimestamp": "2026-09-03T17:05:02.422-05:00"
+          },
+          {
+            "AlarmName": "otel-lab-sandbox-04-security-VpcRejectAnomalyAlarm-hLztjZhqjw0Y",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:741368364261:alarm:otel-lab-sandbox-04-security-VpcRejectAnomalyAlarm-hLztjZhqjw0Y",
+            "AlarmDescription": "Designed anomaly alarm for rejected VPC flows. CloudWatch needs real history to train; this template does not assert that a model is trained.",
+            "AlarmConfigurationUpdatedTimestamp": "2026-09-03T17:02:26.174-05:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: no datapoints were received for 3 periods and 3 missing datapoints were treated as [NonBreaching].",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-09-03T22:03:06.320+0000\",\"period\":300,\"recentDatapoints\":[],\"recentUpperThresholds\":[],\"evaluatedDatapoints\":[{\"timestamp\":\"2026-09-03T21:58:00.000+0000\"},{\"timestamp\":\"2026-09-03T21:53:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-09-03T17:03:06.322-05:00",
+            "Dimensions": [],
+            "EvaluationPeriods": 3,
+            "DatapointsToAlarm": 2,
+            "ComparisonOperator": "GreaterThanUpperThreshold",
+            "TreatMissingData": "notBreaching",
+            "Metrics": [
+              {
+                "Id": "reject_band",
+                "Expression": "ANOMALY_DETECTION_BAND(rejects, 2)",
+                "Label": "VPC rejected-flow anomaly band",
+                "ReturnData": true
+              },
+              {
+                "Id": "rejects",
+                "MetricStat": {
+                  "Metric": {
+                    "Namespace": "OTelLab/NetworkSecurity",
+                    "MetricName": "VpcRejectedFlowCount",
+                    "Dimensions": []
+                  },
+                  "Period": 300,
+                  "Stat": "Sum"
+                },
+                "ReturnData": true
+              }
+            ],
+            "ThresholdMetricId": "reject_band",
+            "StateTransitionedTimestamp": "2026-09-03T17:03:06.322-05:00"
+          },
+          {
+            "AlarmName": "otel-lab-sandbox-data-service-errors",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:741368364261:alarm:otel-lab-sandbox-data-service-errors",
+            "AlarmDescription": "data-service emitted at least one structured ERROR in two of three minutes.",
+            "AlarmConfigurationUpdatedTimestamp": "2026-09-02T21:40:53.619-05:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: no datapoints were received for 3 periods and 3 missing datapoints were treated as [NonBreaching].",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-09-03T02:41:42.507+0000\",\"statistic\":\"Sum\",\"period\":60,\"recentDatapoints\":[],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-09-03T02:40:00.000+0000\"},{\"timestamp\":\"2026-09-03T02:39:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-09-02T21:41:42.508-05:00",
+            "MetricName": "otel-lab-sandbox-data-service-errors",
+            "Namespace": "otel-lab/Application",
+            "Statistic": "Sum",
+            "Dimensions": [],
+            "Period": 60,
+            "EvaluationPeriods": 3,
+            "DatapointsToAlarm": 2,
+            "Threshold": 1.0,
+            "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+            "TreatMissingData": "notBreaching",
+            "StateTransitionedTimestamp": "2026-09-02T21:41:42.508-05:00"
+          },
+          {
+            "AlarmName": "otel-lab-sandbox-rds-cpu-high",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:741368364261:alarm:otel-lab-sandbox-rds-cpu-high",
+            "AlarmDescription": "PostgreSQL CPU above 75 percent for two of three minutes.",
+            "AlarmConfigurationUpdatedTimestamp": "2026-09-02T21:03:13.742-05:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: 3 out of the last 3 datapoints [6.466451118296057 (03/09/26 02:02:00), 8.429259191390829 (03/09/26 02:01:00), 7.033333333333332 (03/09/26 02:00:00)] were not greater than the threshold (75.0) (minimum 2 datapoints for ALARM -> OK transition).",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-09-03T02:04:42.211+0000\",\"startDate\":\"2026-09-03T02:00:00.000+0000\",\"statistic\":\"Average\",\"period\":60,\"recentDatapoints\":[7.033333333333332,8.429259191390829,6.466451118296057],\"threshold\":75.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-09-03T02:02:00.000+0000\",\"sampleCount\":1.0,\"value\":6.466451118296057},{\"timestamp\":\"2026-09-03T02:01:00.000+0000\",\"sampleCount\":1.0,\"value\":8.429259191390829}]}",
+            "StateUpdatedTimestamp": "2026-09-02T21:04:42.213-05:00",
+            "MetricName": "CPUUtilization",
+            "Namespace": "AWS/RDS",
+            "Statistic": "Average",
+            "Dimensions": [
+              {
+                "Name": "DBInstanceIdentifier",
+                "Value": "otel-lab-sandbox-postgres"
+              }
+            ],
+            "Period": 60,
+            "EvaluationPeriods": 3,
+            "DatapointsToAlarm": 2,
+            "Threshold": 75.0,
+            "ComparisonOperator": "GreaterThanThreshold",
+            "TreatMissingData": "notBreaching",
+            "StateTransitionedTimestamp": "2026-09-02T21:04:42.213-05:00"
+          },
+          {
+            "AlarmName": "otel-lab-sandbox-service-a-errors",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:741368364261:alarm:otel-lab-sandbox-service-a-errors",
+            "AlarmDescription": "Service-a emitted at least one structured ERROR in two of three minutes.",
+            "AlarmConfigurationUpdatedTimestamp": "2026-09-02T21:40:53.742-05:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: 1 out of the last 3 datapoints [0.0 (03/09/26 02:41:00)] was not greater than or equal to the threshold (1.0) and 2 missing datapoints were treated as [NonBreaching] (minimum 2 datapoints for ALARM -> OK transition).",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-09-03T02:42:34.511+0000\",\"startDate\":\"2026-09-03T02:41:00.000+0000\",\"statistic\":\"Sum\",\"period\":60,\"recentDatapoints\":[0.0],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-09-03T02:41:00.000+0000\",\"sampleCount\":14.0,\"value\":0.0},{\"timestamp\":\"2026-09-03T02:40:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-09-02T21:42:34.512-05:00",
+            "MetricName": "otel-lab-sandbox-service-a-errors",
+            "Namespace": "otel-lab/Application",
+            "Statistic": "Sum",
+            "Dimensions": [],
+            "Period": 60,
+            "EvaluationPeriods": 3,
+            "DatapointsToAlarm": 2,
+            "Threshold": 1.0,
+            "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+            "TreatMissingData": "notBreaching",
+            "StateTransitionedTimestamp": "2026-09-02T21:42:34.512-05:00"
+          },
+          {
+            "AlarmName": "otel-lab-sandbox-service-b-errors",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:741368364261:alarm:otel-lab-sandbox-service-b-errors",
+            "AlarmDescription": "Service-b emitted at least one structured ERROR in two of three minutes.",
+            "AlarmConfigurationUpdatedTimestamp": "2026-09-02T21:40:53.611-05:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: no datapoints were received for 3 periods and 3 missing datapoints were treated as [NonBreaching].",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-09-03T02:41:55.207+0000\",\"statistic\":\"Sum\",\"period\":60,\"recentDatapoints\":[],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-09-03T02:40:00.000+0000\"},{\"timestamp\":\"2026-09-03T02:39:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-09-02T21:41:55.208-05:00",
+            "MetricName": "otel-lab-sandbox-service-b-errors",
+            "Namespace": "otel-lab/Application",
+            "Statistic": "Sum",
+            "Dimensions": [],
+            "Period": 60,
+            "EvaluationPeriods": 3,
+            "DatapointsToAlarm": 2,
+            "Threshold": 1.0,
+            "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+            "TreatMissingData": "notBreaching",
+            "StateTransitionedTimestamp": "2026-09-02T21:41:55.208-05:00"
+          }
+        ],
+        "CompositeAlarms": [],
+        "LogAlarms": []
+      }
+    },
+    {
+      "check": "flow-logs",
+      "status": "VERIFIED",
+      "detail": {
+        "FlowLogs": [
+          {
+            "CreationTime": "2026-09-03T10:50:50.597-05:00",
+            "DeliverLogsPermissionArn": "arn:aws:iam::741368364261:role/otel-lab-sandbox-flow-logs",
+            "DeliverLogsStatus": "SUCCESS",
+            "FlowLogId": "fl-0cb95c8b77c7f6812",
+            "FlowLogStatus": "ACTIVE",
+            "LogGroupName": "/aws/vpc/flowlogs/otel-lab/sandbox",
+            "ResourceId": "vpc-0316b825144c9ced3",
+            "TrafficType": "ALL",
+            "LogDestinationType": "cloud-watch-logs",
+            "LogFormat": "${version} ${account-id} ${interface-id} ${srcaddr} ${dstaddr} ${srcport} ${dstport} ${protocol} ${packets} ${bytes} ${start} ${end} ${action} ${log-status}",
+            "Tags": [
+              {
+                "Key": "Project",
+                "Value": "otel-lab"
+              },
+              {
+                "Key": "aws:cloudformation:stack-name",
+                "Value": "otel-lab-sandbox-04-security"
+              },
+              {
+                "Key": "Owner",
+                "Value": "observability-lab"
+              },
+              {
+                "Key": "aws:cloudformation:stack-id",
+                "Value": "arn:aws:cloudformation:us-east-1:741368364261:stack/otel-lab-sandbox-04-security/25b0dfa0-a7af-11f1-bd41-128b83ff1b73"
+              },
+              {
+                "Key": "ExpiresOn",
+                "Value": "2026-09-30"
+              },
+              {
+                "Key": "Environment",
+                "Value": "sandbox"
+              },
+              {
+                "Key": "aws:cloudformation:logical-id",
+                "Value": "VpcFlowLog"
+              }
+            ],
+            "MaxAggregationInterval": 60
+          }
+        ]
+      }
+    },
+    {
+      "check": "securityhub",
+      "status": "BLOCKED_OR_NOT_ENABLED",
+      "detail": "AWS CLI fallo (254): \r\naws: [ERROR]: An error occurred (SubscriptionRequiredException) when calling the GetFindings operation: The AWS Access Key Id needs a subscription for the service\r\n"
+    },
+    {
+      "check": "cloudtrail",
+      "status": "VERIFIED",
+      "detail": {
+        "trailList": [
+          {
+            "Name": "otel-lab-sandbox-trail",
+            "S3BucketName": "otel-lab-sandbox-04-security-trailbucket-m1s5i6w7lg6l",
+            "S3KeyPrefix": "otel-lab/sandbox",
+            "IncludeGlobalServiceEvents": true,
+            "IsMultiRegionTrail": false,
+            "HomeRegion": "us-east-1",
+            "TrailARN": "arn:aws:cloudtrail:us-east-1:741368364261:trail/otel-lab-sandbox-trail",
+            "LogFileValidationEnabled": true,
+            "CloudWatchLogsLogGroupArn": "arn:aws:logs:us-east-1:741368364261:log-group:/aws/cloudtrail/otel-lab/sandbox:*",
+            "CloudWatchLogsRoleArn": "arn:aws:iam::741368364261:role/otel-lab-sandbox-cloudtrail-logs",
+            "HasCustomEventSelectors": false,
+            "HasInsightSelectors": false,
+            "IsOrganizationTrail": false
+          }
+        ]
+      }
+    },
+    {
+      "check": "xray-service-graph",
+      "status": "VERIFIED",
+      "detail": {
+        "Services": [
+          {
+            "ReferenceId": 0,
+            "Name": "data-service",
+            "Names": [
+              "data-service"
+            ],
+            "Root": true,
+            "State": "active",
+            "StartTime": "2026-09-03T16:50:12-05:00",
+            "EndTime": "2026-09-03T17:05:03-05:00",
+            "Edges": [],
+            "SummaryStatistics": {
+              "OkCount": 96,
+              "ErrorStatistics": {
+                "ThrottleCount": 0,
+                "OtherCount": 0,
+                "TotalCount": 0
+              },
+              "FaultStatistics": {
+                "OtherCount": 0,
+                "TotalCount": 0
+              },
+              "TotalCount": 96,
+              "TotalResponseTime": 1.372
+            },
+            "DurationHistogram": [
+              {
+                "Value": 0.08,
+                "Count": 1
+              },
+              {
+                "Value": 0.002,
+                "Count": 1
+              },
+              {
+                "Value": 0.001,
+                "Count": 74
+              },
+              {
+                "Value": 0.072,
+                "Count": 5
+              },
+              {
+                "Value": 0.081,
+                "Count": 3
+              },
+              {
+                "Value": 0.087,
+                "Count": 1
+              },
+              {
+                "Value": 0.082,
+                "Count": 2
+              },
+              {
+                "Value": 0.071,
+                "Count": 2
+              },
+              {
+                "Value": 0.056,
+                "Count": 1
+              },
+              {
+                "Value": 0.007,
+                "Count": 1
+              },
+              {
+                "Value": 0.003,
+                "Count": 3
+              },
+              {
+                "Value": 0.077,
+                "Count": 2
+              }
+            ],
+            "ResponseTimeHistogram": [
+              {
+                "Value": 0.08,
+                "Count": 1
+              },
+              {
+                "Value": 0.002,
+                "Count": 1
+              },
+              {
+                "Value": 0.001,
+                "Count": 74
+              },
+              {
+                "Value": 0.072,
+                "Count": 5
+              },
+              {
+                "Value": 0.081,
+                "Count": 3
+              },
+              {
+                "Value": 0.087,
+                "Count": 1
+              },
+              {
+                "Value": 0.082,
+                "Count": 2
+              },
+              {
+                "Value": 0.071,
+                "Count": 2
+              },
+              {
+                "Value": 0.056,
+                "Count": 1
+              },
+              {
+                "Value": 0.007,
+                "Count": 1
+              },
+              {
+                "Value": 0.003,
+                "Count": 3
+              },
+              {
+                "Value": 0.077,
+                "Count": 2
+              }
+            ]
+          },
+          {
+            "ReferenceId": 1,
+            "Name": "data-service",
+            "Names": [
+              "data-service"
+            ],
+            "Type": "client",
+            "State": "unknown",
+            "StartTime": "2026-09-03T16:50:12-05:00",
+            "EndTime": "2026-09-03T17:05:03-05:00",
+            "Edges": [
+              {
+                "ReferenceId": 0,
+                "StartTime": "2026-09-03T16:50:12-05:00",
+                "EndTime": "2026-09-03T17:05:03-05:00",
+                "SummaryStatistics": {
+                  "OkCount": 96,
+                  "ErrorStatistics": {
+                    "ThrottleCount": 0,
+                    "OtherCount": 0,
+                    "TotalCount": 0
+                  },
+                  "FaultStatistics": {
+                    "OtherCount": 0,
+                    "TotalCount": 0
+                  },
+                  "TotalCount": 96,
+                  "TotalResponseTime": 1.372
+                },
+                "ResponseTimeHistogram": [
+                  {
+                    "Value": 0.08,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.002,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.001,
+                    "Count": 74
+                  },
+                  {
+                    "Value": 0.072,
+                    "Count": 5
+                  },
+                  {
+                    "Value": 0.081,
+                    "Count": 3
+                  },
+                  {
+                    "Value": 0.087,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.082,
+                    "Count": 2
+                  },
+                  {
+                    "Value": 0.071,
+                    "Count": 2
+                  },
+                  {
+                    "Value": 0.056,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.007,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.003,
+                    "Count": 3
+                  },
+                  {
+                    "Value": 0.077,
+                    "Count": 2
+                  }
+                ],
+                "Aliases": []
+              }
+            ]
+          },
+          {
+            "ReferenceId": 2,
+            "Name": "service-a",
+            "Names": [
+              "service-a"
+            ],
+            "Root": true,
+            "State": "active",
+            "StartTime": "2026-09-03T16:50:17-05:00",
+            "EndTime": "2026-09-03T17:05:05-05:00",
+            "Edges": [],
+            "SummaryStatistics": {
+              "OkCount": 94,
+              "ErrorStatistics": {
+                "ThrottleCount": 0,
+                "OtherCount": 0,
+                "TotalCount": 0
+              },
+              "FaultStatistics": {
+                "OtherCount": 0,
+                "TotalCount": 0
+              },
+              "TotalCount": 94,
+              "TotalResponseTime": 2.059
+            },
+            "DurationHistogram": [
+              {
+                "Value": 0.08,
+                "Count": 2
+              },
+              {
+                "Value": 0.078,
+                "Count": 1
+              },
+              {
+                "Value": 0.075,
+                "Count": 2
+              },
+              {
+                "Value": 0.07,
+                "Count": 1
+              },
+              {
+                "Value": 0.002,
+                "Count": 4
+              },
+              {
+                "Value": 0.081,
+                "Count": 1
+              },
+              {
+                "Value": 0.073,
+                "Count": 1
+              },
+              {
+                "Value": 0.083,
+                "Count": 1
+              },
+              {
+                "Value": 0.071,
+                "Count": 8
+              },
+              {
+                "Value": 0.003,
+                "Count": 4
+              },
+              {
+                "Value": 0.01,
+                "Count": 1
+              },
+              {
+                "Value": 0.004,
+                "Count": 1
+              },
+              {
+                "Value": 0.001,
+                "Count": 56
+              },
+              {
+                "Value": 0.072,
+                "Count": 3
+              },
+              {
+                "Value": 0.074,
+                "Count": 1
+              },
+              {
+                "Value": 0.067,
+                "Count": 1
+              },
+              {
+                "Value": 0.056,
+                "Count": 1
+              },
+              {
+                "Value": 0.006,
+                "Count": 1
+              },
+              {
+                "Value": 0.077,
+                "Count": 2
+              },
+              {
+                "Value": 0.068,
+                "Count": 2
+              }
+            ],
+            "ResponseTimeHistogram": [
+              {
+                "Value": 0.08,
+                "Count": 2
+              },
+              {
+                "Value": 0.078,
+                "Count": 1
+              },
+              {
+                "Value": 0.075,
+                "Count": 2
+              },
+              {
+                "Value": 0.07,
+                "Count": 1
+              },
+              {
+                "Value": 0.002,
+                "Count": 4
+              },
+              {
+                "Value": 0.081,
+                "Count": 1
+              },
+              {
+                "Value": 0.073,
+                "Count": 1
+              },
+              {
+                "Value": 0.083,
+                "Count": 1
+              },
+              {
+                "Value": 0.071,
+                "Count": 8
+              },
+              {
+                "Value": 0.003,
+                "Count": 4
+              },
+              {
+                "Value": 0.01,
+                "Count": 1
+              },
+              {
+                "Value": 0.004,
+                "Count": 1
+              },
+              {
+                "Value": 0.001,
+                "Count": 56
+              },
+              {
+                "Value": 0.072,
+                "Count": 3
+              },
+              {
+                "Value": 0.074,
+                "Count": 1
+              },
+              {
+                "Value": 0.067,
+                "Count": 1
+              },
+              {
+                "Value": 0.056,
+                "Count": 1
+              },
+              {
+                "Value": 0.006,
+                "Count": 1
+              },
+              {
+                "Value": 0.077,
+                "Count": 2
+              },
+              {
+                "Value": 0.068,
+                "Count": 2
+              }
+            ]
+          },
+          {
+            "ReferenceId": 3,
+            "Name": "service-a",
+            "Names": [
+              "service-a"
+            ],
+            "Type": "client",
+            "State": "unknown",
+            "StartTime": "2026-09-03T16:50:17-05:00",
+            "EndTime": "2026-09-03T17:05:05-05:00",
+            "Edges": [
+              {
+                "ReferenceId": 2,
+                "StartTime": "2026-09-03T16:50:17-05:00",
+                "EndTime": "2026-09-03T17:05:05-05:00",
+                "SummaryStatistics": {
+                  "OkCount": 94,
+                  "ErrorStatistics": {
+                    "ThrottleCount": 0,
+                    "OtherCount": 0,
+                    "TotalCount": 0
+                  },
+                  "FaultStatistics": {
+                    "OtherCount": 0,
+                    "TotalCount": 0
+                  },
+                  "TotalCount": 94,
+                  "TotalResponseTime": 2.059
+                },
+                "ResponseTimeHistogram": [
+                  {
+                    "Value": 0.08,
+                    "Count": 2
+                  },
+                  {
+                    "Value": 0.078,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.075,
+                    "Count": 2
+                  },
+                  {
+                    "Value": 0.07,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.002,
+                    "Count": 4
+                  },
+                  {
+                    "Value": 0.081,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.073,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.083,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.071,
+                    "Count": 8
+                  },
+                  {
+                    "Value": 0.003,
+                    "Count": 4
+                  },
+                  {
+                    "Value": 0.01,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.004,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.001,
+                    "Count": 56
+                  },
+                  {
+                    "Value": 0.072,
+                    "Count": 3
+                  },
+                  {
+                    "Value": 0.074,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.067,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.056,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.006,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.077,
+                    "Count": 2
+                  },
+                  {
+                    "Value": 0.068,
+                    "Count": 2
+                  }
+                ],
+                "Aliases": []
+              }
+            ]
+          },
+          {
+            "ReferenceId": 4,
+            "Name": "service-b",
+            "Names": [
+              "service-b"
+            ],
+            "Root": true,
+            "State": "active",
+            "StartTime": "2026-09-03T16:50:14-05:00",
+            "EndTime": "2026-09-03T17:05:02-05:00",
+            "Edges": [],
+            "SummaryStatistics": {
+              "OkCount": 97,
+              "ErrorStatistics": {
+                "ThrottleCount": 0,
+                "OtherCount": 0,
+                "TotalCount": 0
+              },
+              "FaultStatistics": {
+                "OtherCount": 0,
+                "TotalCount": 0
+              },
+              "TotalCount": 97,
+              "TotalResponseTime": 3.4
+            },
+            "DurationHistogram": [
+              {
+                "Value": 0.075,
+                "Count": 1
+              },
+              {
+                "Value": 0.001,
+                "Count": 55
+              },
+              {
+                "Value": 0.085,
+                "Count": 1
+              },
+              {
+                "Value": 0.072,
+                "Count": 4
+              },
+              {
+                "Value": 0.081,
+                "Count": 3
+              },
+              {
+                "Value": 0.084,
+                "Count": 2
+              },
+              {
+                "Value": 0.067,
+                "Count": 1
+              },
+              {
+                "Value": 0.082,
+                "Count": 11
+              },
+              {
+                "Value": 0.073,
+                "Count": 1
+              },
+              {
+                "Value": 0.083,
+                "Count": 13
+              },
+              {
+                "Value": 0.071,
+                "Count": 3
+              },
+              {
+                "Value": 0.079,
+                "Count": 2
+              }
+            ],
+            "ResponseTimeHistogram": [
+              {
+                "Value": 0.075,
+                "Count": 1
+              },
+              {
+                "Value": 0.001,
+                "Count": 55
+              },
+              {
+                "Value": 0.085,
+                "Count": 1
+              },
+              {
+                "Value": 0.072,
+                "Count": 4
+              },
+              {
+                "Value": 0.081,
+                "Count": 3
+              },
+              {
+                "Value": 0.084,
+                "Count": 2
+              },
+              {
+                "Value": 0.067,
+                "Count": 1
+              },
+              {
+                "Value": 0.082,
+                "Count": 11
+              },
+              {
+                "Value": 0.073,
+                "Count": 1
+              },
+              {
+                "Value": 0.083,
+                "Count": 13
+              },
+              {
+                "Value": 0.071,
+                "Count": 3
+              },
+              {
+                "Value": 0.079,
+                "Count": 2
+              }
+            ]
+          },
+          {
+            "ReferenceId": 5,
+            "Name": "service-b",
+            "Names": [
+              "service-b"
+            ],
+            "Type": "client",
+            "State": "unknown",
+            "StartTime": "2026-09-03T16:50:14-05:00",
+            "EndTime": "2026-09-03T17:05:02-05:00",
+            "Edges": [
+              {
+                "ReferenceId": 4,
+                "StartTime": "2026-09-03T16:50:14-05:00",
+                "EndTime": "2026-09-03T17:05:02-05:00",
+                "SummaryStatistics": {
+                  "OkCount": 97,
+                  "ErrorStatistics": {
+                    "ThrottleCount": 0,
+                    "OtherCount": 0,
+                    "TotalCount": 0
+                  },
+                  "FaultStatistics": {
+                    "OtherCount": 0,
+                    "TotalCount": 0
+                  },
+                  "TotalCount": 97,
+                  "TotalResponseTime": 3.4
+                },
+                "ResponseTimeHistogram": [
+                  {
+                    "Value": 0.075,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.001,
+                    "Count": 55
+                  },
+                  {
+                    "Value": 0.085,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.072,
+                    "Count": 4
+                  },
+                  {
+                    "Value": 0.081,
+                    "Count": 3
+                  },
+                  {
+                    "Value": 0.084,
+                    "Count": 2
+                  },
+                  {
+                    "Value": 0.067,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.082,
+                    "Count": 11
+                  },
+                  {
+                    "Value": 0.073,
+                    "Count": 1
+                  },
+                  {
+                    "Value": 0.083,
+                    "Count": 13
+                  },
+                  {
+                    "Value": 0.071,
+                    "Count": 3
+                  },
+                  {
+                    "Value": 0.079,
+                    "Count": 2
+                  }
+                ],
+                "Aliases": []
+              }
+            ]
+          }
+        ],
+        "StartTime": "2026-09-03T16:50:12-05:00",
+        "EndTime": "2026-09-03T17:05:04-05:00",
+        "ContainsOldGroupVersions": false
+      }
+    }
+  ],
+  "httpSmoke": {
+    "status": "VERIFIED",
+    "httpStatus": 200,
+    "body": "{\"status\":\"ok\",\"service\":\"service-a\",\"trace_id\":\"6210fc526d20557a9a16874e365c3bcb\"}"
+  },
+  "businessSmoke": {
+    "status": "VERIFIED",
+    "httpStatus": 200,
+    "body": "{\"order\":{\"order_id\":\"ord-1001\",\"customer_id\":\"cust-1001\",\"product_id\":\"keyboard\",\"quantity\":1,\"status\":\"confirmed\"},\"inventory\":{\"product_id\":\"keyboard\",\"available\":42,\"warehouse\":\"bogota-01\",\"updated_at\":\"2026-09-03T17:28:32.660101+00:00\"},\"trace_id\":\"a9137fc82c4da9f1089842f9a1f030d1\"}"
+  },
+  "limitation": "Las pruebas HTTP se ejecutan contra BaseUrl cuando se proporciona; los demas readouts consultan AWS."
+}

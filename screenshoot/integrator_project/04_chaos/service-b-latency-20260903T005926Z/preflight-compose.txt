@@ -1,0 +1,2 @@
+NAME                                 IMAGE                              COMMAND                  SERVICE     CREATED          STATUS                   PORTS
+otel-observability-lab-service-b-1   otel-observability-lab-service-b   "uvicorn main:app --…"   service-b   10 minutes ago   Up 4 minutes (healthy)   0.0.0.0:8001->8001/tcp, [::]:8001->8001/tcp

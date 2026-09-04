@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-09-03T00:35:30.7942089Z",
+  "aws_cli_version": "aws-cli/2.36.19 Python/3.14.6 Windows/11 exe/AMD64",
+  "profile": "default",
+  "region": null,
+  "identity": {
+    "account": null,
+    "arn_present": false,
+    "user_id_present": false
+  },
+  "checks": {
+    "identity": "identity-unavailable",
+    "region": "missing",
+    "expected_account_region_guard": "not-configured",
+    "ecr": "not-run-until-identity-and-region-pass",
+    "ecs": "not-run-until-identity-and-region-pass",
+    "rds": "not-run-until-identity-and-region-pass",
+    "cloudwatch": "not-run-until-identity-and-region-pass",
+    "budget": "not-run; availability must be checked before deployment"
+  },
+  "sensitive_output_redacted": true,
+  "mutation_executed": false,
+  "limitation": "aws sts get-caller-identity failed or credentials are unavailable"
+}

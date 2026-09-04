@@ -1,0 +1,29 @@
+{
+  "columns": [
+    "cve_id",
+    "severity",
+    "findings"
+  ],
+  "rows": [
+    [
+      "CVE-2022-37454",
+      "low",
+      1
+    ],
+    [
+      "CVE-2023-38545",
+      "critical",
+      1
+    ],
+    [
+      "CVE-2024-21626",
+      "medium",
+      1
+    ],
+    [
+      "CVE-2024-3094",
+      "low",
+      1
+    ]
+  ]
+}

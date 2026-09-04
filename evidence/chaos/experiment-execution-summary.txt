@@ -1,0 +1,42 @@
+GAME DAY - E2 INDISPONIBILIDAD CONTROLADA DE SERVICE-B
+Repositorio: otel-observability-lab
+Rama: feature/add-chaos-engineering
+Entorno: Docker Desktop local; sin GCP/AWS
+
+PREPARACION
+COMPOSE_CONFIG_OK
+service-a health: HTTP 200
+service-b health: HTTP 200
+
+INYECCION Y ROLLBACK
+CHAOS_START_LOCAL=2026-08-30T23:30:17-05:00
+docker pause otel-observability-lab-service-b-1: paused=true
+Carga ejecutada: 5 VUs, 30 segundos, intervalo 250 ms
+docker unpause otel-observability-lab-service-b-1: unpaused=true
+Estado final: paused=false, status=running
+
+RESULTADO DURANTE CAOS
+Solicitudes ofrecidas/completadas: 45
+Exitos 2xx: 0
+Fallos/no-2xx: 45
+Disponibilidad: 0.00%
+Tasa de error: 100.00%
+Throughput: 1.500 req/s
+Latencia promedio/p95/p99: 3111.860 / 3503.730 / 3560.791 ms
+Cada fallo registra http_status_code=502 y outcome=http_error
+
+TRAZA DIAGNOSTICA COMPLEMENTARIA
+Trace ID: 92e1653aff0013f0b1fe25bcc8e5103a
+Resultado: HTTP 502 en service-a durante una pausa controlada de service-b
+Jaeger: 14 spans, 2 servicios
+Loki: service-a ERROR service-b call failed; exception ReadTimeout; correlación en service-b observada después del unpause
+
+RECUPERACION
+Solicitudes: 694
+Exitos 2xx: 694
+Fallos/no-2xx: 0
+Disponibilidad: 100.00%
+Tasa de error: 0.00%
+Throughput: 15.422 req/s
+Latencia promedio/p95/p99: 58.004 / 111.165 / 188.904 ms
+Estado final: service-b running y no pausado

@@ -1,0 +1,108 @@
+{
+  "columns": [
+    "timestamp",
+    "service",
+    "src_ip",
+    "status",
+    "severity",
+    "message"
+  ],
+  "rows": [
+    [
+      "2026-09-02T20:40:00Z",
+      "service-b",
+      "198.51.100.17",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:41:00Z",
+      "data-service",
+      "198.51.100.18",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:42:00Z",
+      "data-service",
+      "198.51.100.19",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:43:00Z",
+      "data-service",
+      "198.51.100.20",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:44:00Z",
+      "data-service",
+      "198.51.100.1",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:45:00Z",
+      "service-a",
+      "198.51.100.2",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:46:00Z",
+      "service-b",
+      "198.51.100.3",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:47:00Z",
+      "service-b",
+      "198.51.100.4",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:48:00Z",
+      "service-b",
+      "198.51.100.5",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:49:00Z",
+      "service-a",
+      "198.51.100.6",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:50:00Z",
+      "service-b",
+      "198.51.100.7",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ],
+    [
+      "2026-09-02T20:51:00Z",
+      "service-b",
+      "198.51.100.8",
+      "401",
+      "high",
+      "synthetic failed authentication"
+    ]
+  ]
+}

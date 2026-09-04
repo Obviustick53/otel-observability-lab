@@ -1,0 +1,12 @@
+{
+  "query_time_utc": "2026-08-31T04:49:00Z",
+  "source": "Prometheus local",
+  "metrics": {
+    "otelcol_processor_dropped_spans{processor=\"memory_limiter\"}": 0,
+    "otelcol_exporter_send_failed_spans{exporter=\"otlp/jaeger\"}": 0,
+    "otelcol_exporter_send_failed_spans{exporter=\"debug\"}": 0,
+    "otelcol_process_cpu_seconds": 28.11,
+    "otelcol_process_memory_rss_bytes": 171646976
+  },
+  "interpretation": "Snapshot posterior al rollback; demuestra que el Collector está operativo y sin drops o fallos de exportación en la consulta realizada."
+}

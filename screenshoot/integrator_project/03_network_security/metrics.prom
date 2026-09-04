@@ -1,0 +1,46 @@
+# HELP network_security_events_total Total simulated security events
+# TYPE network_security_events_total gauge
+network_security_events_total{environment="local-simulated",event_type="auth_success",direction="east_west",service="service-b",severity="info"} 13
+network_security_events_total{environment="local-simulated",event_type="auth_success",direction="east_west",service="data-service",severity="info"} 14
+network_security_events_total{environment="local-simulated",event_type="auth_success",direction="east_west",service="service-a",severity="info"} 9
+network_security_events_total{environment="local-simulated",event_type="auth_failed",direction="north_south",service="service-b",severity="high"} 6
+network_security_events_total{environment="local-simulated",event_type="auth_failed",direction="north_south",service="data-service",severity="high"} 4
+network_security_events_total{environment="local-simulated",event_type="auth_failed",direction="north_south",service="service-a",severity="high"} 2
+network_security_events_total{environment="local-simulated",event_type="flow",direction="north_south",service="external-api",severity="info"} 16
+network_security_events_total{environment="local-simulated",event_type="flow",direction="north_south",service="service-b",severity="info"} 16
+network_security_events_total{environment="local-simulated",event_type="flow",direction="east_west",service="service-a",severity="info"} 16
+network_security_events_total{environment="local-simulated",event_type="flow",direction="east_west",service="service-b",severity="info"} 16
+network_security_events_total{environment="local-simulated",event_type="denial",direction="east_west",service="service-b",severity="medium"} 4
+network_security_events_total{environment="local-simulated",event_type="denial",direction="north_south",service="edge-gateway",severity="medium"} 8
+network_security_events_total{environment="local-simulated",event_type="denial",direction="east_west",service="service-b",severity="high"} 2
+network_security_events_total{environment="local-simulated",event_type="denial",direction="north_south",service="edge-gateway",severity="high"} 2
+network_security_events_total{environment="local-simulated",event_type="finding",service="security-hub-adapter",severity="high"} 2
+network_security_events_total{environment="local-simulated",event_type="finding",service="security-hub-adapter",severity="medium"} 3
+network_security_events_total{environment="local-simulated",event_type="finding",service="security-hub-adapter",severity="low"} 2
+network_security_events_total{environment="local-simulated",event_type="finding",service="security-hub-adapter",severity="critical"} 1
+# HELP network_security_auth_failures_5m Simulated failed authentications in the last five dataset minutes
+# TYPE network_security_auth_failures_5m gauge
+network_security_auth_failures_5m{environment="local-simulated",event_type="auth_failed",direction="north_south",service="service-b",severity="high"} 5
+network_security_auth_failures_5m{environment="local-simulated",event_type="auth_failed",direction="north_south",service="service-a",severity="high"} 1
+# HELP network_security_denials_5m Simulated denials in the last five dataset minutes
+# TYPE network_security_denials_5m gauge
+network_security_denials_5m{environment="local-simulated",event_type="denial",direction="north_south",service="edge-gateway",severity="medium"} 4
+network_security_denials_5m{environment="local-simulated",event_type="denial",direction="east_west",service="service-b",severity="medium"} 2
+# HELP network_security_flow_bytes_total Simulated flow bytes grouped by direction
+# TYPE network_security_flow_bytes_total gauge
+network_security_flow_bytes_total{environment="local-simulated",event_type="flow",direction="north_south",service="external-api",severity="info"} 726215
+network_security_flow_bytes_total{environment="local-simulated",event_type="flow",direction="north_south",service="service-b",severity="info"} 726376
+network_security_flow_bytes_total{environment="local-simulated",event_type="flow",direction="east_west",service="service-a",severity="info"} 833794
+network_security_flow_bytes_total{environment="local-simulated",event_type="flow",direction="east_west",service="service-b",severity="info"} 689668
+# HELP network_security_findings Simulated findings grouped by severity
+# TYPE network_security_findings gauge
+network_security_findings{environment="local-simulated",event_type="finding",service="security-hub-adapter",severity="high"} 2
+network_security_findings{environment="local-simulated",event_type="finding",service="security-hub-adapter",severity="medium"} 3
+network_security_findings{environment="local-simulated",event_type="finding",service="security-hub-adapter",severity="low"} 2
+network_security_findings{environment="local-simulated",event_type="finding",service="security-hub-adapter",severity="critical"} 1
+# HELP network_security_cves Simulated CVE-bearing events grouped by severity
+# TYPE network_security_cves gauge
+network_security_cves{environment="local-simulated",event_type="finding",service="security-hub-adapter",severity="low"} 2
+network_security_cves{environment="local-simulated",event_type="finding",service="security-hub-adapter",severity="critical"} 1
+network_security_cves{environment="local-simulated",event_type="finding",service="security-hub-adapter",severity="medium"} 1
+network_security_dataset_latest_timestamp{environment="local-simulated"} 1788382260.0

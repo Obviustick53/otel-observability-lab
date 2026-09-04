@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "scope": "local",
+  "experiments": [
+    {
+      "name": "service-b-latency",
+      "target_service": "service-b",
+      "control": {
+        "name": "LAB_SERVICE_B_LATENCY_MS",
+        "value": "200",
+        "rollback_value": "0",
+        "unit": "milliseconds"
+      },
+      "hypothesis": "A controlled +200 ms delay in service-b increases the observed end-to-end p99 beyond the 500 ms SLO while service health remains available.",
+      "target_route": "GET /order/ord-001 through service-a -> service-b -> data-service",
+      "blast_radius": "One local Compose service-b container and requests sent by this runner; no AWS resources.",
+      "success_criteria": {
+        "mttd_seconds_lt": 120,
+        "rollback_control_value": "0",
+        "recovery_min_availability": 0.995
+      },
+      "stop_conditions": [
+        "timebox exceeded for baseline, injection, or recovery",
+        "target /health is unavailable",
+        "20 consecutive target requests return HTTP 5xx",
+        "observed injection error rate exceeds 80% after at least 20 requests"
+      ]
+    },
+    {
+      "name": "data-service-errors",
+      "target_service": "data-service",
+      "control": {
+        "name": "LAB_DATA_ERROR_RATE",
+        "value": "0.1",
+        "rollback_value": "0",
+        "unit": "fraction of eligible requests"
+      },
+      "hypothesis": "A reversible 10% controlled error rate in data-service increases observed failures while the service health endpoint remains available.",
+      "target_route": "GET /order/ord-001 through service-a -> service-b -> data-service",
+      "blast_radius": "One local Compose data-service container and requests sent by this runner; no AWS resources.",
+      "success_criteria": {
+        "mttd_seconds_lt": 120,
+        "rollback_control_value": "0",
+        "recovery_min_availability": 0.995
+      },
+      "stop_conditions": [
+        "timebox exceeded for baseline, injection, or recovery",
+        "target /health is unavailable",
+        "20 consecutive target requests return HTTP 5xx",
+        "observed injection error rate exceeds 80% after at least 20 requests"
+      ]
+    }
+  ]
+}

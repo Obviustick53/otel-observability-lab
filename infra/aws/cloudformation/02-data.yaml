@@ -1,0 +1,127 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Private, encrypted, Single-AZ PostgreSQL for the OTEL Lab sandbox.
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: otel-lab
+    AllowedPattern: '^[a-z0-9][a-z0-9-]{2,19}$'
+  Environment:
+    Type: String
+    Default: sandbox
+    AllowedValues: [sandbox, dev, test]
+  Owner:
+    Type: String
+    Default: observability-lab
+    AllowedPattern: '^[A-Za-z0-9][A-Za-z0-9._-]{1,31}$'
+  ExpirationUtc:
+    Type: String
+    Default: '2026-09-30'
+    AllowedPattern: '^20[0-9]{2}-[0-9]{2}-[0-9]{2}$'
+  DbInstanceClass:
+    Type: String
+    Default: db.t4g.micro
+    AllowedPattern: '^db\.[a-z0-9-]+\.[a-z0-9-]+$'
+  AllocatedStorage:
+    Type: Number
+    Default: 20
+    MinValue: 20
+    MaxValue: 100
+  BackupRetentionDays:
+    Type: Number
+    Default: 1
+    AllowedValues: [0, 1, 3, 7]
+
+Resources:
+  DbSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Private subnets for the OTEL Lab PostgreSQL instance.
+      SubnetIds:
+        - !ImportValue
+            Fn::Sub: '${ProjectName}-${Environment}-PrivateDbSubnet1Id'
+        - !ImportValue
+            Fn::Sub: '${ProjectName}-${Environment}-PrivateDbSubnet2Id'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  Database:
+    Type: AWS::RDS::DBInstance
+    DeletionPolicy: Snapshot
+    UpdateReplacePolicy: Snapshot
+    Properties:
+      DBInstanceIdentifier: !Sub '${ProjectName}-${Environment}-postgres'
+      DBInstanceClass: !Ref DbInstanceClass
+      DBName: observability
+      Engine: postgres
+      AllocatedStorage: !Ref AllocatedStorage
+      StorageType: gp3
+      StorageEncrypted: true
+      BackupRetentionPeriod: !Ref BackupRetentionDays
+      CopyTagsToSnapshot: true
+      DeletionProtection: false
+      MultiAZ: false
+      PubliclyAccessible: false
+      AutoMinorVersionUpgrade: true
+      EnableCloudwatchLogsExports: [postgresql]
+      MasterUsername: !Sub
+        - '{{resolve:secretsmanager:${SecretArn}:SecretString:username}}'
+        - SecretArn: !ImportValue
+            Fn::Sub: '${ProjectName}-${Environment}-DbSecretArn'
+      MasterUserPassword: !Sub
+        - '{{resolve:secretsmanager:${SecretArn}:SecretString:password}}'
+        - SecretArn: !ImportValue
+            Fn::Sub: '${ProjectName}-${Environment}-DbSecretArn'
+      DBSubnetGroupName: !Ref DbSubnetGroup
+      VPCSecurityGroups:
+        - !ImportValue
+            Fn::Sub: '${ProjectName}-${Environment}-RdsSecurityGroupId'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  DatabaseCpuAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub '${ProjectName}-${Environment}-rds-cpu-high'
+      AlarmDescription: PostgreSQL CPU above 75 percent for two of three minutes.
+      Namespace: AWS/RDS
+      MetricName: CPUUtilization
+      Dimensions:
+        - Name: DBInstanceIdentifier
+          Value: !Ref Database
+      Statistic: Average
+      Period: 60
+      EvaluationPeriods: 3
+      DatapointsToAlarm: 2
+      Threshold: 75
+      ComparisonOperator: GreaterThanThreshold
+      TreatMissingData: notBreaching
+
+Outputs:
+  DbInstanceIdentifier:
+    Description: RDS DB instance identifier
+    Value: !Ref Database
+  DbEndpointAddress:
+    Description: Private RDS endpoint address; not a credential.
+    Value: !GetAtt Database.Endpoint.Address
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-DbEndpointAddress'
+  DbEndpointPort:
+    Description: PostgreSQL endpoint port
+    Value: !GetAtt Database.Endpoint.Port
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-DbEndpointPort'

@@ -1,0 +1,198 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": { "type": "grafana", "uid": "-- Grafana --" },
+        "enable": true,
+        "hide": true,
+        "iconColor": "#5794F2",
+        "name": "Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "graphTooltip": 1,
+  "links": [
+    {
+      "title": "Abrir trazas en Jaeger",
+      "type": "link",
+      "url": "http://localhost:16686/search?service=$service",
+      "targetBlank": true,
+      "includeVars": true
+    },
+    {
+      "title": "Explorar logs en Loki",
+      "type": "link",
+      "url": "/explore?left=%7B%22datasource%22:%22loki%22,%22queries%22:%5B%7B%22expr%22:%22%7Bservice%3D~%5C%22$service%5C%22%7D%22%7D%5D%7D",
+      "targetBlank": true,
+      "includeVars": true
+    }
+  ],
+  "panels": [
+    {
+      "id": 1,
+      "title": "RED — p99 de solicitudes",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "otel:p99_seconds_5m{service_name=~\"$service\",telemetry_scope=~\"$scope\"}",
+          "legendFormat": "{{service_name}}",
+          "refId": "A"
+        },
+        {
+          "expr": "otel:slo_latency_p99_seconds",
+          "legendFormat": "SLO p99 (500 ms)",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "s" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom" }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 2,
+      "title": "RED — p95 de solicitudes",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        {
+          "expr": "otel:p95_seconds_5m{service_name=~\"$service\",telemetry_scope=~\"$scope\"}",
+          "legendFormat": "{{service_name}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "s" }, "overrides": [] }
+    },
+    {
+      "id": 3,
+      "title": "RED — tasa de error",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "targets": [
+        {
+          "expr": "otel:error_rate_5m{service_name=~\"$service\",telemetry_scope=~\"$scope\"}",
+          "legendFormat": "{{service_name}}",
+          "refId": "A"
+        },
+        {
+          "expr": "otel:error_rate_baseline_mean_30m{service_name=~\"$service\",telemetry_scope=~\"$scope\"} + 2 * otel:error_rate_baseline_sigma_30m{service_name=~\"$service\",telemetry_scope=~\"$scope\"}",
+          "legendFormat": "{{service_name}} baseline + 2 sigma",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "percentunit", "min": 0, "max": 1 }, "overrides": [] }
+    },
+    {
+      "id": 4,
+      "title": "RED — solicitudes por segundo",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "targets": [
+        {
+          "expr": "otel:request_rate_5m{service_name=~\"$service\",telemetry_scope=~\"$scope\"}",
+          "legendFormat": "{{service_name}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "reqps" }, "overrides": [] }
+    },
+    {
+      "id": 5,
+      "title": "SLO — disponibilidad (99.5%)",
+      "type": "gauge",
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 16 },
+      "targets": [
+        {
+          "expr": "otel:availability_5m{service_name=~\"$service\",telemetry_scope=~\"$scope\"}",
+          "legendFormat": "{{service_name}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "min": 0,
+          "max": 1,
+          "thresholds": { "mode": "absolute", "steps": [{ "color": "red", "value": null }, { "color": "yellow", "value": 0.995 }, { "color": "green", "value": 0.999 }] }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 6,
+      "title": "SLO — error budget restante",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 16 },
+      "targets": [
+        {
+          "expr": "otel:error_budget_remaining_ratio{service_name=~\"$service\",telemetry_scope=~\"$scope\"}",
+          "legendFormat": "{{service_name}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "percentunit", "min": 0, "max": 1 }, "overrides": [] }
+    },
+    {
+      "id": 7,
+      "title": "USE — salud del Collector",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 16 },
+      "targets": [
+        { "expr": "up{job=\"otel-collector-internal\"}", "legendFormat": "collector up", "refId": "A" },
+        { "expr": "sum(rate(otelcol_processor_dropped_spans[5m])) or vector(0)", "legendFormat": "dropped spans/s", "refId": "B" },
+        { "expr": "sum(rate(otelcol_exporter_send_failed_spans[5m])) or vector(0)", "legendFormat": "failed span exports/s", "refId": "C" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "ops" }, "overrides": [] }
+    },
+    {
+      "id": 8,
+      "title": "Tres servicios observables",
+      "type": "stat",
+      "gridPos": { "h": 5, "w": 24, "x": 0, "y": 24 },
+      "targets": [
+        {
+          "expr": "count(otel:request_rate_5m{service_name=~\"service-a|service-b|data-service\",telemetry_scope=~\"$scope\"})",
+          "legendFormat": "servicios con métricas",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "description": "Incluye service-a, service-b y data-service cuando la imagen del perfil data-service está disponible."
+    }
+  ],
+  "refresh": "15s",
+  "schemaVersion": 39,
+  "tags": ["opentelemetry", "golden-signals", "slo", "local"],
+  "templating": {
+    "list": [
+      {
+        "name": "service",
+        "label": "Servicio",
+        "type": "query",
+        "datasource": { "type": "prometheus", "uid": "prometheus" },
+        "query": { "query": "label_values(otel:request_rate_5m, service_name)", "refId": "StandardVariableQuery" },
+        "includeAll": true,
+        "multi": true,
+        "allValue": ".*",
+        "current": { "text": "Todos", "value": ["$__all"] }
+      },
+      {
+        "name": "scope",
+        "label": "Ámbito",
+        "type": "custom",
+        "query": "local,simulated",
+        "includeAll": true,
+        "multi": true,
+        "allValue": "local|simulated",
+        "current": { "text": "local", "value": ["local"] }
+      }
+    ]
+  },
+  "time": { "from": "now-30m", "to": "now" },
+  "timezone": "browser",
+  "title": "OTel Lab — Golden Signals y SLO",
+  "uid": "otel-lab-golden-signals",
+  "version": 1
+}

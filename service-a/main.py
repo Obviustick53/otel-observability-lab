@@ -1,6 +1,5 @@
-"""Service A: recibe pedidos, consulta PostgreSQL y llama a service-b."""
+"""Service A: entry point for the A -> B -> data-service order flow."""
 
-import json
 import logging
 import os
 import sys
@@ -9,8 +8,8 @@ from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 
 import httpx
-import psycopg2
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse
 from pythonjsonlogger import jsonlogger
 
 from opentelemetry import metrics, trace
@@ -19,7 +18,7 @@ from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExp
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 from opentelemetry.instrumentation.httpx import HTTPXClientInstrumentor
-from opentelemetry.instrumentation.psycopg2 import Psycopg2Instrumentor
+from opentelemetry.propagate import inject
 from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
 from opentelemetry.sdk._logs.export import BatchLogRecordProcessor
 from opentelemetry.sdk.metrics import MeterProvider
@@ -35,7 +34,6 @@ from opentelemetry._logs import set_logger_provider
 SERVICE_NAME_VALUE = os.getenv("OTEL_SERVICE_NAME", "service-a")
 SERVICE_VERSION_VALUE = os.getenv("OTEL_SERVICE_VERSION", "1.0.0")
 OTLP_ENDPOINT = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "http://otel-collector:4317")
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://app:app_password@localhost:5432/observability")
 SERVICE_B_URL = os.getenv("SERVICE_B_URL", "http://localhost:8001")
 ENVIRONMENT = os.getenv("ENVIRONMENT", "local")
 SDK_DISABLED = os.getenv("OTEL_SDK_DISABLED", "false").lower() in {"1", "true", "yes"}
@@ -103,13 +101,6 @@ active_requests = meter.create_up_down_counter(
     unit="1",
     description="Solicitudes activas en las aplicaciones",
 )
-db_duration = meter.create_histogram(
-    "app_db_duration_seconds",
-    unit="s",
-    description="Latencia de consultas PostgreSQL en las aplicaciones",
-)
-
-
 class TraceJsonFormatter(jsonlogger.JsonFormatter):
     """Escribe logs legibles y correlacionables desde stdout."""
 
@@ -140,9 +131,7 @@ configure_logging()
 logger = logging.getLogger(SERVICE_NAME_VALUE)
 
 if not SDK_DISABLED:
-    FastAPIInstrumentor().instrument(tracer_provider=tracer_provider)
     HTTPXClientInstrumentor().instrument(tracer_provider=tracer_provider)
-    Psycopg2Instrumentor().instrument(tracer_provider=tracer_provider)
 
 
 def current_trace_id() -> str | None:
@@ -150,45 +139,12 @@ def current_trace_id() -> str | None:
     return format(context.trace_id, "032x") if context.is_valid else None
 
 
-def get_order(order_id: str) -> dict | None:
-    started = time.perf_counter()
-    with tracer.start_as_current_span(
-        "order.db.fetch",
-        kind=SpanKind.CLIENT,
-        attributes={
-            "db.system": "postgresql",
-            "db.operation.name": "SELECT",
-            "order.id": order_id,
-        },
-    ) as span:
-        try:
-            with psycopg2.connect(DATABASE_URL) as connection:
-                with connection.cursor() as cursor:
-                    cursor.execute(
-                        "SELECT order_id, customer_id, product_id, quantity, status "
-                        "FROM orders WHERE order_id = %s",
-                        (order_id,),
-                    )
-                    row = cursor.fetchone()
-            if row is None:
-                span.set_status(Status(StatusCode.ERROR, "order not found"))
-                return None
-            result = {
-                "order_id": row[0],
-                "customer_id": row[1],
-                "product_id": row[2],
-                "quantity": row[3],
-                "status": row[4],
-            }
-            span.set_attribute("order.status", result["status"])
-            span.set_status(Status(StatusCode.OK))
-            return result
-        except Exception as exc:
-            span.record_exception(exc)
-            span.set_status(Status(StatusCode.ERROR, str(exc)))
-            raise
-        finally:
-            db_duration.record(time.perf_counter() - started, {"operation": "select_order"})
+def outbound_headers() -> dict[str, str]:
+    """Inject the active W3C context even when the client is replaced in tests."""
+
+    headers: dict[str, str] = {}
+    inject(headers)
+    return headers
 
 
 @asynccontextmanager
@@ -212,7 +168,52 @@ if not SDK_DISABLED:
 
 @app.get("/health")
 async def health():
-    return {"status": "ok", "service": SERVICE_NAME_VALUE}
+    return {"status": "ok", "service": SERVICE_NAME_VALUE, "trace_id": current_trace_id()}
+
+
+@app.middleware("http")
+async def add_trace_id_header(request: Request, call_next):
+    response = await call_next(request)
+    trace_id = current_trace_id()
+    if trace_id:
+        response.headers["X-Trace-ID"] = trace_id
+    return response
+
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.detail, "trace_id": current_trace_id()},
+        headers=exc.headers,
+    )
+
+
+@app.get("/ready")
+async def ready():
+    """Readiness checks the next hop while liveness stays dependency-free."""
+
+    with tracer.start_as_current_span(
+        "health.service_b.check",
+        kind=SpanKind.CLIENT,
+        attributes={"peer.service": "service-b", "http.route": "/ready"},
+    ) as span:
+        try:
+            response = await app.state.http_client.get(
+                f"{SERVICE_B_URL}/ready", headers=outbound_headers()
+            )
+            span.set_attribute("http.response.status_code", response.status_code)
+            if response.status_code >= 400:
+                span.set_status(Status(StatusCode.ERROR, "service-b not ready"))
+                raise HTTPException(status_code=503, detail="service-b is not ready")
+            span.set_status(Status(StatusCode.OK))
+            return {"status": "ready", "service": SERVICE_NAME_VALUE, "trace_id": current_trace_id()}
+        except HTTPException:
+            raise
+        except Exception as exc:
+            span.record_exception(exc)
+            span.set_status(Status(StatusCode.ERROR, "service-b readiness failure"))
+            raise HTTPException(status_code=503, detail="service-b is not ready") from exc
 
 
 @app.get("/order/{order_id}")
@@ -227,36 +228,37 @@ async def read_order(order_id: str):
                 span.set_status(Status(StatusCode.ERROR, "invalid order id"))
                 raise HTTPException(status_code=400, detail="order_id must start with ord-")
 
-        order = get_order(order_id)
-        if order is None:
-            status_code = "404"
-            logger.warning("order not found", extra={"order_id": order_id})
-            raise HTTPException(status_code=404, detail="Order not found")
-
         with tracer.start_as_current_span(
             "order.service_b.call",
             kind=SpanKind.CLIENT,
-            attributes={"peer.service": "service-b", "product.id": order["product_id"]},
+            attributes={"peer.service": "service-b", "order.id": order_id},
         ) as span:
             try:
                 response = await app.state.http_client.get(
-                    f"{SERVICE_B_URL}/inventory/{order['product_id']}"
+                    f"{SERVICE_B_URL}/order/{order_id}", headers=outbound_headers()
                 )
-                response.raise_for_status()
-                inventory = response.json()
                 span.set_attribute("http.response.status_code", response.status_code)
+                if response.status_code == 404:
+                    status_code = "404"
+                    span.set_status(Status(StatusCode.ERROR, "order not found"))
+                    logger.warning("order not found", extra={"order_id": order_id})
+                    raise HTTPException(status_code=404, detail="Order not found")
+                if response.status_code >= 400:
+                    status_code = "502"
+                    span.set_status(Status(StatusCode.ERROR, "service-b request failed"))
+                    raise HTTPException(status_code=502, detail="service-b unavailable")
+                payload = response.json()
+                span.set_status(Status(StatusCode.OK))
+                logger.info("order processed", extra={"order_id": order_id, "status": "confirmed"})
+                return {**payload, "trace_id": current_trace_id()}
+            except HTTPException:
+                raise
             except Exception as exc:
                 span.record_exception(exc)
-                span.set_status(Status(StatusCode.ERROR, str(exc)))
+                span.set_status(Status(StatusCode.ERROR, "service-b request failed"))
                 status_code = "502"
                 logger.exception("service-b call failed", extra={"order_id": order_id})
                 raise HTTPException(status_code=502, detail="service-b unavailable") from exc
-
-        logger.info(
-            "order processed",
-            extra={"order_id": order_id, "product_id": order["product_id"], "status": "confirmed"},
-        )
-        return {"order": order, "inventory": inventory, "trace_id": current_trace_id()}
     except HTTPException:
         raise
     except Exception as exc:

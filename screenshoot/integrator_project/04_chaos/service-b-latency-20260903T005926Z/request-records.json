@@ -1,0 +1,230 @@
+[
+  {
+    "timestamp_utc": "2026-09-03T00:59:36.574966Z",
+    "status_code": 200,
+    "duration_seconds": 0.5510407,
+    "trace_id": "a0fb424c31c9720ef9f57a29767c943c"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:37.123539Z",
+    "status_code": 200,
+    "duration_seconds": 0.2665564,
+    "trace_id": "ffe391c3b4f044dfd099c9116c2ad68f"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:37.665600Z",
+    "status_code": 200,
+    "duration_seconds": 0.2736629,
+    "trace_id": "4e4368644a2309b9b158271e0d57985d"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:38.201136Z",
+    "status_code": 200,
+    "duration_seconds": 0.2752831,
+    "trace_id": "cc290e96e4ccb240c068ded510ffe596"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:38.714639Z",
+    "status_code": 200,
+    "duration_seconds": 0.2626422,
+    "trace_id": "3c34fbfb904f86510ec958adf767a237"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:39.245518Z",
+    "status_code": 200,
+    "duration_seconds": 0.2661747,
+    "trace_id": "63bc03a3cd0f138e65095bff0a88804f"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:39.773120Z",
+    "status_code": 200,
+    "duration_seconds": 0.2641863,
+    "trace_id": "8d55c67bc2577f0306810bbaf29802a9"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:40.303147Z",
+    "status_code": 200,
+    "duration_seconds": 0.2647132,
+    "trace_id": "ccf8fd7bc2cd48f746e10a1f9ace006d"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:40.831507Z",
+    "status_code": 200,
+    "duration_seconds": 0.2631318,
+    "trace_id": "bceeb3667cbeb27f529f0ff35241095b"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:41.363591Z",
+    "status_code": 200,
+    "duration_seconds": 0.2645664,
+    "trace_id": "b3af879812040f2d82c5c1e520f3932e"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:41.883826Z",
+    "status_code": 200,
+    "duration_seconds": 0.2573426,
+    "trace_id": "69cd128463ed5ef990e0ca9b95ff5ebe"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:42.395517Z",
+    "status_code": 200,
+    "duration_seconds": 0.257026,
+    "trace_id": "4543c876c8864eff5a8dab6049dc090e"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:42.912610Z",
+    "status_code": 200,
+    "duration_seconds": 0.2602229,
+    "trace_id": "36f4eeddee25843baa314870c65c8b86"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:43.426862Z",
+    "status_code": 200,
+    "duration_seconds": 0.2633156,
+    "trace_id": "8b57c5fb931c48558a96b76f8ad69d61"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:43.973395Z",
+    "status_code": 200,
+    "duration_seconds": 0.2813939,
+    "trace_id": "14f7215e5956d909e4f93ba31b20885c"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:44.499869Z",
+    "status_code": 200,
+    "duration_seconds": 0.2618414,
+    "trace_id": "193f09aca3ed71f04ececa9d0b453bee"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:45.013945Z",
+    "status_code": 200,
+    "duration_seconds": 0.2622735,
+    "trace_id": "def83f936c875077c2016efdbf9b0265"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:45.535473Z",
+    "status_code": 200,
+    "duration_seconds": 0.2679778,
+    "trace_id": "2f4ae95244e4ce362f381baa9b448cae"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:46.067501Z",
+    "status_code": 200,
+    "duration_seconds": 0.2673606,
+    "trace_id": "258c32558b81aaa96ffd832380982307"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:46.587581Z",
+    "status_code": 200,
+    "duration_seconds": 0.2573877,
+    "trace_id": "27ce960c246ccfe6ea5f928909ebd739"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:47.100592Z",
+    "status_code": 200,
+    "duration_seconds": 0.2542774,
+    "trace_id": "1aa894c60ba978afd8b591f5dedc0ca9"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:47.611960Z",
+    "status_code": 200,
+    "duration_seconds": 0.2556273,
+    "trace_id": "0475443e26117162bc6ef2e3ce10ae6e"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:48.139624Z",
+    "status_code": 200,
+    "duration_seconds": 0.265225,
+    "trace_id": "b51cd4757741811beceb9001835fbfaf"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:48.659013Z",
+    "status_code": 200,
+    "duration_seconds": 0.2538908,
+    "trace_id": "2a41efc307da5a89780e6932e7ae083f"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:49.177255Z",
+    "status_code": 200,
+    "duration_seconds": 0.2596122,
+    "trace_id": "00744b695e2d4a00357516f141cd4171"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:49.696413Z",
+    "status_code": 200,
+    "duration_seconds": 0.2635548,
+    "trace_id": "3cb1b52e172170b3d07a4d36b329910e"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:50.206517Z",
+    "status_code": 200,
+    "duration_seconds": 0.2572509,
+    "trace_id": "e064f9133d5b4987ad6dfe4ed193b94a"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:50.721954Z",
+    "status_code": 200,
+    "duration_seconds": 0.2615151,
+    "trace_id": "ae718e479a1794a3d910f139c69f019d"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:51.228740Z",
+    "status_code": 200,
+    "duration_seconds": 0.2567321,
+    "trace_id": "7aa7efd8dc1eac70a8617fb078420940"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:51.745173Z",
+    "status_code": 200,
+    "duration_seconds": 0.2567712,
+    "trace_id": "83db1401ab51c1903655127a6e7edab5"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:52.262927Z",
+    "status_code": 200,
+    "duration_seconds": 0.2621164,
+    "trace_id": "f9b0bfb5e5efc3676accd93f80a7e6fe"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:52.797184Z",
+    "status_code": 200,
+    "duration_seconds": 0.270238,
+    "trace_id": "7dba82e2696bc869d8217434c71bb32e"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:53.337377Z",
+    "status_code": 200,
+    "duration_seconds": 0.2809896,
+    "trace_id": "c0914fe70782c3c07346c4a15b9d7f86"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:53.846551Z",
+    "status_code": 200,
+    "duration_seconds": 0.2566924,
+    "trace_id": "c22c6541093efeab8a0d7e3d9069d2cd"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:54.359187Z",
+    "status_code": 200,
+    "duration_seconds": 0.2519944,
+    "trace_id": "1c1b73f359902fe37d560916f86c3d3c"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:54.875594Z",
+    "status_code": 200,
+    "duration_seconds": 0.2551922,
+    "trace_id": "81a70df4d8371998d0c0854c4580a685"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:55.393719Z",
+    "status_code": 200,
+    "duration_seconds": 0.2614542,
+    "trace_id": "e38fd87a5432f862b6dbb15254a95ca7"
+  },
+  {
+    "timestamp_utc": "2026-09-03T00:59:55.920053Z",
+    "status_code": 200,
+    "duration_seconds": 0.2738388,
+    "trace_id": "3766ddaf31015a05cbd32c5516beb4a2"
+  }
+]

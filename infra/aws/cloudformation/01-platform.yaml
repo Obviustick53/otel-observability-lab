@@ -1,0 +1,448 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ECR, ECS, Cloud Map, CloudWatch Logs, Secrets Manager and IAM for OTEL Lab.
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: otel-lab
+    AllowedPattern: '^[a-z0-9][a-z0-9-]{2,19}$'
+  Environment:
+    Type: String
+    Default: sandbox
+    AllowedValues: [sandbox, dev, test]
+  Owner:
+    Type: String
+    Default: observability-lab
+    AllowedPattern: '^[A-Za-z0-9][A-Za-z0-9._-]{1,31}$'
+  ExpirationUtc:
+    Type: String
+    Default: '2026-09-30'
+    AllowedPattern: '^20[0-9]{2}-[0-9]{2}-[0-9]{2}$'
+  LogRetentionDays:
+    Type: Number
+    Default: 3
+    AllowedValues: [1, 3, 5, 7, 14, 30]
+
+Resources:
+  DbSecret:
+    Type: AWS::SecretsManager::Secret
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      Description: Generated PostgreSQL credentials for the OTEL Lab sandbox; never print the value.
+      GenerateSecretString:
+        SecretStringTemplate: '{"username":"app","dbname":"observability"}'
+        GenerateStringKey: password
+        PasswordLength: 32
+        ExcludePunctuation: true
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  EcsExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${ProjectName}-${Environment}-ecs-execution'
+      Description: ECS agent role for ECR pulls, CloudWatch logs and secret injection.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+      Policies:
+        - PolicyName: !Sub '${ProjectName}-${Environment}-ecs-execution'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: EcrPull
+                Effect: Allow
+                Action:
+                  - ecr:GetAuthorizationToken
+                Resource: '*'
+              - Sid: EcrRepositoryPull
+                Effect: Allow
+                Action:
+                  - ecr:BatchCheckLayerAvailability
+                  - ecr:BatchGetImage
+                  - ecr:GetDownloadUrlForLayer
+                Resource:
+                  - !GetAtt ServiceARepository.Arn
+                  - !GetAtt ServiceBRepository.Arn
+                  - !GetAtt DataServiceRepository.Arn
+                  - !GetAtt CollectorRepository.Arn
+              - Sid: CloudWatchLogsWrite
+                Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub 'arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/ecs/${ProjectName}/${Environment}/*'
+              - Sid: ReadDatabaseSecret
+                Effect: Allow
+                Action: secretsmanager:GetSecretValue
+                Resource: !Ref DbSecret
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  AppTaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${ProjectName}-${Environment}-app-task'
+      Description: Empty-by-default task role for application containers.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  CollectorTaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${ProjectName}-${Environment}-collector-task'
+      Description: Collector role limited to X-Ray trace ingestion.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+      Policies:
+        - PolicyName: !Sub '${ProjectName}-${Environment}-collector-xray'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: PutTracesToXray
+                Effect: Allow
+                Action:
+                  - xray:PutTraceSegments
+                  - xray:PutTelemetryRecords
+                Resource: '*'
+              - Sid: PutMetricsToCloudWatchLogs
+                Effect: Allow
+                Action:
+                  - logs:DescribeLogStreams
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub 'arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/ecs/${ProjectName}/${Environment}/otel-metrics:*'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  EcsCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: !Sub '${ProjectName}-${Environment}'
+      ClusterSettings:
+        - Name: containerInsights
+          Value: enabled
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  ServiceConnectNamespace:
+    Type: AWS::ServiceDiscovery::PrivateDnsNamespace
+    Properties:
+      Name: !Sub '${ProjectName}.${Environment}.internal'
+      Vpc: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-VpcId'
+      Description: ECS Service Connect namespace for private service discovery.
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  ServiceARepository:
+    Type: AWS::ECR::Repository
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      RepositoryName: !Sub '${ProjectName}-${Environment}-service-a'
+      ImageTagMutability: IMMUTABLE
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+      LifecyclePolicy:
+        LifecyclePolicyText: >-
+          {"rules":[{"rulePriority":1,"description":"Keep last 5 versioned images","selection":{"tagStatus":"tagged","tagPatternList":["v*"],"countType":"imageCountMoreThan","countNumber":5},"action":{"type":"expire"}},{"rulePriority":2,"description":"Expire untagged images after 1 day","selection":{"tagStatus":"untagged","countType":"sinceImagePushed","countUnit":"days","countNumber":1},"action":{"type":"expire"}}]}
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  ServiceBRepository:
+    Type: AWS::ECR::Repository
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      RepositoryName: !Sub '${ProjectName}-${Environment}-service-b'
+      ImageTagMutability: IMMUTABLE
+      ImageScanningConfiguration: {ScanOnPush: true}
+      EncryptionConfiguration: {EncryptionType: AES256}
+      LifecyclePolicy:
+        LifecyclePolicyText: !Sub '{"rules":[{"rulePriority":1,"description":"Keep last 5 versioned images","selection":{"tagStatus":"tagged","tagPatternList":["v*"],"countType":"imageCountMoreThan","countNumber":5},"action":{"type":"expire"}},{"rulePriority":2,"description":"Expire untagged images after 1 day","selection":{"tagStatus":"untagged","countType":"sinceImagePushed","countUnit":"days","countNumber":1},"action":{"type":"expire"}}]}'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  DataServiceRepository:
+    Type: AWS::ECR::Repository
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      RepositoryName: !Sub '${ProjectName}-${Environment}-data-service'
+      ImageTagMutability: IMMUTABLE
+      ImageScanningConfiguration: {ScanOnPush: true}
+      EncryptionConfiguration: {EncryptionType: AES256}
+      LifecyclePolicy:
+        LifecyclePolicyText: !Sub '{"rules":[{"rulePriority":1,"description":"Keep last 5 versioned images","selection":{"tagStatus":"tagged","tagPatternList":["v*"],"countType":"imageCountMoreThan","countNumber":5},"action":{"type":"expire"}},{"rulePriority":2,"description":"Expire untagged images after 1 day","selection":{"tagStatus":"untagged","countType":"sinceImagePushed","countUnit":"days","countNumber":1},"action":{"type":"expire"}}]}'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  CollectorRepository:
+    Type: AWS::ECR::Repository
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      RepositoryName: !Sub '${ProjectName}-${Environment}-otel-collector'
+      ImageTagMutability: IMMUTABLE
+      ImageScanningConfiguration: {ScanOnPush: true}
+      EncryptionConfiguration: {EncryptionType: AES256}
+      LifecyclePolicy:
+        LifecyclePolicyText: !Sub '{"rules":[{"rulePriority":1,"description":"Keep last 5 versioned images","selection":{"tagStatus":"tagged","tagPatternList":["v*"],"countType":"imageCountMoreThan","countNumber":5},"action":{"type":"expire"}},{"rulePriority":2,"description":"Expire untagged images after 1 day","selection":{"tagStatus":"untagged","countType":"sinceImagePushed","countUnit":"days","countNumber":1},"action":{"type":"expire"}}]}'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  ServiceALogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/ecs/${ProjectName}/${Environment}/service-a'
+      RetentionInDays: !Ref LogRetentionDays
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  ServiceBLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/ecs/${ProjectName}/${Environment}/service-b'
+      RetentionInDays: !Ref LogRetentionDays
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  DataServiceLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/ecs/${ProjectName}/${Environment}/data-service'
+      RetentionInDays: !Ref LogRetentionDays
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  CollectorLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/ecs/${ProjectName}/${Environment}/otel-collector'
+      RetentionInDays: !Ref LogRetentionDays
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  CollectorMetricsLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: !Sub '/aws/ecs/${ProjectName}/${Environment}/otel-metrics'
+      RetentionInDays: !Ref LogRetentionDays
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+Outputs:
+  ClusterName:
+    Description: ECS cluster name
+    Value: !Ref EcsCluster
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-ClusterName'
+  ServiceConnectNamespaceArn:
+    Description: Cloud Map namespace ARN for ECS Service Connect
+    Value: !GetAtt ServiceConnectNamespace.Arn
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-ServiceConnectNamespaceArn'
+  DbSecretArn:
+    Description: Secrets Manager ARN; value is intentionally never output.
+    Value: !Ref DbSecret
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-DbSecretArn'
+  EcsExecutionRoleArn:
+    Description: ECS execution role ARN
+    Value: !GetAtt EcsExecutionRole.Arn
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-EcsExecutionRoleArn'
+  AppTaskRoleArn:
+    Description: Application task role ARN
+    Value: !GetAtt AppTaskRole.Arn
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-AppTaskRoleArn'
+  CollectorTaskRoleArn:
+    Description: Collector task role ARN
+    Value: !GetAtt CollectorTaskRole.Arn
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-CollectorTaskRoleArn'
+  ServiceARepositoryName:
+    Description: ECR repository name for service-a
+    Value: !Ref ServiceARepository
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-ServiceARepositoryName'
+  ServiceBRepositoryName:
+    Description: ECR repository name for service-b
+    Value: !Ref ServiceBRepository
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-ServiceBRepositoryName'
+  DataServiceRepositoryName:
+    Description: ECR repository name for data-service
+    Value: !Ref DataServiceRepository
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-DataServiceRepositoryName'
+  CollectorRepositoryName:
+    Description: ECR repository name for the OTel Collector
+    Value: !Ref CollectorRepository
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-CollectorRepositoryName'
+  ServiceALogGroupName:
+    Description: CloudWatch log group for service-a
+    Value: !Ref ServiceALogGroup
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-ServiceALogGroupName'
+  ServiceBLogGroupName:
+    Description: CloudWatch log group for service-b
+    Value: !Ref ServiceBLogGroup
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-ServiceBLogGroupName'
+  DataServiceLogGroupName:
+    Description: CloudWatch log group for data-service
+    Value: !Ref DataServiceLogGroup
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-DataServiceLogGroupName'
+  CollectorLogGroupName:
+    Description: CloudWatch log group for the collector
+    Value: !Ref CollectorLogGroup
+    Export:
+      Name: !Sub '${ProjectName}-${Environment}-CollectorLogGroupName'

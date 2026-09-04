@@ -1,0 +1,26 @@
+{
+  "generatedAtUtc": "2026-09-03T01:33:57.6624985Z",
+  "asOfUtc": "2026-09-03",
+  "currency": "USD",
+  "regionBasis": "us-east-1",
+  "hours": 24,
+  "operationalLimitUsd": 10.0,
+  "lineItems": {
+    "fargateApplication": 0.8887,
+    "fargateCollector": 0.5924,
+    "rdsInstance": 0.4032,
+    "rdsStorage": 0.0756,
+    "cloudwatchLogs": 0.125,
+    "cloudTrailS3Storage": 0.0023,
+    "customMetrics": 0.0,
+    "securityHub": 0.0
+  },
+  "estimatedTotalUsd": 2.0872,
+  "underOperationalLimit": true,
+  "status": "WITHIN_INPUT_LIMIT",
+  "limitations": [
+    "Inputs for reproducible sandbox estimate; verify current regional prices before approval.",
+    "Account and region dependent; confirm current Security Hub pricing before enabling.",
+    "No es costo observado; los datos de AWS Budgets tienen retraso y no son un limite en tiempo real."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "fixture_kind": "synthetic",
+  "description": "Deterministic cases for dynamic-vs-static AIOps comparison; these are not production or AWS evidence.",
+  "static_thresholds": {
+    "error_rate": 0.05,
+    "latency_p99_ms": 400.0
+  },
+  "slo_latency_p99_ms": 500.0,
+  "cases": [
+    {
+      "case_id": "healthy-baseline",
+      "incident": false,
+      "incident_start_utc": null,
+      "sample": {
+        "service": "service-b",
+        "environment": "local-synthetic",
+        "window_start_utc": "2026-09-01T00:00:00Z",
+        "window_end_utc": "2026-09-01T00:01:00Z",
+        "timestamp_utc": "2026-09-01T00:00:59Z",
+        "error_rate": 0.01,
+        "latency_p99_ms": 180.0,
+        "baseline_error_rate": 0.01,
+        "sigma_error_rate": 0.01,
+        "slo_latency_p99_ms": 500.0,
+        "trace_id": "unknown",
+        "trace_id_resolution": "unknown",
+        "trace_id_limitation": "Synthetic fixture has no real request trace."
+      }
+    },
+    {
+      "case_id": "static-noise-high-but-within-dynamic-slo",
+      "incident": false,
+      "incident_start_utc": null,
+      "sample": {
+        "service": "service-b",
+        "environment": "local-synthetic",
+        "window_start_utc": "2026-09-01T00:01:00Z",
+        "window_end_utc": "2026-09-01T00:02:00Z",
+        "timestamp_utc": "2026-09-01T00:01:59Z",
+        "error_rate": 0.06,
+        "latency_p99_ms": 450.0,
+        "baseline_error_rate": 0.01,
+        "sigma_error_rate": 0.04,
+        "slo_latency_p99_ms": 500.0,
+        "trace_id": "unknown",
+        "trace_id_resolution": "unknown",
+        "trace_id_limitation": "Synthetic fixture has no real request trace."
+      }
+    },
+    {
+      "case_id": "incident-high-error-and-latency",
+      "incident": true,
+      "incident_start_utc": "2026-09-01T00:02:10Z",
+      "sample": {
+        "service": "service-b",
+        "environment": "local-synthetic",
+        "window_start_utc": "2026-09-01T00:02:00Z",
+        "window_end_utc": "2026-09-01T00:03:00Z",
+        "timestamp_utc": "2026-09-01T00:02:59Z",
+        "error_rate": 0.25,
+        "latency_p99_ms": 900.0,
+        "baseline_error_rate": 0.01,
+        "sigma_error_rate": 0.02,
+        "slo_latency_p99_ms": 500.0,
+        "trace_id": "unknown",
+        "trace_id_resolution": "unknown",
+        "trace_id_limitation": "Synthetic fixture has no real request trace."
+      }
+    },
+    {
+      "case_id": "incident-dynamic-detects-below-static-rate",
+      "incident": true,
+      "incident_start_utc": "2026-09-01T00:03:20Z",
+      "sample": {
+        "service": "service-b",
+        "environment": "local-synthetic",
+        "window_start_utc": "2026-09-01T00:03:00Z",
+        "window_end_utc": "2026-09-01T00:04:00Z",
+        "timestamp_utc": "2026-09-01T00:03:59Z",
+        "error_rate": 0.04,
+        "latency_p99_ms": 700.0,
+        "baseline_error_rate": 0.005,
+        "sigma_error_rate": 0.01,
+        "slo_latency_p99_ms": 500.0,
+        "trace_id": "unknown",
+        "trace_id_resolution": "unknown",
+        "trace_id_limitation": "Synthetic fixture has no real request trace."
+      }
+    }
+  ]
+}

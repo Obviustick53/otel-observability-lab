@@ -1,0 +1,82 @@
+{
+  "evidence_class": "synthetic_fixture",
+  "fixture_path": "tests\\aiops\\fixtures\\synthetic_cases.json",
+  "result": {
+    "cases": [
+      {
+        "case_id": "healthy-baseline",
+        "dynamic_alert": false,
+        "event_id": "aiops-47706aae80b32a40",
+        "incident": false,
+        "severity": "info",
+        "static_alert": false,
+        "ttd_seconds": null
+      },
+      {
+        "case_id": "static-noise-high-but-within-dynamic-slo",
+        "dynamic_alert": false,
+        "event_id": "aiops-b53f419cdec4d755",
+        "incident": false,
+        "severity": "info",
+        "static_alert": true,
+        "ttd_seconds": null
+      },
+      {
+        "case_id": "incident-high-error-and-latency",
+        "dynamic_alert": true,
+        "event_id": "aiops-1dfb4f26f3b21bc8",
+        "incident": true,
+        "severity": "high",
+        "static_alert": true,
+        "ttd_seconds": 49.0
+      },
+      {
+        "case_id": "incident-dynamic-detects-below-static-rate",
+        "dynamic_alert": true,
+        "event_id": "aiops-ef494f5630c023ad",
+        "incident": true,
+        "severity": "high",
+        "static_alert": false,
+        "ttd_seconds": 39.0
+      }
+    ],
+    "dynamic_rule": {
+      "alerts": 2,
+      "false_positive_rate_pct": 0.0,
+      "false_positives": 0,
+      "incidents_detected": 2,
+      "incidents_missed": 0,
+      "incidents_total": 2,
+      "max_ttd_seconds": 49.0,
+      "mean_ttd_seconds": 44.0
+    },
+    "evaluation": {
+      "baseline_is_not_retrained_during_evaluation": true,
+      "cases": 4,
+      "config": {
+        "sigma_multiplier": 2.0,
+        "static_error_rate_threshold": 0.05,
+        "static_latency_p99_ms_threshold": 400.0
+      },
+      "dynamic_rule": "error_rate > baseline_error_rate + 2*sigma_error_rate AND latency_p99_ms > slo_latency_p99_ms",
+      "ground_truth_is_fixture_metadata": true,
+      "static_rule": "error_rate > static_error_rate_threshold AND latency_p99_ms > static_latency_p99_ms_threshold"
+    },
+    "noise_comparison": {
+      "false_positive_delta_static_minus_dynamic": 1,
+      "false_positive_reduction_pct_vs_static": 100.0,
+      "incident_detection_delta_dynamic_minus_static": 1
+    },
+    "schema_version": "aiops.rule-comparison.v1",
+    "static_rule": {
+      "alerts": 2,
+      "false_positive_rate_pct": 50.0,
+      "false_positives": 1,
+      "incidents_detected": 1,
+      "incidents_missed": 1,
+      "incidents_total": 2,
+      "max_ttd_seconds": 49.0,
+      "mean_ttd_seconds": 49.0
+    }
+  }
+}

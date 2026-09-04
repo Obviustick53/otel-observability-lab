@@ -1,0 +1,32 @@
+{
+  "generated_at_utc": "2026-09-03T01:40:16Z",
+  "environment": "aws",
+  "account_id": "741368364261",
+  "region": "us-east-1",
+  "operation": "AWS MCP budgets create-budget/create-notification/create-subscriber/describe",
+  "budget_name": "otel-lab-sandbox-monthly-10-usd",
+  "budget_limit_usd": 10.0,
+  "time_unit": "MONTHLY",
+  "actual_spend_reported_usd": 0.0,
+  "health_status": "HEALTHY",
+  "notifications": [
+    {"type": "ACTUAL", "threshold_percent": 80.0, "state": "OK"},
+    {"type": "ACTUAL", "threshold_percent": 100.0, "state": "OK"},
+    {"type": "FORECASTED", "threshold_percent": 80.0, "state": "OK"},
+    {"type": "FORECASTED", "threshold_percent": 100.0, "state": "OK"}
+  ],
+  "subscribers": {
+    "email": "josemora9706@gmail.com",
+    "sns": "arn:aws:sns:us-east-1:741368364261:otel-lab-sandbox-cost-guard"
+  },
+  "cost_guard": {
+    "topic_arn": "arn:aws:sns:us-east-1:741368364261:otel-lab-sandbox-cost-guard",
+    "function_arn": "arn:aws:lambda:us-east-1:741368364261:function:otel-lab-sandbox-cost-guard",
+    "action": "desiredCount=0 for service-a, service-b, data-service and otel-collector; stop RDS otel-lab-sandbox-postgres"
+  },
+  "limitations": [
+    "AWS Budgets data is delayed and is not a hard real-time spending cap.",
+    "The email subscriber must confirm the AWS notification email.",
+    "AWS Budgets is delayed and is not a hard real-time spending cap; the Lambda acts when SNS receives the 100% notification."
+  ]
+}

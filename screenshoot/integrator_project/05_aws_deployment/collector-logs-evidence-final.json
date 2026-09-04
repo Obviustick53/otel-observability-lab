@@ -1,0 +1,14 @@
+{
+  "generatedAtUtc": "2026-09-03T18:50:16.5510627Z",
+  "context": {
+    "AccountId": "741368364261",
+    "Arn": "arn:aws:iam::741368364261:user/admin-josemorse",
+    "Region": "us-east-1",
+    "Profile": "admin-josemorse"
+  },
+  "logGroup": "/aws/ecs/otel-lab/sandbox/otel-collector",
+  "windowMinutes": 20,
+  "status": "VERIFIED",
+  "otlpLogsExporterEvents": 2,
+  "unimplementedEvents": 0
+}

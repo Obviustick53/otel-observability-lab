@@ -1,0 +1,687 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ECS Fargate task definitions and Service Connect services for the OTEL Lab.
+
+Mappings:
+  FargateSizes:
+    256-512: {Cpu: '256', Memory: '512'}
+    256-1024: {Cpu: '256', Memory: '1024'}
+    256-2048: {Cpu: '256', Memory: '2048'}
+    512-1024: {Cpu: '512', Memory: '1024'}
+    512-2048: {Cpu: '512', Memory: '2048'}
+    512-3072: {Cpu: '512', Memory: '3072'}
+    512-4096: {Cpu: '512', Memory: '4096'}
+    1024-2048: {Cpu: '1024', Memory: '2048'}
+    1024-4096: {Cpu: '1024', Memory: '4096'}
+    1024-8192: {Cpu: '1024', Memory: '8192'}
+    2048-4096: {Cpu: '2048', Memory: '4096'}
+    2048-8192: {Cpu: '2048', Memory: '8192'}
+    4096-8192: {Cpu: '4096', Memory: '8192'}
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: otel-lab
+    AllowedPattern: '^[a-z0-9][a-z0-9-]{2,19}$'
+  Environment:
+    Type: String
+    Default: sandbox
+    AllowedValues: [sandbox, dev, test]
+  Owner:
+    Type: String
+    Default: observability-lab
+    AllowedPattern: '^[A-Za-z0-9][A-Za-z0-9._-]{1,31}$'
+  ExpirationUtc:
+    Type: String
+    Default: '2026-09-30'
+    AllowedPattern: '^20[0-9]{2}-[0-9]{2}-[0-9]{2}$'
+  ImageTag:
+    Type: String
+    Default: v1
+    AllowedPattern: '^v[0-9][A-Za-z0-9._-]{0,31}$'
+  AssignPublicIp:
+    Type: String
+    Default: ENABLED
+    AllowedValues: [ENABLED, DISABLED]
+  AppTaskSize:
+    Type: String
+    Default: 256-512
+    AllowedValues: [256-512, 256-1024, 256-2048, 512-1024, 512-2048, 512-3072, 512-4096, 1024-2048, 1024-4096, 1024-8192, 2048-4096, 2048-8192, 4096-8192]
+    Description: Valid Fargate CPU-memory pair for each application task.
+  CollectorTaskSize:
+    Type: String
+    Default: 512-1024
+    AllowedValues: [512-1024, 512-2048, 512-3072, 512-4096, 1024-2048, 1024-4096, 1024-8192, 2048-4096, 2048-8192, 4096-8192]
+    Description: Valid Fargate CPU-memory pair for the Collector task.
+  DesiredCount:
+    Type: Number
+    Default: 1
+    MinValue: 1
+    MaxValue: 2
+  ServiceBLatencyMs:
+    Type: String
+    Default: '0'
+    AllowedPattern: '^[0-9]{1,4}$'
+    Description: Chaos contract consumed by a compatible service-b image; 0 means disabled.
+  DataServiceErrorRate:
+    Type: String
+    Default: '0'
+    AllowedPattern: '^(0(\.[0-9]+)?|1(\.0+)?)$'
+    Description: Chaos contract consumed by a compatible data-service image; 0 means disabled.
+
+Resources:
+  ServiceATaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: !Sub '${ProjectName}-${Environment}-service-a'
+      RequiresCompatibilities: [FARGATE]
+      NetworkMode: awsvpc
+      Cpu: !FindInMap [FargateSizes, !Ref AppTaskSize, Cpu]
+      Memory: !FindInMap [FargateSizes, !Ref AppTaskSize, Memory]
+      RuntimePlatform:
+        CpuArchitecture: X86_64
+        OperatingSystemFamily: LINUX
+      ExecutionRoleArn: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-EcsExecutionRoleArn'
+      TaskRoleArn: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-AppTaskRoleArn'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+      ContainerDefinitions:
+        - Name: service-a
+          Image: !Sub
+            - '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${RepoName}:${ImageTag}'
+            - RepoName:
+                Fn::ImportValue:
+                  Fn::Sub: '${ProjectName}-${Environment}-ServiceARepositoryName'
+              ImageTag: !Ref ImageTag
+          Essential: true
+          PortMappings:
+            - Name: service-a
+              ContainerPort: 8000
+              Protocol: tcp
+              AppProtocol: http
+          Environment:
+            - Name: OTEL_SERVICE_NAME
+              Value: service-a
+            - Name: OTEL_SERVICE_VERSION
+              Value: !Ref ImageTag
+            - Name: OTEL_EXPORTER_OTLP_ENDPOINT
+              Value: http://otel-collector:4317
+            - Name: OTEL_EXPORTER_OTLP_PROTOCOL
+              Value: grpc
+            - Name: OTEL_EXPORTER_OTLP_INSECURE
+              Value: 'true'
+            - Name: OTEL_SDK_DISABLED
+              Value: 'false'
+            - Name: ENVIRONMENT
+              Value: !Ref Environment
+            - Name: SERVICE_B_URL
+              Value: http://service-b:8001
+            - Name: DATA_SERVICE_URL
+              Value: http://data-service:8002
+            - Name: DB_HOST
+              Value:
+                Fn::ImportValue:
+                  Fn::Sub: '${ProjectName}-${Environment}-DbEndpointAddress'
+            - Name: DB_PORT
+              Value: '5432'
+            - Name: DB_NAME
+              Value: observability
+            - Name: DB_USER
+              Value: app
+          Secrets:
+            - Name: DB_PASSWORD
+              ValueFrom: !Sub
+                - '${SecretArn}:password::'
+                - SecretArn:
+                    Fn::ImportValue:
+                      Fn::Sub: '${ProjectName}-${Environment}-DbSecretArn'
+          LinuxParameters:
+            InitProcessEnabled: true
+          HealthCheck:
+            Command: [CMD-SHELL, 'curl -fsS http://localhost:8000/health || exit 1']
+            Interval: 10
+            Timeout: 5
+            Retries: 3
+            StartPeriod: 30
+          StopTimeout: 60
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group:
+                Fn::ImportValue:
+                  Fn::Sub: '${ProjectName}-${Environment}-ServiceALogGroupName'
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: service-a
+              mode: blocking
+
+  ServiceBTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: !Sub '${ProjectName}-${Environment}-service-b'
+      RequiresCompatibilities: [FARGATE]
+      NetworkMode: awsvpc
+      Cpu: !FindInMap [FargateSizes, !Ref AppTaskSize, Cpu]
+      Memory: !FindInMap [FargateSizes, !Ref AppTaskSize, Memory]
+      RuntimePlatform:
+        CpuArchitecture: X86_64
+        OperatingSystemFamily: LINUX
+      ExecutionRoleArn: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-EcsExecutionRoleArn'
+      TaskRoleArn: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-AppTaskRoleArn'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+      ContainerDefinitions:
+        - Name: service-b
+          Image: !Sub
+            - '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${RepoName}:${ImageTag}'
+            - RepoName:
+                Fn::ImportValue:
+                  Fn::Sub: '${ProjectName}-${Environment}-ServiceBRepositoryName'
+              ImageTag: !Ref ImageTag
+          Essential: true
+          PortMappings:
+            - Name: service-b
+              ContainerPort: 8001
+              Protocol: tcp
+              AppProtocol: http
+          Environment:
+            - Name: OTEL_SERVICE_NAME
+              Value: service-b
+            - Name: OTEL_SERVICE_VERSION
+              Value: !Ref ImageTag
+            - Name: OTEL_EXPORTER_OTLP_ENDPOINT
+              Value: http://otel-collector:4317
+            - Name: OTEL_EXPORTER_OTLP_PROTOCOL
+              Value: grpc
+            - Name: OTEL_EXPORTER_OTLP_INSECURE
+              Value: 'true'
+            - Name: OTEL_SDK_DISABLED
+              Value: 'false'
+            - Name: ENVIRONMENT
+              Value: !Ref Environment
+            - Name: LAB_SERVICE_B_LATENCY_MS
+              Value: !Ref ServiceBLatencyMs
+            - Name: DB_HOST
+              Value:
+                Fn::ImportValue:
+                  Fn::Sub: '${ProjectName}-${Environment}-DbEndpointAddress'
+            - Name: DB_PORT
+              Value: '5432'
+            - Name: DB_NAME
+              Value: observability
+            - Name: DB_USER
+              Value: app
+          Secrets:
+            - Name: DB_PASSWORD
+              ValueFrom: !Sub
+                - '${SecretArn}:password::'
+                - SecretArn:
+                    Fn::ImportValue:
+                      Fn::Sub: '${ProjectName}-${Environment}-DbSecretArn'
+          LinuxParameters:
+            InitProcessEnabled: true
+          HealthCheck:
+            Command: [CMD-SHELL, 'curl -fsS http://localhost:8001/health || exit 1']
+            Interval: 10
+            Timeout: 5
+            Retries: 3
+            StartPeriod: 30
+          StopTimeout: 60
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group:
+                Fn::ImportValue:
+                  Fn::Sub: '${ProjectName}-${Environment}-ServiceBLogGroupName'
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: service-b
+              mode: blocking
+
+  DataServiceTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: !Sub '${ProjectName}-${Environment}-data-service'
+      RequiresCompatibilities: [FARGATE]
+      NetworkMode: awsvpc
+      Cpu: !FindInMap [FargateSizes, !Ref AppTaskSize, Cpu]
+      Memory: !FindInMap [FargateSizes, !Ref AppTaskSize, Memory]
+      RuntimePlatform:
+        CpuArchitecture: X86_64
+        OperatingSystemFamily: LINUX
+      ExecutionRoleArn: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-EcsExecutionRoleArn'
+      TaskRoleArn: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-AppTaskRoleArn'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+      ContainerDefinitions:
+        - Name: data-service
+          Image: !Sub
+            - '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${RepoName}:${ImageTag}'
+            - RepoName:
+                Fn::ImportValue:
+                  Fn::Sub: '${ProjectName}-${Environment}-DataServiceRepositoryName'
+              ImageTag: !Ref ImageTag
+          Essential: true
+          PortMappings:
+            - Name: data-service
+              ContainerPort: 8002
+              Protocol: tcp
+              AppProtocol: http
+          Environment:
+            - Name: OTEL_SERVICE_NAME
+              Value: data-service
+            - Name: OTEL_SERVICE_VERSION
+              Value: !Ref ImageTag
+            - Name: OTEL_EXPORTER_OTLP_ENDPOINT
+              Value: http://otel-collector:4317
+            - Name: OTEL_EXPORTER_OTLP_PROTOCOL
+              Value: grpc
+            - Name: OTEL_EXPORTER_OTLP_INSECURE
+              Value: 'true'
+            - Name: OTEL_SDK_DISABLED
+              Value: 'false'
+            - Name: ENVIRONMENT
+              Value: !Ref Environment
+            - Name: LAB_DATA_ERROR_RATE
+              Value: !Ref DataServiceErrorRate
+            - Name: DB_HOST
+              Value:
+                Fn::ImportValue:
+                  Fn::Sub: '${ProjectName}-${Environment}-DbEndpointAddress'
+            - Name: DB_PORT
+              Value: '5432'
+            - Name: DB_NAME
+              Value: observability
+            - Name: DB_USER
+              Value: app
+          Secrets:
+            - Name: DB_PASSWORD
+              ValueFrom: !Sub
+                - '${SecretArn}:password::'
+                - SecretArn:
+                    Fn::ImportValue:
+                      Fn::Sub: '${ProjectName}-${Environment}-DbSecretArn'
+          LinuxParameters:
+            InitProcessEnabled: true
+          HealthCheck:
+            Command:
+              - CMD-SHELL
+              - >-
+                python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8002/health', timeout=2)"
+            Interval: 10
+            Timeout: 5
+            Retries: 3
+            StartPeriod: 30
+          StopTimeout: 60
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group:
+                Fn::ImportValue:
+                  Fn::Sub: '${ProjectName}-${Environment}-DataServiceLogGroupName'
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: data-service
+              mode: blocking
+
+  CollectorTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: !Sub '${ProjectName}-${Environment}-otel-collector'
+      RequiresCompatibilities: [FARGATE]
+      NetworkMode: awsvpc
+      Cpu: !FindInMap [FargateSizes, !Ref CollectorTaskSize, Cpu]
+      Memory: !FindInMap [FargateSizes, !Ref CollectorTaskSize, Memory]
+      RuntimePlatform:
+        CpuArchitecture: X86_64
+        OperatingSystemFamily: LINUX
+      ExecutionRoleArn: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-EcsExecutionRoleArn'
+      TaskRoleArn: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-CollectorTaskRoleArn'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+      ContainerDefinitions:
+        - Name: otel-collector
+          Image: !Sub
+            - '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${RepoName}:${ImageTag}'
+            - RepoName:
+                Fn::ImportValue:
+                  Fn::Sub: '${ProjectName}-${Environment}-CollectorRepositoryName'
+              ImageTag: !Ref ImageTag
+          Essential: true
+          Command: [--config=/etc/otelcol-contrib/config.yaml]
+          PortMappings:
+            - Name: otlp-grpc
+              ContainerPort: 4317
+              Protocol: tcp
+          Environment:
+            - Name: AWS_REGION
+              Value: !Ref AWS::Region
+            - Name: PROJECT_NAME
+              Value: !Ref ProjectName
+            - Name: ENVIRONMENT
+              Value: !Ref Environment
+          StopTimeout: 60
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group:
+                Fn::ImportValue:
+                  Fn::Sub: '${ProjectName}-${Environment}-CollectorLogGroupName'
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: collector
+              mode: blocking
+
+  ServiceA:
+    Type: AWS::ECS::Service
+    Properties:
+      ServiceName: service-a
+      Cluster: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-ClusterName'
+      TaskDefinition: !Ref ServiceATaskDefinition
+      DesiredCount: !Ref DesiredCount
+      LaunchType: FARGATE
+      PlatformVersion: LATEST
+      EnableECSManagedTags: true
+      PropagateTags: SERVICE
+      EnableExecuteCommand: false
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: !Ref AssignPublicIp
+          Subnets:
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-PublicSubnet1Id'
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-PublicSubnet2Id'
+          SecurityGroups:
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-ApplicationSecurityGroupId'
+      DeploymentConfiguration:
+        DeploymentCircuitBreaker:
+          Enable: true
+          Rollback: true
+        MinimumHealthyPercent: 100
+        MaximumPercent: 200
+      ServiceConnectConfiguration:
+        Enabled: true
+        Namespace: !ImportValue
+          Fn::Sub: '${ProjectName}-${Environment}-ServiceConnectNamespaceArn'
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  ServiceB:
+    Type: AWS::ECS::Service
+    Properties:
+      ServiceName: service-b
+      Cluster: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-ClusterName'
+      TaskDefinition: !Ref ServiceBTaskDefinition
+      DesiredCount: !Ref DesiredCount
+      LaunchType: FARGATE
+      PlatformVersion: LATEST
+      EnableECSManagedTags: true
+      PropagateTags: SERVICE
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: !Ref AssignPublicIp
+          Subnets:
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-PublicSubnet1Id'
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-PublicSubnet2Id'
+          SecurityGroups:
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-ApplicationSecurityGroupId'
+      DeploymentConfiguration:
+        DeploymentCircuitBreaker: {Enable: true, Rollback: true}
+        MinimumHealthyPercent: 100
+        MaximumPercent: 200
+      ServiceConnectConfiguration:
+        Enabled: true
+        Namespace: !ImportValue
+          Fn::Sub: '${ProjectName}-${Environment}-ServiceConnectNamespaceArn'
+        Services:
+          - PortName: service-b
+            DiscoveryName: service-b
+            ClientAliases:
+              - Port: 8001
+                DnsName: service-b
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  DataService:
+    Type: AWS::ECS::Service
+    Properties:
+      ServiceName: data-service
+      Cluster: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-ClusterName'
+      TaskDefinition: !Ref DataServiceTaskDefinition
+      DesiredCount: !Ref DesiredCount
+      LaunchType: FARGATE
+      PlatformVersion: LATEST
+      EnableECSManagedTags: true
+      PropagateTags: SERVICE
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: !Ref AssignPublicIp
+          Subnets:
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-PublicSubnet1Id'
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-PublicSubnet2Id'
+          SecurityGroups:
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-DataServiceSecurityGroupId'
+      DeploymentConfiguration:
+        DeploymentCircuitBreaker: {Enable: true, Rollback: true}
+        MinimumHealthyPercent: 100
+        MaximumPercent: 200
+      ServiceConnectConfiguration:
+        Enabled: true
+        Namespace: !ImportValue
+          Fn::Sub: '${ProjectName}-${Environment}-ServiceConnectNamespaceArn'
+        Services:
+          - PortName: data-service
+            DiscoveryName: data-service
+            ClientAliases:
+              - Port: 8002
+                DnsName: data-service
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  Collector:
+    Type: AWS::ECS::Service
+    Properties:
+      ServiceName: otel-collector
+      Cluster: !ImportValue
+        Fn::Sub: '${ProjectName}-${Environment}-ClusterName'
+      TaskDefinition: !Ref CollectorTaskDefinition
+      DesiredCount: 1
+      LaunchType: FARGATE
+      PlatformVersion: LATEST
+      EnableECSManagedTags: true
+      PropagateTags: SERVICE
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: !Ref AssignPublicIp
+          Subnets:
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-PublicSubnet1Id'
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-PublicSubnet2Id'
+          SecurityGroups:
+            - !ImportValue
+                Fn::Sub: '${ProjectName}-${Environment}-CollectorSecurityGroupId'
+      DeploymentConfiguration:
+        DeploymentCircuitBreaker: {Enable: true, Rollback: true}
+        MinimumHealthyPercent: 100
+        MaximumPercent: 200
+      ServiceConnectConfiguration:
+        Enabled: true
+        Namespace: !ImportValue
+          Fn::Sub: '${ProjectName}-${Environment}-ServiceConnectNamespaceArn'
+        Services:
+          - PortName: otlp-grpc
+            DiscoveryName: otel-collector
+            ClientAliases:
+              - Port: 4317
+                DnsName: otel-collector
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Owner
+          Value: !Ref Owner
+        - Key: ExpiresOn
+          Value: !Ref ExpirationUtc
+
+  ServiceAErrors:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName:
+        Fn::ImportValue:
+          Fn::Sub: '${ProjectName}-${Environment}-ServiceALogGroupName'
+      FilterPattern: '{ $.levelname = "ERROR" }'
+      MetricTransformations:
+        - MetricNamespace: !Sub '${ProjectName}/Application'
+          MetricName: !Sub '${ProjectName}-${Environment}-service-a-errors'
+          MetricValue: '1'
+          DefaultValue: 0
+
+  ServiceBErrors:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName:
+        Fn::ImportValue:
+          Fn::Sub: '${ProjectName}-${Environment}-ServiceBLogGroupName'
+      FilterPattern: '{ $.levelname = "ERROR" }'
+      MetricTransformations:
+        - MetricNamespace: !Sub '${ProjectName}/Application'
+          MetricName: !Sub '${ProjectName}-${Environment}-service-b-errors'
+          MetricValue: '1'
+          DefaultValue: 0
+
+  DataServiceErrors:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName:
+        Fn::ImportValue:
+          Fn::Sub: '${ProjectName}-${Environment}-DataServiceLogGroupName'
+      FilterPattern: '{ $.levelname = "ERROR" }'
+      MetricTransformations:
+        - MetricNamespace: !Sub '${ProjectName}/Application'
+          MetricName: !Sub '${ProjectName}-${Environment}-data-service-errors'
+          MetricValue: '1'
+          DefaultValue: 0
+
+  ServiceAErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub '${ProjectName}-${Environment}-service-a-errors'
+      AlarmDescription: Service-a emitted at least one structured ERROR in two of three minutes.
+      Namespace: !Sub '${ProjectName}/Application'
+      MetricName: !Sub '${ProjectName}-${Environment}-service-a-errors'
+      Statistic: Sum
+      Period: 60
+      EvaluationPeriods: 3
+      DatapointsToAlarm: 2
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+
+  ServiceBErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub '${ProjectName}-${Environment}-service-b-errors'
+      AlarmDescription: Service-b emitted at least one structured ERROR in two of three minutes.
+      Namespace: !Sub '${ProjectName}/Application'
+      MetricName: !Sub '${ProjectName}-${Environment}-service-b-errors'
+      Statistic: Sum
+      Period: 60
+      EvaluationPeriods: 3
+      DatapointsToAlarm: 2
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+
+  DataServiceErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub '${ProjectName}-${Environment}-data-service-errors'
+      AlarmDescription: data-service emitted at least one structured ERROR in two of three minutes.
+      Namespace: !Sub '${ProjectName}/Application'
+      MetricName: !Sub '${ProjectName}-${Environment}-data-service-errors'
+      Statistic: Sum
+      Period: 60
+      EvaluationPeriods: 3
+      DatapointsToAlarm: 2
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+
+Outputs:
+  ServiceAName:
+    Description: ECS service-a name
+    Value: !Ref ServiceA
+  ServiceBName:
+    Description: ECS service-b name
+    Value: !Ref ServiceB
+  DataServiceName:
+    Description: ECS data-service name
+    Value: !Ref DataService
+  CollectorName:
+    Description: ECS collector service name
+    Value: !Ref Collector
